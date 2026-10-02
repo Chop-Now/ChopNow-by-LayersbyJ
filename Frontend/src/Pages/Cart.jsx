@@ -265,7 +265,7 @@ const Cart = () => {
         {getTotalCartItems() === 0 ? (
           <div className="bg-yellow text-moringa px-6 py-14 text-center flex flex-col items-center rounded-lg">
             <ShoppingBag className="w-10 h-10" aria-hidden="true" />
-            <h2 className="display text-[48px] md:text-[64px] mt-4">Your cart is empty</h2>
+            <h2 className="display text-[48px] md:text-[64px] mt-4">Your cart is hungry</h2>
             <p className="mt-3 max-w-sm font-medium">
               Vendors near you post fresh surplus every day. Grab something before it is gone.
             </p>

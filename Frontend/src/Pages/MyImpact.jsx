@@ -108,7 +108,7 @@ const MyImpact = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-fufu">
         <BrandLoader className="w-10 text-moringa" />
-        <p className="eyebrow text-moringa-muted">Loading your impact</p>
+        <p className="eyebrow text-moringa-muted">Counting your rescues</p>
       </div>
     );
   }

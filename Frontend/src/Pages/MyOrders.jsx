@@ -502,7 +502,7 @@ const MyOrders = () => {
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20 bg-white border border-char/10">
               <BrandLoader className="w-10 text-moringa mb-4" />
-              <p className="eyebrow text-moringa-muted">Loading your orders</p>
+              <p className="eyebrow text-moringa-muted">Fetching your receipts</p>
             </div>
           ) : (
             <>
@@ -647,7 +647,7 @@ const MyOrders = () => {
                 <div className="grid md:grid-cols-[1fr_360px] border border-char/10 overflow-hidden">
                   <div className="bg-yellow text-moringa px-6 py-12 md:p-12 flex flex-col items-start justify-center">
                     <p className="eyebrow">Nothing here yet</p>
-                    <h2 className="display text-[44px] md:text-[64px] mt-3">No orders found</h2>
+                    <h2 className="display text-[44px] md:text-[64px] mt-3">Nothing cooking yet</h2>
                     <p className="mt-3 max-w-md font-medium">{getEmptyStateMessage()}</p>
                     <button
                       onClick={() => navigate('/shop')}

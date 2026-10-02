@@ -21,12 +21,12 @@ const MaintenanceMode = () => {
             Scheduled maintenance
           </p>
           <h1 className="display text-[64px] sm:text-[96px] lg:text-[128px] mt-3 leading-[0.86]">
-            Under <span className="text-yellow">maintenance</span>
+            Kitchen&apos;s <span className="text-yellow">closed</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-lg font-medium opacity-90 leading-relaxed">
-            We're currently performing scheduled maintenance to improve your experience. We'll be
-            back shortly. Thank you for your patience!
+            We're giving the kitchen a deep clean so everything runs smoother. Back before your
+            stomach starts rumbling. Thank you for your patience!
           </p>
 
           <p className="mt-10 eyebrow text-[11px] opacity-80">
@@ -37,7 +37,7 @@ const MaintenanceMode = () => {
         {/* Contact Info */}
         <section className="bg-yellow text-moringa px-4 sm:px-8 lg:px-12 py-12 flex flex-col justify-center">
           <p className="eyebrow">Need urgent assistance?</p>
-          <p className="display text-[40px] sm:text-[48px] mt-2">Contact us</p>
+          <p className="display text-[40px] sm:text-[48px] mt-2">Shout through the hatch</p>
 
           <div className="mt-6 flex flex-col border-2 border-moringa">
             <a

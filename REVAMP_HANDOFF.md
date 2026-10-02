@@ -8,8 +8,9 @@ finished step, so any agent can pick up exactly where the last one stopped.
 1. This repo is a full copy of `Chop-Now/chopnow` at commit `3f1ca98`
    (Backend, Frontend, Mobile, docs). Work happens ONLY in this repo
    (`J0SHUALU/chopnow-by-layersbyj`). Never push to `Chop-Now/chopnow`.
-   All revamp work goes on the branch `revamp-ui`. Do NOT push to `main`;
-   open a pull request from `revamp-ui` into `main` when the checklist is done.
+   All revamp work goes on the branch `revamp-ui`. Do NOT push to `main`.
+   Do NOT open the pull request into `main` until the owner explicitly says so
+   (they test first).
 2. Replace the UI of the React web app in `Frontend/` with the revamped
    "tile" design: the landing page (`/`, `Pages/Home.jsx`) and the web app
    pages (shop, product, cart, orders, profile, auth, etc.).
@@ -93,8 +94,11 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] FAQ, ContactUs, Terms, Privacy, NotFound (new tile 404), Maintenance, ErrorBoundary, ui/EmptyState, ui/ErrorDisplay, ui/LoadingSpinner
 - [x] Motion + hero art (owner request): spinning C mark loader (`BrandLoader` in Kit, used by ui/LoadingSpinner), header logo mark spins once on load and on hover, hero titles rise in, PageHero takes `art` (fork/spoon/leaf/pin/bag/chilli, tonal Moringa-2 shapes cropped by the band). All motion is off under prefers-reduced-motion. CSS lives in index.css under "Motion".
 - [x] Soft corners pass (owner request), see Corners above.
-- [ ] (next up) Admin dashboard shell: admin/components/layout Sidebar + Header, Analytics emojis
-- [ ] Final pass: 390px + 1440px check, `npx prettier --check .` at root, `npx eslint .` in Frontend (0 errors), `npm run build`, push, then open a PR revamp-ui -> main and DO NOT merge (owner merges)
+- [x] Admin dashboard shell: admin/components/layout Sidebar (Moringa rail, yellow active) + Header (brand dark mode tones), admin ground fufu/char, Analytics emojis replaced with lucide icons
+- [x] Fun copy (owner request): 404 "Someone ate this page.", crash screen "We burnt the toast", maintenance "Kitchen's closed", playful ErrorDisplay defaults and empty/loading states
+- [ ] (next up) Final pass: 390px + 1440px check, `npx prettier --check .` at root, `npx eslint .` in Frontend (0 errors), `npm run build`, push to revamp-ui.
+- [ ] PR revamp-ui -> main: ONLY when the owner says so, after they have tested. Never merge.
+- [ ] Repo transfer to the Chop-Now org: done by the owner in GitHub (Settings > Danger Zone > Transfer ownership), after testing and their okay. Not an agent step.
 
 ## Live progress page
 

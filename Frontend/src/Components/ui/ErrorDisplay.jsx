@@ -22,32 +22,32 @@ const ErrorDisplay = ({
   const errorConfig = {
     generic: {
       icon: AlertCircle,
-      defaultTitle: 'Something went wrong',
+      defaultTitle: 'Something went sideways',
       defaultMessage: 'An unexpected error occurred. Please try again.',
       tile: 'bg-peach text-clay',
     },
     network: {
       icon: WifiOff,
-      defaultTitle: 'Connection Error',
-      defaultMessage: 'Unable to connect to the server. Please check your internet connection.',
+      defaultTitle: 'The line went quiet',
+      defaultMessage: "We can't reach the kitchen. Check your internet connection and try again.",
       tile: 'bg-yellow text-moringa',
     },
     server: {
       icon: ServerCrash,
-      defaultTitle: 'Server Error',
-      defaultMessage: 'The server is temporarily unavailable. Please try again later.',
+      defaultTitle: 'Too many cooks',
+      defaultMessage: 'Our server is swamped right now. Give it a minute and try again.',
       tile: 'bg-peach text-clay',
     },
     auth: {
       icon: ShieldAlert,
-      defaultTitle: 'Authentication Error',
-      defaultMessage: 'Your session has expired. Please log in again.',
+      defaultTitle: 'Your session went stale',
+      defaultMessage: 'It sat out too long. Please log in again to keep going.',
       tile: 'bg-yellow text-moringa',
     },
     notFound: {
       icon: AlertCircle,
-      defaultTitle: 'Not Found',
-      defaultMessage: 'The requested resource could not be found.',
+      defaultTitle: 'Nothing on this plate',
+      defaultMessage: "We looked everywhere, even behind the fridge. It isn't here.",
       tile: 'bg-mint text-moringa',
     },
   };

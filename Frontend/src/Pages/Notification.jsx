@@ -630,8 +630,10 @@ const Notification = () => {
             ) : filteredNotifications.length === 0 ? (
               <div className="bg-mint text-moringa px-6 py-14 text-center flex flex-col items-center rounded-lg">
                 <Bell size={40} aria-hidden="true" />
-                <p className="display text-[40px] mt-4">All quiet</p>
-                <p className="mt-2 font-medium">No notifications to display</p>
+                <p className="display text-[40px] mt-4">Quiet kitchen</p>
+                <p className="mt-2 font-medium">
+                  No notifications. We will ping you the moment your food is ready.
+                </p>
               </div>
             ) : (
               <ul className="bg-white border border-char/10">

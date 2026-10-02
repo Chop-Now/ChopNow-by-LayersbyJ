@@ -212,7 +212,7 @@ const Products = forwardRef(({ sortBy, priceRange, category, setSortBy, setPrice
         {!productsLoading && currentProducts.length === 0 && (
           <div className="mt-6 bg-yellow text-moringa px-6 py-12 md:py-16 text-center flex flex-col items-center rounded-lg">
             <p className="eyebrow">Nothing here yet</p>
-            <h3 className="display text-[48px] md:text-[64px] mt-3">No food found</h3>
+            <h3 className="display text-[48px] md:text-[64px] mt-3">The plate is empty</h3>
             <p className="mt-3 text-base font-medium max-w-sm">
               {category
                 ? `No ${category} listings right now. Vendors post fresh surplus every day, so check back soon.`

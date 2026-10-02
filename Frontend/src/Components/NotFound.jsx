@@ -18,13 +18,13 @@ const NotFound = () => {
         {/* Message tile */}
         <section className="bg-yellow text-moringa px-4 sm:px-8 lg:px-12 py-12 md:py-16 flex flex-col justify-center">
           <p className="eyebrow">Error 404</p>
-          <h1 className="display text-[120px] sm:text-[160px] lg:text-[220px] mt-2 leading-[0.82]">
-            Lost?
+          <h1 className="display text-[72px] sm:text-[104px] lg:text-[132px] mt-2 leading-[0.92]">
+            Someone ate this page.
           </h1>
-          <p className="mt-6 text-lg font-bold">It happens to the best of us</p>
+          <p className="mt-6 text-lg font-bold">It was rescued before you got here.</p>
           <p className="mt-3 max-w-md font-medium">
-            We couldn't find the page you're looking for. Don't worry though, even the best
-            explorers get a little lost sometimes. Let's get you back on track!
+            Good news: there's still plenty of food left. Bad news: this page isn't on the menu any
+            more. Let's get you back to the good stuff.
           </p>
 
           {/* Action Buttons */}
@@ -49,7 +49,9 @@ const NotFound = () => {
             </Link>
           </div>
 
-          <p className="mt-8 eyebrow text-[11px]">Need help? Our support team is here for you.</p>
+          <p className="mt-8 eyebrow text-[11px]">
+            No crumbs were harmed in the making of this error.
+          </p>
         </section>
 
         {/* Illustration tiles */}
@@ -66,7 +68,10 @@ const NotFound = () => {
               <Fork className="absolute w-[40%] left-[30%] top-[8%] rotate-[18deg]" />
             </div>
             <div className="relative overflow-hidden bg-peach flex items-center justify-center">
-              <span className="display text-[96px] sm:text-[128px] text-clay">404</span>
+              <span className="text-center">
+                <span className="display block text-[96px] sm:text-[128px] text-clay">404</span>
+                <span className="eyebrow text-[10px] text-clay">Plate licked clean</span>
+              </span>
             </div>
           </div>
         </section>

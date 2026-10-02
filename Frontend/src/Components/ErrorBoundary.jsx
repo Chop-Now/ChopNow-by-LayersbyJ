@@ -48,12 +48,13 @@ class ErrorBoundary extends React.Component {
                   />
                 </svg>
               </div>
-              <p className="eyebrow mt-6">Error</p>
+              <p className="eyebrow mt-6">Kitchen mishap</p>
               <h1 className="display text-[44px] sm:text-[56px] mt-2 leading-[0.92]">
-                Something went wrong
+                We burnt the toast
               </h1>
               <p className="mt-3 font-medium">
-                We're sorry for the inconvenience. Please try refreshing the page.
+                Something went wrong on our side and this page fell on the floor. Try again, or head
+                home while we sweep up.
               </p>
             </div>
             <div className="grid grid-cols-2">
