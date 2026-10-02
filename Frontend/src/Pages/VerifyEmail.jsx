@@ -1,8 +1,8 @@
+import { Logo } from '../Components/brand/Kit';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { CheckCircle2, XCircle, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { assets } from '../assets/assets';
 import { authService } from '../services';
 
 const VerifyEmail = () => {
@@ -48,9 +48,11 @@ const VerifyEmail = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
-      <img src={assets.wordmarklogo} alt="ChopNow" className="h-12 mb-8" />
-      <div className="w-full max-w-md rounded-2xl border border-gray-500/20 p-8 text-center">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 bg-fufu">
+      <div className="mb-8">
+        <Logo tone="light" size="lg" />
+      </div>
+      <div className="w-full max-w-md bg-white border-t-4 border-moringa p-8 text-center">
         {status === 'loading' && (
           <>
             <Loader2

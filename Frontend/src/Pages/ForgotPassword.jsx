@@ -1,5 +1,6 @@
+import AuthArt from '../Components/brand/AuthArt';
+import { Logo } from '../Components/brand/Kit';
 import React, { useState, useEffect, useRef } from 'react';
-import { assets } from '../assets/assets';
 import {
   Eye,
   EyeOff,
@@ -198,44 +199,25 @@ const ForgotPassword = () => {
   const criteria = getPasswordCriteria();
 
   return (
-    <div className="min-h-screen w-full flex bg-gradient-to-br from-moringa-dark via-moringa to-moringa-dark">
+    <div className="min-h-screen w-full flex bg-moringa">
       <div className="flex w-full">
-        {/* Left Side - Branding Panel (Hidden on mobile) */}
+        {/* Left Side - Brand panel (hidden on mobile) */}
         <div className="w-1/2 hidden md:block md:fixed md:left-0 md:top-0 md:h-screen">
-          <img
-            className="h-full w-full object-cover"
-            src={assets.login_bg}
-            alt="Branding background"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-solid/90 via-solid/80 to-tertiary/90"></div>
-
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center w-full p-12 text-white">
-            <div className="mb-8">
-              <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
-                <img src={assets.logomarkyellow} alt="ChopNow" className="w-14 h-14" />
-              </div>
-            </div>
-            <h1 className="text-4xl font-bold mb-4 text-center">ChopNow</h1>
-            <p className="text-xl text-white/80 mb-2 text-center">Account Security Hub</p>
-            <p className="text-base text-white/60 text-center max-w-sm">
-              Protecting your credentials and ensuring secure access to save surplus food.
-            </p>
-          </div>
+          <AuthArt eyebrow="Account security" title={['Back in', 'a minute.']} />
         </div>
 
         {/* Right Side - Form Container */}
         <div className="w-full md:w-1/2 md:ml-[50%] flex flex-col items-center justify-center px-4 py-8">
           {/* Mobile Logo */}
           <div className="flex items-center justify-center gap-3 mb-8 lg:hidden">
-            <img src={assets.logomarkgreen} alt="ChopNow" className="w-10 h-10" />
-            <span className="text-2xl font-bold text-white">ChopNow</span>
+            <Logo tone="dark" size="md" />
           </div>
 
-          <div className="border border-gray-500/20 bg-moringa-dark/40 backdrop-blur-md rounded-2xl p-8 md:p-12 w-full max-w-lg shadow-xl shadow-black/20">
+          <div className="bg-moringa-2 border border-fufu/10 p-6 sm:p-8 md:p-10 w-full max-w-lg">
             {/* Step 1: Email Request */}
             {step === 1 && (
               <form onSubmit={handleRequestOtp} className="flex flex-col">
-                <h2 className="text-3xl font-bold text-white mb-2">Reset Password</h2>
+                <h2 className="display text-[48px] text-fufu mb-3">Reset Password</h2>
                 <p className="text-sm text-slate-400 mb-8">
                   Enter your email address below. We'll send you a 6-digit verification code to
                   reset your password.
@@ -283,7 +265,7 @@ const ForgotPassword = () => {
             {/* Step 2: Verification Code Entry */}
             {step === 2 && (
               <form onSubmit={handleVerifyOtp} className="flex flex-col">
-                <h2 className="text-3xl font-bold text-white mb-2">Verify OTP</h2>
+                <h2 className="display text-[48px] text-fufu mb-3">Verify OTP</h2>
                 <p className="text-sm text-slate-400 mb-8">
                   We've sent a 6-digit verification code to{' '}
                   <span className="text-white font-medium">{email}</span>.
@@ -354,7 +336,7 @@ const ForgotPassword = () => {
             {/* Step 3: Enter New Password */}
             {step === 3 && (
               <form onSubmit={handleResetPassword} className="flex flex-col">
-                <h2 className="text-3xl font-bold text-white mb-2">New Password</h2>
+                <h2 className="display text-[48px] text-fufu mb-3">New Password</h2>
                 <p className="text-sm text-slate-400 mb-8">
                   Choose a strong, unique password to secure your account.
                 </p>
@@ -474,7 +456,7 @@ const ForgotPassword = () => {
                   <KeyRound className="w-10 h-10" />
                 </div>
 
-                <h2 className="text-3xl font-bold text-white mb-2">Password Reset!</h2>
+                <h2 className="display text-[48px] text-fufu mb-3">Password Reset!</h2>
                 <p className="text-sm text-slate-400 mb-8">
                   Your password has been successfully updated. You can now log in using your new
                   credentials.

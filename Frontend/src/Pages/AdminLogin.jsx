@@ -1,3 +1,5 @@
+import AuthArt from '../Components/brand/AuthArt';
+import { Logo } from '../Components/brand/Kit';
 import { assets } from '../assets/assets';
 import { Eye, EyeOff, Lock, Mail, ShieldCheck, AlertTriangle } from 'lucide-react';
 import React, { useState, useEffect, useCallback } from 'react';
@@ -118,54 +120,11 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex bg-gradient-to-br from-moringa-dark via-moringa to-moringa-dark">
-      {/* Left Side - Branding Panel */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
-          <img
-            className="h-full w-full object-cover"
-            src={assets.login_bg}
-            alt="Fresh produce background"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-solid/90 via-solid/80 to-tertiary/90"></div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center w-full p-12 text-white">
-          {/* Logo */}
-          <div className="mb-8">
-            <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
-              <img src={assets.logomarkyellow} alt="ChopNow" className="w-14 h-14" />
-            </div>
-          </div>
-
-          {/* Title */}
-          <h1 className="text-4xl font-bold mb-4 text-center">ChopNow</h1>
-          <p className="text-xl text-white/80 mb-2 text-center">Administrative Control Center</p>
-          <p className="text-base text-white/60 text-center max-w-md">
-            Manage vendors, monitor transactions, and keep the platform running smoothly.
-          </p>
-
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-3 gap-8 w-full max-w-md">
-            <div className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-3xl font-bold text-white">5K+</div>
-              <div className="text-sm text-white/60 mt-1">Vendors</div>
-            </div>
-            <div className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-3xl font-bold text-white">50K+</div>
-              <div className="text-sm text-white/60 mt-1">Users</div>
-            </div>
-            <div className="text-center p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
-              <div className="text-3xl font-bold text-white">100K+</div>
-              <div className="text-sm text-white/60 mt-1">Meals Saved</div>
-            </div>
-          </div>
-
-          {/* Decorative Elements */}
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 right-10 w-32 h-32 bg-tertiary/20 rounded-full blur-2xl"></div>
+    <div className="min-h-screen w-full flex bg-moringa">
+      {/* Left Side - Brand panel */}
+      <div className="hidden lg:block lg:w-1/2 relative">
+        <div className="sticky top-0 h-screen">
+          <AuthArt eyebrow="Admin" title={['Control', 'room.']} />
         </div>
       </div>
 

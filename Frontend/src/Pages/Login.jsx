@@ -1,4 +1,5 @@
-import { assets } from '../assets/assets';
+import AuthArt from '../Components/brand/AuthArt';
+import { Logo } from '../Components/brand/Kit';
 import {
   Eye,
   EyeOff,
@@ -69,30 +70,28 @@ const Login = () => {
   const { getCurrentLocation } = useGeolocation();
 
   return (
-    <div className="min-h-screen w-full flex">
+    <div className="min-h-screen w-full flex bg-fufu">
       <div className="flex w-full">
-        {/* Left Side - Image (Hidden on mobile) */}
+        {/* Left Side - Brand panel (hidden on mobile) */}
         <div className="w-1/2 hidden md:block md:fixed md:left-0 md:top-0 md:h-screen">
-          <img
-            className="h-full w-full object-cover"
-            src={assets.login_bg}
-            alt="Login background"
-          />
+          <AuthArt title={['Welcome', 'back to', 'the rescue.']} />
         </div>
 
         {/* Right Side - Form Container */}
         <div className="w-full md:w-1/2 md:ml-[50%] flex flex-col items-center justify-center px-4 py-8">
           {/* Logo */}
           <div className="mb-8">
-            <img src={assets.wordmarklogo} alt="ChopNow" className="h-12" />
+            <Link to="/" aria-label="ChopNow home">
+              <Logo tone="light" size="lg" />
+            </Link>
           </div>
 
-          <div className="border border-gray-500/20 rounded-2xl p-8 md:p-12 w-full max-w-lg">
+          <div className="bg-white border border-char/10 p-6 sm:p-8 md:p-10 w-full max-w-lg">
             {/* User Type Selection */}
             {!userType ? (
               <div className="flex flex-col">
                 <h2
-                  className="text-4xl font-medium text-center"
+                  className="display text-[56px] text-center text-moringa"
                   style={{ color: 'var(--color-textColor)' }}
                 >
                   Sign in
@@ -108,9 +107,9 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={() => setUserType('buyer')}
-                  className="w-full mt-8 bg-gray-100 border border-solid border-gray-300 flex items-center justify-center h-14 rounded-lg hover:bg-gray-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
+                  className="w-full mt-8 bg-fufu border border-solid border-moringa/25 flex items-center justify-center h-14 rounded-lg hover:bg-mint active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center mr-3">
+                  <div className="w-8 h-8 rounded-full bg-white border border-moringa/25 flex items-center justify-center mr-3">
                     <PersonStanding className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
                   </div>
                   <span className="text-sm font-medium" style={{ color: 'var(--color-textColor)' }}>
@@ -122,9 +121,9 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={() => setUserType('business')}
-                  className="w-full mt-4 bg-gray-100 border border-solid border-gray-300 flex items-center justify-center h-14 rounded-lg hover:bg-gray-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
+                  className="w-full mt-4 bg-fufu border border-solid border-moringa/25 flex items-center justify-center h-14 rounded-lg hover:bg-mint active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center mr-3">
+                  <div className="w-8 h-8 rounded-full bg-white border border-moringa/25 flex items-center justify-center mr-3">
                     <Handshake className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
                   </div>
                   <span className="text-sm font-medium" style={{ color: 'var(--color-textColor)' }}>
@@ -151,7 +150,7 @@ const Login = () => {
               <form className="flex flex-col">
                 <div className="relative mb-4">
                   <h2
-                    className="text-2xl font-medium text-center"
+                    className="display text-[44px] text-center text-moringa"
                     style={{ color: 'var(--color-textColor)' }}
                   >
                     {userType === 'buyer' ? 'Sign in as Buyer' : 'Sign in as Business'}
@@ -189,20 +188,20 @@ const Login = () => {
 
                     {/* Divider */}
                     <div className="flex items-center gap-4 w-full my-6">
-                      <div className="w-full h-px bg-gray-300"></div>
+                      <div className="w-full h-px bg-moringa/20"></div>
                       <p
                         className="text-nowrap text-sm"
                         style={{ color: 'var(--color-moringa-muted)' }}
                       >
                         or sign in with email
                       </p>
-                      <div className="w-full h-px bg-gray-300"></div>
+                      <div className="w-full h-px bg-moringa/20"></div>
                     </div>
                   </>
                 )}
 
                 {/* Email Input */}
-                <div className="flex items-center w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                <div className="flex items-center w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                   <Mail className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                   <input
                     type="email"
@@ -216,7 +215,7 @@ const Login = () => {
                 </div>
 
                 {/* Password Input */}
-                <div className="flex items-center mt-4 w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                <div className="flex items-center mt-4 w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                   <Lock className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                   <input
                     type={showPassword ? 'text' : 'password'}
@@ -305,7 +304,7 @@ const Login = () => {
                         );
                       }}
                       disabled={isLoadingLocation}
-                      className="w-full flex items-center justify-center gap-2 h-11 rounded-lg border border-gray-300 hover:bg-gray-50 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all disabled:opacity-50 disabled:active:scale-100"
+                      className="w-full flex items-center justify-center gap-2 h-11 rounded-lg border border-moringa/25 hover:bg-fufu active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all disabled:opacity-50 disabled:active:scale-100"
                     >
                       <LocateFixed className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
                       <span
@@ -318,7 +317,7 @@ const Login = () => {
 
                     {/* Manual Address Input */}
                     <div className="mt-3 relative">
-                      <div className="flex items-center w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                      <div className="flex items-center w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                         <MapPin
                           className="w-5 h-5"
                           style={{ color: 'var(--color-moringa-muted)' }}
@@ -396,9 +395,7 @@ const Login = () => {
                     {/* Map */}
                     <div className="mt-4">
                       <Suspense
-                        fallback={
-                          <div className="h-64 w-full rounded-lg bg-gray-100 animate-pulse" />
-                        }
+                        fallback={<div className="h-64 w-full rounded-lg bg-fufu animate-pulse" />}
                       >
                         <LocationPicker
                           selectedLocation={location}

@@ -1,4 +1,5 @@
-import { assets } from '../assets/assets';
+import AuthArt from '../Components/brand/AuthArt';
+import { Logo } from '../Components/brand/Kit';
 import {
   Eye,
   EyeOff,
@@ -307,30 +308,28 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex">
+    <div className="min-h-screen w-full flex bg-fufu">
       <div className="flex w-full">
-        {/* Left Side - Image (Hidden on mobile) */}
+        {/* Left Side - Brand panel (hidden on mobile) */}
         <div className="w-1/2 hidden md:block md:fixed md:left-0 md:top-0 md:h-screen">
-          <img
-            className="h-full w-full object-cover"
-            src={assets.login_bg}
-            alt="Signup background"
-          />
+          <AuthArt title={['Join', 'the food', 'rescue.']} />
         </div>
 
         {/* Right Side - Form Container */}
         <div className="w-full md:w-1/2 md:ml-[50%] flex flex-col items-center justify-center px-4 py-8">
           {/* Logo */}
           <div className="mb-8">
-            <img src={assets.wordmarklogo} alt="ChopNow" className="h-12" />
+            <Link to="/" aria-label="ChopNow home">
+              <Logo tone="light" size="lg" />
+            </Link>
           </div>
 
-          <div className="border border-gray-500/20 rounded-2xl p-8 md:p-12 w-full max-w-lg">
+          <div className="bg-white border border-char/10 p-6 sm:p-8 md:p-10 w-full max-w-lg">
             {/* User Type Selection */}
             {!userType ? (
               <div className="flex flex-col">
                 <h2
-                  className="text-4xl font-medium text-center"
+                  className="display text-[56px] text-center text-moringa"
                   style={{ color: 'var(--color-textColor)' }}
                 >
                   Sign up
@@ -346,9 +345,9 @@ const SignUp = () => {
                 <button
                   type="button"
                   onClick={() => setUserType('buyer')}
-                  className="w-full mt-4 bg-gray-100 border border-solid border-gray-300 flex items-center justify-center h-14 rounded-lg hover:bg-gray-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
+                  className="w-full mt-4 bg-fufu border border-solid border-moringa/25 flex items-center justify-center h-14 rounded-lg hover:bg-mint active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center mr-3">
+                  <div className="w-8 h-8 rounded-full bg-white border border-moringa/25 flex items-center justify-center mr-3">
                     <PersonStanding className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
                   </div>
                   <span className="text-sm font-medium" style={{ color: 'var(--color-textColor)' }}>
@@ -360,9 +359,9 @@ const SignUp = () => {
                 <button
                   type="button"
                   onClick={() => setUserType('business')}
-                  className="w-full mt-4 bg-gray-100 border border-solid border-gray-300 flex items-center justify-center h-14 rounded-lg hover:bg-gray-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
+                  className="w-full mt-4 bg-fufu border border-solid border-moringa/25 flex items-center justify-center h-14 rounded-lg hover:bg-mint active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all cursor-pointer"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center mr-3">
+                  <div className="w-8 h-8 rounded-full bg-white border border-moringa/25 flex items-center justify-center mr-3">
                     <Handshake className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
                   </div>
                   <span className="text-sm font-medium" style={{ color: 'var(--color-textColor)' }}>
@@ -389,7 +388,7 @@ const SignUp = () => {
               <form className="flex flex-col" onSubmit={handleSubmit}>
                 <div className="relative mb-4">
                   <h2
-                    className="text-2xl font-medium text-center"
+                    className="display text-[44px] text-center text-moringa"
                     style={{ color: 'var(--color-textColor)' }}
                   >
                     {userType === 'buyer' ? 'Sign up as Buyer' : 'Sign up as Business'}
@@ -430,19 +429,19 @@ const SignUp = () => {
 
                     {/* Divider */}
                     <div className="flex items-center gap-4 w-full my-6">
-                      <div className="w-full h-px bg-gray-300"></div>
+                      <div className="w-full h-px bg-moringa/20"></div>
                       <p
                         className="text-nowrap text-sm"
                         style={{ color: 'var(--color-moringa-muted)' }}
                       >
                         or sign up with email
                       </p>
-                      <div className="w-full h-px bg-gray-300"></div>
+                      <div className="w-full h-px bg-moringa/20"></div>
                     </div>
 
                     {/* First Name & Last Name */}
                     <div className="flex gap-3">
-                      <div className="flex items-center flex-1 bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                      <div className="flex items-center flex-1 bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                         <User className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                         <input
                           type="text"
@@ -454,7 +453,7 @@ const SignUp = () => {
                           required
                         />
                       </div>
-                      <div className="flex items-center flex-1 bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                      <div className="flex items-center flex-1 bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                         <User className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                         <input
                           type="text"
@@ -469,7 +468,7 @@ const SignUp = () => {
                     </div>
 
                     {/* Email Input */}
-                    <div className="flex items-center w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 mt-4 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 mt-4 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <Mail className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                       <input
                         type="email"
@@ -493,16 +492,16 @@ const SignUp = () => {
                         searchPlaceholder="Search country"
                         placeholder="Choose your country"
                         containerClass="w-full"
-                        inputClass="!w-full !h-12 !border-gray-300 !rounded-lg !text-sm !bg-transparent focus:!ring-2 focus:!ring-solid focus:!border-solid"
-                        buttonClass="!border-gray-300 !rounded-l-lg !bg-transparent !h-12 !hover:bg-gray-100"
-                        dropdownClass="!text-sm !bg-white !border !border-gray-300 !rounded-lg !shadow-lg"
-                        searchClass="!text-sm !p-2 !border-gray-300 !m-2 !rounded-md"
+                        inputClass="!w-full !h-12 !border-moringa/25 !rounded-lg !text-sm !bg-transparent focus:!ring-2 focus:!ring-solid focus:!border-solid"
+                        buttonClass="!border-moringa/25 !rounded-l-lg !bg-transparent !h-12 !hover:bg-fufu"
+                        dropdownClass="!text-sm !bg-white !border !border-moringa/25 !rounded-lg !shadow-lg"
+                        searchClass="!text-sm !p-2 !border-moringa/25 !m-2 !rounded-md"
                         inputStyle={{ color: 'var(--color-textColor)' }}
                       />
                     </div>
 
                     {/* Password Input */}
-                    <div className="flex items-center mt-4 w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center mt-4 w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <Lock className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                       <input
                         type={showPassword ? 'text' : 'password'}
@@ -534,7 +533,7 @@ const SignUp = () => {
                     <PasswordStrengthMeter password={password} />
 
                     {/* Confirm Password Input */}
-                    <div className="flex items-center mt-4 w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center mt-4 w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <Lock className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                       <input
                         type={showConfirmPassword ? 'text' : 'password'}
@@ -597,7 +596,7 @@ const SignUp = () => {
                           );
                         }}
                         disabled={isLoadingLocation}
-                        className="w-full flex items-center justify-center gap-2 h-11 rounded-lg border border-gray-300 hover:bg-gray-50 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all disabled:opacity-50 disabled:active:scale-100"
+                        className="w-full flex items-center justify-center gap-2 h-11 rounded-lg border border-moringa/25 hover:bg-fufu active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-solid transition-all disabled:opacity-50 disabled:active:scale-100"
                       >
                         <LocateFixed className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
                         <span
@@ -610,7 +609,7 @@ const SignUp = () => {
 
                       {/* Manual Address Input */}
                       <div className="mt-3 relative">
-                        <div className="flex items-center w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                        <div className="flex items-center w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                           <MapPin
                             className="w-5 h-5"
                             style={{ color: 'var(--color-moringa-muted)' }}
@@ -689,7 +688,7 @@ const SignUp = () => {
                       <div className="mt-4">
                         <Suspense
                           fallback={
-                            <div className="h-64 w-full rounded-lg bg-gray-100 animate-pulse" />
+                            <div className="h-64 w-full rounded-lg bg-fufu animate-pulse" />
                           }
                         >
                           <LocationPicker
@@ -712,7 +711,7 @@ const SignUp = () => {
                   // Business Form
                   <>
                     {/* Business Name */}
-                    <div className="flex items-center w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <Handshake
                         className="w-5 h-5"
                         style={{ color: 'var(--color-moringa-muted)' }}
@@ -739,7 +738,7 @@ const SignUp = () => {
                       <button
                         type="button"
                         onClick={() => setShowCategoryDropdown(!showCategoryDropdown)}
-                        className="flex items-center justify-between w-full bg-transparent border border-gray-300 h-12 rounded-lg px-4 cursor-pointer hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-solid transition-all"
+                        className="flex items-center justify-between w-full bg-transparent border border-moringa/25 h-12 rounded-lg px-4 cursor-pointer hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-solid transition-all"
                       >
                         {businessCategory ? (
                           <div className="flex items-center gap-3">
@@ -778,7 +777,7 @@ const SignUp = () => {
                       </button>
 
                       {showCategoryDropdown && (
-                        <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden">
+                        <div className="absolute z-50 w-full mt-1 bg-white border border-moringa/25 rounded-lg shadow-lg overflow-hidden">
                           {BUSINESS_CATEGORIES.map((category) => {
                             const IconComponent = category.icon;
                             return (
@@ -789,7 +788,7 @@ const SignUp = () => {
                                   setBusinessCategory(category.value);
                                   setShowCategoryDropdown(false);
                                 }}
-                                className={`flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solid transition-colors cursor-pointer ${businessCategory === category.value ? 'bg-fufu-dim' : ''}`}
+                                className={`flex items-center gap-3 w-full px-4 py-3 hover:bg-fufu focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-solid transition-colors cursor-pointer ${businessCategory === category.value ? 'bg-fufu-dim' : ''}`}
                               >
                                 <IconComponent
                                   className="w-5 h-5"
@@ -839,7 +838,7 @@ const SignUp = () => {
                     </div>
 
                     {/* Contact Person */}
-                    <div className="flex items-center w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 mt-4 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 mt-4 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <User className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                       <input
                         type="text"
@@ -853,7 +852,7 @@ const SignUp = () => {
                     </div>
 
                     {/* Email Input */}
-                    <div className="flex items-center w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 mt-4 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 mt-4 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <Mail className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                       <input
                         type="email"
@@ -877,16 +876,16 @@ const SignUp = () => {
                         searchPlaceholder="Search country"
                         placeholder="Business phone number"
                         containerClass="w-full"
-                        inputClass="!w-full !h-12 !border-gray-300 !rounded-lg !text-sm !bg-transparent focus:!ring-2 focus:!ring-solid focus:!border-solid"
-                        buttonClass="!border-gray-300 !rounded-l-lg !bg-transparent !h-12 !hover:bg-gray-100"
-                        dropdownClass="!text-sm !bg-white !border !border-gray-300 !rounded-lg !shadow-lg"
-                        searchClass="!text-sm !p-2 !border-gray-300 !m-2 !rounded-md"
+                        inputClass="!w-full !h-12 !border-moringa/25 !rounded-lg !text-sm !bg-transparent focus:!ring-2 focus:!ring-solid focus:!border-solid"
+                        buttonClass="!border-moringa/25 !rounded-l-lg !bg-transparent !h-12 !hover:bg-fufu"
+                        dropdownClass="!text-sm !bg-white !border !border-moringa/25 !rounded-lg !shadow-lg"
+                        searchClass="!text-sm !p-2 !border-moringa/25 !m-2 !rounded-md"
                         inputStyle={{ color: 'var(--color-textColor)' }}
                       />
                     </div>
 
                     {/* Password Input */}
-                    <div className="flex items-center mt-4 w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center mt-4 w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <Lock className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                       <input
                         type={showPassword ? 'text' : 'password'}
@@ -918,7 +917,7 @@ const SignUp = () => {
                     <PasswordStrengthMeter password={password} />
 
                     {/* Confirm Password Input */}
-                    <div className="flex items-center mt-4 w-full bg-transparent border border-gray-300 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
+                    <div className="flex items-center mt-4 w-full bg-transparent border border-moringa/25 h-12 rounded-lg overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
                       <Lock className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                       <input
                         type={showConfirmPassword ? 'text' : 'password'}
