@@ -98,7 +98,7 @@ const FAQ = () => {
 
         <div className="grid lg:grid-cols-[360px_1fr] gap-6 lg:gap-8 items-start">
           {/* Audience switch */}
-          <aside className="lg:sticky lg:top-[88px]">
+          <aside className="lg:sticky lg:top-[88px] rounded-lg overflow-hidden">
             <div className="bg-yellow text-moringa p-6">
               <p className="eyebrow">I am a</p>
               <div className="mt-4 grid grid-cols-2 border-2 border-moringa" role="tablist">

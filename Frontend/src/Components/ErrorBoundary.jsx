@@ -31,7 +31,7 @@ class ErrorBoundary extends React.Component {
       return (
         <div className="min-h-screen flex items-center justify-center bg-fufu px-4 py-10">
           <div className="max-w-lg w-full">
-            <div className="bg-peach text-clay p-6 sm:p-8">
+            <div className="bg-peach text-clay p-6 sm:p-8 rounded-t-lg">
               <div className="w-14 h-14 bg-clay text-peach flex items-center justify-center">
                 <svg
                   className="h-8 w-8"
@@ -59,13 +59,13 @@ class ErrorBoundary extends React.Component {
             <div className="grid grid-cols-2">
               <button
                 onClick={this.handleReset}
-                className="h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer"
+                className="h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer rounded-none rounded-bl-lg"
               >
                 Try again
               </button>
               <button
                 onClick={() => (window.location.href = '/')}
-                className="h-14 border-2 border-moringa text-moringa font-bold hover:bg-mint transition-colors cursor-pointer"
+                className="h-14 border-2 border-moringa text-moringa font-bold hover:bg-mint transition-colors cursor-pointer rounded-none rounded-br-lg"
               >
                 Go home
               </button>

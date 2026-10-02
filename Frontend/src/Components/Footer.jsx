@@ -53,7 +53,7 @@ const Footer = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`ChopNow on ${label}`}
-                className="w-11 h-11 border border-fufu/25 flex items-center justify-center text-fufu hover:bg-yellow hover:text-moringa hover:border-yellow transition-colors"
+                className="w-11 h-11 rounded-md border border-fufu/25 flex items-center justify-center text-fufu hover:bg-yellow hover:text-moringa hover:border-yellow transition-colors"
               >
                 <Icon size={18} />
               </a>
@@ -86,7 +86,10 @@ const Footer = () => (
               [assets.momo, 'MTN Mobile Money'],
               [assets.airtel_money, 'Airtel Money'],
             ].map(([src, alt]) => (
-              <div key={alt} className="w-16 h-16 bg-fufu flex items-center justify-center p-2.5">
+              <div
+                key={alt}
+                className="w-16 h-16 rounded-md bg-fufu flex items-center justify-center p-2.5"
+              >
                 <img src={src} alt={alt} className="w-full h-full object-contain" />
               </div>
             ))}

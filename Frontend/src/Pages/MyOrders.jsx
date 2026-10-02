@@ -644,7 +644,7 @@ const MyOrders = () => {
 
               {/* Orders List */}
               {currentOrders.length === 0 ? (
-                <div className="grid md:grid-cols-[1fr_360px] border border-char/10">
+                <div className="grid md:grid-cols-[1fr_360px] border border-char/10 overflow-hidden">
                   <div className="bg-yellow text-moringa px-6 py-12 md:p-12 flex flex-col items-start justify-center">
                     <p className="eyebrow">Nothing here yet</p>
                     <h2 className="display text-[44px] md:text-[64px] mt-3">No orders found</h2>
@@ -664,7 +664,7 @@ const MyOrders = () => {
                 <>
                   {/* Desktop Table */}
                   <div className="hidden md:block bg-white border border-char/10">
-                    <div className="grid grid-cols-6 gap-3 px-5 py-3 bg-moringa text-fufu">
+                    <div className="grid grid-cols-6 gap-3 px-5 py-3 bg-moringa text-fufu rounded-t-lg">
                       {['Order ID', 'Date', 'Vendor', 'Total', 'Status'].map((h) => (
                         <div key={h} className="eyebrow text-[11px]">
                           {h}
@@ -783,7 +783,7 @@ const MyOrders = () => {
         {/* Order Details Modal */}
         {selectedOrder && (
           <div className="fixed inset-0 bg-char/60 z-50 flex items-center justify-center p-0 sm:p-4">
-            <div className="bg-fufu w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[90vh] overflow-y-auto">
+            <div className="bg-fufu w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[90vh] overflow-y-auto sm:rounded-lg">
               <div className="sticky top-0 z-20 bg-moringa text-fufu px-5 sm:px-6 py-4 flex justify-between items-center gap-4">
                 <div className="min-w-0">
                   <p className="eyebrow text-yellow text-[11px]">Order details</p>
@@ -812,7 +812,7 @@ const MyOrders = () => {
                 {/* Complete an unpaid mobile-money order */}
                 {selectedOrder.rawStatus === 'pending_payment' &&
                   selectedOrder.rawPaymentMethod !== 'cash' && (
-                    <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-yellow text-moringa p-4">
+                    <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-yellow text-moringa p-4 rounded-lg">
                       <p className="text-sm font-semibold">
                         This order is waiting for payment. The vendor sees it once it's paid.
                       </p>
@@ -827,7 +827,7 @@ const MyOrders = () => {
 
                 {/* Cancel order */}
                 {CANCELLABLE_STATUSES.includes(selectedOrder.rawStatus) && (
-                  <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-peach text-clay p-4">
+                  <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-peach text-clay p-4 rounded-lg">
                     <p className="text-sm font-semibold">
                       Changed your mind? You can cancel until the vendor starts preparing it.
                     </p>
@@ -844,7 +844,7 @@ const MyOrders = () => {
                 {/* Leave a review */}
                 {selectedOrder.rawStatus === 'completed' &&
                   (reviewedOrderIds.has(String(selectedOrder.orderId)) ? (
-                    <div className="mb-4 flex items-center gap-2 bg-lime text-moringa p-4 text-sm font-semibold">
+                    <div className="mb-4 flex items-center gap-2 bg-lime text-moringa p-4 text-sm font-semibold rounded-lg">
                       <Check className="h-4 w-4" aria-hidden="true" />
                       You reviewed this order. Thank you!
                     </div>
@@ -999,9 +999,9 @@ const MyOrders = () => {
                     ) : orderDetails ? (
                       <div className="space-y-4">
                         {/* Pickup Code & QR Code Pass */}
-                        <div className="bg-lime text-moringa p-5 flex flex-col sm:flex-row items-center gap-5 text-left">
+                        <div className="bg-lime text-moringa p-5 flex flex-col sm:flex-row items-center gap-5 text-left rounded-lg">
                           {/* QR Code */}
-                          <div className="bg-white p-2.5 shrink-0">
+                          <div className="bg-white p-2.5 shrink-0 rounded-md">
                             <img
                               src={`https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${orderDetails.pickupDetails?.pickupCode || 'N/A'}`}
                               alt="Pickup QR Code"
@@ -1171,7 +1171,7 @@ const MyOrders = () => {
                         )}
                       </div>
                     ) : (
-                      <p className="text-sm text-clay bg-peach p-4 font-semibold">
+                      <p className="text-sm text-clay bg-peach p-4 font-semibold rounded-lg">
                         Failed to load pickup information.
                       </p>
                     )}
@@ -1199,7 +1199,7 @@ const MyOrders = () => {
                       <div className="space-y-4">
                         {/* Rider details card if assigned */}
                         {orderDetails.delivery?.rider ? (
-                          <div className="bg-moringa text-fufu p-4 flex items-center justify-between gap-3">
+                          <div className="bg-moringa text-fufu p-4 flex items-center justify-between gap-3 rounded-lg">
                             <div className="flex items-center gap-3 min-w-0">
                               <div className="bg-yellow text-moringa w-11 h-11 flex items-center justify-center display text-[22px] shrink-0">
                                 {orderDetails.delivery.riderName?.charAt(0) || 'R'}
@@ -1332,14 +1332,14 @@ const MyOrders = () => {
                             </div>
                           </div>
                         ) : (
-                          <div className="p-4 bg-yellow text-moringa text-xs font-semibold">
+                          <div className="p-4 bg-yellow text-moringa text-xs font-semibold rounded-lg">
                             Location coordinates are not available for this delivery. Live map
                             tracking is disabled.
                           </div>
                         )}
                       </div>
                     ) : (
-                      <p className="text-sm text-clay bg-peach p-4 font-semibold">
+                      <p className="text-sm text-clay bg-peach p-4 font-semibold rounded-lg">
                         Failed to load detailed delivery information.
                       </p>
                     )}

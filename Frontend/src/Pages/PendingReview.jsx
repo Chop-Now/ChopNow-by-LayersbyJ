@@ -53,7 +53,7 @@ const PendingReview = () => {
 
         <div className="w-full max-w-lg">
           {/* Status tile */}
-          <div className="bg-yellow text-moringa p-6 sm:p-8">
+          <div className="bg-yellow text-moringa p-6 sm:p-8 rounded-t-lg">
             <div className="w-14 h-14 bg-moringa text-yellow flex items-center justify-center">
               <Hourglass className="w-7 h-7" aria-hidden="true" />
             </div>
@@ -74,7 +74,7 @@ const PendingReview = () => {
           {/* Dashboard Button */}
           <button
             onClick={() => navigate('/')}
-            className="w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer"
+            className="w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer rounded-none rounded-b-lg"
           >
             Go to my dashboard
           </button>
@@ -104,7 +104,7 @@ const PendingReview = () => {
           </section>
 
           {/* Have Questions Section */}
-          <section className="mt-8 bg-mint text-moringa p-5 sm:p-6">
+          <section className="mt-8 bg-mint text-moringa p-5 sm:p-6 rounded-lg">
             <h2 className="display text-[32px]">Have questions?</h2>
             <p className="text-sm mt-1 mb-4">
               Find answers to common questions in our FAQ or contact our support.

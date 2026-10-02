@@ -210,7 +210,7 @@ const RiderDashboard = () => {
 
       <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20 space-y-6">
         {/* Mobile App Notice */}
-        <div className="bg-mint text-moringa p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
+        <div className="bg-mint text-moringa p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-5 rounded-lg">
           <div className="flex gap-4 items-start">
             <div className="w-12 h-12 bg-moringa text-yellow flex items-center justify-center shrink-0">
               <Smartphone className="w-6 h-6" aria-hidden="true" />
@@ -237,7 +237,7 @@ const RiderDashboard = () => {
         </div>
 
         {/* Balance + Stats tiles */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 rounded-lg overflow-hidden">
           {/* Balance */}
           <div className="bg-moringa text-fufu p-6 flex flex-col min-h-[200px]">
             <p className="eyebrow text-[11px] text-yellow flex items-center gap-2">
@@ -436,7 +436,7 @@ const RiderDashboard = () => {
       {/* Payout Request Modal */}
       {showPayoutModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-char/60">
-          <div className="bg-fufu w-full max-w-md">
+          <div className="bg-fufu w-full max-w-md rounded-lg overflow-hidden">
             <div className="px-5 py-4 bg-moringa text-fufu flex justify-between items-center">
               <h3 className="eyebrow text-yellow flex items-center gap-2">
                 <DollarSign className="w-4 h-4" aria-hidden="true" />
@@ -452,7 +452,7 @@ const RiderDashboard = () => {
             </div>
 
             <form onSubmit={handleRequestPayoutSubmit} className="p-5 sm:p-6 space-y-5">
-              <div className="bg-lime text-moringa p-4">
+              <div className="bg-lime text-moringa p-4 rounded-md">
                 <p className="eyebrow text-[11px]">Available balance</p>
                 <p className="display text-[36px] mt-1 tabular-nums">
                   {formatCurrency(user?.stats?.riderBalance || 0)}

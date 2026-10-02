@@ -39,7 +39,7 @@ const ContactUs = () => {
 
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6 lg:gap-8 items-start">
           {/* Contact Info */}
-          <ul className="grid sm:grid-cols-3 lg:grid-cols-1">
+          <ul className="grid sm:grid-cols-3 lg:grid-cols-1 rounded-lg overflow-hidden">
             {CONTACTS.map(({ Icon, label, value, tone }) => (
               <li key={label} className={`${tone} p-6 min-h-[140px] flex flex-col`}>
                 <p className="eyebrow text-[11px] flex items-center gap-2">

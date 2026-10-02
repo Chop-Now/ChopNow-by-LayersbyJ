@@ -263,7 +263,7 @@ const Cart = () => {
       />
       <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
         {getTotalCartItems() === 0 ? (
-          <div className="bg-yellow text-moringa px-6 py-14 text-center flex flex-col items-center">
+          <div className="bg-yellow text-moringa px-6 py-14 text-center flex flex-col items-center rounded-lg">
             <ShoppingBag className="w-10 h-10" aria-hidden="true" />
             <h2 className="display text-[48px] md:text-[64px] mt-4">Your cart is empty</h2>
             <p className="mt-3 max-w-sm font-medium">
@@ -284,7 +284,7 @@ const Cart = () => {
             {/* Items */}
             <div className="flex-1 w-full">
               {urgentItems.length > 0 && (
-                <div className="flex items-start gap-3 p-4 mb-4 bg-pepper text-char">
+                <div className="flex items-start gap-3 p-4 mb-4 bg-pepper text-char rounded-lg">
                   <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
                   <div>
                     <p className="text-sm font-bold">
@@ -393,7 +393,7 @@ const Cart = () => {
                 Keep shopping
               </button>
 
-              <div className="mt-6 grid sm:grid-cols-2">
+              <div className="mt-6 grid sm:grid-cols-2 rounded-lg overflow-hidden">
                 <div className="bg-lime text-moringa p-6">
                   <p className="eyebrow flex items-center gap-2">
                     <Leaf className="w-4 h-4" aria-hidden="true" /> Food kept out of the bin
@@ -556,7 +556,7 @@ const Cart = () => {
               <section className="p-5 sm:p-6 bg-fufu">
                 <h2 className="eyebrow text-moringa mb-4">Order summary</h2>
                 {quoteError ? (
-                  <div className="p-3 bg-peach text-clay text-sm font-semibold flex items-start gap-2 mb-4">
+                  <div className="p-3 bg-peach text-clay text-sm font-semibold flex items-start gap-2 mb-4 rounded-lg">
                     <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
                     <span>{quoteError}</span>
                   </div>

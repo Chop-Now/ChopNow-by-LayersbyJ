@@ -167,7 +167,7 @@ const MyImpact = () => {
 
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
           {/* Stats Tiles */}
-          <div className="grid grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 rounded-lg overflow-hidden">
             {stats.map(({ key, label, value, unit, Icon, tone, eyebrow }) => (
               <div
                 key={key}

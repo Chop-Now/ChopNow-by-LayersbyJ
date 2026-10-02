@@ -320,7 +320,7 @@ const Notification = () => {
         onClick={closeDetail}
       >
         <div
-          className="bg-fufu w-full h-full sm:h-auto sm:max-w-lg sm:max-h-[90vh] overflow-y-auto"
+          className="bg-fufu w-full h-full sm:h-auto sm:max-w-lg sm:max-h-[90vh] overflow-y-auto sm:rounded-lg"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
@@ -343,7 +343,9 @@ const Notification = () => {
             <div className="p-5 sm:p-6">
               {/* Icon and Title */}
               <div className="flex items-start gap-4 mb-6">
-                <div className={`w-14 h-14 flex items-center justify-center shrink-0 ${tile}`}>
+                <div
+                  className={`w-14 h-14 rounded-md flex items-center justify-center shrink-0 ${tile}`}
+                >
                   <Icon size={26} aria-hidden="true" />
                 </div>
                 <div className="min-w-0">
@@ -413,7 +415,7 @@ const Notification = () => {
 
               {/* Pickup Code - Prominent Display */}
               {meta.pickupCode && (
-                <div className="bg-lime text-moringa p-5 mb-4 text-center">
+                <div className="bg-lime text-moringa p-5 mb-4 text-center rounded-lg">
                   <p className="eyebrow text-[11px]">Your pickup code</p>
                   <p className="display text-[48px] tracking-widest mt-1">{meta.pickupCode}</p>
                   <p className="text-xs font-medium mt-1">
@@ -424,7 +426,7 @@ const Notification = () => {
 
               {/* Delivery Address */}
               {meta.deliveryAddress && (
-                <div className="flex items-start gap-2 text-sm mb-4 bg-mint text-moringa p-4">
+                <div className="flex items-start gap-2 text-sm mb-4 bg-mint text-moringa p-4 rounded-lg">
                   <MapPin size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
                   <div>
                     <span className="eyebrow text-[10px]">Delivery address</span>
@@ -447,7 +449,7 @@ const Notification = () => {
 
               {/* Review Details */}
               {meta.reviewRating && (
-                <div className="bg-yellow text-moringa p-4 mb-4">
+                <div className="bg-yellow text-moringa p-4 mb-4 rounded-lg">
                   <div className="flex items-center gap-1 mb-2">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -626,7 +628,7 @@ const Notification = () => {
                 <p className="eyebrow text-moringa-muted">Loading notifications</p>
               </div>
             ) : filteredNotifications.length === 0 ? (
-              <div className="bg-mint text-moringa px-6 py-14 text-center flex flex-col items-center">
+              <div className="bg-mint text-moringa px-6 py-14 text-center flex flex-col items-center rounded-lg">
                 <Bell size={40} aria-hidden="true" />
                 <p className="display text-[40px] mt-4">All quiet</p>
                 <p className="mt-2 font-medium">No notifications to display</p>
@@ -640,13 +642,13 @@ const Notification = () => {
                     <li
                       key={notification.id}
                       onClick={() => handleNotificationClick(notification)}
-                      className={`relative flex gap-4 p-4 sm:p-5 border-b border-hairline last:border-b-0 cursor-pointer transition-colors hover:bg-fufu ${
+                      className={`relative flex gap-4 p-4 sm:p-5 border-b border-hairline last:border-b-0 first:rounded-t-lg last:rounded-b-lg cursor-pointer transition-colors hover:bg-fufu ${
                         !notification.isRead ? 'border-l-4 border-l-yellow' : ''
                       }`}
                     >
                       {/* Icon */}
                       <div
-                        className={`w-12 h-12 flex items-center justify-center shrink-0 ${tile}`}
+                        className={`w-12 h-12 rounded-md flex items-center justify-center shrink-0 ${tile}`}
                       >
                         <Icon size={22} aria-hidden="true" />
                       </div>

@@ -43,7 +43,7 @@ export const Display = ({ as: As = 'h2', className, children, style }) => (
 );
 
 const BTN_BASE =
-  'inline-flex items-center justify-center gap-2 font-semibold transition-colors duration-150 cursor-pointer select-none disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2';
+  'inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-150 cursor-pointer select-none disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2';
 
 const BTN_VARIANTS = {
   // Default primary on light ground (PROJECT_NOTES.md: primary CTA is Moringa)

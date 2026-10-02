@@ -263,7 +263,7 @@ const BusinessVerification = () => {
 
           <div className="mt-6 bg-white border border-char/10 p-5 sm:p-8">
             {/* Information Notice */}
-            <div className="mb-8 p-4 bg-mint text-moringa">
+            <div className="mb-8 p-4 bg-mint text-moringa rounded-lg">
               <div className="flex items-center gap-2 mb-2">
                 <BadgeAlert className="w-4 h-4" aria-hidden="true" />
                 <h3 className="eyebrow text-[11px]">Why we need this information</h3>
@@ -414,7 +414,7 @@ const BusinessVerification = () => {
 
                 {/* Category-specific requirements */}
                 {requirement && (
-                  <div className="mb-4 p-4 bg-yellow text-moringa">
+                  <div className="mb-4 p-4 bg-yellow text-moringa rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       {RequirementIcon && (
                         <RequirementIcon className="w-5 h-5" aria-hidden="true" />

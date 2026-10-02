@@ -220,7 +220,7 @@ const RiderRegistration = () => {
   // Status screens mapping
   if (user?.riderStatus === 'approved') {
     return shell(
-      <div className="bg-lime text-moringa p-6 sm:p-8">
+      <div className="bg-lime text-moringa p-6 sm:p-8 rounded-lg">
         <div className="w-14 h-14 bg-moringa text-lime flex items-center justify-center">
           <CheckCircle2 className="w-8 h-8" aria-hidden="true" />
         </div>
@@ -247,7 +247,7 @@ const RiderRegistration = () => {
   if (user?.riderStatus === 'pending') {
     return shell(
       <>
-        <div className="bg-yellow text-moringa p-6 sm:p-8">
+        <div className="bg-yellow text-moringa p-6 sm:p-8 rounded-t-lg">
           <div className="w-14 h-14 bg-moringa text-yellow flex items-center justify-center">
             <Clock className="w-7 h-7 animate-pulse" aria-hidden="true" />
           </div>
@@ -260,7 +260,7 @@ const RiderRegistration = () => {
             your documents and vehicle details.
           </p>
         </div>
-        <div className="bg-white border border-char/10 p-5 sm:p-6">
+        <div className="bg-white border border-char/10 p-5 sm:p-6 rounded-none">
           <p className="eyebrow text-moringa mb-3">What happens next?</p>
           <ul className="space-y-2 text-sm text-moringa">
             {[
@@ -285,7 +285,7 @@ const RiderRegistration = () => {
               toast.error('Failed to update status.', { id: toastId });
             }
           }}
-          className="w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors flex items-center justify-center gap-2 cursor-pointer rounded-none rounded-b-lg"
         >
           <RefreshCw className="w-4 h-4" aria-hidden="true" />
           Refresh status
@@ -333,7 +333,7 @@ const RiderRegistration = () => {
       </p>
 
       {/* Upper Hero Banner */}
-      <div className="mt-6 bg-moringa text-fufu p-6">
+      <div className="mt-6 bg-moringa text-fufu p-6 rounded-t-lg">
         <p className="eyebrow text-yellow">Flexible work, solid payouts</p>
         <p className="text-sm mt-2 leading-relaxed opacity-90">
           As a ChopNow Rider, you help reduce food waste in your community while earning competitive
@@ -341,10 +341,10 @@ const RiderRegistration = () => {
         </p>
       </div>
 
-      <div className="bg-white border border-char/10 p-5 sm:p-8">
+      <div className="bg-white border border-char/10 p-5 sm:p-8 rounded-t-none">
         {/* Rejection Alert Box */}
         {user?.riderStatus === 'rejected' && (
-          <div className="mb-6 p-4 bg-peach text-clay flex gap-3">
+          <div className="mb-6 p-4 bg-peach text-clay flex gap-3 rounded-lg">
             <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
             <div>
               <h3 className="eyebrow text-[11px]">Application rejected</h3>
@@ -362,7 +362,7 @@ const RiderRegistration = () => {
         )}
 
         {/* Info Alert Box */}
-        <div className="mb-8 p-4 bg-mint text-moringa flex gap-3">
+        <div className="mb-8 p-4 bg-mint text-moringa flex gap-3 rounded-lg">
           <Info className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
           <div>
             <h3 className="eyebrow text-[11px]">Verification process</h3>

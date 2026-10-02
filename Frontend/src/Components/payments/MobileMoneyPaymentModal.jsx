@@ -139,7 +139,7 @@ const MobileMoneyPaymentModal = ({
       aria-modal="true"
       aria-labelledby="pay-title"
     >
-      <div className="bg-fufu max-w-md w-full relative border-t-4 sm:border-4 border-moringa">
+      <div className="bg-fufu max-w-md w-full relative border-t-4 sm:border-4 border-moringa rounded-t-lg sm:rounded-lg overflow-hidden">
         <div
           className={`${provider === 'momo' ? 'bg-yellow text-moringa' : 'bg-pepper text-char'} px-6 pt-6 pb-5`}
         >

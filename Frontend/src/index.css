@@ -21,15 +21,16 @@
   --color-moringa-2: #1a4d3b; /* tonal shape on moringa */
   --color-hairline: #e6dcc6; /* hairline between light tiles */
 
-  /* Square corners everywhere except true circles (rounded-full). */
-  --radius-xs: 0px;
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
-  --radius-4xl: 0px;
+  /* Soft corners (owner request): small radii so the tile system is not rigid.
+     Full-bleed bands and flush tiles inside a row stay square. */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-3xl: 14px;
+  --radius-4xl: 16px;
 
   /* Elevation becomes a crisp hairline instead of a soft blur. */
   --shadow-2xs: 0 0 0 1px rgb(23 21 15 / 0.08);
@@ -127,7 +128,7 @@ body {
 }
 
 :root {
-  --radius: 0px;
+  --radius: 6px;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -202,6 +203,48 @@ body {
   body {
     background-color: var(--color-fufu) !important;
     color: var(--color-char) !important;
+  }
+}
+
+/* ── Soft corners ──
+   Controls, panels and pills get a small radius by default. Rules sit in the
+   base layer so any rounded-* / rounded-none utility still wins. */
+@layer base {
+  button,
+  input,
+  select,
+  textarea {
+    border-radius: var(--radius-md);
+  }
+  /* White panels and cards */
+  .border.border-char\/10 {
+    border-radius: var(--radius-lg);
+  }
+  /* Segmented toggles and step bars: round the group, keep inner joins flush */
+  .grid.border-2,
+  .flex.border-2 {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .grid.border-2 > *,
+  .flex.border-2 > * {
+    border-radius: 0;
+  }
+  /* Joined button pairs (second one drops its left border) */
+  .border-l-0 {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  :has(+ .border-l-0) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  /* Status and label pills */
+  .eyebrow.px-2,
+  .eyebrow.px-1\.5,
+  .eyebrow.px-2\.5,
+  .eyebrow.px-3 {
+    border-radius: var(--radius-sm);
   }
 }
 

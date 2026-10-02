@@ -21,7 +21,14 @@ Reference: the "ChopNow Website Revamp" design canvas (desktop 1440 +
 mobile 390) and Carousel B in `ChopNow Partner Carousel.afdesign`.
 
 - **Layout:** flat colour TILES on a strict grid. Tiles sit edge to edge, no
-  gaps, no rounded corners, no drop shadows. Section = row of tiles.
+  gaps, no drop shadows. Section = row of tiles.
+- **Corners (updated at the owner's request):** soft, not sharp. Buttons, inputs
+  and selects 6px (`rounded-md`), cards/panels/standalone tiles/modals 8px
+  (`rounded-lg`), pills 4px. A row of flush tiles gets rounded outer corners as a
+  group (`rounded-lg overflow-hidden` on the row), the tiles inside stay square.
+  Full-bleed bands (page heroes, landing sections, footer) stay square. Defaults
+  for controls, `border border-char/10` panels, segmented `grid border-2` groups
+  and `.eyebrow` pills are set once in `index.css` ("Soft corners").
 - **Type:**
   - Display: `Anton` (Google Fonts), uppercase, tight leading 0.86 to 0.9.
   - Body/UI: `Geist` 400/500/600/700.
@@ -35,7 +42,7 @@ mobile 390) and Carousel B in `ChopNow Partner Carousel.afdesign`.
   leaf, pin, plate/tomato, bag, phone, C mark) cropped by the tile edge,
   each with 1 to 3 thin highlight strokes in a tint of the tile colour.
   All live in `Frontend/src/Components/brand/Illustrations.jsx`.
-- **Buttons:** square, solid. Yellow fill + Moringa text on dark tiles;
+- **Buttons:** solid, 6px corners. Yellow fill + Moringa text on dark tiles;
   Moringa fill + Fufu text on light tiles. Outline variant = 2px border.
 - **Contrast rules from PROJECT_NOTES.md still apply** (no white on Yellow, only
   large text on Pepper, Char on Pepper for small text).
@@ -55,7 +62,7 @@ mobile 390) and Carousel B in `ChopNow Partner Carousel.afdesign`.
 
 - Don't touch `Backend/` or `Mobile/`.
 - Don't rename routes, props, service functions or context keys.
-- Don't add rounded-xl cards, shadows, gradients or emoji.
+- Don't add big rounded cards (keep to the small radii above), shadows, gradients or emoji.
 - Don't use em dashes in any copy.
 - Don't commit `.env` or any secret.
 - Don't push to the original `Chop-Now/chopnow` repo.
@@ -85,6 +92,7 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] BusinessVerification, PendingReview, RiderRegistration, RiderDashboard (onboarding pages use the AuthArt split layout; emojis removed from toasts/headings)
 - [ ] (next up) FAQ, ContactUs, Terms, Privacy, NotFound (still old dark "Lost?" design), Maintenance, ErrorBoundary, ui/EmptyState, ui/ErrorDisplay, ui/LoadingSpinner
 - [x] Motion + hero art (owner request): spinning C mark loader (`BrandLoader` in Kit, used by ui/LoadingSpinner), header logo mark spins once on load and on hover, hero titles rise in, PageHero takes `art` (fork/spoon/leaf/pin/bag/chilli, tonal Moringa-2 shapes cropped by the band). All motion is off under prefers-reduced-motion. CSS lives in index.css under "Motion".
+- [x] Soft corners pass (owner request), see Corners above.
 - [ ] Admin dashboard shell: admin/components/layout Sidebar + Header, Analytics emojis
 - [ ] Final pass: 390px + 1440px check, `npx prettier --check .` at root, `npx eslint .` in Frontend (0 errors), `npm run build`, push, then open a PR revamp-ui -> main and DO NOT merge (owner merges)
 

@@ -224,7 +224,7 @@ const MyProfile = () => {
         art="spoon"
         intro="Update your profile and personal details here."
         aside={
-          <div className="flex items-center gap-4 bg-moringa-dark p-4 max-w-[340px]">
+          <div className="flex items-center gap-4 bg-moringa-dark p-4 max-w-[340px] rounded-lg">
             {avatar('h-14 w-14')}
             <div className="min-w-0">
               <p className="font-bold truncate">
@@ -281,7 +281,7 @@ const MyProfile = () => {
             ) /* || !availableRoles.includes('business_owner') */ && (
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {!availableRoles.includes('rider') && (
-                  <div className="relative overflow-hidden bg-yellow text-moringa p-6 flex flex-col justify-between gap-4 md:col-span-2">
+                  <div className="relative overflow-hidden bg-yellow text-moringa p-6 flex flex-col justify-between gap-4 md:col-span-2 rounded-lg">
                     <div className="space-y-2 max-w-xl">
                       <p className="eyebrow text-[11px] flex items-center gap-2">
                         <Bike className="w-4 h-4" aria-hidden="true" />
@@ -581,7 +581,7 @@ const MyProfile = () => {
             </section>
 
             {/* Danger Zone */}
-            <section id="danger" className="bg-peach text-clay p-5 sm:p-6 scroll-mt-24">
+            <section id="danger" className="bg-peach text-clay p-5 sm:p-6 scroll-mt-24 rounded-lg">
               <div className="flex items-baseline gap-3 mb-4">
                 <span className="display text-[32px] leading-none">3</span>
                 <h2 className="eyebrow">Danger zone</h2>
@@ -610,7 +610,7 @@ const MyProfile = () => {
       {/* Delete Account Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-char/60 flex items-center justify-center z-50 p-4">
-          <div className="w-full max-w-[460px] bg-fufu">
+          <div className="w-full max-w-[460px] bg-fufu rounded-lg overflow-hidden">
             <div className="bg-peach text-clay p-6 flex items-center gap-4">
               <div className="h-12 w-12 bg-clay text-peach flex items-center justify-center shrink-0">
                 <Trash2 className="w-6 h-6" aria-hidden="true" />

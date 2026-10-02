@@ -26,7 +26,7 @@ const Categories = () => {
                   window.scrollTo(0, 0);
                 }}
                 aria-current={isActive ? 'page' : undefined}
-                className={`group relative w-full h-[132px] sm:h-[150px] flex flex-col justify-between p-3 text-left overflow-hidden transition-colors ${
+                className={`rounded-none group relative w-full h-[132px] sm:h-[150px] flex flex-col justify-between p-3 text-left overflow-hidden transition-colors ${
                   isActive ? 'bg-moringa text-yellow' : `${TINTS[i % TINTS.length]} text-moringa`
                 }`}
               >
