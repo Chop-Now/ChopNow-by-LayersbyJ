@@ -1,4 +1,3 @@
-import { assets } from '../../../assets/assets';
 import {
   ChartNoAxesCombined,
   ChevronDown,
@@ -17,16 +16,18 @@ import {
 import React, { useState } from 'react';
 import { useAdminMode } from '../../context/AdminModeContext';
 import { useAppContext } from '../../../context/AppContext';
+import { Logo } from '../../../Components/brand/Kit';
+import { CMark } from '../../../Components/brand/Illustrations';
 
 const shopAdminMenuItems = [
   {
     id: 'dashboard',
-    icon: <LayoutDashboard className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <LayoutDashboard className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Dashboard',
   },
   {
     id: 'analytics',
-    icon: <ChartNoAxesCombined className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <ChartNoAxesCombined className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Analytics',
     submenu: [
       { id: 'overview', label: 'Overview' },
@@ -37,7 +38,7 @@ const shopAdminMenuItems = [
   },
   {
     id: 'orders',
-    icon: <ShoppingBasket className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <ShoppingBasket className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Orders',
     submenu: [
       { id: 'all-orders', label: 'All Orders' },
@@ -48,7 +49,7 @@ const shopAdminMenuItems = [
   },
   {
     id: 'listings',
-    icon: <List className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <List className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Listings',
     submenu: [
       { id: 'all-listings', label: 'All Listings' },
@@ -57,12 +58,12 @@ const shopAdminMenuItems = [
   },
   {
     id: 'payouts',
-    icon: <Coins className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <Coins className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Payouts',
   },
   {
     id: 'settings',
-    icon: <Settings className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <Settings className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Settings',
   },
 ];
@@ -70,12 +71,12 @@ const shopAdminMenuItems = [
 const websiteAdminMenuItems = [
   {
     id: 'dashboard',
-    icon: <LayoutDashboard className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <LayoutDashboard className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Dashboard',
   },
   {
     id: 'analytics',
-    icon: <ChartNoAxesCombined className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <ChartNoAxesCombined className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Analytics',
     submenu: [
       { id: 'overview', label: 'Overview' },
@@ -86,7 +87,7 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'users',
-    icon: <User className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <User className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Users',
     submenu: [
       { id: 'all-users', label: 'All Users' },
@@ -96,7 +97,7 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'orders',
-    icon: <ShoppingBasket className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <ShoppingBasket className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Orders',
     submenu: [
       { id: 'all-orders', label: 'All Orders' },
@@ -107,13 +108,13 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'listings',
-    icon: <List className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <List className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Listings',
     submenu: [{ id: 'all-listings', label: 'All Listings' }],
   },
   {
     id: 'vendors',
-    icon: <Store className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <Store className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Vendors',
     submenu: [
       { id: 'all-vendors', label: 'All Vendors' },
@@ -122,7 +123,7 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'riders',
-    icon: <Bike className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <Bike className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Riders',
     submenu: [
       { id: 'all-riders', label: 'All Riders' },
@@ -131,18 +132,18 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'disputes',
-    icon: <ServerCrash className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <ServerCrash className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Disputes',
     submenu: [{ id: 'complaints', label: 'Complaints' }],
   },
   {
     id: 'payouts',
-    icon: <Coins className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <Coins className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Payouts',
   },
   {
     id: 'settings',
-    icon: <Settings className="w-5 h-5 text-moringa-muted/70" />,
+    icon: <Settings className="w-5 h-5 shrink-0" aria-hidden="true" />,
     label: 'Settings',
   },
 ];
@@ -169,29 +170,29 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
 
   return (
     <div
-      className={`${isExpanded ? 'w-72' : 'w-20'} transition-all duration-300 ease-in-out bg-white dark:bg-slate-900/80 border-r border-hairline dark:border-slate-700/50 flex flex-col relative z-10`}
+      className={`${isExpanded ? 'w-72' : 'w-20'} transition-all duration-300 ease-in-out bg-moringa text-fufu flex flex-col relative z-10`}
       onMouseEnter={() => collapsed && setIsHovered(true)}
       onMouseLeave={() => collapsed && setIsHovered(false)}
     >
       {/*Logo*/}
-      <div className="p-6 border-b border-hairline dark:border-slate-700/50">
-        <div className="flex items-center space-x-3">
-          <img src={assets.logomarkgreen} alt="ChopNow" className="w-10 h-10" />
-
-          {/*Conditional Rendering*/}
-          {isExpanded && (
-            <div>
-              <h1 className="text-lg font-bold text-moringa dark:text-white">ChopNow</h1>
-              <p className="text-xs text-moringa-muted dark:text-slate-400">
-                {isAdminDashboard ? 'Admin Panel' : 'Vendor Dashboard'}
-              </p>
-            </div>
-          )}
-        </div>
+      <div
+        className={`h-20 flex items-center border-b border-moringa-2 ${isExpanded ? 'px-6' : 'justify-center'}`}
+      >
+        {/*Conditional Rendering*/}
+        {isExpanded ? (
+          <div>
+            <Logo tone="dark" size="sm" />
+            <p className="eyebrow text-[10px] text-yellow mt-1.5">
+              {isAdminDashboard ? 'Admin Panel' : 'Vendor Dashboard'}
+            </p>
+          </div>
+        ) : (
+          <CMark fill="var(--color-yellow)" className="w-7 logo-mark" label="ChopNow" />
+        )}
       </div>
 
       {/*Sidebar Items*/}
-      <div className="flex-1 p-4 space-y-4 overflow-y-auto">
+      <div className="flex-1 p-3 space-y-1 overflow-y-auto">
         {menuItems.map((item) => (
           <div key={item.id}>
             <button
@@ -202,10 +203,12 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
                   onPageChange(item.id);
                 }
               }}
-              className={`w-full flex items-center ${isExpanded ? 'justify-between pl-5' : 'justify-center'} p-2.5 rounded-lg transition-all duration-200 cursor-pointer ${
+              className={`w-full flex items-center ${isExpanded ? 'justify-between' : 'justify-center'} h-11 px-3 rounded-md transition-colors duration-200 cursor-pointer ${
                 currentPage === item.id
-                  ? 'bg-hairline dark:bg-slate-700 text-moringa dark:text-white'
-                  : 'text-moringa-muted dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-800/50'
+                  ? 'bg-yellow text-moringa'
+                  : openMenus[item.id]
+                    ? 'bg-moringa-2 text-fufu'
+                    : 'text-fufu/85 hover:bg-moringa-2 hover:text-fufu'
               }`}
             >
               <div className={`flex items-center ${isExpanded ? 'space-x-3' : ''}`}>
@@ -213,11 +216,9 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
                 {/*conditional rendering*/}
                 {isExpanded && (
                   <>
-                    <span className="text-sm text-moringa dark:text-white font-medium">
-                      {item.label}
-                    </span>
+                    <span className="text-sm font-semibold">{item.label}</span>
                     {item.count && (
-                      <span className="px-2 py-0.5 text-xs bg-solidTwo text-white rounded-full ml-2">
+                      <span className="px-2 py-0.5 text-xs font-bold bg-yellow text-moringa rounded-sm ml-2">
                         {item.count}
                       </span>
                     )}
@@ -235,15 +236,15 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
             </button>
             {/*Submenu*/}
             {isExpanded && item.submenu && openMenus[item.id] && (
-              <div className="ml-8 mt-2 space-y-1">
+              <div className="ml-6 mt-1 mb-2 pl-3 border-l border-moringa-2 space-y-0.5">
                 {item.submenu.map((subitem) => (
                   <button
                     key={subitem.id}
                     onClick={() => onPageChange(subitem.id)}
-                    className={`w-full text-left px-3 py-1.5 text-sm font-medium rounded-lg transition-colors cursor-pointer ${
+                    className={`w-full text-left px-3 h-9 text-sm font-medium rounded-md transition-colors cursor-pointer ${
                       currentPage === subitem.id
-                        ? 'bg-hairline dark:bg-slate-700 text-moringa dark:text-white'
-                        : 'text-moringa-muted dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-fufu dark:hover:bg-slate-800'
+                        ? 'bg-yellow text-moringa font-semibold'
+                        : 'text-fufu/75 hover:text-fufu hover:bg-moringa-2'
                     }`}
                   >
                     {subitem.label}
@@ -257,15 +258,15 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
 
       {/* View Storefront Button - Only for Vendor Dashboard */}
       {!isAdminDashboard && (
-        <div className="p-4 border-t border-hairline dark:border-slate-700">
+        <div className="p-3 border-t border-moringa-2">
           <button
             onClick={() => {
               // Navigate to storefront - you can customize the URL or navigation logic
               window.open('/shop', '_blank');
             }}
-            className={`w-full flex items-center ${isExpanded ? 'justify-center gap-3 px-4' : 'justify-center'} py-3 rounded-xl transition-all duration-300 bg-solid hover:bg-tertiary text-white font-medium shadow-lg hover:shadow-xl hover:shadow-solid/20 cursor-pointer`}
+            className={`w-full flex items-center ${isExpanded ? 'justify-center gap-3 px-4' : 'justify-center'} h-12 rounded-md transition-colors bg-yellow hover:bg-yellow-dark text-moringa font-bold cursor-pointer`}
           >
-            <ExternalLink className="w-5 h-5" />
+            <ExternalLink className="w-5 h-5" aria-hidden="true" />
             {isExpanded && <span className="text-sm">View Storefront</span>}
           </button>
         </div>

@@ -119,7 +119,7 @@ const AdminDashboard = () => {
   // Show access denied message if user doesn't have admin role
   if (accessDenied) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-char">
         <div className="text-center max-w-md p-8">
           <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg
@@ -155,7 +155,7 @@ const AdminDashboard = () => {
   // Show loading while checking auth
   if (isLoading || !authChecked || !isAdminRole) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-char">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-primary border-solid border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-moringa-muted dark:text-slate-400">Loading admin dashboard...</p>
@@ -240,7 +240,7 @@ const AdminDashboard = () => {
 
   return (
     <AdminModeProvider userRole="admin">
-      <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all duration-500">
+      <div className="min-h-screen bg-fufu dark:bg-char transition-colors duration-500">
         <div className="flex h-screen overflow-hidden">
           <Sidebar
             collapsed={sideBarCollapsed}

@@ -116,7 +116,7 @@ const Dashboard = () => {
   // Show loading while checking auth
   if (isLoading || !authChecked) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-char">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-moringa-muted dark:text-slate-400">Loading dashboard...</p>
@@ -225,7 +225,7 @@ const Dashboard = () => {
 
   return (
     <AdminModeProvider userRole={currentUserRole}>
-      <div className="min-h-scren bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-all duration-500">
+      <div className="min-h-scren bg-fufu dark:bg-char transition-colors duration-500">
         <div className="flex h-screen overflow-hidden">
           <Sidebar
             collapsed={sideBarCollapsed}

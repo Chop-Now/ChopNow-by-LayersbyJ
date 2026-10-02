@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAdminMode } from '../context/AdminModeContext';
 import analyticsService from '../../services/analyticsService';
+import { BrandLoader } from '../../Components/brand/Kit';
 import {
   TrendingUp,
   TrendingDown,
@@ -24,6 +25,7 @@ import {
   Waves,
   Home,
   Sparkles,
+  Recycle,
 } from 'lucide-react';
 import {
   BarChart,
@@ -2018,8 +2020,8 @@ const ShopAdminImpact = () => {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-moringa-muted dark:text-slate-400">Loading impact data...</p>
+          <BrandLoader className="w-12 text-moringa dark:text-yellow" />
+          <p className="eyebrow text-moringa-muted dark:text-fufu/70">Loading impact data</p>
         </div>
       </div>
     );
@@ -2110,7 +2112,7 @@ const ShopAdminImpact = () => {
             Platform Rank
           </p>
           <p className="text-3xl font-bold text-orange-900 dark:text-white mb-2">
-            {shopRank !== null ? `#${shopRank}` : '—'}
+            {shopRank !== null ? `#${shopRank}` : 'N/A'}
           </p>
           <p className="text-xs text-orange-600 dark:text-orange-400 font-medium">
             By meals rescued, among all vendors
@@ -2344,7 +2346,7 @@ const ShopAdminImpact = () => {
                   You're ranked <strong>#{shopRank}</strong> among all vendors on ChopNow.
                 </>
               )}{' '}
-              Keep up the amazing work in fighting food waste and protecting our planet! 🌍
+              Keep up the amazing work in fighting food waste and protecting our planet!
             </p>
           </div>
         </div>
@@ -2420,25 +2422,25 @@ const WebsiteAdminImpact = () => {
       title: 'Cars Off Road',
       value: (totalImpact.co2 / 4600).toFixed(1),
       description: 'Equivalent to taking this many cars off the road for a year',
-      icon: '🚗',
+      icon: Car,
     },
     {
       title: 'Trees Planted',
       value: Math.round(totalImpact.co2 / 21).toLocaleString(),
       description: 'Equal to planting this many trees annually',
-      icon: '🌳',
+      icon: Trees,
     },
     {
       title: 'Olympic Pools',
       value: (totalImpact.water / 75000).toFixed(2),
       description: 'Water saved could fill this many Olympic swimming pools',
-      icon: '🏊',
+      icon: Waves,
     },
     {
       title: 'Households Fed',
       value: ((totalImpact.meals * 0.5) / 30).toFixed(1),
       description: 'Rough estimate of households fed for a month',
-      icon: '⚡',
+      icon: Home,
     },
   ];
 
@@ -2476,40 +2478,36 @@ const WebsiteAdminImpact = () => {
 
       {/* Total Impact Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-linear-to-br from-solid to-tertiary rounded-2xl p-5 text-white shadow-lg">
+        <div className="bg-moringa rounded-lg p-5 text-fufu">
           <div className="flex items-center justify-between mb-2">
-            <UtensilsCrossed className="w-8 h-8 opacity-80" />
-            <span className="text-3xl">🍽️</span>
+            <UtensilsCrossed className="w-8 h-8 text-yellow" aria-hidden="true" />
           </div>
           <p className="text-sm opacity-90 mb-1">Total Meals Rescued</p>
           <p className="text-3xl font-bold">{totalImpact.meals.toLocaleString()}</p>
           <p className="text-xs opacity-75 mt-2">Since platform launch</p>
         </div>
 
-        <div className="bg-linear-to-br from-green-500 to-green-600 rounded-2xl p-5 text-white shadow-lg">
+        <div className="bg-lime rounded-lg p-5 text-moringa">
           <div className="flex items-center justify-between mb-2">
-            <Leaf className="w-8 h-8 opacity-80" />
-            <span className="text-3xl">🌱</span>
+            <Leaf className="w-8 h-8" aria-hidden="true" />
           </div>
           <p className="text-sm opacity-90 mb-1">CO2e Emissions Saved</p>
           <p className="text-3xl font-bold">{totalImpact.co2.toLocaleString()} kg</p>
           <p className="text-xs opacity-75 mt-2">Carbon footprint reduced</p>
         </div>
 
-        <div className="bg-linear-to-br from-blue-500 to-blue-600 rounded-2xl p-5 text-white shadow-lg">
+        <div className="bg-mint rounded-lg p-5 text-moringa">
           <div className="flex items-center justify-between mb-2">
-            <Droplet className="w-8 h-8 opacity-80" />
-            <span className="text-3xl">💧</span>
+            <Droplet className="w-8 h-8" aria-hidden="true" />
           </div>
           <p className="text-sm opacity-90 mb-1">Water Conserved</p>
           <p className="text-3xl font-bold">{(totalImpact.water / 1000).toFixed(0)}k L</p>
           <p className="text-xs opacity-75 mt-2">Liters saved from waste</p>
         </div>
 
-        <div className="bg-linear-to-br from-orange-500 to-orange-600 rounded-2xl p-5 text-white shadow-lg">
+        <div className="bg-yellow rounded-lg p-5 text-moringa">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-3xl">♻️</span>
-            <span className="text-3xl">🗑️</span>
+            <Recycle className="w-8 h-8" aria-hidden="true" />
           </div>
           <p className="text-sm opacity-90 mb-1">Waste Reduced</p>
           <p className="text-3xl font-bold">{(totalImpact.wasteReduced / 1000).toFixed(1)}t</p>
@@ -2680,9 +2678,11 @@ const WebsiteAdminImpact = () => {
           {environmentalEquivalents.map((item, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50 hover:shadow-xl transition-all duration-300"
+              className="bg-white dark:bg-slate-900/80 rounded-lg p-5 border border-hairline dark:border-slate-700/50"
             >
-              <div className="text-4xl mb-3">{item.icon}</div>
+              <div className="w-11 h-11 mb-3 rounded-md bg-lime text-moringa flex items-center justify-center">
+                <item.icon className="w-5 h-5" aria-hidden="true" />
+              </div>
               <p className="text-3xl font-bold text-moringa dark:text-white mb-1">{item.value}</p>
               <p className="text-sm font-semibold text-moringa dark:text-slate-300 mb-2">
                 {item.title}
