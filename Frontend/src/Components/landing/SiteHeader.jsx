@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Logo, Button } from '../brand/Kit';
+import { SECTIONS } from './sections';
+import { useScrollProgress } from './useLandingMotion';
 
 const NAV = [
   { href: '#howItWorks', label: 'How it works' },
   { href: '#vendors', label: 'For vendors' },
-  { href: '#Milestones', label: 'Milestones' },
   { href: '#AboutUs', label: 'About' },
+  { href: '#Milestones', label: 'Milestones' },
 ];
 
-const SiteHeader = () => {
+const SiteHeader = ({ active = null }) => {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef(null);
+  useScrollProgress(headerRef);
+  const current = SECTIONS.find((s) => s.id === active);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -27,7 +32,7 @@ const SiteHeader = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-moringa">
+    <header ref={headerRef} className="sticky top-0 z-50 bg-moringa">
       <div className="mx-auto max-w-[1440px] h-16 md:h-20 px-4 sm:px-8 lg:px-12 flex items-center justify-between">
         <Link to="/" aria-label="ChopNow home" className="shrink-0">
           <Logo tone="dark" size="md" />
@@ -39,7 +44,12 @@ const SiteHeader = () => {
               key={n.href}
               href={n.href}
               onClick={(e) => go(e, n.href)}
-              className="eyebrow text-[13px] text-fufu hover:text-yellow transition-colors"
+              aria-current={active === n.href.slice(1) ? 'true' : undefined}
+              className={`relative eyebrow text-[13px] py-2 transition-colors after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:bg-yellow after:origin-left after:transition-transform after:duration-300 ${
+                active === n.href.slice(1)
+                  ? 'text-yellow after:scale-x-100'
+                  : 'text-fufu hover:text-yellow after:scale-x-0'
+              }`}
             >
               {n.label}
             </a>
@@ -55,6 +65,23 @@ const SiteHeader = () => {
           </Button>
         </div>
 
+        {/* Mobile: name of the section you are in */}
+        <p
+          key={current?.id || 'top'}
+          className={`lg:hidden flex-1 min-w-0 px-3 text-center eyebrow text-[11px] text-fufu/90 truncate ${
+            current ? 'rise-in' : 'invisible'
+          }`}
+          aria-live="polite"
+        >
+          {current ? (
+            <>
+              <span className="text-yellow">{current.n}</span> {current.label}
+            </>
+          ) : (
+            '.'
+          )}
+        </p>
+
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -66,6 +93,12 @@ const SiteHeader = () => {
           {open ? <X size={22} strokeWidth={2.5} /> : <Menu size={22} strokeWidth={2.5} />}
         </button>
       </div>
+
+      {/* Scroll progress along the bottom edge of the header */}
+      <span
+        aria-hidden="true"
+        className="scroll-progress absolute left-0 right-0 bottom-0 h-[3px] bg-yellow"
+      />
 
       {open && (
         <div

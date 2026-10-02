@@ -36,8 +36,8 @@ export const Eyebrow = ({ as: As = 'p', className, children }) => (
   <As className={cx('eyebrow', className)}>{children}</As>
 );
 
-export const Display = ({ as: As = 'h2', className, children, style }) => (
-  <As className={cx('display', className)} style={style}>
+export const Display = ({ as: As = 'h2', className, children, ...rest }) => (
+  <As className={cx('display', className)} {...rest}>
     {children}
   </As>
 );

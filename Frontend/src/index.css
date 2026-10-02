@@ -325,11 +325,85 @@ h3 {
   translate: -6px -8px;
 }
 
+/* ── Landing page motion ── */
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+@keyframes badge-in {
+  from {
+    transform: rotate(-200deg) scale(0.4);
+    opacity: 0;
+  }
+}
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes phone-float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.tile-in {
+  animation: tile-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.badge-spin {
+  animation: badge-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s both;
+}
+.ticker {
+  animation: ticker 40s linear infinite;
+}
+.ticker:hover {
+  animation-play-state: paused;
+}
+.phone-float {
+  animation: phone-float 6s ease-in-out infinite;
+}
+/* Scroll reveal: only armed once JS adds .reveal-on, so content never hides
+   without it. --i staggers siblings. */
+.reveal-on [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.reveal-on [data-reveal='rule'] {
+  opacity: 1;
+  transform: scale(0, 1);
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal-on [data-reveal='rule'].origin-top {
+  transform: scale(1, 0);
+}
+.reveal-on [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+/* Header scroll progress */
+.scroll-progress {
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cm-loader,
   .logo-mark,
-  .rise-in {
+  .rise-in,
+  .tile-in,
+  .badge-spin,
+  .ticker,
+  .phone-float {
     animation: none !important;
+  }
+  .reveal-on [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
   .group:hover .logo-mark {
     transform: none;

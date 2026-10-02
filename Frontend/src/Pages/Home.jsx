@@ -1,43 +1,57 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import SiteHeader from '../Components/landing/SiteHeader';
 import {
   Hero,
+  Ticker,
   StatBand,
   HowItWorks,
   Vendors,
-  Milestones,
   AboutUs,
+  Milestones,
   Community,
   ClosingCta,
+  SectionRail,
 } from '../Components/landing/Sections';
+import { SECTIONS } from '../Components/landing/sections';
+import { useActiveSection, useReveal } from '../Components/landing/useLandingMotion';
 import Footer from '../Components/Footer';
 import SEO from '../Components/SEO';
 
+const SECTION_IDS = SECTIONS.map((s) => s.id);
+
 /*
- * Landing page, LayersbyJ tile revamp. Every section is a row of flat colour
- * tiles on a 4-column grid (1440 max), collapsing to 2 and 1 columns.
- * The old sections (Header, Hero, HowItWorks, Milestones, AboutUs, Apps) are
- * kept in Components/ for reference but are no longer mounted here.
+ * Landing page, LayersbyJ tile revamp. Story order: hero, the problem, how it
+ * works, vendors, vision, road ahead, get involved, closing call to action.
+ * Numbered sections share one anatomy (see SectionHead) and reveal as they
+ * scroll in; the header and the side rail track the current section.
  */
-const Home = () => (
-  <div className="bg-fufu">
-    <SEO
-      title="ChopNow - Save Food, Save Money, Save the Planet"
-      description="ChopNow connects you with surplus food from local businesses at discounted prices. Reduce food waste and save money in Kigali, Rwanda."
-    />
-    <SiteHeader />
-    <div>
-      <Hero />
-      <StatBand />
-      <HowItWorks />
-      <Vendors />
-      <Milestones />
-      <AboutUs />
-      <Community />
-      <ClosingCta />
+const Home = () => {
+  const mainRef = useRef(null);
+  useReveal(mainRef);
+  const active = useActiveSection(SECTION_IDS);
+
+  return (
+    <div className="bg-fufu">
+      <SEO
+        title="ChopNow - Save Food, Save Money, Save the Planet"
+        description="ChopNow connects you with surplus food from local businesses at discounted prices. Reduce food waste and save money in Kigali, Rwanda."
+      />
+      <SiteHeader active={active} />
+      <div ref={mainRef}>
+        <Hero />
+        <Ticker />
+        <StatBand />
+        <HowItWorks />
+        <Vendors />
+        <AboutUs />
+        <Milestones />
+        <Community />
+        <ClosingCta />
+      </div>
+      <SectionRail active={active} />
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+};
 
 export default Home;

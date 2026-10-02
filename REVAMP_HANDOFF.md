@@ -97,6 +97,8 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] Admin dashboard shell: admin/components/layout Sidebar (Moringa rail, yellow active) + Header (brand dark mode tones), admin ground fufu/char, Analytics emojis replaced with lucide icons
 - [x] Fun copy (owner request): 404 "Someone ate this page.", crash screen "We burnt the toast", maintenance "Kitchen's closed", playful ErrorDisplay defaults and empty/loading states
 - [x] Final pass: 390px + 1440px check, `npx prettier --check .` at root clean, `npx eslint .` in Frontend 0 errors (69 warnings, all pre-existing; was 71), `npm run build` passes, pushed to revamp-ui.
+- [x] Landing page restructure (owner request): story order problem > how it works > vendors > vision > road ahead > get involved > CTA; every numbered section uses `SectionHead` (number, label, drawn rule, title, intro); grounds alternate fufu/white/moringa; ticker strip after the hero; scroll reveals (`useReveal`, `data-reveal`), side rail (xl) + header active section, mobile header shows the current section, header scroll progress bar. Section list lives in `landing/sections.js`.
+- [x] Fixed sticky positioning app-wide: App `<main>` used `overflow-x-hidden`, which disables `position: sticky` (landing header, cart/profile/FAQ side panels). Now `overflow-x-clip`.
 - [ ] PR revamp-ui -> main: ONLY when the owner says so, after they have tested. Never merge.
 - [ ] Repo transfer to the Chop-Now org: done by the owner in GitHub (Settings > Danger Zone > Transfer ownership), after testing and their okay. Not an agent step.
 
