@@ -24,31 +24,31 @@ const ErrorDisplay = ({
       icon: AlertCircle,
       defaultTitle: 'Something went wrong',
       defaultMessage: 'An unexpected error occurred. Please try again.',
-      iconColor: 'text-red-500',
+      tile: 'bg-peach text-clay',
     },
     network: {
       icon: WifiOff,
       defaultTitle: 'Connection Error',
       defaultMessage: 'Unable to connect to the server. Please check your internet connection.',
-      iconColor: 'text-orange-500',
+      tile: 'bg-yellow text-moringa',
     },
     server: {
       icon: ServerCrash,
       defaultTitle: 'Server Error',
       defaultMessage: 'The server is temporarily unavailable. Please try again later.',
-      iconColor: 'text-red-500',
+      tile: 'bg-peach text-clay',
     },
     auth: {
       icon: ShieldAlert,
       defaultTitle: 'Authentication Error',
       defaultMessage: 'Your session has expired. Please log in again.',
-      iconColor: 'text-yellow-500',
+      tile: 'bg-yellow text-moringa',
     },
     notFound: {
       icon: AlertCircle,
       defaultTitle: 'Not Found',
       defaultMessage: 'The requested resource could not be found.',
-      iconColor: 'text-moringa-muted',
+      tile: 'bg-mint text-moringa',
     },
   };
 
@@ -57,24 +57,22 @@ const ErrorDisplay = ({
 
   const content = (
     <div className={`text-center ${className}`}>
-      <div
-        className={`w-16 h-16 mx-auto mb-4 rounded-full bg-fufu-dim dark:bg-slate-800 flex items-center justify-center`}
-      >
-        <Icon className={`w-8 h-8 ${config.iconColor}`} />
+      <div className={`w-16 h-16 mx-auto mb-4 flex items-center justify-center ${config.tile}`}>
+        <Icon className="w-8 h-8" aria-hidden="true" />
       </div>
-      <h3 className="text-lg font-semibold text-moringa dark:text-white mb-2">
+      <h3 className="display text-[32px] text-moringa dark:text-fufu mb-2">
         {title || config.defaultTitle}
       </h3>
-      <p className="text-sm text-moringa-muted dark:text-slate-400 mb-4 max-w-md mx-auto">
+      <p className="text-sm text-moringa-muted dark:text-fufu/70 mb-5 max-w-md mx-auto">
         {message || config.defaultMessage}
       </p>
       {onRetry && (
         <button
           onClick={onRetry}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-solid hover:bg-tertiary text-white rounded-lg text-sm font-medium transition-colors"
+          className="inline-flex items-center gap-2 h-12 px-5 bg-moringa text-fufu hover:bg-moringa-dark text-sm font-bold transition-colors cursor-pointer"
         >
-          <RefreshCw className="w-4 h-4" />
-          Try Again
+          <RefreshCw className="w-4 h-4" aria-hidden="true" />
+          Try again
         </button>
       )}
     </div>
@@ -82,8 +80,8 @@ const ErrorDisplay = ({
 
   if (fullPage) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900 p-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-hairline dark:border-slate-700 max-w-md w-full">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-char p-4">
+        <div className="bg-white dark:bg-moringa-dark p-8 border border-char/10 dark:border-moringa-2 max-w-md w-full">
           {content}
         </div>
       </div>
@@ -91,7 +89,7 @@ const ErrorDisplay = ({
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-8 border border-hairline dark:border-slate-700/50">
+    <div className="bg-white dark:bg-moringa-dark p-8 border border-char/10 dark:border-moringa-2">
       {content}
     </div>
   );
@@ -101,7 +99,7 @@ const ErrorDisplay = ({
  * Inline error message for forms
  */
 export const InlineError = ({ message, className = '' }) => (
-  <div className={`flex items-center gap-2 text-red-500 text-sm ${className}`}>
+  <div className={`flex items-center gap-2 text-clay text-sm font-medium ${className}`}>
     <AlertCircle className="w-4 h-4 flex-shrink-0" />
     <span>{message}</span>
   </div>
@@ -111,16 +109,16 @@ export const InlineError = ({ message, className = '' }) => (
  * Error banner for page-level errors
  */
 export const ErrorBanner = ({ message, onDismiss, onRetry }) => (
-  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-4">
+  <div className="bg-peach text-clay p-4 mb-4">
     <div className="flex items-start gap-3">
-      <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
       <div className="flex-1">
-        <p className="text-sm text-red-700 dark:text-red-300">{message}</p>
+        <p className="text-sm font-semibold">{message}</p>
         <div className="flex gap-2 mt-2">
           {onRetry && (
             <button
               onClick={onRetry}
-              className="text-sm text-red-600 dark:text-red-400 hover:underline font-medium"
+              className="text-sm font-bold underline underline-offset-4 cursor-pointer"
             >
               Try again
             </button>
@@ -128,7 +126,7 @@ export const ErrorBanner = ({ message, onDismiss, onRetry }) => (
           {onDismiss && (
             <button
               onClick={onDismiss}
-              className="text-sm text-moringa-muted dark:text-slate-400 hover:underline"
+              className="text-sm underline-offset-4 hover:underline cursor-pointer"
             >
               Dismiss
             </button>

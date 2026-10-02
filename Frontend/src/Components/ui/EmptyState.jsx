@@ -95,13 +95,13 @@ const EmptyState = ({
 
   return (
     <div className={`text-center py-12 px-4 ${className}`}>
-      <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-fufu-dim dark:bg-slate-800 flex items-center justify-center">
-        <Icon className="w-10 h-10 text-moringa-muted/70 dark:text-slate-500" />
+      <div className="w-20 h-20 mx-auto mb-6 bg-yellow flex items-center justify-center">
+        <Icon className="w-9 h-9 text-moringa" aria-hidden="true" />
       </div>
-      <h3 className="text-lg font-semibold text-moringa dark:text-white mb-2">
+      <h3 className="display text-[32px] text-moringa dark:text-fufu mb-2">
         {title || typeConfig.defaultTitle}
       </h3>
-      <p className="text-sm text-moringa-muted dark:text-slate-400 mb-6 max-w-sm mx-auto">
+      <p className="text-sm text-moringa-muted dark:text-fufu/70 mb-6 max-w-sm mx-auto">
         {message || typeConfig.defaultMessage}
       </p>
       {action && <div className="flex justify-center">{action}</div>}
@@ -113,7 +113,7 @@ const EmptyState = ({
  * Empty state card variant with border
  */
 export const EmptyStateCard = (props) => (
-  <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50">
+  <div className="bg-white dark:bg-moringa-dark border border-char/10 dark:border-moringa-2">
     <EmptyState {...props} />
   </div>
 );
@@ -123,8 +123,8 @@ export const EmptyStateCard = (props) => (
  */
 export const EmptyStateCompact = ({ message, icon: IconComponent = Inbox }) => (
   <div className="flex flex-col items-center justify-center py-8 text-center">
-    <IconComponent className="w-8 h-8 text-moringa-muted/70 dark:text-slate-500 mb-2" />
-    <p className="text-sm text-moringa-muted dark:text-slate-400">{message || 'Nothing to show'}</p>
+    <IconComponent className="w-8 h-8 text-moringa dark:text-yellow mb-2" aria-hidden="true" />
+    <p className="text-sm text-moringa-muted dark:text-fufu/70">{message || 'Nothing to show'}</p>
   </div>
 );
 
@@ -134,8 +134,8 @@ export const EmptyStateCompact = ({ message, icon: IconComponent = Inbox }) => (
 export const TableEmptyState = ({ message, colSpan = 1 }) => (
   <tr>
     <td colSpan={colSpan} className="px-6 py-12 text-center">
-      <Inbox className="w-12 h-12 text-moringa/40 dark:text-slate-600 mx-auto mb-3" />
-      <p className="text-sm text-moringa-muted dark:text-slate-400">
+      <Inbox className="w-10 h-10 text-moringa dark:text-yellow mx-auto mb-3" aria-hidden="true" />
+      <p className="text-sm text-moringa-muted dark:text-fufu/70">
         {message || 'No data available'}
       </p>
     </td>
