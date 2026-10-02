@@ -1,0 +1,22 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "chopnow-75716",
+          "appId": "1:369024297315:android:08829ed5e2e68e40248b56",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "chopnow-75716",
+          "configurations": {
+            "android": "1:369024297315:android:08829ed5e2e68e40248b56",
+            "ios": "1:369024297315:ios:6dd48dcf3cf6e5f2248b56"
+          }
+        }
+      }
+    }
+  }
+}

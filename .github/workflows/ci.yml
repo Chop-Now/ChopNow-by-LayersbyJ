@@ -1,0 +1,181 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main, develop, integration]
+  pull_request:
+    branches: [main, integration]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # ─── Lint & Format Check ────────────────────────────
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Check formatting
+        run: npx prettier --check .
+
+      - name: Lint Backend
+        working-directory: Backend
+        run: |
+          npm ci
+          npm run lint
+
+      - name: Lint Frontend
+        working-directory: Frontend
+        run: |
+          npm ci --legacy-peer-deps
+          npx eslint .
+
+  # ─── Backend Tests ──────────────────────────────────
+  backend-test:
+    name: Backend Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    defaults:
+      run:
+        working-directory: Backend
+    env:
+      NODE_ENV: test
+      MONGO_URI: mongodb://localhost:27017/chopnow-test?directConnection=true
+      JWT_SECRET: test-jwt-secret-for-ci-only-not-production
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: Backend/package-lock.json
+
+      # Most controllers use session.withTransaction() (createOrder,
+      # cancelOrderAndRestoreInventory, requestPayout, the pawaPay webhook,
+      # ...), which MongoDB only supports on a replica set - a plain
+      # `services: mongodb: image: mongo:7` container (the previous setup
+      # here) is a standalone instance and fails every transaction-using
+      # test with "Transaction numbers are only allowed on a replica set
+      # member or mongos". Run mongod ourselves with --replSet and initiate
+      # a single-node replica set before tests start.
+      - name: Start MongoDB (single-node replica set)
+        run: |
+          docker run -d --name mongodb -p 27017:27017 mongo:7 --replSet rs0 --bind_ip_all
+          echo "Waiting for mongod to accept connections..."
+          for i in $(seq 1 30); do
+            if docker exec mongodb mongosh --quiet --eval 'db.runCommand({ping:1})' > /dev/null 2>&1; then
+              break
+            fi
+            sleep 1
+          done
+          # Explicit host, not a bare rs.initiate() - with no config, MongoDB
+          # advertises the container's own (internal Docker) hostname as the
+          # replica set member, which the runner's host network can't resolve.
+          # A client using directConnection (see MONGO_URI above) skips SDAM
+          # discovery so this mostly wouldn't matter, but pin it to the
+          # actually-reachable address anyway for anything that doesn't.
+          docker exec mongodb mongosh --quiet --eval 'rs.initiate({_id: "rs0", members: [{_id: 0, host: "localhost:27017"}]})'
+          echo "Waiting for replica set to reach PRIMARY..."
+          for i in $(seq 1 30); do
+            state=$(docker exec mongodb mongosh --quiet --eval 'rs.status().myState' 2>/dev/null || echo "")
+            if [ "$state" = "1" ]; then
+              break
+            fi
+            sleep 1
+          done
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test -- --coverage --forceExit
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: backend-coverage
+          path: Backend/coverage/
+          retention-days: 7
+
+  # ─── Frontend Build ─────────────────────────────────
+  frontend-build:
+    name: Frontend Build
+    runs-on: ubuntu-latest
+    needs: lint
+    defaults:
+      run:
+        working-directory: Frontend
+    env:
+      VITE_API_URL: https://api.chopnow.app
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: Frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: frontend-build
+          path: Frontend/dist/
+          retention-days: 7
+
+  # ─── Docker Build (on main only) ───────────────────
+  docker:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    needs: [backend-test, frontend-build]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build Backend Docker image
+        working-directory: Backend
+        run: docker build -t chopnow-backend:${{ github.sha }} .
+
+      - name: Build Frontend Docker image
+        working-directory: Frontend
+        run: |
+          docker build \
+            --build-arg VITE_API_URL=${{ vars.VITE_API_URL || 'https://api.chopnow.app' }} \
+            -t chopnow-frontend:${{ github.sha }} .
+
+  # ─── Security Audit ────────────────────────────────
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Audit Backend
+        working-directory: Backend
+        run: npm audit --audit-level=high
+
+      - name: Audit Frontend
+        working-directory: Frontend
+        run: npm audit --audit-level=high

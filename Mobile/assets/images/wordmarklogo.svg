@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 628 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-2082.5,-1732.4998)">
+        <g>
+            <path d="M2178.475,1747.269C2155.456,1726.543 2120.155,1727.775 2098.638,1750.057C2077.121,1772.339 2077.121,1807.661 2098.638,1829.943C2120.155,1852.225 2155.456,1853.457 2178.475,1832.731L2185.166,1840.162L2195.099,1802.624L2156.728,1808.579L2163.42,1816.01C2150.338,1827.789 2130.544,1828.019 2117.192,1816.548C2103.84,1805.077 2101.085,1785.474 2110.758,1770.767C2120.431,1756.06 2139.522,1750.826 2155.343,1758.542L2178.475,1747.269Z" style="fill:rgb(23,21,15);"/>
+            <text x="2245px" y="1823px" style="font-family:'Poppins-ExtraBold', 'Poppins';font-weight:800;font-size:92px;fill:rgb(23,21,15);">ChopNow</text>
+        </g>
+    </g>
+</svg>

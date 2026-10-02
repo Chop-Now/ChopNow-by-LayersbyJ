@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+coverage
+backups
+*.min.js
+package-lock.json
+.vite
+Frontend/.vite
+**/.vite
+
+# Native mobile platform dirs — these are generated/owned by Xcode, Gradle and
+# CocoaPods (asset catalog Contents.json, vendored Pods, podspecs). Prettier
+# reformatting them just churns files the tooling will rewrite anyway.
+Mobile/ios
+Mobile/android
+Mobile/.dart_tool

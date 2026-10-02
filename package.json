@@ -1,0 +1,28 @@
+{
+  "name": "chopnow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ChopNow - Surplus Food Rescue Platform",
+  "scripts": {
+    "lint": "cd Backend && npm run lint && cd ../Frontend && npx eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.0"
+  },
+  "overrides": {
+    "yaml": "^2.9.1"
+  },
+  "lint-staged": {
+    "Backend/**/*.js": [
+      "prettier --write"
+    ],
+    "Frontend/**/*.{js,jsx}": [
+      "prettier --write"
+    ]
+  }
+}

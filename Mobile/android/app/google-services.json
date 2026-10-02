@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "369024297315",
+    "project_id": "chopnow-75716",
+    "storage_bucket": "chopnow-75716.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369024297315:android:be07b391277e50c1248b56",
+        "android_client_info": {
+          "package_name": "com.chopnow.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369024297315-bopdf7jqbtgcfa6r9visauts8ao07i81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVTS6MMdfz8NckUXl83YIv8-XdNQBBMCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369024297315-bopdf7jqbtgcfa6r9visauts8ao07i81.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "369024297315-8s4e6gbbets53bu2s6bgbnj7iu8ormb4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chopnow.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369024297315:android:08829ed5e2e68e40248b56",
+        "android_client_info": {
+          "package_name": "com.chopnow.chopnow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369024297315-bopdf7jqbtgcfa6r9visauts8ao07i81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVTS6MMdfz8NckUXl83YIv8-XdNQBBMCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369024297315-bopdf7jqbtgcfa6r9visauts8ao07i81.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "369024297315-8s4e6gbbets53bu2s6bgbnj7iu8ormb4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chopnow.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
