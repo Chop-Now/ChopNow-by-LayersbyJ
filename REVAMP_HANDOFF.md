@@ -103,7 +103,6 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [ ] PR revamp-ui -> main: ONLY when the owner says so, after they have tested. Never merge.
 - [ ] Repo transfer to the Chop-Now org: done by the owner in GitHub (Settings > Danger Zone > Transfer ownership), after testing and their okay. Owner-only step.
 
-
 ## Log
 
 - Screenshots: where Google Fonts are blocked (sandboxed environments), preview shots load the fonts from local @fontsource files instead. Fonts load normally in a real browser.
