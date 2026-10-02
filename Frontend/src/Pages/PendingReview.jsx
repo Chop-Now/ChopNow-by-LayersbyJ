@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Hourglass,
   Clock,
@@ -9,158 +9,119 @@ import {
   MessageCircleQuestion,
   Mail,
 } from 'lucide-react';
+import AuthArt from '../Components/brand/AuthArt';
+import { Logo } from '../Components/brand/Kit';
+
+const STEPS = [
+  {
+    Icon: FileSearch,
+    title: 'Admin review',
+    copy: 'Our team is carefully reviewing your application.',
+    tone: 'bg-yellow text-moringa',
+  },
+  {
+    Icon: MailCheck,
+    title: 'Approval email',
+    copy: 'We will notify you via email once the review is complete.',
+    tone: 'bg-mint text-moringa',
+  },
+  {
+    Icon: LayoutDashboard,
+    title: 'Full dashboard access',
+    copy: "Once approved, you'll gain full access to your vendor dashboard.",
+    tone: 'bg-lime text-moringa',
+  },
+];
 
 const PendingReview = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full bg-fufu-dim flex items-center justify-center px-4 py-8">
-      <div className="max-w-2xl w-full">
-        <div className="bg-white rounded-2xl border border-hairline p-8 md:p-12">
-          {/* Hourglass Icon */}
-          <div className="flex justify-center mb-5">
-            <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
-              <Hourglass className="w-8 h-8 text-orange-500" />
+    <div className="min-h-screen w-full flex bg-fufu">
+      {/* Left Side - Brand panel (hidden on mobile) */}
+      <div className="w-1/2 hidden md:block md:fixed md:left-0 md:top-0 md:h-screen">
+        <AuthArt eyebrow="Application received" title={['Hang', 'tight,', "we're on it."]} />
+      </div>
+
+      {/* Right Side */}
+      <div className="w-full md:w-1/2 md:ml-[50%] flex flex-col items-center px-4 py-8">
+        <div className="mb-8">
+          <Link to="/" aria-label="ChopNow home">
+            <Logo tone="light" size="lg" />
+          </Link>
+        </div>
+
+        <div className="w-full max-w-lg">
+          {/* Status tile */}
+          <div className="bg-yellow text-moringa p-6 sm:p-8">
+            <div className="w-14 h-14 bg-moringa text-yellow flex items-center justify-center">
+              <Hourglass className="w-7 h-7" aria-hidden="true" />
             </div>
-          </div>
-
-          {/* Title */}
-          <h1
-            className="text-xl font-semibold text-center mb-2"
-            style={{ color: 'var(--color-textColor)' }}
-          >
-            We're reviewing your details
-          </h1>
-
-          {/* Description */}
-          <p className="text-xs text-center mb-5" style={{ color: 'var(--color-moringa-muted)' }}>
-            Thank you for submitting your details. Your application is now under manual review by
-            our team to ensure everything is in order.
-          </p>
-
-          {/* Estimated Review Time */}
-          <div className="flex items-center justify-center mb-5">
-            <div className="flex items-center gap-2 p-2.5 bg-blue-50 rounded-lg border border-blue-200">
-              <Clock className="w-3.5 h-3.5 text-black" />
-              <p className="text-[10px] font-medium" style={{ color: 'var(--color-textColor)' }}>
-                Estimated Review Time: 2-3 business days
-              </p>
-            </div>
+            <p className="eyebrow mt-6">Under review</p>
+            <h1 className="display text-[44px] sm:text-[56px] mt-2 leading-[0.92]">
+              We're reviewing your details
+            </h1>
+            <p className="mt-3 font-medium">
+              Thank you for submitting your details. Your application is now under manual review by
+              our team to ensure everything is in order.
+            </p>
+            <p className="mt-5 inline-flex items-center gap-2 bg-moringa text-fufu px-3 py-2 eyebrow text-[11px]">
+              <Clock className="w-3.5 h-3.5 text-yellow" aria-hidden="true" />
+              Estimated review time: 2 to 3 business days
+            </p>
           </div>
 
           {/* Dashboard Button */}
-          <div className="flex justify-center mb-6">
-            <button
-              onClick={() => navigate('/')}
-              className="w-64 h-10 rounded-lg text-white text-xs font-medium hover:opacity-90 transition-opacity cursor-pointer"
-              style={{ backgroundColor: 'var(--color-solid)' }}
-            >
-              Go to My Dashboard
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="w-full h-px bg-gray-300 mb-6"></div>
+          <button
+            onClick={() => navigate('/')}
+            className="w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer"
+          >
+            Go to my dashboard
+          </button>
 
           {/* What's Next Section */}
-          <div className="mb-6">
-            <h2
-              className="text-base font-semibold mb-5"
-              style={{ color: 'var(--color-textColor)' }}
-            >
-              What's next?
-            </h2>
-
-            <div className="space-y-5">
-              {/* Step 1 */}
-              <div className="flex gap-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
-                  <FileSearch className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <h3
-                    className="text-xs font-semibold mb-1"
-                    style={{ color: 'var(--color-textColor)' }}
-                  >
-                    1. Admin review
-                  </h3>
-                  <p className="text-[10px]" style={{ color: 'var(--color-moringa-muted)' }}>
-                    Our team is carefully reviewing your application.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="flex gap-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
-                  <MailCheck className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <h3
-                    className="text-xs font-semibold mb-1"
-                    style={{ color: 'var(--color-textColor)' }}
-                  >
-                    2. Approval email
-                  </h3>
-                  <p className="text-[10px]" style={{ color: 'var(--color-moringa-muted)' }}>
-                    We will notify you via email once the review is complete.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="flex gap-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0">
-                  <LayoutDashboard className="w-5 h-5 text-black" />
-                </div>
-                <div>
-                  <h3
-                    className="text-xs font-semibold mb-1"
-                    style={{ color: 'var(--color-textColor)' }}
-                  >
-                    3. Full dashboard access
-                  </h3>
-                  <p className="text-[10px]" style={{ color: 'var(--color-moringa-muted)' }}>
-                    Once approved, you'll gain full access to your vendor dashboard.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="w-full h-px bg-gray-300 mb-5"></div>
+          <section className="mt-8">
+            <p className="eyebrow text-moringa-muted">What's next</p>
+            <ol className="mt-3 bg-white border border-char/10">
+              {STEPS.map(({ Icon, title, copy, tone }, i) => (
+                <li
+                  key={title}
+                  className="flex gap-4 p-4 sm:p-5 border-b border-hairline last:border-b-0"
+                >
+                  <div className={`w-12 h-12 flex items-center justify-center shrink-0 ${tone}`}>
+                    <Icon className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-moringa flex items-baseline gap-2">
+                      <span className="display text-[22px] leading-none">{i + 1}</span>
+                      {title}
+                    </h3>
+                    <p className="text-sm text-moringa-muted mt-1">{copy}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
 
           {/* Have Questions Section */}
-          <div>
-            <h2
-              className="text-base font-semibold mb-2"
-              style={{ color: 'var(--color-textColor)' }}
-            >
-              Have Questions?
-            </h2>
-            <p className="text-[10px] mb-3" style={{ color: 'var(--color-moringa-muted)' }}>
+          <section className="mt-8 bg-mint text-moringa p-5 sm:p-6">
+            <h2 className="display text-[32px]">Have questions?</h2>
+            <p className="text-sm mt-1 mb-4">
               Find answers to common questions in our FAQ or contact our support.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-row gap-2">
-              <button
-                className="flex-1 h-9 rounded-lg border border-moringa/25 flex items-center justify-center gap-2 text-xs font-medium hover:bg-fufu transition-colors cursor-pointer"
-                style={{ color: 'var(--color-textColor)' }}
-              >
-                <MessageCircleQuestion className="w-3.5 h-3.5" />
+            <div className="grid grid-cols-2">
+              <button className="h-12 border-2 border-moringa flex items-center justify-center gap-2 text-sm font-bold hover:bg-white transition-colors cursor-pointer">
+                <MessageCircleQuestion className="w-4 h-4" aria-hidden="true" />
                 Visit FAQ
               </button>
-              <button
-                className="flex-1 h-9 rounded-lg border border-moringa/25 flex items-center justify-center gap-2 text-xs font-medium hover:bg-fufu transition-colors cursor-pointer"
-                style={{ color: 'var(--color-textColor)' }}
-              >
-                <Mail className="w-3.5 h-3.5" />
-                Email Support
+              <button className="h-12 border-2 border-l-0 border-moringa flex items-center justify-center gap-2 text-sm font-bold hover:bg-white transition-colors cursor-pointer">
+                <Mail className="w-4 h-4" aria-hidden="true" />
+                Email support
               </button>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </div>
