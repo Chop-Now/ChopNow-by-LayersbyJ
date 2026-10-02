@@ -2,26 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Bike,
-  Compass,
   DollarSign,
   Smartphone,
   Download,
   UserCheck,
   CheckCircle2,
   TrendingUp,
-  Sparkles,
-  MapPin,
   Loader2,
   ArrowRight,
-  TrendingDown,
   CreditCard,
   History,
   X,
   AlertCircle,
+  ShoppingBag,
 } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { api, payoutService } from '../services';
 import toast from 'react-hot-toast';
+import PageNavbar from '../Components/PageNavbar';
+import Footer from '../Components/Footer';
+import { PageHero } from '../Components/brand/Kit';
 
 const RiderDashboard = () => {
   const navigate = useNavigate();
@@ -81,14 +81,14 @@ const RiderDashboard = () => {
     setTimeout(() => {
       setIsOnline(!isOnline);
       setIsToggling(false);
-      toast.success(`You are now ${!isOnline ? 'ONLINE 🟢' : 'OFFLINE 🔴'}`);
+      toast.success(`You are now ${!isOnline ? 'online' : 'offline'}`);
     }, 400);
   };
 
   const handleSwitchToBuyer = async () => {
     try {
       await switchRole('consumer');
-      toast.success('Switched to Buyer Mode 🛒');
+      toast.success('Switched to Buyer Mode');
       navigate('/');
     } catch (err) {
       console.error(err);
@@ -143,265 +143,202 @@ const RiderDashboard = () => {
 
   // Helper to color-code payout statuses
   const getStatusBadge = (status) => {
+    const pill = 'eyebrow text-[10px] px-2 py-1 whitespace-nowrap';
     switch (status) {
       case 'completed':
-        return (
-          <span className="bg-green-50 text-green-700 border border-green-200 rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider">
-            Completed
-          </span>
-        );
+        return <span className={`${pill} bg-lime text-moringa`}>Completed</span>;
       case 'requested':
       case 'processing':
-        return (
-          <span className="bg-amber-50 text-amber-700 border border-amber-200 rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider animate-pulse">
-            Pending
-          </span>
-        );
+        return <span className={`${pill} bg-mint text-moringa animate-pulse`}>Pending</span>;
       case 'failed':
       case 'cancelled':
-        return (
-          <span className="bg-rose-50 text-rose-700 border border-rose-200 rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider">
-            Failed
-          </span>
-        );
+        return <span className={`${pill} bg-peach text-clay`}>Failed</span>;
       default:
-        return (
-          <span className="bg-fufu text-moringa border border-hairline rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider">
-            {status}
-          </span>
-        );
+        return <span className={`${pill} bg-fufu-dim text-moringa`}>{status}</span>;
     }
   };
 
-  return (
-    <div className="min-h-screen bg-fufu py-8 px-4 sm:px-6 lg:px-8 mt-16">
-      <div className="max-w-6xl mx-auto space-y-8">
-        {/* Top Header Card */}
-        <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2 z-10">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-green-400 animate-pulse" />
-              <span className="text-[10px] tracking-widest text-green-400 font-bold uppercase">
-                Rider Partner Portal
-              </span>
-            </div>
-            <h1 className="text-3xl font-extrabold tracking-tight">
-              Hello, {user?.firstName || 'Rider'} 👋
-            </h1>
-            <p className="text-moringa/40 text-sm max-w-md">
-              Welcome back to your dashboard. Deliver surplus meals, earn fees, and reduce food
-              waste!
-            </p>
-          </div>
+  const statSpinner = (
+    <div className="flex items-center justify-center h-[120px]">
+      <Loader2 className="w-6 h-6 animate-spin" aria-hidden="true" />
+    </div>
+  );
 
-          {/* Action Row */}
-          <div className="flex flex-wrap items-center gap-4 z-10">
-            {/* Go Online Switcher Card */}
-            <div className="bg-white/10 rounded-xl p-3.5 border border-white/10 shrink-0 flex items-center gap-4">
+  return (
+    <div className="min-h-screen bg-fufu pt-[72px]">
+      <PageNavbar />
+      <PageHero
+        eyebrow="Rider partner portal"
+        title={`Hello, ${user?.firstName || 'Rider'}`}
+        intro="Welcome back to your dashboard. Deliver surplus meals, earn fees, and reduce food waste!"
+        aside={
+          <div className="flex flex-col sm:flex-row gap-3">
+            {/* Go Online Switcher */}
+            <div className="flex items-center gap-4 bg-moringa-2 px-4 h-14">
               <div>
-                <p className="text-[10px] uppercase tracking-wider text-moringa-muted/70 font-medium">
-                  Status
-                </p>
-                <p className="text-xs font-bold flex items-center gap-1.5 mt-0.5">
-                  <span
-                    className={`w-2 h-2 rounded-full ${isOnline ? 'bg-green-400' : 'bg-red-400'}`}
-                  />
+                <p className="eyebrow text-[10px] opacity-80">Status</p>
+                <p className="text-sm font-bold flex items-center gap-1.5">
+                  <span className={`w-2 h-2 ${isOnline ? 'bg-lime' : 'bg-pepper'}`} />
                   {isOnline ? 'Online' : 'Offline'}
                 </p>
               </div>
               <button
                 onClick={toggleOnline}
                 disabled={isToggling}
-                className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all active:scale-95 cursor-pointer ${
+                className={`h-9 px-3 text-xs font-bold transition-colors cursor-pointer ${
                   isOnline
-                    ? 'bg-red-500 hover:bg-red-600 text-white'
-                    : 'bg-green-500 hover:bg-green-600 text-white'
+                    ? 'bg-peach text-clay hover:bg-fufu'
+                    : 'bg-lime text-moringa hover:bg-fufu'
                 }`}
               >
-                {isToggling ? 'Syncing...' : isOnline ? 'Go Offline' : 'Go Online'}
+                {isToggling ? 'Syncing...' : isOnline ? 'Go offline' : 'Go online'}
               </button>
             </div>
 
             {/* Switch to Buyer Mode shortcut */}
             <button
               onClick={handleSwitchToBuyer}
-              className="bg-white text-moringa hover:bg-fufu px-4 py-3 rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
+              className="h-14 px-5 bg-yellow text-moringa hover:bg-yellow-dark text-sm font-bold transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
-              Switch to Buyer Mode 🛒
+              <ShoppingBag className="w-4 h-4" aria-hidden="true" />
+              Switch to buyer mode
             </button>
           </div>
+        }
+      />
 
-          {/* Absolute decorative background sphere */}
-          <div className="absolute right-0 bottom-0 w-80 h-80 rounded-full bg-green-500/10 blur-3xl -z-0" />
-        </div>
-
-        {/* Dynamic Mobile App Promo Notice */}
-        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20 space-y-6">
+        {/* Mobile App Notice */}
+        <div className="bg-mint text-moringa p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
           <div className="flex gap-4 items-start">
-            <div className="p-3 bg-emerald-100 text-emerald-800 rounded-xl">
-              <Smartphone className="w-6 h-6" />
+            <div className="w-12 h-12 bg-moringa text-yellow flex items-center justify-center shrink-0">
+              <Smartphone className="w-6 h-6" aria-hidden="true" />
             </div>
             <div className="space-y-1">
-              <h3 className="font-bold text-sm text-moringa">
-                Rider Deliveries are Mobile-Only 📱
-              </h3>
-              <p className="text-xs text-moringa-muted leading-relaxed max-w-xl">
+              <h3 className="font-bold">Rider deliveries are mobile only</h3>
+              <p className="text-sm leading-relaxed max-w-xl">
                 To accept orders, use live GPS navigation, and upload proof of delivery, please use
                 the ChopNow Mobile App. Download it from the Google Play Store or iOS App Store
                 today.
               </p>
             </div>
           </div>
-          <div className="flex gap-3 w-full sm:w-auto shrink-0 justify-end">
-            <button className="flex items-center gap-2 px-4 py-2 border border-hairline hover:border-slate-300 bg-white text-xs font-bold rounded-xl transition-all cursor-pointer">
-              <Download className="w-4 h-4" />
-              Get Android App
+          <div className="flex shrink-0">
+            <button className="flex items-center gap-2 h-11 px-4 border-2 border-moringa bg-white text-sm font-bold hover:bg-fufu transition-colors cursor-pointer">
+              <Download className="w-4 h-4" aria-hidden="true" />
+              Android app
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-hairline hover:border-slate-300 bg-white text-xs font-bold rounded-xl transition-all cursor-pointer">
-              <Download className="w-4 h-4" />
-              Get iOS App
+            <button className="flex items-center gap-2 h-11 px-4 border-2 border-l-0 border-moringa bg-white text-sm font-bold hover:bg-fufu transition-colors cursor-pointer">
+              <Download className="w-4 h-4" aria-hidden="true" />
+              iOS app
             </button>
           </div>
         </div>
 
-        {/* Payout & Earnings Summary Card */}
-        <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="p-4 bg-emerald-50 text-emerald-700 rounded-2xl border border-emerald-100">
-              <CreditCard className="w-6 h-6" />
-            </div>
-            <div>
-              <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
-                Available Balance
-              </p>
-              <h2 className="text-3xl font-black text-moringa mt-0.5">
-                {formatCurrency(user?.stats?.riderBalance || 0)}
-              </h2>
-            </div>
-          </div>
-          <button
-            onClick={() => setShowPayoutModal(true)}
-            className="w-full sm:w-auto py-3 px-6 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
-          >
-            Withdraw Earnings
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Quick Stats Summary Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {/* Earnings Card */}
-          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-            {loadingStats ? (
-              <div className="flex items-center justify-center h-20">
-                <Loader2 className="w-6 h-6 animate-spin text-green-500" />
-              </div>
-            ) : (
-              <>
-                <div className="flex justify-between items-start">
-                  <div className="space-y-1">
-                    <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
-                      All-Time Earnings
-                    </p>
-                    <p className="text-2xl font-black text-moringa">
-                      {formatCurrency(stats?.totalEarnings || 0)}
-                    </p>
-                  </div>
-                  <div className="p-2.5 bg-green-50 text-green-700 rounded-xl">
-                    <DollarSign className="w-5 h-5" />
-                  </div>
-                </div>
-                <div className="mt-4 flex items-center gap-1 text-[11px] text-green-600">
-                  <TrendingUp className="w-3.5 h-3.5" />
-                  <span>+{formatCurrency(stats?.weeklyEarningsSum || 0)} this week</span>
-                </div>
-              </>
-            )}
+        {/* Balance + Stats tiles */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Balance */}
+          <div className="bg-moringa text-fufu p-6 flex flex-col min-h-[200px]">
+            <p className="eyebrow text-[11px] text-yellow flex items-center gap-2">
+              <CreditCard className="w-4 h-4" aria-hidden="true" />
+              Available balance
+            </p>
+            <p className="display text-[44px] mt-auto pt-4 tabular-nums">
+              {formatCurrency(user?.stats?.riderBalance || 0)}
+            </p>
+            <button
+              onClick={() => setShowPayoutModal(true)}
+              className="mt-4 h-11 px-4 bg-yellow text-moringa text-sm font-bold hover:bg-yellow-dark transition-colors flex items-center justify-center gap-2 cursor-pointer"
+            >
+              Withdraw earnings
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </button>
           </div>
 
-          {/* Deliveries Card */}
-          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          {/* Earnings */}
+          <div className="bg-lime text-moringa p-6 flex flex-col min-h-[200px]">
             {loadingStats ? (
-              <div className="flex items-center justify-center h-20">
-                <Loader2 className="w-6 h-6 animate-spin text-blue-500" />
-              </div>
+              statSpinner
             ) : (
               <>
-                <div className="flex justify-between items-start">
-                  <div className="space-y-1">
-                    <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
-                      Total Deliveries
-                    </p>
-                    <p className="text-2xl font-black text-moringa">
-                      {stats?.totalTrips || 0} Trips
-                    </p>
-                  </div>
-                  <div className="p-2.5 bg-blue-50 text-blue-700 rounded-xl">
-                    <Bike className="w-5 h-5" />
-                  </div>
-                </div>
-                <p className="mt-4 text-[11px] text-moringa-muted/70">
-                  {stats?.activeTrips > 0 ? (
-                    <span className="text-green-600 font-semibold">
-                      {stats.activeTrips} active deliveries
-                    </span>
-                  ) : (
-                    'No active deliveries'
-                  )}
+                <p className="eyebrow text-[11px] flex items-center gap-2">
+                  <DollarSign className="w-4 h-4" aria-hidden="true" />
+                  All-time earnings
+                </p>
+                <p className="display text-[44px] mt-auto pt-4 tabular-nums">
+                  {formatCurrency(stats?.totalEarnings || 0)}
+                </p>
+                <p className="mt-2 flex items-center gap-1 text-xs font-bold">
+                  <TrendingUp className="w-3.5 h-3.5" aria-hidden="true" />+
+                  {formatCurrency(stats?.weeklyEarningsSum || 0)} this week
                 </p>
               </>
             )}
           </div>
 
-          {/* Rating Card */}
-          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          {/* Deliveries */}
+          <div className="bg-yellow text-moringa p-6 flex flex-col min-h-[200px]">
             {loadingStats ? (
-              <div className="flex items-center justify-center h-20">
-                <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
-              </div>
+              statSpinner
             ) : (
               <>
-                <div className="flex justify-between items-start">
-                  <div className="space-y-1">
-                    <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
-                      Rider Rating
-                    </p>
-                    <p className="text-2xl font-black text-moringa">
-                      {(stats?.rating || 4.9).toFixed(1)} / 5.0
-                    </p>
-                  </div>
-                  <div className="p-2.5 bg-orange-50 text-orange-700 rounded-xl">
-                    <UserCheck className="w-5 h-5" />
-                  </div>
-                </div>
-                <div className="mt-4 flex items-center gap-1 text-[11px] text-orange-600">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Excellent Standing (Top 5%)</span>
-                </div>
+                <p className="eyebrow text-[11px] flex items-center gap-2">
+                  <Bike className="w-4 h-4" aria-hidden="true" />
+                  Total deliveries
+                </p>
+                <p className="display text-[44px] mt-auto pt-4 tabular-nums">
+                  {stats?.totalTrips || 0}
+                  <span className="text-[0.45em] ml-1">trips</span>
+                </p>
+                <p className="mt-2 text-xs font-bold">
+                  {stats?.activeTrips > 0
+                    ? `${stats.activeTrips} active deliveries`
+                    : 'No active deliveries'}
+                </p>
+              </>
+            )}
+          </div>
+
+          {/* Rating */}
+          <div className="bg-peach text-clay p-6 flex flex-col min-h-[200px]">
+            {loadingStats ? (
+              statSpinner
+            ) : (
+              <>
+                <p className="eyebrow text-[11px] flex items-center gap-2">
+                  <UserCheck className="w-4 h-4" aria-hidden="true" />
+                  Rider rating
+                </p>
+                <p className="display text-[44px] mt-auto pt-4 tabular-nums">
+                  {(stats?.rating || 4.9).toFixed(1)}
+                  <span className="text-[0.45em] ml-1">/ 5.0</span>
+                </p>
+                <p className="mt-2 flex items-center gap-1 text-xs font-bold">
+                  <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+                  Excellent standing (top 5%)
+                </p>
               </>
             )}
           </div>
         </div>
 
         {/* Lower Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left / Center: Weekly Earnings Chart Panel */}
-          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm lg:col-span-2 space-y-6">
-            <div>
-              <h3 className="font-bold text-sm text-moringa">Weekly Earnings</h3>
-              <p className="text-[11px] text-moringa-muted/70 mt-0.5">
-                Overview of earnings for the last 7 days
-              </p>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Weekly Earnings Chart Panel */}
+          <div className="bg-white border border-char/10 p-5 sm:p-6 lg:col-span-2">
+            <p className="eyebrow text-moringa">Weekly earnings</p>
+            <p className="text-sm text-moringa-muted mt-1">
+              Overview of earnings for the last 7 days
+            </p>
 
             {loadingStats ? (
               <div className="flex items-center justify-center h-64">
-                <Loader2 className="w-8 h-8 animate-spin text-green-500" />
+                <Loader2 className="w-8 h-8 animate-spin text-moringa" aria-hidden="true" />
               </div>
             ) : (
               <>
-                {/* Custom SVG/CSS Bar Chart */}
-                <div className="h-64 flex items-end gap-3 sm:gap-6 pt-4 border-b border-hairline pb-2">
+                {/* Bar Chart */}
+                <div className="h-64 flex items-end gap-3 sm:gap-6 pt-6 mt-2 border-b-2 border-moringa pb-2">
                   {(stats?.weeklyData || []).map((bar, index) => {
                     const maxAmount = Math.max(
                       ...(stats?.weeklyData || []).map((b) => b.amount),
@@ -413,32 +350,33 @@ const RiderDashboard = () => {
                         key={index}
                         className="flex-1 flex flex-col items-center gap-2 group h-full justify-end"
                       >
-                        <div className="relative w-full flex justify-center">
+                        <div className="relative w-full flex justify-center h-full items-end">
                           {/* Tooltip */}
                           {bar.amount > 0 && (
-                            <div className="absolute bottom-full mb-1 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-800 text-white text-[9px] px-2 py-0.5 rounded-md font-bold whitespace-nowrap shadow z-20">
+                            <div
+                              className="absolute mb-1 opacity-0 group-hover:opacity-100 transition-opacity bg-char text-fufu text-[10px] px-2 py-0.5 font-bold whitespace-nowrap z-20"
+                              style={{ bottom: `${heightPercent}%` }}
+                            >
                               {formatCurrency(bar.amount)}
                             </div>
                           )}
                           <div
-                            className={`w-full max-w-[28px] rounded-t-lg transition-all duration-500 ${
-                              bar.amount > 0
-                                ? 'bg-gradient-to-t from-green-500 to-emerald-600'
-                                : 'bg-fufu-dim'
+                            className={`w-full max-w-[40px] transition-all duration-500 ${
+                              bar.amount > 0 ? 'bg-moringa group-hover:bg-pepper' : 'bg-fufu-dim'
                             }`}
                             style={{ height: `${heightPercent || 5}%` }}
                           />
                         </div>
-                        <span className="text-[10px] text-moringa-muted font-medium">
+                        <span className="font-mono text-[11px] uppercase text-moringa-muted">
                           {bar.day}
                         </span>
                       </div>
                     );
                   })}
                 </div>
-                <div className="flex justify-between items-center text-xs text-moringa-muted pt-2">
-                  <span className="font-semibold text-moringa">Total Weekly Earnings:</span>
-                  <span className="font-bold text-green-700">
+                <div className="flex justify-between items-end pt-4">
+                  <span className="eyebrow text-[11px] text-moringa">Total weekly earnings</span>
+                  <span className="display text-[28px] text-moringa tabular-nums">
                     {formatCurrency(stats?.weeklyEarningsSum || 0)}
                   </span>
                 </div>
@@ -446,88 +384,83 @@ const RiderDashboard = () => {
             )}
           </div>
 
-          {/* Right: Payout Details & History */}
-          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm space-y-6 flex flex-col justify-between">
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-bold text-sm text-moringa font-sans flex items-center gap-2">
-                  <History className="w-4 h-4 text-moringa-muted" />
-                  Payout History
-                </h3>
-                <p className="text-[11px] text-moringa-muted/70 mt-0.5">
-                  Overview of recent cashouts completed
-                </p>
-              </div>
+          {/* Payout History */}
+          <div className="bg-white border border-char/10 p-5 sm:p-6">
+            <p className="eyebrow text-moringa flex items-center gap-2">
+              <History className="w-4 h-4" aria-hidden="true" />
+              Payout history
+            </p>
+            <p className="text-sm text-moringa-muted mt-1">Overview of recent cashouts completed</p>
 
-              {loadingPayouts ? (
-                <div className="flex items-center justify-center py-12">
-                  <Loader2 className="w-6 h-6 animate-spin text-green-500" />
-                </div>
-              ) : payouts.length === 0 ? (
-                <div className="text-center py-12 text-moringa-muted/70">
-                  <AlertCircle className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                  <p className="text-xs">No payouts requested yet</p>
-                </div>
-              ) : (
-                <div className="space-y-4 max-h-72 overflow-y-auto pr-1">
-                  {payouts.map((pay) => (
-                    <div
-                      key={pay._id}
-                      className="flex items-center justify-between border-b border-slate-50 pb-3 last:border-0 last:pb-0"
-                    >
-                      <div className="space-y-0.5">
-                        <p className="text-xs font-bold text-moringa">
-                          {formatCurrency(pay.amount)}
-                        </p>
-                        <p className="text-[10px] text-moringa-muted/70">
-                          {new Date(pay.createdAt).toLocaleDateString(undefined, {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric',
-                          })}{' '}
-                          · {pay.method === 'mobile' ? 'Mobile Money' : 'Bank Transfer'}
-                        </p>
-                      </div>
-                      {getStatusBadge(pay.status)}
+            {loadingPayouts ? (
+              <div className="flex items-center justify-center py-12">
+                <Loader2 className="w-6 h-6 animate-spin text-moringa" aria-hidden="true" />
+              </div>
+            ) : payouts.length === 0 ? (
+              <div className="mt-5 text-center py-10 bg-fufu text-moringa-muted">
+                <AlertCircle className="w-8 h-8 mx-auto mb-2" aria-hidden="true" />
+                <p className="text-sm">No payouts requested yet</p>
+              </div>
+            ) : (
+              <ul className="mt-4 max-h-72 overflow-y-auto">
+                {payouts.map((pay) => (
+                  <li
+                    key={pay._id}
+                    className="flex items-center justify-between gap-3 py-3 border-b border-hairline last:border-0"
+                  >
+                    <div className="space-y-0.5 min-w-0">
+                      <p className="text-sm font-bold text-moringa tabular-nums">
+                        {formatCurrency(pay.amount)}
+                      </p>
+                      <p className="text-xs text-moringa-muted">
+                        {new Date(pay.createdAt).toLocaleDateString(undefined, {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}{' '}
+                        / {pay.method === 'mobile' ? 'Mobile Money' : 'Bank Transfer'}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
+                    {getStatusBadge(pay.status)}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
 
+      <Footer />
+
       {/* Payout Request Modal */}
       {showPayoutModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 transition-all">
-          <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-hairline overflow-hidden animate-scaleIn">
-            <div className="p-6 bg-slate-900 text-white flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-emerald-400" />
-                <h3 className="font-bold text-sm">Request Payout</h3>
-              </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-char/60">
+          <div className="bg-fufu w-full max-w-md">
+            <div className="px-5 py-4 bg-moringa text-fufu flex justify-between items-center">
+              <h3 className="eyebrow text-yellow flex items-center gap-2">
+                <DollarSign className="w-4 h-4" aria-hidden="true" />
+                Request payout
+              </h3>
               <button
                 onClick={() => setShowPayoutModal(false)}
-                className="text-moringa-muted/70 hover:text-white transition-colors"
+                className="h-10 w-10 flex items-center justify-center bg-yellow text-moringa hover:bg-yellow-dark transition-colors cursor-pointer"
+                aria-label="Close"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
 
-            <form onSubmit={handleRequestPayoutSubmit} className="p-6 space-y-6">
-              <div className="bg-fufu p-4 rounded-xl border border-hairline text-center">
-                <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
-                  Available Balance
-                </p>
-                <p className="text-2xl font-black text-moringa mt-1">
+            <form onSubmit={handleRequestPayoutSubmit} className="p-5 sm:p-6 space-y-5">
+              <div className="bg-lime text-moringa p-4">
+                <p className="eyebrow text-[11px]">Available balance</p>
+                <p className="display text-[36px] mt-1 tabular-nums">
                   {formatCurrency(user?.stats?.riderBalance || 0)}
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <label className="block text-xs font-bold text-moringa">
-                  Withdrawal Amount (RWF)
+              <div>
+                <label className="block eyebrow text-[11px] text-moringa-muted mb-2">
+                  Withdrawal amount (RWF)
                 </label>
                 <input
                   type="number"
@@ -537,54 +470,50 @@ const RiderDashboard = () => {
                   placeholder="Minimum 5,000 RWF"
                   value={payoutAmount}
                   onChange={(e) => setPayoutAmount(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-hairline rounded-xl text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 outline-none transition-all font-semibold"
+                  className="w-full h-12 px-3 bg-white border-2 border-moringa text-sm font-semibold text-moringa placeholder:text-moringa-muted/70 focus:outline-none focus:bg-fufu"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="block text-xs font-bold text-moringa">Payment Method</label>
-                <div className="grid grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setPayoutMethod('mobile')}
-                    className={`p-3 rounded-xl border text-center font-bold text-xs transition-all ${
-                      payoutMethod === 'mobile'
-                        ? 'border-emerald-600 bg-emerald-50/50 text-emerald-950 ring-2 ring-emerald-600/20'
-                        : 'border-hairline text-moringa-muted hover:bg-fufu'
-                    }`}
-                  >
-                    Mobile Money
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPayoutMethod('bank')}
-                    className={`p-3 rounded-xl border text-center font-bold text-xs transition-all ${
-                      payoutMethod === 'bank'
-                        ? 'border-emerald-600 bg-emerald-50/50 text-emerald-950 ring-2 ring-emerald-600/20'
-                        : 'border-hairline text-moringa-muted hover:bg-fufu'
-                    }`}
-                  >
-                    Bank Transfer
-                  </button>
+              <div>
+                <label className="block eyebrow text-[11px] text-moringa-muted mb-2">
+                  Payment method
+                </label>
+                <div className="grid grid-cols-2 border-2 border-moringa">
+                  {[
+                    ['mobile', 'Mobile Money'],
+                    ['bank', 'Bank Transfer'],
+                  ].map(([value, label]) => (
+                    <button
+                      key={value}
+                      type="button"
+                      onClick={() => setPayoutMethod(value)}
+                      aria-pressed={payoutMethod === value}
+                      className={`h-12 text-sm font-bold transition-colors cursor-pointer ${
+                        payoutMethod === value
+                          ? 'bg-moringa text-yellow'
+                          : 'bg-white text-moringa hover:bg-mint'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={requestingPayout}
-                  className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-75 text-white rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg"
-                >
-                  {requestingPayout ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Processing request...
-                    </>
-                  ) : (
-                    'Confirm Withdrawal'
-                  )}
-                </button>
-              </div>
+              <button
+                type="submit"
+                disabled={requestingPayout}
+                className="w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark disabled:opacity-60 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              >
+                {requestingPayout ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Processing request...
+                  </>
+                ) : (
+                  'Confirm withdrawal'
+                )}
+              </button>
             </form>
           </div>
         </div>
