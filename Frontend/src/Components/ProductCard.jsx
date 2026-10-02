@@ -46,115 +46,87 @@ const ProductCard = memo(({ product }) => {
         }
       }}
       aria-label={`${product.name || 'Product'} - RWF ${(offerPrice || 0).toLocaleString()}${discountPercent > 0 ? `, ${discountPercent}% off` : ''}`}
-      className="relative border rounded-xl bg-white w-full shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-500 group"
-      style={{ borderColor: '#E5E5E5' }}
+      className="relative bg-white w-full h-full flex flex-col border border-char/10 hover:border-moringa transition-colors duration-200 overflow-hidden cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-moringa group"
     >
-      {/* ── Image ── */}
-      <div className="relative h-32 md:h-40 overflow-hidden">
+      {/* Image */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-fufu-dim">
         <img
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
           src={product.image?.[0] || '/placeholder-food.jpg'}
           alt={product.name || 'Product'}
           loading="lazy"
           decoding="async"
         />
 
-        {/* Discount badge – top right */}
         {discountPercent > 0 && (
-          <div
-            className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-xs font-bold text-white z-10"
-            style={{ backgroundColor: 'var(--color-solidOne)' }}
-          >
+          <div className="absolute top-0 right-0 bg-pepper text-char px-2.5 py-1.5 z-10 display text-[20px] leading-none">
             -{discountPercent}%
           </div>
         )}
 
-        {/* Selling fast badge – top left */}
         {isSellingFast && (
-          <div
-            className="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold text-white z-10"
-            style={{ backgroundColor: 'var(--color-solidOne)' }}
-          >
-            <Flame className="w-3 h-3" />
+          <div className="absolute top-0 left-0 flex items-center gap-1 bg-yellow text-moringa px-2.5 py-1.5 eyebrow text-[10px] z-10">
+            <Flame className="w-3 h-3" aria-hidden="true" />
             Selling fast
           </div>
         )}
 
-        {/* Expired / out of stock overlay */}
         {product.status !== 'active' && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-10">
-            <span className="text-white font-semibold text-sm bg-black/60 px-3 py-1 rounded-full">
-              {product.status === 'expired' ? 'Expired' : 'Sold Out'}
+          <div className="absolute inset-0 bg-char/60 flex items-center justify-center z-10">
+            <span className="display text-fufu text-[28px]">
+              {product.status === 'expired' ? 'Expired' : 'Sold out'}
             </span>
           </div>
         )}
       </div>
 
-      {/* ── Body ── */}
-      <div className="px-3 md:px-4 pb-3 pt-2">
-        <p
-          className="font-semibold text-sm md:text-base truncate mb-0.5"
-          style={{ color: 'var(--color-textColor)' }}
-        >
-          {product.name || 'Product'}
-        </p>
-
-        <div
-          className="flex items-center gap-1 text-xs mb-0.5"
-          style={{ color: 'var(--color-moringa-muted)' }}
-        >
-          <span className="truncate">{product.vendor || 'Unknown Vendor'}</span>
+      {/* Body */}
+      <div className="flex-1 flex flex-col px-3 md:px-4 pt-3 pb-3 md:pb-4">
+        <p className="eyebrow text-[10px] text-moringa-muted flex items-center gap-1 min-w-0">
+          <span className="truncate">{product.vendor || 'Unknown vendor'}</span>
           {product.distance != null && (
             <span className="flex items-center gap-0.5 shrink-0 whitespace-nowrap">
-              <span aria-hidden="true">·</span>
+              <span aria-hidden="true">/</span>
               <MapPin className="w-3 h-3" aria-hidden="true" />
               {product.distance} km
             </span>
           )}
-        </div>
-
-        {/* Pickup time row */}
-        <p className="text-xs mb-1.5" style={{ color: 'var(--color-moringa-muted)' }}>
-          Pickup at {product.pickupTime || 'Flexible'}
         </p>
+        <p className="mt-1 font-bold text-[15px] md:text-base leading-snug text-moringa line-clamp-2">
+          {product.name || 'Product'}
+        </p>
+        <p className="mt-1 text-xs text-moringa-muted">Pickup {product.pickupTime || 'flexible'}</p>
 
-        {/* Urgency row: expiry countdown OR low-stock OR cart-count */}
         {showExpiry ? (
-          <div className="mb-2">
+          <div className="mt-2">
             <ExpiryCountdown until={product.availableUntil} variant="pill" />
           </div>
         ) : isLowStock ? (
-          <p className="text-xs font-semibold mb-2" style={{ color: 'var(--color-solidOne)' }}>
-            ⚠ Only {qty} left
-          </p>
+          <p className="mt-2 text-xs font-bold text-clay">Only {qty} left</p>
         ) : cartCount >= 3 ? (
-          <div
-            className="flex items-center gap-1 text-xs font-medium mb-2"
-            style={{ color: 'var(--color-solidOne)' }}
-          >
-            <Users className="w-3 h-3" />
-            <span>{cartCount} people eyeing this</span>
-          </div>
+          <p className="mt-2 flex items-center gap-1 text-xs font-semibold text-clay">
+            <Users className="w-3 h-3" aria-hidden="true" />
+            {cartCount} people eyeing this
+          </p>
         ) : null}
 
-        {/* Price + cart control */}
-        <div className="flex items-end justify-between mt-1">
-          <div>
-            <p className="md:text-base text-sm font-bold" style={{ color: 'var(--color-solid)' }}>
-              RWF {(offerPrice || 0).toLocaleString()}
-            </p>
+        <div className="mt-auto pt-3 flex items-end justify-between gap-2">
+          <div className="min-w-0">
             {price > offerPrice && (
-              <p className="text-xs line-through" style={{ color: 'var(--color-moringa-muted)' }}>
+              <p className="text-xs line-through text-moringa-muted">
                 RWF {price.toLocaleString()}
               </p>
             )}
+            <p className="display text-[22px] md:text-[26px] text-moringa whitespace-nowrap">
+              <span className="text-[0.62em] mr-1">RWF</span>
+              {(offerPrice || 0).toLocaleString()}
+            </p>
           </div>
 
-          <div onClick={(e) => e.stopPropagation()}>
+          <div onClick={(e) => e.stopPropagation()} className="shrink-0">
             {!cartItems[product._id] || cartItems[product._id] === 0 ? (
               <button
-                className="flex items-center justify-center gap-1 border md:w-20 w-16 h-[34px] rounded-lg font-semibold cursor-pointer hover:opacity-90 active:scale-95 transition-all text-white text-xs"
-                style={{ backgroundColor: 'var(--color-solid)', borderColor: 'var(--color-solid)' }}
+                className="flex items-center justify-center gap-1.5 h-10 px-3 md:px-4 bg-moringa text-fufu text-xs font-bold hover:bg-moringa-dark transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
                 onClick={() => addToCart(product._id)}
                 disabled={product.status !== 'active'}
                 aria-label={`Add ${product.name || 'product'} to cart`}
@@ -163,29 +135,20 @@ const ProductCard = memo(({ product }) => {
                 Add
               </button>
             ) : (
-              <div
-                className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] rounded-lg select-none"
-                style={{ backgroundColor: 'rgba(0, 168, 107, 0.15)' }}
-              >
+              <div className="flex items-center h-10 border-2 border-moringa select-none">
                 <button
                   onClick={() => removeFromCart(product._id)}
-                  className="cursor-pointer text-base px-2 h-full font-bold hover:opacity-70 transition"
-                  style={{ color: 'var(--color-solid)' }}
+                  className="cursor-pointer w-8 h-full font-bold text-moringa hover:bg-mint transition-colors"
                   aria-label={`Remove one ${product.name || 'item'} from cart`}
                 >
                   -
                 </button>
-                <span
-                  className="w-5 text-center font-semibold text-sm"
-                  style={{ color: 'var(--color-textColor)' }}
-                  aria-live="polite"
-                >
+                <span className="w-6 text-center font-bold text-sm text-moringa" aria-live="polite">
                   {cartItems[product._id]}
                 </span>
                 <button
                   onClick={() => addToCart(product._id)}
-                  className="cursor-pointer text-base px-2 h-full font-bold hover:opacity-70 transition"
-                  style={{ color: 'var(--color-solid)' }}
+                  className="cursor-pointer w-8 h-full font-bold text-moringa hover:bg-mint transition-colors"
                   aria-label={`Add another ${product.name || 'item'} to cart`}
                 >
                   +

@@ -126,205 +126,149 @@ const Products = forwardRef(({ sortBy, priceRange, category, setSortBy, setPrice
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const SORTS = ['Distance (Nearest First)', 'Date Posted', 'A to Z', 'Vendor Rating'];
+
   return (
     <>
-      <div className="mt-1 flex flex-col relative">
-        {/* Title and Price Slider Row */}
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex flex-col items-end w-max">
-            <p className="md:text-2xl text-lg font-medium">{getSortTitle()}</p>
-            <div className="w-16 h-0.5 bg-solid rounded-full"></div>
+      <div className="flex flex-col relative">
+        {/* Title row */}
+        <div className="flex items-end justify-between gap-4 pb-4 border-b-2 border-moringa">
+          <div>
+            <p className="eyebrow text-moringa-muted">
+              {!productsLoading ? `${currentProducts.length} on this page` : 'Loading'}
+            </p>
+            <h2 className="display text-moringa text-[40px] md:text-[56px] mt-1">
+              {getSortTitle()}
+            </h2>
           </div>
 
-          {/* Mobile Price Slider */}
-          <div className="md:hidden flex flex-col items-end">
-            <label className="text-xs font-medium mb-1" style={{ color: 'var(--color-textColor)' }}>
-              Price: RWF {priceRange.toLocaleString()}
+          <div className="md:hidden flex flex-col items-end gap-2">
+            <label htmlFor="price-mobile" className="eyebrow text-[10px] text-moringa">
+              Up to RWF {priceRange.toLocaleString()}
             </label>
             <input
+              id="price-mobile"
               type="range"
               min="0"
               max="100000"
               step="1000"
               value={priceRange}
               onChange={(e) => setPriceRange(parseInt(e.target.value))}
-              className="w-24 h-1.5 rounded-lg appearance-none cursor-pointer"
-              style={{
-                background: `linear-gradient(to right, var(--color-solid) 0%, var(--color-solid) ${(priceRange / 100000) * 100}%, #E5E5E5 ${(priceRange / 100000) * 100}%, #E5E5E5 100%)`,
-              }}
+              className="chop-range w-28"
+              style={{ '--fill': `${(priceRange / 100000) * 100}%` }}
             />
           </div>
         </div>
 
-        {/* Mobile Sort Modal */}
+        {/* Mobile sort sheet */}
         {showMobileSort && (
           <>
             <div
-              className="fixed inset-0 bg-black/30 z-40 md:hidden"
+              className="fixed inset-0 bg-char/40 z-40 md:hidden"
               onClick={() => setShowMobileSort(false)}
             />
-            <div className="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl z-50 md:hidden animate-slide-up">
-              <div className="p-6">
+            <div className="fixed bottom-0 left-0 right-0 bg-fufu z-50 md:hidden animate-slide-up border-t-4 border-moringa">
+              <div className="p-5">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-textColor)' }}>
-                    Sort By
-                  </h3>
-                  <button onClick={() => setShowMobileSort(false)} className="text-gray-500">
-                    ✕
+                  <h3 className="display text-[36px] text-moringa">Sort by</h3>
+                  <button
+                    onClick={() => setShowMobileSort(false)}
+                    className="w-11 h-11 bg-moringa text-fufu font-bold"
+                    aria-label="Close sort options"
+                  >
+                    X
                   </button>
                 </div>
-                <div className="flex flex-col gap-3">
-                  {['Distance (Nearest First)', 'Date Posted', 'A to Z', 'Vendor Rating'].map(
-                    (option) => (
-                      <button
-                        key={option}
-                        onClick={() => {
-                          setSortBy(option);
-                          setShowMobileSort(false);
-                        }}
-                        className={`text-left px-4 py-3 rounded-lg transition ${
-                          sortBy === option ? 'font-semibold' : ''
-                        }`}
-                        style={{
-                          color:
-                            sortBy === option ? 'var(--color-solid)' : 'var(--color-textColor)',
-                          backgroundColor:
-                            sortBy === option ? 'rgba(0, 168, 107, 0.1)' : 'transparent',
-                        }}
-                      >
-                        {option}
-                      </button>
-                    )
-                  )}
+                <div className="flex flex-col">
+                  {SORTS.map((option) => (
+                    <button
+                      key={option}
+                      onClick={() => {
+                        setSortBy(option);
+                        setShowMobileSort(false);
+                      }}
+                      className={`text-left px-4 h-14 border-b border-hairline font-semibold transition-colors ${
+                        sortBy === option ? 'bg-moringa text-yellow' : 'text-moringa'
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
           </>
         )}
 
-        {/* Loading State */}
         {productsLoading && (
-          <div className="flex items-center justify-center py-16">
+          <div className="flex items-center justify-center py-24" role="status">
             <div className="text-center">
-              <div
-                className="w-10 h-10 border-4 border-solid border-t-transparent rounded-full animate-spin mx-auto mb-3"
-                style={{ borderColor: 'var(--color-solid)', borderTopColor: 'transparent' }}
-              ></div>
-              <p className="text-sm text-gray-500">Loading products...</p>
+              <div className="w-10 h-10 border-4 border-moringa border-t-yellow rounded-full animate-spin mx-auto mb-3" />
+              <p className="eyebrow text-moringa-muted">Loading food near you</p>
             </div>
           </div>
         )}
 
-        {/* Empty State */}
         {!productsLoading && currentProducts.length === 0 && (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
-            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-              <svg
-                className="w-10 h-10 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                />
-              </svg>
-            </div>
-            <h3 className="text-lg font-medium text-gray-700 mb-1">No products found</h3>
-            <p className="text-sm text-gray-500 max-w-xs">
+          <div className="mt-6 bg-yellow text-moringa px-6 py-12 md:py-16 text-center flex flex-col items-center">
+            <p className="eyebrow">Nothing here yet</p>
+            <h3 className="display text-[48px] md:text-[64px] mt-3">No food found</h3>
+            <p className="mt-3 text-base font-medium max-w-sm">
               {category
-                ? `No ${category} products available at the moment.`
-                : 'No products match your search criteria.'}
+                ? `No ${category} listings right now. Vendors post fresh surplus every day, so check back soon.`
+                : 'Nothing matches your search. Try a wider price range or a different word.'}
             </p>
           </div>
         )}
 
-        {/* Product Grid */}
         {!productsLoading && currentProducts.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 mt-6">
             {currentProducts.map((product, index) => (
               <ProductCard key={product._id || index} product={product} />
             ))}
           </div>
         )}
 
-        {/* Pagination absolutely positioned so sidebar matches only grid height */}
         {!productsLoading && totalPages > 1 && (
-          <div className="absolute left-0 right-0 top-full mt-8 flex items-center justify-center w-full">
-            <div className="flex items-center justify-between w-full max-w-80 text-gray-500 font-medium">
+          <nav
+            aria-label="Pagination"
+            className="absolute left-0 right-0 top-full mt-8 flex items-center justify-center w-full"
+          >
+            <div className="flex items-center gap-1">
               <button
                 type="button"
-                aria-label="prev"
-                className="rounded-full bg-slate-200/50 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Previous page"
+                className="h-11 px-4 bg-moringa text-fufu font-semibold cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M22.499 12.85a.9.9 0 0 1 .57.205l.067.06a.9.9 0 0 1 .06 1.206l-.06.066-5.585 5.586-.028.027.028.027 5.585 5.587a.9.9 0 0 1 .06 1.207l-.06.066a.9.9 0 0 1-1.207.06l-.066-.06-6.25-6.25a1 1 0 0 1-.158-.212l-.038-.08a.9.9 0 0 1-.03-.606l.03-.083a1 1 0 0 1 .137-.226l.06-.066 6.25-6.25a.9.9 0 0 1 .635-.263Z"
-                    fill="#475569"
-                    stroke="#475569"
-                    strokeWidth=".078"
-                  />
-                </svg>
+                Prev
               </button>
-
-              <div className="flex items-center gap-2 text-sm font-medium">
-                {getPageNumbers().map((pageNum) => (
-                  <button
-                    key={pageNum}
-                    onClick={() => handlePageChange(pageNum)}
-                    className={`h-10 w-10 flex items-center justify-center aspect-square cursor-pointer ${
-                      currentPage === pageNum ? 'border rounded-full' : ''
-                    }`}
-                    style={
-                      currentPage === pageNum
-                        ? {
-                            color: 'var(--color-solid)',
-                            borderColor: 'var(--color-solid)',
-                          }
-                        : {}
-                    }
-                  >
-                    {pageNum}
-                  </button>
-                ))}
-              </div>
-
+              {getPageNumbers().map((pageNum) => (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  aria-current={currentPage === pageNum ? 'page' : undefined}
+                  className={`h-11 w-11 flex items-center justify-center font-bold cursor-pointer transition-colors ${
+                    currentPage === pageNum
+                      ? 'bg-yellow text-moringa'
+                      : 'text-moringa hover:bg-fufu-dim'
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              ))}
               <button
                 type="button"
-                aria-label="next"
-                className="rounded-full bg-slate-200/50 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Next page"
+                className="h-11 px-4 bg-moringa text-fufu font-semibold cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
-                <svg
-                  className="rotate-180"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M22.499 12.85a.9.9 0 0 1 .57.205l.067.06a.9.9 0 0 1 .06 1.206l-.06.066-5.585 5.586-.028.027.028.027 5.585 5.587a.9.9 0 0 1 .06 1.207l-.06.066a.9.9 0 0 1-1.207.06l-.066-.06-6.25-6.25a1 1 0 0 1-.158-.212l-.038-.08a.9.9 0 0 1-.03-.606l.03-.083a1 1 0 0 1 .137-.226l.06-.066 6.25-6.25a.9.9 0 0 1 .635-.263Z"
-                    fill="#475569"
-                    stroke="#475569"
-                    strokeWidth=".078"
-                  />
-                </svg>
+                Next
               </button>
             </div>
-          </div>
+          </nav>
         )}
       </div>
     </>

@@ -84,8 +84,6 @@ dist/
 build/
 .next/
 
-# Claude AI session files
-.claude/
 
 # Debug files
 *.log

@@ -41,7 +41,7 @@
   --shadow-xl: 0 0 0 1px rgb(23 21 15 / 0.16);
   --shadow-2xl: 0 0 0 1px rgb(23 21 15 / 0.18);
   /* ── ChopNow brand palette ──
-     Source of truth: root CLAUDE.md. Now Yellow is LIGHT — it carries
+     Source of truth: root PROJECT_NOTES.md. Now Yellow is LIGHT — it carries
      Moringa/Char text, never white. Pepper takes white only at large sizes
      (3.6:1); use Char on Pepper for body copy. */
   --color-moringa: #0f3d2e; /* primary dark green: structure, text on light */
@@ -247,4 +247,34 @@ h3 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Range input, tile style. Set --fill on the element to the filled percent. */
+.chop-range {
+  appearance: none;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    var(--color-moringa) 0%,
+    var(--color-moringa) var(--fill, 50%),
+    var(--color-hairline) var(--fill, 50%),
+    var(--color-hairline) 100%
+  );
+  cursor: pointer;
+}
+.chop-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--color-yellow);
+  border: 3px solid var(--color-moringa);
+  cursor: pointer;
+}
+.chop-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--color-yellow);
+  border: 3px solid var(--color-moringa);
+  border-radius: 0;
+  cursor: pointer;
 }

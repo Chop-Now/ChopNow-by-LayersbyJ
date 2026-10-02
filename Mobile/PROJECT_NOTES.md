@@ -7,7 +7,7 @@ Flutter app. Keep entries short and factual. Update it whenever corrected.
 
 The approved palette (Moringa `#0F3D2E` / Now Yellow `#FFC531` / Pepper
 `#E8552F` / Fufu `#FAF3E4` / Char `#17150F`), its usage proportions, contrast
-pairings, and logo lockups live in the **root `CLAUDE.md`** — single source of
+pairings, and logo lockups live in the **root `PROJECT_NOTES.md`** — single source of
 truth, shared with the web app. Don't duplicate the values here; they drift.
 
 Mobile-side notes:

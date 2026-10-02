@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// ChopNow brand palette.
 ///
-/// Source of truth is the root `CLAUDE.md`. Five brand colours:
+/// Source of truth is the root `PROJECT_NOTES.md`. Five brand colours:
 /// Moringa `#0F3D2E`, Now Yellow `#FFC531`, Pepper `#E8552F`,
 /// Fufu `#FAF3E4`, Char `#17150F`.
 ///

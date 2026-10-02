@@ -35,7 +35,7 @@ mobile 390) and Carousel B in `ChopNow Partner Carousel.afdesign`.
   All live in `Frontend/src/Components/brand/Illustrations.jsx`.
 - **Buttons:** square, solid. Yellow fill + Moringa text on dark tiles;
   Moringa fill + Fufu text on light tiles. Outline variant = 2px border.
-- **Contrast rules from CLAUDE.md still apply** (no white on Yellow, only
+- **Contrast rules from PROJECT_NOTES.md still apply** (no white on Yellow, only
   large text on Pepper, Char on Pepper for small text).
 
 ## Dos

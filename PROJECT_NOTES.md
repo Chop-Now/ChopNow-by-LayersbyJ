@@ -1,7 +1,7 @@
 # ChopNow — repo-wide notes
 
 Surplus food rescue platform. This file holds facts that apply across **all**
-three apps. Mobile-specific conventions live in `Mobile/CLAUDE.md` — read both
+three apps. Mobile-specific conventions live in `Mobile/PROJECT_NOTES.md` — read both
 when working in `Mobile/`. Keep entries short and factual; update when
 corrected.
 
@@ -94,7 +94,7 @@ Fufu on Moringa is 11.00:1.
   `--color-textColor` → Char, `--color-primary` → scaffold (hex unchanged).
   Prefer the brand names in new work, but the legacy names are safe.
 - Mobile tokens: `Mobile/lib/core/theme/app_colors.dart` (+ `app_theme.dart`)
-  — migrated to the brand palette; see `Mobile/CLAUDE.md`.
+  — migrated to the brand palette; see `Mobile/PROJECT_NOTES.md`.
 - Keep semantic colours (success / warning / error / info) distinct from brand
   colours. Moringa is a green: it must not become the success colour, and
   Pepper is close enough to a danger red that error states need a cooler,

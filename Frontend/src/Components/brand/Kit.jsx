@@ -46,7 +46,7 @@ const BTN_BASE =
   'inline-flex items-center justify-center gap-2 font-semibold transition-colors duration-150 cursor-pointer select-none disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2';
 
 const BTN_VARIANTS = {
-  // Default primary on light ground (CLAUDE.md: primary CTA is Moringa)
+  // Default primary on light ground (PROJECT_NOTES.md: primary CTA is Moringa)
   primary: 'bg-moringa text-fufu hover:bg-moringa-dark focus-visible:outline-moringa',
   // Primary when the button sits on a Moringa tile
   yellow: 'bg-yellow text-moringa hover:bg-yellow-dark focus-visible:outline-yellow',
