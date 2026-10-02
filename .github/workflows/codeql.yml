@@ -10,6 +10,9 @@ on:
 
 jobs:
   analyze:
+    # Code scanning needs GitHub Advanced Security on private repos. This copy
+    # is private, so skip CodeQL here instead of failing every run.
+    if: ${{ !github.event.repository.private }}
     name: Analyze (javascript-typescript)
     runs-on: ubuntu-latest
     permissions:

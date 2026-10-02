@@ -117,7 +117,9 @@ export const PageHero = ({ eyebrow, title, intro, tone = 'moringa', aside, child
           <Display as="h1" className="text-[56px] sm:text-[72px] md:text-[96px]">
             {title}
           </Display>
-          {intro && <p className="mt-4 max-w-xl text-base md:text-lg font-medium opacity-90">{intro}</p>}
+          {intro && (
+            <p className="mt-4 max-w-xl text-base md:text-lg font-medium opacity-90">{intro}</p>
+          )}
           {children}
         </div>
         {aside && <div className="shrink-0">{aside}</div>}

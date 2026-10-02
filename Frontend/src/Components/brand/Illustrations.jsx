@@ -68,7 +68,14 @@ export const Fork = ({ fill = C.moringa, detail = C.lime, className, rotate }) =
       <path d="M151 72V262" strokeWidth="11" />
       <path d="M186 690L193 930" strokeWidth="13" />
     </g>
-    <path d="M60 380C80 450 140 495 176 520" stroke={detail} strokeWidth="7" fill="none" strokeLinecap="round" opacity="0.25" />
+    <path
+      d="M60 380C80 450 140 495 176 520"
+      stroke={detail}
+      strokeWidth="7"
+      fill="none"
+      strokeLinecap="round"
+      opacity="0.25"
+    />
   </Svg>
 );
 
@@ -78,7 +85,16 @@ export const Spoon = ({ fill = C.yellow, detail = C.moringa, className, rotate }
       fill={fill}
       d="M200 0C300 0 370 110 370 250C370 380 300 470 236 500L262 960A40 40 0 0 1 222 1000H178A40 40 0 0 1 138 960L164 500C100 470 30 380 30 250C30 110 100 0 200 0Z"
     />
-    <ellipse cx="200" cy="250" rx="118" ry="186" fill="none" stroke={detail} strokeWidth="6" opacity="0.18" />
+    <ellipse
+      cx="200"
+      cy="250"
+      rx="118"
+      ry="186"
+      fill="none"
+      stroke={detail}
+      strokeWidth="6"
+      opacity="0.18"
+    />
     <g stroke={detail} strokeLinecap="round" fill="none" opacity="0.28">
       <path d="M112 130C84 190 80 270 102 342" strokeWidth="14" />
       <path d="M192 572L198 930" strokeWidth="12" />
@@ -88,13 +104,45 @@ export const Spoon = ({ fill = C.yellow, detail = C.moringa, className, rotate }
 
 /* ---------- Produce ---------- */
 
-export const Chilli = ({ fill = C.clay, detail = C.yellow, stem = C.moringa, className, rotate }) => (
+export const Chilli = ({
+  fill = C.clay,
+  detail = C.yellow,
+  stem = C.moringa,
+  className,
+  rotate,
+}) => (
   <Svg viewBox="0 0 1000 1000" className={className} rotate={rotate} origin="500 500">
-    <path fill={fill} d="M120 170C330 200 700 380 960 960C660 740 330 610 90 390C20 320 30 160 120 170Z" />
-    <path d="M178 236C405 296 640 452 828 736" stroke={detail} strokeWidth="26" strokeLinecap="round" fill="none" opacity="0.38" />
-    <path d="M250 330C420 400 560 500 690 650" stroke={detail} strokeWidth="9" strokeLinecap="round" fill="none" opacity="0.22" />
-    <path fill={stem} d="M70 210C70 150 120 130 160 150C190 166 196 210 170 236C140 210 100 206 70 210Z" />
-    <path d="M128 160C92 112 96 62 140 18" stroke={stem} strokeWidth="34" strokeLinecap="round" fill="none" />
+    <path
+      fill={fill}
+      d="M120 170C330 200 700 380 960 960C660 740 330 610 90 390C20 320 30 160 120 170Z"
+    />
+    <path
+      d="M178 236C405 296 640 452 828 736"
+      stroke={detail}
+      strokeWidth="26"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.38"
+    />
+    <path
+      d="M250 330C420 400 560 500 690 650"
+      stroke={detail}
+      strokeWidth="9"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.22"
+    />
+    <path
+      fill={stem}
+      d="M70 210C70 150 120 130 160 150C190 166 196 210 170 236C140 210 100 206 70 210Z"
+    />
+    <path
+      d="M128 160C92 112 96 62 140 18"
+      stroke={stem}
+      strokeWidth="34"
+      strokeLinecap="round"
+      fill="none"
+    />
   </Svg>
 );
 
@@ -106,7 +154,14 @@ export const Bread = ({ fill = C.clay, detail = C.peach, className, rotate }) =>
       <path d="M490 170L422 430" strokeWidth="46" />
       <path d="M690 180L622 420" strokeWidth="46" />
     </g>
-    <path d="M140 170C250 82 370 52 500 50" stroke={detail} strokeWidth="16" strokeLinecap="round" fill="none" opacity="0.45" />
+    <path
+      d="M140 170C250 82 370 52 500 50"
+      stroke={detail}
+      strokeWidth="16"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.45"
+    />
     <path d="M40 560H960" stroke={detail} strokeWidth="10" strokeLinecap="round" opacity="0.3" />
   </Svg>
 );
@@ -126,7 +181,13 @@ export const Leaf = ({ fill = C.peach, detail = C.pepper, className, rotate }) =
   </Svg>
 );
 
-export const TomatoHalf = ({ fill = C.pepper, flesh = '#F2876A', seed = C.peach, className, rotate }) => (
+export const TomatoHalf = ({
+  fill = C.pepper,
+  flesh = '#F2876A',
+  seed = C.peach,
+  className,
+  rotate,
+}) => (
   <Svg viewBox="0 0 400 400" className={className} rotate={rotate} origin="200 200">
     <circle cx="200" cy="200" r="196" fill={fill} />
     <circle cx="200" cy="200" r="168" fill={flesh} />
@@ -144,24 +205,60 @@ export const TomatoHalf = ({ fill = C.pepper, flesh = '#F2876A', seed = C.peach,
       );
     })}
     <circle cx="200" cy="200" r="30" fill={seed} />
-    <path d="M58 150A150 150 0 0 1 150 56" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" fill="none" opacity="0.45" />
+    <path
+      d="M58 150A150 150 0 0 1 150 56"
+      stroke="#FFFFFF"
+      strokeWidth="12"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.45"
+    />
   </Svg>
 );
 
 export const Pin = ({ fill = C.moringa, hole = C.lime, className, rotate }) => (
   <Svg viewBox="0 0 500 1000" className={className} rotate={rotate} origin="250 500">
-    <path fill={fill} d="M250 1000C250 1000 0 660 0 250A250 250 0 0 1 500 250C500 660 250 1000 250 1000Z" />
+    <path
+      fill={fill}
+      d="M250 1000C250 1000 0 660 0 250A250 250 0 0 1 500 250C500 660 250 1000 250 1000Z"
+    />
     <circle cx="250" cy="250" r="96" fill={hole} />
-    <path d="M90 250A160 160 0 0 1 250 90" stroke={hole} strokeWidth="14" strokeLinecap="round" fill="none" opacity="0.4" />
+    <path
+      d="M90 250A160 160 0 0 1 250 90"
+      stroke={hole}
+      strokeWidth="14"
+      strokeLinecap="round"
+      fill="none"
+      opacity="0.4"
+    />
   </Svg>
 );
 
 export const Bag = ({ fill = C.moringa, detail = C.lime, mark = C.yellow, className, rotate }) => (
   <Svg viewBox="0 0 1000 1000" className={className} rotate={rotate} origin="500 500">
-    <path d="M360 260C360 110 640 110 640 260" stroke={fill} strokeWidth="44" strokeLinecap="round" fill="none" />
+    <path
+      d="M360 260C360 110 640 110 640 260"
+      stroke={fill}
+      strokeWidth="44"
+      strokeLinecap="round"
+      fill="none"
+    />
     <path fill={fill} d="M80 250H920L980 1000H20Z" />
-    <path d="M80 250L160 330H840L920 250" stroke={detail} strokeWidth="12" strokeLinejoin="round" fill="none" opacity="0.4" />
-    <path d="M150 400L120 920" stroke={detail} strokeWidth="12" strokeLinecap="round" opacity="0.25" />
+    <path
+      d="M80 250L160 330H840L920 250"
+      stroke={detail}
+      strokeWidth="12"
+      strokeLinejoin="round"
+      fill="none"
+      opacity="0.4"
+    />
+    <path
+      d="M150 400L120 920"
+      stroke={detail}
+      strokeWidth="12"
+      strokeLinecap="round"
+      opacity="0.25"
+    />
     <g transform="translate(500 640) scale(7.2) translate(-114 -74)">
       <path
         fill={mark}

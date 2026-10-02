@@ -32,8 +32,8 @@ export const Hero = () => (
         <span className="block text-pepper text-[clamp(62px,9vw,124px)]">for less.</span>
       </h1>
       <p className="mt-7 max-w-[440px] text-base lg:text-lg leading-relaxed font-medium text-fufu/90">
-        Restaurants, bakeries, hotels and supermarkets list today&apos;s unsold food. You order at
-        a discount, pay with mobile money and pick it up before it goes to waste.
+        Restaurants, bakeries, hotels and supermarkets list today&apos;s unsold food. You order at a
+        discount, pay with mobile money and pick it up before it goes to waste.
       </p>
       <div className="mt-auto pt-8 flex flex-col sm:flex-row gap-3">
         <Button to="/shop" variant="yellow" size="lg">
@@ -53,7 +53,12 @@ export const Hero = () => (
         className="absolute left-[18%] top-[8%] w-[78%]"
       />
       <svg viewBox="0 0 360 360" className="absolute inset-0 w-full h-full" aria-hidden="true">
-        <path d="M22 360C16 250 50 150 132 90" stroke="var(--color-moringa)" strokeWidth="1.5" fill="none" />
+        <path
+          d="M22 360C16 250 50 150 132 90"
+          stroke="var(--color-moringa)"
+          strokeWidth="1.5"
+          fill="none"
+        />
       </svg>
     </Tile>
     <Tile className="bg-yellow aspect-square lg:aspect-auto lg:min-h-[360px]">
@@ -104,13 +109,22 @@ export const StatBand = () => (
 
 const STEPS = {
   consumer: [
-    ['Browse meals', 'Find surplus meals from restaurants, markets and bakeries near you, at a discount.'],
-    ['Place your order', 'Choose your meals and a pickup time, then pay securely with mobile money.'],
+    [
+      'Browse meals',
+      'Find surplus meals from restaurants, markets and bakeries near you, at a discount.',
+    ],
+    [
+      'Place your order',
+      'Choose your meals and a pickup time, then pay securely with mobile money.',
+    ],
     ['Pick it up', 'Head to the vendor at your time, show your order and collect your food.'],
     ['Enjoy and rate', 'Eat well for less, rate the meal and see the waste you helped prevent.'],
   ],
   vendor: [
-    ['List your surplus', 'Post surplus food with photos, a price and pickup times. You set the quantity.'],
+    [
+      'List your surplus',
+      'Post surplus food with photos, a price and pickup times. You set the quantity.',
+    ],
     ['Get matched', 'Nearby customers and NGOs find your listing and order instantly.'],
     ['Hand it over', 'Prepare the order and hand it over at the agreed time. No delivery needed.'],
     ['Earn and track', 'Get paid through mobile money and track the food you kept out of the bin.'],
@@ -127,14 +141,22 @@ const STEP_TONES = [
 export const HowItWorks = () => {
   const [who, setWho] = useState('consumer');
   return (
-    <section id="howItWorks" aria-labelledby="how-title" className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-5`}>
+    <section
+      id="howItWorks"
+      aria-labelledby="how-title"
+      className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-5`}
+    >
       <Tile className="sm:col-span-2 lg:col-span-1 bg-yellow text-moringa px-5 sm:px-10 lg:px-8 py-8 flex flex-col justify-between gap-8 lg:min-h-[480px]">
         <Display id="how-title" className="text-[76px] sm:text-[92px] lg:text-[80px]">
           How it
           <br />
           works
         </Display>
-        <div role="tablist" aria-label="Show steps for" className="grid grid-cols-2 border-2 border-moringa">
+        <div
+          role="tablist"
+          aria-label="Show steps for"
+          className="grid grid-cols-2 border-2 border-moringa"
+        >
           {[
             ['consumer', 'Customers'],
             ['vendor', 'Vendors'],
@@ -181,16 +203,44 @@ export const HowItWorks = () => {
 /* --------------------------------------------------------------- VENDORS */
 
 const BENEFITS = [
-  ['Turn unsold food into revenue', 'Surplus that would be thrown away becomes a new, low-effort sales channel.', 'bg-fufu text-moringa'],
-  ['You stay in control', 'You choose what to list, the discount and how much. Nothing is fixed by ChopNow.', 'bg-lime text-moringa'],
-  ['Mobile money, built in', 'Orders are paid upfront in the app. No extra POS work on your end.', 'bg-peach text-clay'],
-  ['Low barrier to join', 'No new hardware or costly setup. One simple vendor dashboard.', 'bg-yellow text-moringa'],
-  ['New customers, not just leftovers', 'Price-conscious, sustainability-minded people nearby find your business.', 'bg-mint text-moringa'],
-  ['No delivery to manage', 'Customers collect at a time you agree. You keep the revenue.', 'bg-fufu text-moringa'],
+  [
+    'Turn unsold food into revenue',
+    'Surplus that would be thrown away becomes a new, low-effort sales channel.',
+    'bg-fufu text-moringa',
+  ],
+  [
+    'You stay in control',
+    'You choose what to list, the discount and how much. Nothing is fixed by ChopNow.',
+    'bg-lime text-moringa',
+  ],
+  [
+    'Mobile money, built in',
+    'Orders are paid upfront in the app. No extra POS work on your end.',
+    'bg-peach text-clay',
+  ],
+  [
+    'Low barrier to join',
+    'No new hardware or costly setup. One simple vendor dashboard.',
+    'bg-yellow text-moringa',
+  ],
+  [
+    'New customers, not just leftovers',
+    'Price-conscious, sustainability-minded people nearby find your business.',
+    'bg-mint text-moringa',
+  ],
+  [
+    'No delivery to manage',
+    'Customers collect at a time you agree. You keep the revenue.',
+    'bg-fufu text-moringa',
+  ],
 ];
 
 export const Vendors = () => (
-  <section id="vendors" aria-labelledby="vendors-title" className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-4`}>
+  <section
+    id="vendors"
+    aria-labelledby="vendors-title"
+    className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-4`}
+  >
     <Tile className="sm:col-span-2 lg:col-span-1 lg:row-span-2 bg-moringa text-fufu px-5 sm:px-10 lg:px-8 py-8 flex flex-col min-h-[440px]">
       <Fork
         fill="var(--color-moringa-2)"
@@ -199,7 +249,10 @@ export const Vendors = () => (
         className="absolute right-[-12%] lg:left-[16%] top-[30%] lg:top-[34%] w-[62%] lg:w-[94%]"
       />
       <Eyebrow className="relative">For vendors</Eyebrow>
-      <Display id="vendors-title" className="relative mt-6 text-yellow text-[76px] sm:text-[92px] lg:text-[80px]">
+      <Display
+        id="vendors-title"
+        className="relative mt-6 text-yellow text-[76px] sm:text-[92px] lg:text-[80px]"
+      >
         Your
         <br />
         surplus
@@ -212,11 +265,16 @@ export const Vendors = () => (
         <Button to="/signup" variant="yellow" size="lg">
           Become a founding vendor
         </Button>
-        <p className="text-sm text-fufu/80">First cohort in Kigali, featured as founding partners.</p>
+        <p className="text-sm text-fufu/80">
+          First cohort in Kigali, featured as founding partners.
+        </p>
       </div>
     </Tile>
     {BENEFITS.map(([title, text, tone], i) => (
-      <Tile key={title} className={`${tone} px-5 sm:px-8 py-8 flex flex-col gap-5 min-h-[240px] lg:min-h-[360px]`}>
+      <Tile
+        key={title}
+        className={`${tone} px-5 sm:px-8 py-8 flex flex-col gap-5 min-h-[240px] lg:min-h-[360px]`}
+      >
         <Eyebrow>0{i + 1}</Eyebrow>
         <h3 className="text-[24px] lg:text-[28px] leading-[1.12] font-bold">{title}</h3>
         <p className="mt-auto text-base leading-relaxed font-medium opacity-90">{text}</p>
@@ -233,26 +291,49 @@ const MILESTONES = [
     title: 'Kigali pilot with 25 food heroes',
     text: 'Onboard supermarkets, restaurants, bakers and farmers, and run the first surplus drops with real-time rescue insights.',
     tone: 'bg-lime text-moringa',
-    art: <Pin fill="var(--color-moringa)" hole="var(--color-lime)" className="absolute right-[-6%] bottom-[-34%] w-[30%] sm:w-[22%] lg:w-[36%] lg:bottom-[-30%]" />,
+    art: (
+      <Pin
+        fill="var(--color-moringa)"
+        hole="var(--color-lime)"
+        className="absolute right-[-6%] bottom-[-34%] w-[30%] sm:w-[22%] lg:w-[36%] lg:bottom-[-30%]"
+      />
+    ),
   },
   {
     when: 'Mid 2027',
     title: 'Nairobi and Accra waitlists',
     text: 'Turn Kigali learnings into regional playbooks, work with pan-African couriers and grow city waitlists ahead of launch.',
     tone: 'bg-peach text-clay',
-    art: <Coin fill="var(--color-clay)" ring="var(--color-peach)" className="absolute right-[-12%] bottom-[-22%] w-[40%] sm:w-[30%] lg:w-[50%]" />,
+    art: (
+      <Coin
+        fill="var(--color-clay)"
+        ring="var(--color-peach)"
+        className="absolute right-[-12%] bottom-[-22%] w-[40%] sm:w-[30%] lg:w-[50%]"
+      />
+    ),
   },
   {
     when: 'Late 2027',
     title: '150k meals rescued in 4 cities',
     text: 'Community pickup hubs and redistribution partners get rescued meals to schools, shelters and families.',
     tone: 'bg-yellow text-moringa',
-    art: <Bag fill="var(--color-moringa)" detail="var(--color-yellow)" mark="var(--color-yellow)" className="absolute right-[-8%] bottom-[-18%] w-[38%] sm:w-[28%] lg:w-[48%]" />,
+    art: (
+      <Bag
+        fill="var(--color-moringa)"
+        detail="var(--color-yellow)"
+        mark="var(--color-yellow)"
+        className="absolute right-[-8%] bottom-[-18%] w-[38%] sm:w-[28%] lg:w-[48%]"
+      />
+    ),
   },
 ];
 
 export const Milestones = () => (
-  <section id="Milestones" aria-labelledby="milestones-title" className={`${WRAP} grid lg:grid-cols-4`}>
+  <section
+    id="Milestones"
+    aria-labelledby="milestones-title"
+    className={`${WRAP} grid lg:grid-cols-4`}
+  >
     <Tile className="bg-fufu text-moringa px-5 sm:px-10 lg:px-8 py-8 flex flex-col justify-between gap-6 lg:min-h-[440px] lg:border-r lg:border-hairline">
       <Eyebrow>The road ahead</Eyebrow>
       <Display id="milestones-title" className="text-[76px] sm:text-[92px] lg:text-[96px]">
@@ -260,13 +341,24 @@ export const Milestones = () => (
         <br />
         stones
       </Display>
-      <p className="text-sm font-medium text-moringa-muted">Targets, not results. We will update these as we hit them.</p>
+      <p className="text-sm font-medium text-moringa-muted">
+        Targets, not results. We will update these as we hit them.
+      </p>
     </Tile>
     {MILESTONES.map((m) => (
-      <Tile key={m.title} className={`${m.tone} px-5 sm:px-8 pt-8 pb-36 lg:pb-8 flex flex-col gap-5 min-h-[320px] lg:min-h-[440px]`}>
-        <Eyebrow className="inline-flex self-start border-2 border-current px-3 py-1.5">{m.when}</Eyebrow>
-        <h3 className="text-[26px] lg:text-[30px] leading-[1.1] font-bold max-w-[14ch]">{m.title}</h3>
-        <p className="relative z-10 text-base leading-relaxed font-medium max-w-[34ch] opacity-90">{m.text}</p>
+      <Tile
+        key={m.title}
+        className={`${m.tone} px-5 sm:px-8 pt-8 pb-36 lg:pb-8 flex flex-col gap-5 min-h-[320px] lg:min-h-[440px]`}
+      >
+        <Eyebrow className="inline-flex self-start border-2 border-current px-3 py-1.5">
+          {m.when}
+        </Eyebrow>
+        <h3 className="text-[26px] lg:text-[30px] leading-[1.1] font-bold max-w-[14ch]">
+          {m.title}
+        </h3>
+        <p className="relative z-10 text-base leading-relaxed font-medium max-w-[34ch] opacity-90">
+          {m.text}
+        </p>
         {m.art}
       </Tile>
     ))}
@@ -284,7 +376,11 @@ const VALUES = [
 ];
 
 export const AboutUs = () => (
-  <section id="AboutUs" aria-labelledby="about-title" className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-4`}>
+  <section
+    id="AboutUs"
+    aria-labelledby="about-title"
+    className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-4`}
+  >
     <Tile className="sm:col-span-2 bg-pepper text-fufu px-5 sm:px-10 lg:px-14 py-8 flex flex-col justify-between gap-10 min-h-[420px] lg:min-h-[540px]">
       <Eyebrow className="text-char">Our vision</Eyebrow>
       <Display id="about-title" className="text-[56px] sm:text-[80px] lg:text-[92px]">
@@ -321,7 +417,10 @@ const MockCard = ({ tone, label, meta, Art }) => (
 );
 
 export const Community = () => (
-  <section aria-label="Ambassadors and the app" className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-4`}>
+  <section
+    aria-label="Ambassadors and the app"
+    className={`${WRAP} grid sm:grid-cols-2 lg:grid-cols-4`}
+  >
     <Tile className="sm:col-span-2 bg-pepper text-fufu px-5 sm:px-10 lg:px-14 py-8 flex flex-col min-h-[460px] lg:min-h-[540px]">
       <Pin
         fill="var(--color-clay)"
@@ -359,8 +458,12 @@ export const Community = () => (
           Open the web app <ArrowRight size={18} aria-hidden="true" />
         </Button>
         <div className="grid grid-cols-2 gap-2">
-          <span className="eyebrow h-11 border-2 border-moringa flex items-center justify-center">App Store soon</span>
-          <span className="eyebrow h-11 border-2 border-moringa flex items-center justify-center">Google Play soon</span>
+          <span className="eyebrow h-11 border-2 border-moringa flex items-center justify-center">
+            App Store soon
+          </span>
+          <span className="eyebrow h-11 border-2 border-moringa flex items-center justify-center">
+            Google Play soon
+          </span>
         </div>
       </div>
     </Tile>
@@ -381,15 +484,29 @@ export const Community = () => (
             tone="bg-yellow"
             label="Lunch plates"
             meta="Restaurant · pickup at 3pm"
-            Art={<Spoon fill="var(--color-moringa)" rotate={-30} className="absolute left-[24%] top-[-10%] w-[60%]" />}
+            Art={
+              <Spoon
+                fill="var(--color-moringa)"
+                rotate={-30}
+                className="absolute left-[24%] top-[-10%] w-[60%]"
+              />
+            }
           />
           <MockCard
             tone="bg-lime"
             label="Veg box"
             meta="Grocer · pickup at 5pm"
-            Art={<Leaf fill="var(--color-moringa)" detail="var(--color-lime)" className="absolute left-[20%] top-[20%] w-[90%]" />}
+            Art={
+              <Leaf
+                fill="var(--color-moringa)"
+                detail="var(--color-lime)"
+                className="absolute left-[20%] top-[20%] w-[90%]"
+              />
+            }
           />
-          <div className="mt-auto bg-moringa text-yellow text-center py-3 text-[13px] font-bold">Reserve</div>
+          <div className="mt-auto bg-moringa text-yellow text-center py-3 text-[13px] font-bold">
+            Reserve
+          </div>
         </div>
       </div>
     </Tile>
@@ -422,10 +539,12 @@ export const ClosingCta = () => (
       to="/shop"
       className="group relative overflow-hidden bg-yellow text-moringa px-5 sm:px-10 lg:px-8 py-8 flex flex-col justify-between min-h-[220px] lg:min-h-[360px]"
     >
-      <Fork rotate={24} className="absolute right-[-8%] bottom-[-44%] w-[26%] sm:w-[20%] lg:w-[40%] transition-transform duration-300 group-hover:-translate-y-3" />
+      <Fork
+        rotate={24}
+        className="absolute right-[-8%] bottom-[-44%] w-[26%] sm:w-[20%] lg:w-[40%] transition-transform duration-300 group-hover:-translate-y-3"
+      />
       <Eyebrow>Visit</Eyebrow>
       <span className="display relative text-[52px] lg:text-[60px]">chopnow.app</span>
     </Link>
   </section>
 );
-

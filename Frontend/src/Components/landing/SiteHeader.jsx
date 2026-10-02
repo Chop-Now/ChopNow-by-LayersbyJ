@@ -68,7 +68,10 @@ const SiteHeader = () => {
       </div>
 
       {open && (
-        <div id="mobile-nav" className="lg:hidden fixed inset-x-0 top-16 bottom-0 bg-moringa z-50 flex flex-col">
+        <div
+          id="mobile-nav"
+          className="lg:hidden fixed inset-x-0 top-16 bottom-0 bg-moringa z-50 flex flex-col"
+        >
           <nav aria-label="Mobile" className="flex flex-col border-t border-moringa-2">
             {NAV.map((n) => (
               <a
@@ -82,7 +85,12 @@ const SiteHeader = () => {
             ))}
           </nav>
           <div className="mt-auto p-4 sm:p-8 grid grid-cols-2 gap-3">
-            <Button to="/login" variant="outline" className="text-fufu" onClick={() => setOpen(false)}>
+            <Button
+              to="/login"
+              variant="outline"
+              className="text-fufu"
+              onClick={() => setOpen(false)}
+            >
               Log in
             </Button>
             <Button to="/shop" variant="yellow" onClick={() => setOpen(false)}>

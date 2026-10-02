@@ -6,7 +6,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-
   /* ── Revamp (LayersbyJ): tile system ──
      Flat colour tiles, square corners, no soft shadows. Display type is
      Anton, UI is Geist, labels are Geist Mono, the wordmark is Poppins. */

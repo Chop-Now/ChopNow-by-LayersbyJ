@@ -67,7 +67,10 @@ const Footer = () => (
             <ul className="mt-4 flex flex-col gap-2.5">
               {col.links.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="text-[15px] text-fufu hover:text-yellow transition-colors">
+                  <Link
+                    to={l.to}
+                    className="text-[15px] text-fufu hover:text-yellow transition-colors"
+                  >
                     {l.label}
                   </Link>
                 </li>
@@ -97,9 +100,17 @@ const Footer = () => (
         <Eyebrow>Kigali, Rwanda</Eyebrow>
       </div>
 
-      <div className="relative mt-6 -mb-[0.2em] flex items-end gap-[2vw] select-none" aria-hidden="true">
-        <CMark fill="var(--color-yellow)" className="w-[11vw] max-w-[190px] mb-[2vw] xl:mb-7 shrink-0" />
-        <span className="wordmark text-yellow leading-[0.8] text-[clamp(52px,15.5vw,250px)]">ChopNow</span>
+      <div
+        className="relative mt-6 -mb-[0.2em] flex items-end gap-[2vw] select-none"
+        aria-hidden="true"
+      >
+        <CMark
+          fill="var(--color-yellow)"
+          className="w-[11vw] max-w-[190px] mb-[2vw] xl:mb-7 shrink-0"
+        />
+        <span className="wordmark text-yellow leading-[0.8] text-[clamp(52px,15.5vw,250px)]">
+          ChopNow
+        </span>
       </div>
     </div>
   </footer>
