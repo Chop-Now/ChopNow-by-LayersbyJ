@@ -142,13 +142,13 @@ const RiderRegistration = () => {
     const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
 
     return (
-      <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-4 transition-all animate-fadeIn">
+      <div className="mt-3 p-3 bg-fufu border border-hairline rounded-xl flex items-center justify-between gap-4 transition-all animate-fadeIn">
         <div className="flex items-center gap-3 min-w-0">
           {isImage ? (
             <img
               src={URL.createObjectURL(file)}
               alt={label}
-              className="w-10 h-10 object-cover rounded-lg border border-slate-200 shrink-0"
+              className="w-10 h-10 object-cover rounded-lg border border-hairline shrink-0"
             />
           ) : (
             <div className="w-10 h-10 bg-green-100 text-green-700 rounded-lg flex items-center justify-center shrink-0">
@@ -160,14 +160,14 @@ const RiderRegistration = () => {
             </div>
           )}
           <div className="min-w-0">
-            <p className="text-xs font-semibold text-slate-800 truncate">{file.name}</p>
-            <p className="text-[10px] text-slate-400 font-medium">{fileSizeMB} MB</p>
+            <p className="text-xs font-semibold text-moringa truncate">{file.name}</p>
+            <p className="text-[10px] text-moringa-muted/70 font-medium">{fileSizeMB} MB</p>
           </div>
         </div>
         <button
           type="button"
           onClick={() => setFile(null)}
-          className="p-1 hover:bg-slate-200 rounded-lg text-slate-400 hover:text-slate-600 transition-colors"
+          className="p-1 hover:bg-mint rounded-lg text-moringa-muted/70 hover:text-slate-600 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
@@ -180,13 +180,13 @@ const RiderRegistration = () => {
   // Status screens mapping
   if (user?.riderStatus === 'approved') {
     return (
-      <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 mt-16 flex items-center justify-center">
-        <div className="max-w-md w-full bg-white rounded-2xl border border-slate-200 shadow-xl p-8 text-center">
+      <div className="min-h-screen bg-fufu py-12 px-4 sm:px-6 lg:px-8 mt-16 flex items-center justify-center">
+        <div className="max-w-md w-full bg-white rounded-2xl border border-hairline shadow-xl p-8 text-center">
           <div className="mx-auto w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
             <CheckCircle2 className="w-10 h-10" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Application Approved!</h2>
-          <p className="text-sm text-slate-500 mb-6">
+          <h2 className="text-2xl font-bold text-moringa mb-2">Application Approved!</h2>
+          <p className="text-sm text-moringa-muted mb-6">
             Your rider application has been approved by the admin. You are now ready to start
             delivering!
           </p>
@@ -203,8 +203,8 @@ const RiderRegistration = () => {
 
   if (user?.riderStatus === 'pending') {
     return (
-      <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 mt-16 flex items-center justify-center">
-        <div className="max-w-lg w-full bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
+      <div className="min-h-screen bg-fufu py-12 px-4 sm:px-6 lg:px-8 mt-16 flex items-center justify-center">
+        <div className="max-w-lg w-full bg-white rounded-2xl border border-hairline shadow-xl overflow-hidden">
           <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-8 text-white text-center">
             <div className="mx-auto w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
               <Clock className="w-6 h-6 animate-pulse" />
@@ -215,7 +215,7 @@ const RiderRegistration = () => {
             </p>
           </div>
           <div className="p-8 text-center space-y-6">
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-moringa-muted leading-relaxed">
               Thank you for applying to become a ChopNow Rider! Our admin team is currently
               reviewing your documents and vehicle details.
             </p>
@@ -237,14 +237,14 @@ const RiderRegistration = () => {
                   toast.error('Failed to update status.', { id: toastId });
                 }
               }}
-              className="w-full py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer border border-slate-200"
+              className="w-full py-2.5 px-4 bg-fufu-dim hover:bg-mint text-moringa rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer border border-hairline"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               Refresh Status
             </button>
             <button
               onClick={() => navigate('/')}
-              className="text-xs text-slate-400 hover:text-slate-600 underline font-medium block mx-auto"
+              className="text-xs text-moringa-muted/70 hover:text-slate-600 underline font-medium block mx-auto"
             >
               Back to Home
             </button>
@@ -255,32 +255,32 @@ const RiderRegistration = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8 mt-16">
+    <div className="min-h-screen bg-fufu py-12 px-4 sm:px-6 lg:px-8 mt-16">
       <div className="max-w-3xl mx-auto">
         {/* Breadcrumbs */}
-        <div className="flex items-center justify-center space-x-2 text-xs text-slate-400 mb-6">
+        <div className="flex items-center justify-center space-x-2 text-xs text-moringa-muted/70 mb-6">
           <span className="text-green-600 font-medium cursor-pointer" onClick={() => navigate('/')}>
             ChopNow Account
           </span>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-slate-800 font-medium">Delivery Partner Signup</span>
+          <span className="text-moringa font-medium">Delivery Partner Signup</span>
           <ChevronRight className="w-3.5 h-3.5" />
           <span>Verification</span>
         </div>
 
         {/* Header Section */}
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-3xl font-extrabold text-moringa tracking-tight">
             Become a ChopNow Rider
           </h1>
-          <p className="mt-2 text-sm text-slate-500 max-w-md mx-auto">
+          <p className="mt-2 text-sm text-moringa-muted max-w-md mx-auto">
             Earn on your own terms by delivering delicious, rescued food from local vendors to
             buyers.
           </p>
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
+        <div className="bg-white rounded-2xl border border-hairline shadow-xl overflow-hidden">
           {/* Upper Hero Banner Card */}
           <div className="bg-gradient-to-br from-green-700 via-green-800 to-emerald-950 p-8 text-white">
             <h2 className="text-xl font-bold mb-2">Flexible Work, Solid Payouts 💸</h2>
@@ -326,7 +326,7 @@ const RiderRegistration = () => {
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Vehicle Type Selection */}
               <div>
-                <label className="block text-sm font-bold text-slate-800 mb-3">
+                <label className="block text-sm font-bold text-moringa mb-3">
                   How will you deliver?
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -341,21 +341,23 @@ const RiderRegistration = () => {
                         className={`flex items-start gap-4 p-4 rounded-xl border text-left transition-all ${
                           isSelected
                             ? 'bg-green-50/50 border-green-600 ring-2 ring-green-600/20'
-                            : 'bg-white border-slate-200 hover:border-slate-300'
+                            : 'bg-white border-hairline hover:border-slate-300'
                         }`}
                       >
                         <div
-                          className={`p-2.5 rounded-lg ${isSelected ? 'bg-green-100 text-green-700' : 'bg-slate-50 text-slate-500'}`}
+                          className={`p-2.5 rounded-lg ${isSelected ? 'bg-green-100 text-green-700' : 'bg-fufu text-moringa-muted'}`}
                         >
                           <IconComponent className="w-5 h-5" />
                         </div>
                         <div>
                           <p
-                            className={`text-sm font-bold ${isSelected ? 'text-green-900' : 'text-slate-800'}`}
+                            className={`text-sm font-bold ${isSelected ? 'text-green-900' : 'text-moringa'}`}
                           >
                             {vehicle.label}
                           </p>
-                          <p className="text-[11px] text-slate-400 mt-0.5">{vehicle.description}</p>
+                          <p className="text-[11px] text-moringa-muted/70 mt-0.5">
+                            {vehicle.description}
+                          </p>
                         </div>
                       </button>
                     );
@@ -366,7 +368,7 @@ const RiderRegistration = () => {
               {/* Form Fields */}
               <div className="space-y-6">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-2">
+                  <label className="block text-xs font-bold text-moringa mb-2">
                     Mobile Phone Number
                   </label>
                   <PhoneInput
@@ -380,14 +382,14 @@ const RiderRegistration = () => {
                       }
                     }}
                     containerClass="w-full"
-                    inputClass="!w-full !h-11 !rounded-xl !border-slate-200 !text-sm focus:!ring-2 focus:!ring-green-500/20 focus:!border-green-600"
-                    buttonClass="!bg-slate-50 !border-slate-200 !rounded-l-xl"
+                    inputClass="!w-full !h-11 !rounded-xl !border-hairline !text-sm focus:!ring-2 focus:!ring-green-500/20 focus:!border-green-600"
+                    buttonClass="!bg-fufu !border-hairline !rounded-l-xl"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2">
+                    <label className="block text-xs font-bold text-moringa mb-2">
                       National ID or Passport No.
                     </label>
                     <input
@@ -398,13 +400,13 @@ const RiderRegistration = () => {
                         setNationalId(e.target.value);
                         setErrors((prev) => ({ ...prev, nationalId: null }));
                       }}
-                      className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-green-500/20 focus:border-green-600 outline-none"
+                      className="w-full px-3 py-2.5 text-sm bg-white border border-hairline rounded-xl focus:ring-2 focus:ring-green-500/20 focus:border-green-600 outline-none"
                     />
                   </div>
 
                   {showPlateField && (
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-2">
+                      <label className="block text-xs font-bold text-moringa mb-2">
                         Vehicle License Plate
                       </label>
                       <input
@@ -415,7 +417,7 @@ const RiderRegistration = () => {
                           setLicensePlate(e.target.value);
                           setErrors((prev) => ({ ...prev, licensePlate: null }));
                         }}
-                        className="w-full px-3 py-2.5 text-sm bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-green-500/20 focus:border-green-600 outline-none"
+                        className="w-full px-3 py-2.5 text-sm bg-white border border-hairline rounded-xl focus:ring-2 focus:ring-green-500/20 focus:border-green-600 outline-none"
                       />
                     </div>
                   )}
@@ -425,11 +427,11 @@ const RiderRegistration = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* National ID Photo */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2">
+                    <label className="block text-xs font-bold text-moringa mb-2">
                       National ID or Passport Copy
                     </label>
                     <div
-                      className={`border-2 border-dashed ${errors.nationalIdPhoto ? 'border-rose-300 bg-rose-50/20' : 'border-slate-200 bg-slate-50/50'} rounded-xl p-6 text-center hover:border-green-500 hover:bg-green-50/10 transition-all relative overflow-hidden group`}
+                      className={`border-2 border-dashed ${errors.nationalIdPhoto ? 'border-rose-300 bg-rose-50/20' : 'border-hairline bg-slate-50/50'} rounded-xl p-6 text-center hover:border-green-500 hover:bg-green-50/10 transition-all relative overflow-hidden group`}
                     >
                       <input
                         type="file"
@@ -438,13 +440,13 @@ const RiderRegistration = () => {
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                       />
                       <div className="flex flex-col items-center justify-center gap-2">
-                        <div className="p-3 bg-white border border-slate-100 rounded-xl text-slate-400 group-hover:text-green-600 transition-colors shadow-sm">
+                        <div className="p-3 bg-white border border-hairline rounded-xl text-moringa-muted/70 group-hover:text-green-600 transition-colors shadow-sm">
                           <Upload className="w-5 h-5" />
                         </div>
-                        <p className="text-xs font-semibold text-slate-700">
+                        <p className="text-xs font-semibold text-moringa">
                           Click to upload document
                         </p>
-                        <p className="text-[10px] text-slate-400 font-medium">
+                        <p className="text-[10px] text-moringa-muted/70 font-medium">
                           PNG, JPG, PDF, DOCX or TXT (Max 5MB)
                         </p>
                       </div>
@@ -454,11 +456,11 @@ const RiderRegistration = () => {
 
                   {/* Vehicle Photo */}
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2">
+                    <label className="block text-xs font-bold text-moringa mb-2">
                       Vehicle Photo or Ownership Proof
                     </label>
                     <div
-                      className={`border-2 border-dashed ${errors.vehiclePhoto ? 'border-rose-300 bg-rose-50/20' : 'border-slate-200 bg-slate-50/50'} rounded-xl p-6 text-center hover:border-green-500 hover:bg-green-50/10 transition-all relative overflow-hidden group`}
+                      className={`border-2 border-dashed ${errors.vehiclePhoto ? 'border-rose-300 bg-rose-50/20' : 'border-hairline bg-slate-50/50'} rounded-xl p-6 text-center hover:border-green-500 hover:bg-green-50/10 transition-all relative overflow-hidden group`}
                     >
                       <input
                         type="file"
@@ -467,13 +469,13 @@ const RiderRegistration = () => {
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10"
                       />
                       <div className="flex flex-col items-center justify-center gap-2">
-                        <div className="p-3 bg-white border border-slate-100 rounded-xl text-slate-400 group-hover:text-green-600 transition-colors shadow-sm">
+                        <div className="p-3 bg-white border border-hairline rounded-xl text-moringa-muted/70 group-hover:text-green-600 transition-colors shadow-sm">
                           <Upload className="w-5 h-5" />
                         </div>
-                        <p className="text-xs font-semibold text-slate-700">
+                        <p className="text-xs font-semibold text-moringa">
                           Click to upload document
                         </p>
-                        <p className="text-[10px] text-slate-400 font-medium">
+                        <p className="text-[10px] text-moringa-muted/70 font-medium">
                           PNG, JPG, PDF, DOCX or TXT (Max 5MB)
                         </p>
                       </div>
@@ -491,14 +493,14 @@ const RiderRegistration = () => {
                     type="checkbox"
                     checked={agreedToTerms}
                     onChange={(e) => setAgreedToTerms(e.target.checked)}
-                    className="h-4 w-4 text-green-600 border-slate-300 rounded focus:ring-green-500"
+                    className="h-4 w-4 text-green-600 border-moringa/25 rounded focus:ring-green-500"
                   />
                 </div>
                 <div className="text-xs">
-                  <label htmlFor="terms" className="font-medium text-slate-700">
+                  <label htmlFor="terms" className="font-medium text-moringa">
                     I agree to the ChopNow Rider Terms of Service and Code of Conduct.
                   </label>
-                  <p className="text-slate-400 mt-1 leading-relaxed">
+                  <p className="text-moringa-muted/70 mt-1 leading-relaxed">
                     I certify that I am legally authorized to work, have any necessary licenses, and
                     will comply with food safety standards.
                   </p>
@@ -521,7 +523,7 @@ const RiderRegistration = () => {
                     'Submit Application'
                   )}
                 </button>
-                <p className="text-[10px] text-center text-slate-400 mt-3">
+                <p className="text-[10px] text-center text-moringa-muted/70 mt-3">
                   Applications are manually reviewed by admins. We will notify you once review is
                   complete.
                 </p>

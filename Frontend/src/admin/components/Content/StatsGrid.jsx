@@ -202,15 +202,15 @@ const StatsGrid = () => {
         {[1, 2, 3, 4].map((_, index) => (
           <div
             key={index}
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 animate-pulse"
+            className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 animate-pulse"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <div className="h-3 w-20 bg-slate-200 dark:bg-slate-700 rounded mb-2"></div>
-                <div className="h-6 w-24 bg-slate-200 dark:bg-slate-700 rounded mb-2"></div>
-                <div className="h-3 w-16 bg-slate-200 dark:bg-slate-700 rounded"></div>
+                <div className="h-3 w-20 bg-hairline dark:bg-slate-700 rounded mb-2"></div>
+                <div className="h-6 w-24 bg-hairline dark:bg-slate-700 rounded mb-2"></div>
+                <div className="h-3 w-16 bg-hairline dark:bg-slate-700 rounded"></div>
               </div>
-              <div className="w-11 h-11 bg-slate-200 dark:bg-slate-700 rounded-xl"></div>
+              <div className="w-11 h-11 bg-hairline dark:bg-slate-700 rounded-xl"></div>
             </div>
           </div>
         ))}
@@ -303,21 +303,19 @@ const StatsGrid = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {placeholderStats.map((stat, index) => (
           <div
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50"
+            className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50"
             key={index}
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                   {stat.title}
                 </p>
-                <p className="text-xl font-bold text-slate-800 dark:text-white mb-2">
-                  {stat.value}
-                </p>
+                <p className="text-xl font-bold text-moringa dark:text-white mb-2">{stat.value}</p>
                 <div className="flex items-center space-x-1.5">
                   <ArrowUpRight className="w-3 h-3 text-emerald-500" />
                   <span className="text-xs font-semibold text-emerald-500">{stat.change}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                  <span className="text-xs text-moringa-muted dark:text-slate-400 whitespace-nowrap">
                     vs Last Month
                   </span>
                 </div>
@@ -337,20 +335,18 @@ const StatsGrid = () => {
       {displayStats.map((stat, index) => {
         return (
           <div
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group"
+            className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group"
             key={index}
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                   {stat.title}
                 </p>
-                <p className="text-xl font-bold text-slate-800 dark:text-white mb-2">
-                  {stat.value}
-                </p>
+                <p className="text-xl font-bold text-moringa dark:text-white mb-2">{stat.value}</p>
                 <div className="flex items-center space-x-1.5">
                   {stat.change === null ? (
-                    <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                    <span className="text-xs text-moringa-muted/70 dark:text-slate-500 italic">
                       No historical data yet
                     </span>
                   ) : (
@@ -365,7 +361,7 @@ const StatsGrid = () => {
                       >
                         {stat.change}
                       </span>
-                      <span className="text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                      <span className="text-xs text-moringa-muted dark:text-slate-400 whitespace-nowrap">
                         vs Last Month
                       </span>
                     </>

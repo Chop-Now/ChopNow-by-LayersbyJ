@@ -119,7 +119,7 @@ const AdminDashboard = () => {
   // Show access denied message if user doesn't have admin role
   if (accessDenied) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900">
         <div className="text-center max-w-md p-8">
           <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg
@@ -136,10 +136,8 @@ const AdminDashboard = () => {
               />
             </svg>
           </div>
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2">
-            Access Denied
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 mb-4">
+          <h2 className="text-xl font-bold text-moringa dark:text-slate-100 mb-2">Access Denied</h2>
+          <p className="text-moringa-muted dark:text-slate-400 mb-4">
             You don't have admin privileges to access this page.
             {settings.maintenanceMode && ' The platform is currently in maintenance mode.'}
           </p>
@@ -157,10 +155,10 @@ const AdminDashboard = () => {
   // Show loading while checking auth
   if (isLoading || !authChecked || !isAdminRole) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-primary border-solid border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading admin dashboard...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading admin dashboard...</p>
         </div>
       </div>
     );

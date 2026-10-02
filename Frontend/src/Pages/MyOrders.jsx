@@ -472,7 +472,7 @@ const MyOrders = () => {
         <div className="mt-10 pb-16 px-6 md:px-16 lg:px-24 xl:px-32">
           <div className="flex flex-col items-start mb-8 mt-12">
             <h2 className="text-2xl font-medium">Order History</h2>
-            <p className="text-gray-600">
+            <p className="text-moringa-muted">
               Review your past and current orders. Thank you for helping reduce food waste!
             </p>
           </div>
@@ -480,7 +480,7 @@ const MyOrders = () => {
           {loading ? (
             <div className="flex flex-col items-center justify-center py-16">
               <Loader2 className="w-8 h-8 animate-spin text-green-600 mb-4" />
-              <p className="text-gray-600">Loading your orders...</p>
+              <p className="text-moringa-muted">Loading your orders...</p>
             </div>
           ) : (
             <>
@@ -500,7 +500,7 @@ const MyOrders = () => {
                     className={`flex-1 py-3 px-6 rounded-md text-sm font-medium z-10 transition-colors duration-300 border ${
                       selectedDeliveryType === 'Delivery'
                         ? 'text-white border-green-600'
-                        : 'text-gray-700 border-gray-300 bg-white'
+                        : 'text-moringa border-moringa/25 bg-white'
                     }`}
                   >
                     Delivery
@@ -510,7 +510,7 @@ const MyOrders = () => {
                     className={`flex-1 py-3 px-6 rounded-md text-sm font-medium z-10 transition-colors duration-300 border ${
                       selectedDeliveryType === 'Pickup'
                         ? 'text-white border-green-600'
-                        : 'text-gray-700 border-gray-300 bg-white'
+                        : 'text-moringa border-moringa/25 bg-white'
                     }`}
                   >
                     Pickup
@@ -520,7 +520,7 @@ const MyOrders = () => {
 
               {/* Mobile Status Filter Tabs */}
               <div className="md:hidden mb-6">
-                <div className="bg-gray-100 rounded-full p-1 flex relative">
+                <div className="bg-fufu-dim rounded-full p-1 flex relative">
                   {/* Sliding background */}
                   <div
                     className={`absolute top-1 bottom-1 w-1/3 bg-green-600 rounded-full transition-transform duration-300 ease-in-out ${
@@ -534,7 +534,7 @@ const MyOrders = () => {
                   <button
                     onClick={() => handleMobileStatusChange('processing')}
                     className={`flex-1 py-2 px-4 rounded-full text-sm font-medium z-10 transition-colors duration-300 ${
-                      mobileStatusFilter === 'processing' ? 'text-white' : 'text-gray-700'
+                      mobileStatusFilter === 'processing' ? 'text-white' : 'text-moringa'
                     }`}
                   >
                     Processing
@@ -542,7 +542,7 @@ const MyOrders = () => {
                   <button
                     onClick={() => handleMobileStatusChange('completed')}
                     className={`flex-1 py-2 px-4 rounded-full text-sm font-medium z-10 transition-colors duration-300 ${
-                      mobileStatusFilter === 'completed' ? 'text-white' : 'text-gray-700'
+                      mobileStatusFilter === 'completed' ? 'text-white' : 'text-moringa'
                     }`}
                   >
                     Completed
@@ -550,7 +550,7 @@ const MyOrders = () => {
                   <button
                     onClick={() => handleMobileStatusChange('failed')}
                     className={`flex-1 py-2 px-4 rounded-full text-sm font-medium z-10 transition-colors duration-300 ${
-                      mobileStatusFilter === 'failed' ? 'text-white' : 'text-gray-700'
+                      mobileStatusFilter === 'failed' ? 'text-white' : 'text-moringa'
                     }`}
                   >
                     Failed
@@ -559,17 +559,17 @@ const MyOrders = () => {
               </div>
 
               {/* Desktop Filters */}
-              <div className="hidden md:block bg-white border border-gray-200 rounded-lg p-6 mb-8 shadow-sm">
+              <div className="hidden md:block bg-white border border-hairline rounded-lg p-6 mb-8 shadow-sm">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
                   {/* Vendor Filter */}
                   <div className="flex flex-col">
                     <label className="text-xs font-medium mb-1.5">Search by Vendor</label>
                     <div className="relative">
-                      <Utensils className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                      <Utensils className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
                       <select
                         value={selectedVendor}
                         onChange={(e) => setSelectedVendor(e.target.value)}
-                        className="border border-gray-300 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                       >
                         {vendors.map((vendor, index) => (
                           <option key={index} value={vendor}>
@@ -584,11 +584,11 @@ const MyOrders = () => {
                   <div className="flex flex-col">
                     <label className="text-xs font-medium mb-1.5">Status</label>
                     <div className="relative">
-                      <Truck className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                      <Truck className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
                       <select
                         value={selectedStatus}
                         onChange={(e) => setSelectedStatus(e.target.value)}
-                        className="border border-gray-300 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                       >
                         <option value="all">All Statuses</option>
                         <option value="processing">Processing</option>
@@ -603,12 +603,12 @@ const MyOrders = () => {
                   <div className="flex flex-col">
                     <label className="text-xs font-medium mb-1.5">Start Date</label>
                     <div className="relative">
-                      <Calendar className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                      <Calendar className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
                       <input
                         type="date"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
-                        className="border border-gray-300 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                       />
                     </div>
                   </div>
@@ -616,12 +616,12 @@ const MyOrders = () => {
                   <div className="flex flex-col">
                     <label className="text-xs font-medium mb-1.5">End Date</label>
                     <div className="relative">
-                      <Calendar className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                      <Calendar className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
                       <input
                         type="date"
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
-                        className="border border-gray-300 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                       />
                     </div>
                   </div>
@@ -647,7 +647,7 @@ const MyOrders = () => {
                     alt="No orders"
                     className="w-48 h-48 mb-6 object-contain"
                   />
-                  <p className="text-gray-600 max-w-md mb-6 px-4">{getEmptyStateMessage()}</p>
+                  <p className="text-moringa-muted max-w-md mb-6 px-4">{getEmptyStateMessage()}</p>
                   <button
                     onClick={() => navigate('/shop')}
                     className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-colors"
@@ -658,8 +658,8 @@ const MyOrders = () => {
               ) : (
                 <>
                   {/* Desktop Table Header */}
-                  <div className="hidden md:block border border-gray-200 rounded-t-lg p-3 mb-1 bg-white">
-                    <div className="grid grid-cols-6 gap-3 text-xs font-semibold text-gray-700">
+                  <div className="hidden md:block border border-hairline rounded-t-lg p-3 mb-1 bg-white">
+                    <div className="grid grid-cols-6 gap-3 text-xs font-semibold text-moringa">
                       <div>Order ID</div>
                       <div>Date</div>
                       <div>Vendor</div>
@@ -672,12 +672,12 @@ const MyOrders = () => {
                   {/* Desktop Table Rows */}
                   <div className="hidden md:block">
                     {currentOrders.map((order, index) => (
-                      <div key={index} className="border border-gray-200 border-t-0 p-3 bg-white">
+                      <div key={index} className="border border-hairline border-t-0 p-3 bg-white">
                         <div className="grid grid-cols-6 gap-3 items-center text-xs">
-                          <div className="font-semibold text-gray-900">{order._id}</div>
-                          <div className="text-gray-600">{formatDate(order.createdAt)}</div>
-                          <div className="text-gray-600">{order.vendor}</div>
-                          <div className="font-semibold text-gray-900">
+                          <div className="font-semibold text-moringa">{order._id}</div>
+                          <div className="text-moringa-muted">{formatDate(order.createdAt)}</div>
+                          <div className="text-moringa-muted">{order.vendor}</div>
+                          <div className="font-semibold text-moringa">
                             RWF {order.amount.toLocaleString()}
                           </div>
                           <div>
@@ -688,7 +688,7 @@ const MyOrders = () => {
                                   : order.status === 'Processing'
                                     ? 'bg-blue-100 text-blue-700'
                                     : order.status === 'Cancelled'
-                                      ? 'bg-gray-100 text-gray-700'
+                                      ? 'bg-fufu-dim text-moringa'
                                       : 'bg-red-100 text-red-700'
                               }`}
                             >
@@ -720,7 +720,7 @@ const MyOrders = () => {
                         <div
                           key={index}
                           onClick={() => handleViewDetails(order)}
-                          className="border border-gray-200 rounded-lg p-4 bg-white active:bg-gray-50 cursor-pointer"
+                          className="border border-hairline rounded-lg p-4 bg-white active:bg-gray-50 cursor-pointer"
                         >
                           <div className="flex items-center gap-3 mb-3">
                             <img
@@ -728,22 +728,22 @@ const MyOrders = () => {
                               alt={productName}
                               className="w-12 h-12 rounded-full object-cover shrink-0"
                             />
-                            <p className="text-sm font-medium text-gray-900 line-clamp-2">
+                            <p className="text-sm font-medium text-moringa line-clamp-2">
                               {productName}
                             </p>
                           </div>
                           <div className="flex justify-between items-start">
                             <div className="flex-1">
-                              <p className="text-sm font-semibold text-gray-900 mb-2">
-                                {order._id}
+                              <p className="text-sm font-semibold text-moringa mb-2">{order._id}</p>
+                              <p className="text-xs text-moringa-muted">
+                                {formatDate(order.createdAt)}
                               </p>
-                              <p className="text-xs text-gray-600">{formatDate(order.createdAt)}</p>
                             </div>
                             <div className="flex flex-col items-end">
-                              <p className="text-sm font-semibold text-gray-900 mb-2">
+                              <p className="text-sm font-semibold text-moringa mb-2">
                                 RWF {order.amount.toLocaleString()}
                               </p>
-                              <p className="text-xs text-gray-600">{order.order_type}</p>
+                              <p className="text-xs text-moringa-muted">{order.order_type}</p>
                             </div>
                           </div>
                         </div>
@@ -753,7 +753,7 @@ const MyOrders = () => {
 
                   {/* Pagination */}
                   <div className="flex justify-between items-center mt-8 flex-wrap gap-4">
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-moringa-muted">
                       Showing {indexOfFirstItem + 1} to{' '}
                       {Math.min(indexOfLastItem, filteredOrders.length)} of {filteredOrders.length}{' '}
                       results
@@ -764,8 +764,8 @@ const MyOrders = () => {
                         disabled={currentPage === 1}
                         className={`flex items-center gap-1 px-4 py-2 border rounded-md text-sm font-medium transition-colors ${
                           currentPage === 1
-                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                            : 'bg-white text-gray-700 hover:bg-gray-50'
+                            ? 'bg-fufu-dim text-moringa-muted/70 cursor-not-allowed'
+                            : 'bg-white text-moringa hover:bg-fufu'
                         }`}
                       >
                         <ChevronLeft className="w-4 h-4" />
@@ -776,8 +776,8 @@ const MyOrders = () => {
                         disabled={currentPage === totalPages}
                         className={`flex items-center gap-1 px-4 py-2 border rounded-md text-sm font-medium transition-colors ${
                           currentPage === totalPages
-                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                            : 'bg-white text-gray-700 hover:bg-gray-50'
+                            ? 'bg-fufu-dim text-moringa-muted/70 cursor-not-allowed'
+                            : 'bg-white text-moringa hover:bg-fufu'
                         }`}
                       >
                         Next
@@ -807,7 +807,7 @@ const MyOrders = () => {
                 </div>
                 <button
                   onClick={() => setSelectedOrder(null)}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-moringa-muted hover:text-gray-700"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -817,7 +817,7 @@ const MyOrders = () => {
                 {selectedOrder.rawStatus === 'pending_payment' &&
                   selectedOrder.rawPaymentMethod !== 'cash' && (
                     <div className="mb-6 flex items-center justify-between gap-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
-                      <p className="text-sm text-gray-700">
+                      <p className="text-sm text-moringa">
                         This order is waiting for payment. The vendor sees it once it's paid.
                       </p>
                       <button
@@ -833,7 +833,7 @@ const MyOrders = () => {
                 {/* Cancel order */}
                 {CANCELLABLE_STATUSES.includes(selectedOrder.rawStatus) && (
                   <div className="mb-6 flex items-center justify-between gap-4 rounded-lg border border-red-100 bg-red-50 p-4">
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-moringa">
                       Changed your mind? You can cancel until the vendor starts preparing it.
                     </p>
                     <button
@@ -854,7 +854,7 @@ const MyOrders = () => {
                       You reviewed this order. Thank you!
                     </div>
                   ) : (
-                    <div className="mb-6 rounded-lg border border-gray-200 p-4">
+                    <div className="mb-6 rounded-lg border border-hairline p-4">
                       <h4 className="mb-2 font-semibold">How was your order?</h4>
                       <div className="mb-3 flex gap-1">
                         {[1, 2, 3, 4, 5].map((star) => (
@@ -878,7 +878,7 @@ const MyOrders = () => {
                         maxLength={1000}
                         rows={3}
                         placeholder="Tell others about the food and the vendor (optional)"
-                        className="mb-3 w-full rounded-md border border-gray-300 p-2 text-sm"
+                        className="mb-3 w-full rounded-md border border-moringa/25 p-2 text-sm"
                       />
                       <button
                         onClick={() => handleSubmitReview(selectedOrder)}
@@ -895,15 +895,15 @@ const MyOrders = () => {
                   <h4 className="font-semibold text-lg mb-3">Order Information</h4>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <p className="text-gray-600">Order ID</p>
+                      <p className="text-moringa-muted">Order ID</p>
                       <p className="font-medium">{selectedOrder._id}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Date & Time</p>
+                      <p className="text-moringa-muted">Date & Time</p>
                       <p className="font-medium">{formatDate(selectedOrder.createdAt, true)}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Status</p>
+                      <p className="text-moringa-muted">Status</p>
                       <p
                         className={`font-medium ${
                           selectedOrder.status === 'Completed'
@@ -911,7 +911,7 @@ const MyOrders = () => {
                             : selectedOrder.status === 'Processing'
                               ? 'text-blue-700'
                               : selectedOrder.status === 'Cancelled'
-                                ? 'text-gray-700'
+                                ? 'text-moringa'
                                 : 'text-red-700'
                         }`}
                       >
@@ -919,23 +919,23 @@ const MyOrders = () => {
                       </p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Order Type</p>
+                      <p className="text-moringa-muted">Order Type</p>
                       <p className="font-medium">{selectedOrder.order_type}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Delivery Type</p>
+                      <p className="text-moringa-muted">Delivery Type</p>
                       <p className="font-medium">{selectedOrder.type}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Vendor</p>
+                      <p className="text-moringa-muted">Vendor</p>
                       <p className="font-medium">{selectedOrder.vendor}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Payment Method</p>
+                      <p className="text-moringa-muted">Payment Method</p>
                       <p className="font-medium">{selectedOrder.paymentMethod}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Payment Status</p>
+                      <p className="text-moringa-muted">Payment Status</p>
                       <p className="font-medium">{selectedOrder.isPaid ? 'Paid' : 'Unpaid'}</p>
                     </div>
                   </div>
@@ -954,7 +954,7 @@ const MyOrders = () => {
                         />
                         <div className="flex-1">
                           <p className="font-medium">{item.product.name}</p>
-                          <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
+                          <p className="text-sm text-moringa-muted">Quantity: {item.quantity}</p>
                         </div>
                         <p className="font-medium">
                           RWF {(item.product.offerPrice * item.quantity).toLocaleString()}
@@ -969,7 +969,7 @@ const MyOrders = () => {
                   <h4 className="font-semibold text-lg mb-3">Order Summary</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <p className="text-gray-600">Subtotal</p>
+                      <p className="text-moringa-muted">Subtotal</p>
                       <p className="font-medium">
                         RWF{' '}
                         {selectedOrder.items
@@ -980,7 +980,7 @@ const MyOrders = () => {
                     {selectedOrder.type === 'Delivery' &&
                       (selectedOrder.pricing?.deliveryFee || 0) > 0 && (
                         <div className="flex justify-between">
-                          <p className="text-gray-600">Delivery Charges</p>
+                          <p className="text-moringa-muted">Delivery Charges</p>
                           <p className="font-medium">
                             RWF {selectedOrder.pricing.deliveryFee.toLocaleString()}
                           </p>
@@ -1003,14 +1003,16 @@ const MyOrders = () => {
 
                 {selectedOrder.type === 'Pickup' && (
                   <div className="mt-6 border-t pt-6">
-                    <h4 className="font-semibold text-lg mb-4 text-gray-800 font-medium">
+                    <h4 className="font-semibold text-lg mb-4 text-moringa font-medium">
                       Pickup Information
                     </h4>
 
                     {fetchingDetails ? (
                       <div className="flex items-center justify-center py-8">
                         <Loader2 className="w-6 h-6 animate-spin text-green-600 mr-2" />
-                        <span className="text-sm text-gray-600">Loading pickup details...</span>
+                        <span className="text-sm text-moringa-muted">
+                          Loading pickup details...
+                        </span>
                       </div>
                     ) : orderDetails ? (
                       <div className="space-y-6">
@@ -1031,7 +1033,7 @@ const MyOrders = () => {
                               Your Store Pickup Pass
                             </span>
                             <div>
-                              <p className="text-gray-500 font-semibold text-xs mt-1">
+                              <p className="text-moringa-muted font-semibold text-xs mt-1">
                                 PICKUP CODE
                               </p>
                               <div className="flex items-center justify-center sm:justify-start gap-2 mt-1">
@@ -1061,9 +1063,9 @@ const MyOrders = () => {
                         </div>
 
                         {/* Store Info Card */}
-                        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden text-left">
-                          <div className="p-4 border-b border-gray-100 bg-fufu-dim/50 flex justify-between items-center">
-                            <h5 className="font-semibold text-gray-800 text-sm">
+                        <div className="bg-white border border-hairline rounded-2xl shadow-sm overflow-hidden text-left">
+                          <div className="p-4 border-b border-hairline bg-fufu-dim/50 flex justify-between items-center">
+                            <h5 className="font-semibold text-moringa text-sm">
                               Store Info & Directions
                             </h5>
                             {orderDetails.business?.contact?.phone && (
@@ -1080,19 +1082,19 @@ const MyOrders = () => {
                             {/* Name and Address */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               <div className="space-y-1">
-                                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">
+                                <span className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider block">
                                   Store Name
                                 </span>
-                                <p className="font-bold text-gray-900">
+                                <p className="font-bold text-moringa">
                                   {orderDetails.business?.name || 'N/A'}
                                 </p>
                               </div>
                               {orderDetails.pickupDetails?.pickupTime && (
                                 <div className="space-y-1">
-                                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">
+                                  <span className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider block">
                                     Pickup Window
                                   </span>
-                                  <p className="font-semibold text-gray-700">
+                                  <p className="font-semibold text-moringa">
                                     {orderDetails.pickupDetails.pickupTime}
                                   </p>
                                 </div>
@@ -1101,11 +1103,11 @@ const MyOrders = () => {
 
                             <div className="border-t pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                               <div className="space-y-1 max-w-md">
-                                <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">
+                                <span className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider block">
                                   Store Address
                                 </span>
                                 <div className="flex items-start gap-1">
-                                  <p className="font-medium text-gray-800 text-sm">
+                                  <p className="font-medium text-moringa text-sm">
                                     {typeof orderDetails.business?.address === 'string'
                                       ? orderDetails.business.address
                                       : orderDetails.business?.address
@@ -1122,7 +1124,7 @@ const MyOrders = () => {
                                           'address'
                                         )
                                       }
-                                      className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded transition-colors flex-shrink-0"
+                                      className="p-1 text-moringa-muted/70 hover:text-gray-600 hover:bg-fufu rounded transition-colors flex-shrink-0"
                                       title="Copy Address"
                                     >
                                       {copiedText === 'address' ? (
@@ -1163,10 +1165,10 @@ const MyOrders = () => {
                         {/* Store Location Map */}
                         {getPickupCoords() && (
                           <div className="space-y-2 text-left">
-                            <span className="text-xs font-semibold text-gray-500 block">
+                            <span className="text-xs font-semibold text-moringa-muted block">
                               Store Location Map
                             </span>
-                            <div className="w-full h-60 rounded-2xl overflow-hidden relative shadow-sm border border-gray-200 z-10">
+                            <div className="w-full h-60 rounded-2xl overflow-hidden relative shadow-sm border border-hairline z-10">
                               <MapContainer
                                 center={getPickupCoords()}
                                 zoom={15}
@@ -1190,21 +1192,23 @@ const MyOrders = () => {
                         )}
                       </div>
                     ) : (
-                      <p className="text-sm text-gray-500">Failed to load pickup information.</p>
+                      <p className="text-sm text-moringa-muted">
+                        Failed to load pickup information.
+                      </p>
                     )}
                   </div>
                 )}
 
                 {selectedOrder.type === 'Delivery' && (
                   <div className="mt-6 border-t pt-6">
-                    <h4 className="font-semibold text-lg mb-3 text-gray-800">
+                    <h4 className="font-semibold text-lg mb-3 text-moringa">
                       Delivery Information
                     </h4>
 
                     {fetchingDetails ? (
                       <div className="flex items-center justify-center py-8">
                         <Loader2 className="w-6 h-6 animate-spin text-green-600 mr-2" />
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-moringa-muted">
                           Loading live tracking details...
                         </span>
                       </div>
@@ -1218,10 +1222,10 @@ const MyOrders = () => {
                                 {orderDetails.delivery.riderName?.charAt(0) || 'R'}
                               </div>
                               <div>
-                                <p className="font-semibold text-sm text-gray-900">
+                                <p className="font-semibold text-sm text-moringa">
                                   {orderDetails.delivery.riderName || 'Assigned Rider'}
                                 </p>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-moringa-muted">
                                   {orderDetails.delivery.status === 'assigned' &&
                                     'Rider heading to restaurant'}
                                   {orderDetails.delivery.status === 'picked_up' &&
@@ -1243,8 +1247,10 @@ const MyOrders = () => {
                             )}
                           </div>
                         ) : (
-                          <div className="bg-fufu-dim border border-gray-100 p-4 rounded-xl flex items-center justify-between text-sm">
-                            <span className="text-gray-600">Assigning a delivery agent...</span>
+                          <div className="bg-fufu-dim border border-hairline p-4 rounded-xl flex items-center justify-between text-sm">
+                            <span className="text-moringa-muted">
+                              Assigning a delivery agent...
+                            </span>
                             <span className="text-xs bg-yellow-100 text-yellow-800 font-semibold px-2.5 py-0.5 rounded-full animate-pulse">
                               Pending
                             </span>
@@ -1252,16 +1258,18 @@ const MyOrders = () => {
                         )}
 
                         {/* Address */}
-                        <div className="text-sm bg-fufu-dim p-3 rounded-lg border border-gray-100">
-                          <p className="text-gray-500 font-medium text-xs mb-1">DELIVERY ADDRESS</p>
-                          <p className="font-semibold text-gray-800">
+                        <div className="text-sm bg-fufu-dim p-3 rounded-lg border border-hairline">
+                          <p className="text-moringa-muted font-medium text-xs mb-1">
+                            DELIVERY ADDRESS
+                          </p>
+                          <p className="font-semibold text-moringa">
                             {orderDetails.delivery?.dropoffLocation?.address ||
                               (orderDetails.deliveryDetails?.address
                                 ? `${orderDetails.deliveryDetails.address.street || ''}, ${orderDetails.deliveryDetails.address.city || ''}`
                                 : 'N/A')}
                           </p>
                           {orderDetails.delivery?.dropoffLocation?.instructions && (
-                            <p className="text-xs text-gray-500 mt-1 italic">
+                            <p className="text-xs text-moringa-muted mt-1 italic">
                               Instructions: "{orderDetails.delivery.dropoffLocation.instructions}"
                             </p>
                           )}
@@ -1270,8 +1278,8 @@ const MyOrders = () => {
                         {/* Real-time Tracking Map */}
                         {getPickupCoords() && getDropoffCoords() ? (
                           <div className="space-y-2">
-                            <div className="flex justify-between items-center text-xs text-gray-500">
-                              <span className="font-medium text-gray-700">Live Delivery Route</span>
+                            <div className="flex justify-between items-center text-xs text-moringa-muted">
+                              <span className="font-medium text-moringa">Live Delivery Route</span>
                               {riderLocation && (
                                 <span className="flex items-center text-orange-600 font-semibold gap-1">
                                   <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping"></span>
@@ -1279,7 +1287,7 @@ const MyOrders = () => {
                                 </span>
                               )}
                             </div>
-                            <div className="w-full h-80 rounded-xl overflow-hidden relative shadow-sm border border-gray-200 z-10">
+                            <div className="w-full h-80 rounded-xl overflow-hidden relative shadow-sm border border-hairline z-10">
                               <MapContainer
                                 center={getPickupCoords()}
                                 zoom={14}
@@ -1340,7 +1348,7 @@ const MyOrders = () => {
                         )}
                       </div>
                     ) : (
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-moringa-muted">
                         Failed to load detailed delivery information.
                       </p>
                     )}

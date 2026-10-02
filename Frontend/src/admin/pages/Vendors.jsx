@@ -57,19 +57,19 @@ const VendorDetailsModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-slate-200/50 dark:border-slate-700/50 my-auto">
+    <div className="fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-hairline dark:border-slate-700/50 my-auto">
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-white dark:bg-slate-900 p-6 border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between">
+        <div className="sticky top-0 z-10 bg-white dark:bg-slate-900 p-6 border-b border-hairline dark:border-slate-700/50 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-slate-800 dark:text-white">{vendor.name}</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Vendor Details</p>
+            <h2 className="text-xl font-bold text-moringa dark:text-white">{vendor.name}</h2>
+            <p className="text-sm text-moringa-muted dark:text-slate-400 mt-1">Vendor Details</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer"
+            className="p-2 hover:bg-fufu dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+            <X className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
           </button>
         </div>
 
@@ -98,66 +98,72 @@ const VendorDetailsModal = ({
             {/* Basic Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                   Business Type
                 </p>
                 <div className="flex items-center gap-2">
                   <Building2 className="w-4 h-4 text-solid" />
-                  <p className="text-sm text-slate-800 dark:text-white">{vendor.businessType}</p>
+                  <p className="text-sm text-moringa dark:text-white">{vendor.businessType}</p>
                 </div>
               </div>
 
               <div className="space-y-1">
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Location</p>
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
+                  Location
+                </p>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-solid" />
-                  <p className="text-sm text-slate-800 dark:text-white">{vendor.location}</p>
+                  <p className="text-sm text-moringa dark:text-white">{vendor.location}</p>
                 </div>
               </div>
 
               <div className="space-y-1">
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Phone</p>
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">Phone</p>
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-solid" />
-                  <p className="text-sm text-slate-800 dark:text-white">{vendor.phone}</p>
+                  <p className="text-sm text-moringa dark:text-white">{vendor.phone}</p>
                 </div>
               </div>
 
               <div className="space-y-1">
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Email</p>
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">Email</p>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-solid" />
-                  <p className="text-sm text-slate-800 dark:text-white">{vendor.email}</p>
+                  <p className="text-sm text-moringa dark:text-white">{vendor.email}</p>
                 </div>
               </div>
 
               <div className="space-y-1 md:col-span-2">
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                   Business Registration
                 </p>
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-solid" />
-                  <p className="text-sm text-slate-800 dark:text-white">
+                  <p className="text-sm text-moringa dark:text-white">
                     {vendor.businessRegistration}
                   </p>
                 </div>
               </div>
 
               <div className="space-y-1 md:col-span-2">
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Address</p>
-                <p className="text-sm text-slate-800 dark:text-white">{vendor.address}</p>
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
+                  Address
+                </p>
+                <p className="text-sm text-moringa dark:text-white">{vendor.address}</p>
               </div>
             </div>
 
             {/* Description */}
             <div className="space-y-2">
-              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Description</p>
-              <p className="text-sm text-slate-800 dark:text-white">{vendor.description}</p>
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
+                Description
+              </p>
+              <p className="text-sm text-moringa dark:text-white">{vendor.description}</p>
             </div>
 
             {/* Documents */}
             <div className="space-y-2">
-              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                 Submitted Documents
               </p>
               <div className="flex flex-wrap gap-2">
@@ -176,8 +182,10 @@ const VendorDetailsModal = ({
 
             {/* Bank Details */}
             <div className="space-y-2">
-              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Bank Details</p>
-              <p className="text-sm text-slate-800 dark:text-white">{vendor.bankDetails}</p>
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
+                Bank Details
+              </p>
+              <p className="text-sm text-moringa dark:text-white">{vendor.bankDetails}</p>
             </div>
 
             {/* Contact Person Details */}
@@ -185,43 +193,45 @@ const VendorDetailsModal = ({
               <div className="p-4 bg-solid/5 dark:bg-solid/10 rounded-lg border border-solid/20 dark:border-solid/30">
                 <div className="flex items-center gap-2 mb-3">
                   <BadgeCheck className="w-5 h-5 text-solid" />
-                  <p className="text-sm font-semibold text-slate-800 dark:text-white">
+                  <p className="text-sm font-semibold text-moringa dark:text-white">
                     Contact Person Details
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                    <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                       Full Name
                     </p>
-                    <p className="text-sm text-slate-800 dark:text-white font-medium">
+                    <p className="text-sm text-moringa dark:text-white font-medium">
                       {vendor.contactPerson.fullName}
                     </p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Role</p>
-                    <p className="text-sm text-slate-800 dark:text-white">
+                    <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
+                      Role
+                    </p>
+                    <p className="text-sm text-moringa dark:text-white">
                       {vendor.contactPerson.role}
                     </p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                    <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                       Email Address
                     </p>
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-solid" />
-                      <p className="text-sm text-slate-800 dark:text-white">
+                      <p className="text-sm text-moringa dark:text-white">
                         {vendor.contactPerson.email}
                       </p>
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                    <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                       Mobile Number
                     </p>
                     <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-solid" />
-                      <p className="text-sm text-slate-800 dark:text-white">
+                      <p className="text-sm text-moringa dark:text-white">
                         {vendor.contactPerson.mobile}
                       </p>
                     </div>
@@ -231,14 +241,14 @@ const VendorDetailsModal = ({
             )}
 
             {/* Dates */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-slate-200/50 dark:border-slate-700/50">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-hairline dark:border-slate-700/50">
               <div className="space-y-1">
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                   Submission Date
                 </p>
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-slate-400" />
-                  <p className="text-sm text-slate-800 dark:text-white">
+                  <Calendar className="w-4 h-4 text-moringa-muted/70" />
+                  <p className="text-sm text-moringa dark:text-white">
                     {new Date(vendor.submissionDate).toLocaleDateString()}
                   </p>
                 </div>
@@ -246,12 +256,12 @@ const VendorDetailsModal = ({
 
               {vendor.approvedDate && (
                 <div className="space-y-1">
-                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                  <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                     Approved Date
                   </p>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-green-500" />
-                    <p className="text-sm text-slate-800 dark:text-white">
+                    <p className="text-sm text-moringa dark:text-white">
                       {new Date(vendor.approvedDate).toLocaleDateString()}
                     </p>
                   </div>
@@ -260,12 +270,12 @@ const VendorDetailsModal = ({
 
               {vendor.rejectedDate && (
                 <div className="space-y-1">
-                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                  <p className="text-xs font-medium text-moringa-muted dark:text-slate-400">
                     Rejected Date
                   </p>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-red-500" />
-                    <p className="text-sm text-slate-800 dark:text-white">
+                    <p className="text-sm text-moringa dark:text-white">
                       {new Date(vendor.rejectedDate).toLocaleDateString()}
                     </p>
                   </div>
@@ -302,10 +312,10 @@ const VendorDetailsModal = ({
 
         {/* Actions */}
         {showActions && vendor.status === 'pending' && (
-          <div className="sticky bottom-0 bg-white dark:bg-slate-900 p-6 border-t border-slate-200/50 dark:border-slate-700/50">
+          <div className="sticky bottom-0 bg-white dark:bg-slate-900 p-6 border-t border-hairline dark:border-slate-700/50">
             {showActionDialog ? (
               <div className="space-y-4">
-                <p className="text-sm font-medium text-slate-800 dark:text-white">
+                <p className="text-sm font-medium text-moringa dark:text-white">
                   {showActionDialog === 'approve'
                     ? 'Approve Vendor'
                     : showActionDialog === 'reject'
@@ -322,7 +332,7 @@ const VendorDetailsModal = ({
                         ? 'Reason for rejection'
                         : 'Specify what information is needed'
                   }
-                  className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
                   rows={3}
                 />
                 <div className="flex gap-3">
@@ -345,7 +355,7 @@ const VendorDetailsModal = ({
                       setShowActionDialog(null);
                       setActionNote('');
                     }}
-                    className="flex-1 px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg text-sm font-medium transition-colors cursor-pointer"
+                    className="flex-1 px-4 py-2 bg-hairline dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-moringa dark:text-white rounded-lg text-sm font-medium transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -381,17 +391,17 @@ const VendorDetailsModal = ({
 
         {/* Rescind Approval Button for Approved Vendors */}
         {vendor.status === 'approved' && onRescind && (
-          <div className="sticky bottom-0 bg-white dark:bg-slate-900 p-6 border-t border-slate-200/50 dark:border-slate-700/50">
+          <div className="sticky bottom-0 bg-white dark:bg-slate-900 p-6 border-t border-hairline dark:border-slate-700/50">
             {showActionDialog === 'rescind' ? (
               <div className="space-y-4">
-                <p className="text-sm font-medium text-slate-800 dark:text-white">
+                <p className="text-sm font-medium text-moringa dark:text-white">
                   Rescind Vendor Approval
                 </p>
                 <textarea
                   value={actionNote}
                   onChange={(e) => setActionNote(e.target.value)}
                   placeholder="Reason for rescinding approval"
-                  className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
                   rows={3}
                 />
                 <div className="flex gap-3">
@@ -406,7 +416,7 @@ const VendorDetailsModal = ({
                       setShowActionDialog(null);
                       setActionNote('');
                     }}
-                    className="flex-1 px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white rounded-lg text-sm font-medium transition-colors cursor-pointer"
+                    className="flex-1 px-4 py-2 bg-hairline dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-moringa dark:text-white rounded-lg text-sm font-medium transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -724,14 +734,14 @@ export const AllVendors = () => {
         {statsCards.map((stat, index) => (
           <div
             key={index}
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl transition-all duration-300 group"
+            className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl transition-all duration-300 group"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-[10px] font-medium text-slate-600 dark:text-slate-400 mb-1">
+                <p className="text-[10px] font-medium text-moringa-muted dark:text-slate-400 mb-1">
                   {stat.title}
                 </p>
-                <p className="text-xl font-bold text-slate-800 dark:text-white">{stat.value}</p>
+                <p className="text-xl font-bold text-moringa dark:text-white">{stat.value}</p>
               </div>
               <div
                 className={`p-2.5 rounded-xl ${stat.bgColor} group-hover:scale-110 transition-all duration-300`}
@@ -744,16 +754,16 @@ export const AllVendors = () => {
       </div>
 
       {/* Search and Filter Section */}
-      <div className="relative z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50">
+      <div className="relative z-20 bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
             <input
               type="text"
               placeholder="Search vendors..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+              className="w-full pl-9 pr-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -761,21 +771,21 @@ export const AllVendors = () => {
             <div className="relative">
               <button
                 onClick={() => setShowFilterMenu(!showFilterMenu)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 <ListFilter className="w-4 h-4" />
                 Filter
               </button>
               {showFilterMenu && (
-                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-60 p-4 space-y-4">
+                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 z-60 p-4 space-y-4">
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Status
                     </label>
                     <select
                       value={statusFilter}
                       onChange={(e) => setStatusFilter(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       <option value="all">All Statuses</option>
                       <option value="approved">Approved</option>
@@ -785,13 +795,13 @@ export const AllVendors = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Business Type
                     </label>
                     <select
                       value={businessTypeFilter}
                       onChange={(e) => setBusinessTypeFilter(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       {businessTypes.map((type) => (
                         <option key={type} value={type}>
@@ -801,13 +811,13 @@ export const AllVendors = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Location
                     </label>
                     <select
                       value={locationFilter}
                       onChange={(e) => setLocationFilter(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       {locations.map((loc) => (
                         <option key={loc} value={loc}>
@@ -823,7 +833,7 @@ export const AllVendors = () => {
                       setLocationFilter('all');
                       setShowFilterMenu(false);
                     }}
-                    className="w-full px-3 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg text-xs font-medium text-slate-800 dark:text-white transition-colors cursor-pointer"
+                    className="w-full px-3 py-2 bg-fufu-dim dark:bg-slate-700 hover:bg-mint dark:hover:bg-slate-600 rounded-lg text-xs font-medium text-moringa dark:text-white transition-colors cursor-pointer"
                   >
                     Clear Filters
                   </button>
@@ -835,21 +845,21 @@ export const AllVendors = () => {
             <div className="relative">
               <button
                 onClick={() => setShowSortMenu(!showSortMenu)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 <ArrowDownUp className="w-4 h-4" />
                 Sort
               </button>
               {showSortMenu && (
-                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-60 p-4 space-y-4">
+                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 z-60 p-4 space-y-4">
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Sort By
                     </label>
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       <option value="name">Name</option>
                       <option value="date">Submission Date</option>
@@ -858,13 +868,13 @@ export const AllVendors = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Order
                     </label>
                     <select
                       value={sortOrder}
                       onChange={(e) => setSortOrder(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       <option value="asc">Ascending</option>
                       <option value="desc">Descending</option>
@@ -878,57 +888,57 @@ export const AllVendors = () => {
       </div>
 
       {/* Vendors Table */}
-      <div className="relative z-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
-        <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50">
-          <h3 className="text-base font-bold text-slate-800 dark:text-white">All Vendors</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">Manage vendor accounts</p>
+      <div className="relative z-10 bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 overflow-hidden">
+        <div className="p-6 border-b border-hairline dark:border-slate-700/50">
+          <h3 className="text-base font-bold text-moringa dark:text-white">All Vendors</h3>
+          <p className="text-xs text-moringa-muted dark:text-slate-400">Manage vendor accounts</p>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-50 dark:bg-slate-800/50">
+            <thead className="bg-fufu dark:bg-slate-800/50">
               <tr>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Vendor Name
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Location
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Business Type
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Status
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+            <tbody className="divide-y divide-hairline dark:divide-slate-700">
               {currentVendors.map((vendor) => (
                 <tr
                   key={vendor.id}
                   onClick={() => setSelectedVendor(vendor)}
-                  className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
+                  className="hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-solid/10 flex items-center justify-center">
                         <Store className="w-5 h-5 text-solid" />
                       </div>
-                      <span className="text-xs font-medium text-slate-900 dark:text-white">
+                      <span className="text-xs font-medium text-moringa dark:text-white">
                         {vendor.name}
                       </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-slate-400" />
-                      <span className="text-xs text-slate-600 dark:text-slate-400">
+                      <MapPin className="w-4 h-4 text-moringa-muted/70" />
+                      <span className="text-xs text-moringa-muted dark:text-slate-400">
                         {vendor.location}
                       </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-xs text-slate-600 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       {vendor.businessType}
                     </span>
                   </td>
@@ -957,8 +967,8 @@ export const AllVendors = () => {
 
         {/* Pagination */}
         {filteredVendors.length > 0 && (
-          <div className="px-6 py-4 border-t border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between">
-            <p className="text-xs text-slate-600 dark:text-slate-400">
+          <div className="px-6 py-4 border-t border-hairline dark:border-slate-700/50 flex items-center justify-between">
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               Showing {showingFrom} to {showingTo} of {filteredVendors.length} vendors
             </p>
 
@@ -966,7 +976,7 @@ export const AllVendors = () => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Previous
               </button>
@@ -980,7 +990,7 @@ export const AllVendors = () => {
                     className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                       currentPage === pageNum
                         ? 'bg-solid text-white'
-                        : 'text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
+                        : 'text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 hover:bg-fufu dark:hover:bg-slate-700 cursor-pointer'
                     }`}
                   >
                     {pageNum}
@@ -991,7 +1001,7 @@ export const AllVendors = () => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Next
               </button>
@@ -1001,7 +1011,7 @@ export const AllVendors = () => {
 
         {filteredVendors.length === 0 && (
           <div className="p-12 text-center">
-            <p className="text-slate-500 dark:text-slate-400">No vendors found</p>
+            <p className="text-moringa-muted dark:text-slate-400">No vendors found</p>
           </div>
         )}
       </div>
@@ -1239,16 +1249,16 @@ export const VendorApproval = () => {
   return (
     <div className="space-y-6">
       {/* Search Section */}
-      <div className="relative z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50">
+      <div className="relative z-20 bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
             <input
               type="text"
               placeholder="Search pending applications..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+              className="w-full pl-9 pr-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -1256,21 +1266,21 @@ export const VendorApproval = () => {
             <div className="relative">
               <button
                 onClick={() => setShowFilterMenu(!showFilterMenu)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 <ListFilter className="w-4 h-4" />
                 Filter
               </button>
               {showFilterMenu && (
-                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-60 p-4 space-y-4">
+                <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 z-60 p-4 space-y-4">
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Business Type
                     </label>
                     <select
                       value={businessTypeFilter}
                       onChange={(e) => setBusinessTypeFilter(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       {businessTypes.map((type) => (
                         <option key={type} value={type}>
@@ -1280,13 +1290,13 @@ export const VendorApproval = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Location
                     </label>
                     <select
                       value={locationFilter}
                       onChange={(e) => setLocationFilter(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       {locations.map((loc) => (
                         <option key={loc} value={loc}>
@@ -1301,7 +1311,7 @@ export const VendorApproval = () => {
                       setLocationFilter('all');
                       setShowFilterMenu(false);
                     }}
-                    className="w-full px-3 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg text-xs font-medium text-slate-800 dark:text-white transition-colors cursor-pointer"
+                    className="w-full px-3 py-2 bg-fufu-dim dark:bg-slate-700 hover:bg-mint dark:hover:bg-slate-600 rounded-lg text-xs font-medium text-moringa dark:text-white transition-colors cursor-pointer"
                   >
                     Clear Filters
                   </button>
@@ -1313,21 +1323,21 @@ export const VendorApproval = () => {
             <div className="relative">
               <button
                 onClick={() => setShowSortMenu(!showSortMenu)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 <ArrowDownUp className="w-4 h-4" />
                 Sort
               </button>
               {showSortMenu && (
-                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-60 p-4 space-y-4">
+                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 z-60 p-4 space-y-4">
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Sort By
                     </label>
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       <option value="name">Name</option>
                       <option value="date">Submission Date</option>
@@ -1336,13 +1346,13 @@ export const VendorApproval = () => {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-2">
                       Order
                     </label>
                     <select
                       value={sortOrder}
                       onChange={(e) => setSortOrder(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
+                      className="w-full px-3 py-2 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid cursor-pointer"
                     >
                       <option value="asc">Ascending</option>
                       <option value="desc">Descending</option>
@@ -1356,72 +1366,70 @@ export const VendorApproval = () => {
       </div>
 
       {/* Pending Applications Table */}
-      <div className="relative z-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
-        <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50">
-          <h3 className="text-base font-bold text-slate-800 dark:text-white">
-            Pending Applications
-          </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+      <div className="relative z-10 bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 overflow-hidden">
+        <div className="p-6 border-b border-hairline dark:border-slate-700/50">
+          <h3 className="text-base font-bold text-moringa dark:text-white">Pending Applications</h3>
+          <p className="text-xs text-moringa-muted dark:text-slate-400">
             Review and approve vendor applications
           </p>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-50 dark:bg-slate-800/50">
+            <thead className="bg-fufu dark:bg-slate-800/50">
               <tr>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Vendor Name
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Submission Date
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Location
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Business Type
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Status
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+            <tbody className="divide-y divide-hairline dark:divide-slate-700">
               {currentVendors.map((vendor) => (
                 <tr
                   key={vendor.id}
                   onClick={() => setSelectedVendor(vendor)}
-                  className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
+                  className="hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-solid/10 flex items-center justify-center">
                         <Store className="w-5 h-5 text-solid" />
                       </div>
-                      <span className="text-xs font-medium text-slate-900 dark:text-white">
+                      <span className="text-xs font-medium text-moringa dark:text-white">
                         {vendor.name}
                       </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-slate-400" />
-                      <span className="text-xs text-slate-600 dark:text-slate-400">
+                      <Calendar className="w-4 h-4 text-moringa-muted/70" />
+                      <span className="text-xs text-moringa-muted dark:text-slate-400">
                         {new Date(vendor.submissionDate).toLocaleDateString()}
                       </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-slate-400" />
-                      <span className="text-xs text-slate-600 dark:text-slate-400">
+                      <MapPin className="w-4 h-4 text-moringa-muted/70" />
+                      <span className="text-xs text-moringa-muted dark:text-slate-400">
                         {vendor.location}
                       </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-xs text-slate-600 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       {vendor.businessType}
                     </span>
                   </td>
@@ -1444,8 +1452,8 @@ export const VendorApproval = () => {
 
         {/* Pagination */}
         {filteredVendors.length > 0 && (
-          <div className="px-6 py-4 border-t border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between">
-            <p className="text-xs text-slate-600 dark:text-slate-400">
+          <div className="px-6 py-4 border-t border-hairline dark:border-slate-700/50 flex items-center justify-between">
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               Showing {showingFrom} to {showingTo} of {filteredVendors.length} applications
             </p>
 
@@ -1453,7 +1461,7 @@ export const VendorApproval = () => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Previous
               </button>
@@ -1467,7 +1475,7 @@ export const VendorApproval = () => {
                     className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                       currentPage === pageNum
                         ? 'bg-solid text-white'
-                        : 'text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
+                        : 'text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 hover:bg-fufu dark:hover:bg-slate-700 cursor-pointer'
                     }`}
                   >
                     {pageNum}
@@ -1478,7 +1486,7 @@ export const VendorApproval = () => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Next
               </button>
@@ -1488,7 +1496,7 @@ export const VendorApproval = () => {
 
         {filteredVendors.length === 0 && (
           <div className="p-12 text-center">
-            <p className="text-slate-500 dark:text-slate-400">No pending applications</p>
+            <p className="text-moringa-muted dark:text-slate-400">No pending applications</p>
           </div>
         )}
       </div>

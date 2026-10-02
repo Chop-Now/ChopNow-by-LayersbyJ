@@ -202,7 +202,7 @@ const MyProfile = () => {
     <div className="bg-gray-80 min-h-screen">
       <div className="flex w-full">
         {/* Settings Menu - Sidebar */}
-        <aside className="hidden lg:block w-72 bg-white border-r border-gray-200 p-6 h-screen fixed left-0 top-0 shrink-0 overflow-y-auto">
+        <aside className="hidden lg:block w-72 bg-white border-r border-hairline p-6 h-screen fixed left-0 top-0 shrink-0 overflow-y-auto">
           {/* Back Button */}
           <button
             onClick={() => navigate(-1)}
@@ -216,7 +216,7 @@ const MyProfile = () => {
           </button>
 
           {/* Profile Info */}
-          <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gray-200">
+          <div className="flex items-center gap-3 mb-8 pb-6 border-b border-hairline">
             {profile.avatar ? (
               <img
                 src={profile.avatar}
@@ -294,10 +294,8 @@ const MyProfile = () => {
                         <Bike className="w-5 h-5" />
                         <span className="text-xs uppercase tracking-wider">Deliver & Earn</span>
                       </div>
-                      <h3 className="text-lg font-bold text-slate-800">
-                        Become a Delivery Partner
-                      </h3>
-                      <p className="text-xs text-slate-500 leading-relaxed">
+                      <h3 className="text-lg font-bold text-moringa">Become a Delivery Partner</h3>
+                      <p className="text-xs text-moringa-muted leading-relaxed">
                         Join the ChopNow delivery fleet. Pick up food on your bicycle, motorcycle,
                         or car and make extra cash on your own schedule.
                       </p>
@@ -319,8 +317,8 @@ const MyProfile = () => {
                         <Store className="w-5 h-5" />
                         <span className="text-xs uppercase tracking-wider">Sell Surplus</span>
                       </div>
-                      <h3 className="text-lg font-bold text-slate-800">Register as a Vendor</h3>
-                      <p className="text-xs text-slate-500 leading-relaxed">
+                      <h3 className="text-lg font-bold text-moringa">Register as a Vendor</h3>
+                      <p className="text-xs text-moringa-muted leading-relaxed">
                         List your bakery, cafe, or restaurant surplus meals on ChopNow. Reduce food
                         waste and earn extra revenue on food you would have thrown away.
                       </p>
@@ -367,7 +365,7 @@ const MyProfile = () => {
                     </div>
                   )}
                   <div className="flex flex-col items-start gap-2">
-                    <label className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-textColor hover:bg-gray-200 transition cursor-pointer">
+                    <label className="flex items-center gap-2 px-4 py-2 bg-white border border-moringa/25 rounded-lg text-sm font-medium text-textColor hover:bg-mint transition cursor-pointer">
                       {uploadingAvatar ? (
                         <Loader2 className="w-4 h-4 animate-spin" />
                       ) : (
@@ -400,7 +398,7 @@ const MyProfile = () => {
                     placeholder="First name"
                     value={profile.firstName}
                     onChange={(e) => setProfile((prev) => ({ ...prev, firstName: e.target.value }))}
-                    className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2 bg-white border border-moringa/25 rounded-lg text-sm focus:outline-none focus:ring-2"
                     onFocus={(e) => (e.target.style.borderColor = '#1B5E20')}
                     onBlur={(e) => (e.target.style.borderColor = '')}
                   />
@@ -412,7 +410,7 @@ const MyProfile = () => {
                     placeholder="Last name"
                     value={profile.lastName}
                     onChange={(e) => setProfile((prev) => ({ ...prev, lastName: e.target.value }))}
-                    className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2"
+                    className="w-full px-3 py-2 bg-white border border-moringa/25 rounded-lg text-sm focus:outline-none focus:ring-2"
                     onFocus={(e) => (e.target.style.borderColor = '#1B5E20')}
                     onBlur={(e) => (e.target.style.borderColor = '')}
                   />
@@ -427,9 +425,9 @@ const MyProfile = () => {
                     type="email"
                     value={profile.email}
                     disabled
-                    className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-sm focus:outline-none cursor-not-allowed"
+                    className="w-full px-3 py-2 bg-fufu-dim border border-moringa/25 rounded-lg text-sm focus:outline-none cursor-not-allowed"
                   />
-                  <p className="text-xs text-gray-400 mt-1">Email cannot be changed</p>
+                  <p className="text-xs text-moringa-muted/70 mt-1">Email cannot be changed</p>
                 </div>
                 <div className="w-full flex-1">
                   <label className="block text-sm font-medium text-textColor mb-2">
@@ -444,10 +442,10 @@ const MyProfile = () => {
                     searchPlaceholder="Search country"
                     placeholder="Choose your country"
                     containerClass="w-full"
-                    inputClass="!w-full !h-10 !border-gray-300 !rounded-lg !text-sm !bg-white"
-                    buttonClass="!border-gray-300 !rounded-l-lg !bg-white !h-10 !hover:bg-gray-100"
-                    dropdownClass="!text-sm !bg-white !border !border-gray-300 !rounded-lg !shadow-lg"
-                    searchClass="!text-sm !p-2 !border-gray-300 !m-2 !rounded-md"
+                    inputClass="!w-full !h-10 !border-moringa/25 !rounded-lg !text-sm !bg-white"
+                    buttonClass="!border-moringa/25 !rounded-l-lg !bg-white !h-10 !hover:bg-fufu"
+                    dropdownClass="!text-sm !bg-white !border !border-moringa/25 !rounded-lg !shadow-lg"
+                    searchClass="!text-sm !p-2 !border-moringa/25 !m-2 !rounded-md"
                     inputStyle={{ color: 'var(--color-textColor)' }}
                   />
                 </div>
@@ -468,7 +466,7 @@ const MyProfile = () => {
             </div>
 
             {/* Divider */}
-            <div className="h-px w-full bg-gray-200" />
+            <div className="h-px w-full bg-hairline" />
 
             {/* Password Section */}
             <div className="flex w-full flex-col items-start gap-6">
@@ -486,7 +484,7 @@ const MyProfile = () => {
                     onChange={(e) =>
                       setPasswords((prev) => ({ ...prev, currentPassword: e.target.value }))
                     }
-                    className="w-full px-3 py-2 pr-10 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
+                    className="w-full px-3 py-2 pr-10 bg-white border border-moringa/25 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
                   />
                   <button
                     type="button"
@@ -514,7 +512,7 @@ const MyProfile = () => {
                     onChange={(e) =>
                       setPasswords((prev) => ({ ...prev, newPassword: e.target.value }))
                     }
-                    className="w-full px-3 py-2 pr-10 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
+                    className="w-full px-3 py-2 pr-10 bg-white border border-moringa/25 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
                   />
                   <button
                     type="button"
@@ -543,7 +541,7 @@ const MyProfile = () => {
                     onChange={(e) =>
                       setPasswords((prev) => ({ ...prev, confirmPassword: e.target.value }))
                     }
-                    className="w-full px-3 py-2 pr-10 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
+                    className="w-full px-3 py-2 pr-10 bg-white border border-moringa/25 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
                   />
                   <button
                     type="button"
@@ -569,7 +567,7 @@ const MyProfile = () => {
                     placeholder="Enter the code sent to your email"
                     value={passwordOtp}
                     onChange={(e) => setPasswordOtp(e.target.value)}
-                    className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
+                    className="w-full px-3 py-2 bg-white border border-moringa/25 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-solid"
                   />
                 </div>
               )}
@@ -607,7 +605,7 @@ const MyProfile = () => {
                       setPasswordOtpSent(false);
                       setPasswordOtp('');
                     }}
-                    className="px-6 py-2 rounded-lg text-sm font-medium border border-gray-300 text-textColor cursor-pointer"
+                    className="px-6 py-2 rounded-lg text-sm font-medium border border-moringa/25 text-textColor cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -616,7 +614,7 @@ const MyProfile = () => {
             </div>
 
             {/* Divider */}
-            <div className="h-px w-full bg-gray-200" />
+            <div className="h-px w-full bg-hairline" />
 
             {/* Danger Zone */}
             <div className="flex w-full flex-col items-start gap-6">
@@ -646,7 +644,7 @@ const MyProfile = () => {
       {/* Delete Account Modal */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="flex flex-col items-center bg-white shadow-md rounded-xl py-6 px-5 md:w-[460px] w-[370px] border border-gray-200">
+          <div className="flex flex-col items-center bg-white shadow-md rounded-xl py-6 px-5 md:w-[460px] w-[370px] border border-hairline">
             <div className="flex items-center justify-center p-4 bg-red-100 rounded-full">
               <svg
                 width="24"
@@ -664,8 +662,8 @@ const MyProfile = () => {
                 />
               </svg>
             </div>
-            <h2 className="text-gray-900 font-semibold mt-4 text-xl">Are you sure?</h2>
-            <p className="text-sm text-gray-600 mt-2 text-center">
+            <h2 className="text-moringa font-semibold mt-4 text-xl">Are you sure?</h2>
+            <p className="text-sm text-moringa-muted mt-2 text-center">
               Do you really want to continue? This action
               <br />
               cannot be undone.
@@ -674,7 +672,7 @@ const MyProfile = () => {
               <button
                 onClick={() => setShowDeleteModal(false)}
                 type="button"
-                className="w-full md:w-36 h-10 rounded-md border border-gray-300 bg-white text-gray-600 font-medium text-sm hover:bg-gray-100 active:scale-95 transition"
+                className="w-full md:w-36 h-10 rounded-md border border-moringa/25 bg-white text-moringa-muted font-medium text-sm hover:bg-fufu active:scale-95 transition"
               >
                 Cancel
               </button>

@@ -24,7 +24,7 @@ const Header = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`${isScrolled ? 'fixed' : 'absolute'} top-0 left-0 right-0 z-50 py-3 transition-all duration-300 ${isScrolled ? 'bg-scaffold/95 backdrop-blur-md shadow-md' : ''}`}
+      className={`${isScrolled ? 'fixed' : 'absolute'} top-0 left-0 right-0 z-50 py-3 transition-all duration-300 ${isScrolled ? 'bg-scaffold/95 shadow-md' : ''}`}
     >
       {/* Container */}
       <div className="mx-auto max-w-[1440px] px-4 lg:px-12 flex items-center justify-between">

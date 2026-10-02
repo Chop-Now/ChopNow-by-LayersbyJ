@@ -41,7 +41,7 @@ const NotFound = () => {
         <div className="h-px w-64 md:w-80 bg-linear-to-r from-transparent via-slate-600 to-transparent my-6"></div>
 
         {/* Description */}
-        <p className="text-sm md:text-base text-slate-300 max-w-lg text-center mb-10 leading-relaxed">
+        <p className="text-sm md:text-base text-moringa/40 max-w-lg text-center mb-10 leading-relaxed">
           We couldn't find the page you're looking for. Don't worry though, even the best explorers
           get a little lost sometimes. Let's get you back on track!
         </p>
@@ -82,7 +82,7 @@ const NotFound = () => {
         </div>
 
         {/* Helper Text */}
-        <p className="mt-10 text-[10px] md:text-xs text-slate-400 text-center">
+        <p className="mt-10 text-[10px] md:text-xs text-moringa-muted/70 text-center">
           Need help? Our support team is here for you.
         </p>
       </div>

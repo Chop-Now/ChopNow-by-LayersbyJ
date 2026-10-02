@@ -32,22 +32,22 @@ const RevenueChart = () => {
   const hasData = data.some((d) => d.revenue > 0 || d.profit > 0);
 
   return (
-    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-4 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
+    <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-4 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
         <div>
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white">Revenue Chart</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <h3 className="text-lg font-bold text-moringa dark:text-white">Revenue Chart</h3>
+          <p className="text-xs text-moringa-muted dark:text-slate-400">
             Monthly Revenue and Profit (All values in RWF)
           </p>
         </div>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-linear-to-r from-solid to-tertiary rounded-full"></div>
-            <span className="text-xs text-slate-600 dark:text-slate-400">Revenue</span>
+            <span className="text-xs text-moringa-muted dark:text-slate-400">Revenue</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-linear-to-r from-solidOne to-solidTwo rounded-full"></div>
-            <span className="text-xs text-slate-600 dark:text-slate-400">Profit</span>
+            <span className="text-xs text-moringa-muted dark:text-slate-400">Profit</span>
           </div>
         </div>
       </div>
@@ -58,7 +58,9 @@ const RevenueChart = () => {
           </div>
         ) : !hasData ? (
           <div className="w-full h-full flex items-center justify-center">
-            <p className="text-sm text-slate-400 dark:text-slate-500 italic">No revenue data yet</p>
+            <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
+              No revenue data yet
+            </p>
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">

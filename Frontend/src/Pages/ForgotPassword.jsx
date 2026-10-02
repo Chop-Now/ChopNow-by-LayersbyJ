@@ -218,13 +218,13 @@ const ForgotPassword = () => {
             {step === 1 && (
               <form onSubmit={handleRequestOtp} className="flex flex-col">
                 <h2 className="display text-[48px] text-fufu mb-3">Reset Password</h2>
-                <p className="text-sm text-slate-400 mb-8">
+                <p className="text-sm text-moringa-muted/70 mb-8">
                   Enter your email address below. We'll send you a 6-digit verification code to
                   reset your password.
                 </p>
 
                 <div className="flex items-center w-full bg-slate-800/50 border border-slate-700 h-14 rounded-xl overflow-hidden px-4 gap-3 mb-6 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
-                  <Mail className="w-5 h-5 text-slate-500" />
+                  <Mail className="w-5 h-5 text-moringa-muted" />
                   <input
                     type="email"
                     placeholder="Email address"
@@ -253,7 +253,7 @@ const ForgotPassword = () => {
                 <div className="mt-8 text-center">
                   <Link
                     to="/login"
-                    className="text-sm text-slate-400 hover:text-white transition-colors inline-flex items-center gap-2"
+                    className="text-sm text-moringa-muted/70 hover:text-white transition-colors inline-flex items-center gap-2"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Back to Sign In
@@ -266,7 +266,7 @@ const ForgotPassword = () => {
             {step === 2 && (
               <form onSubmit={handleVerifyOtp} className="flex flex-col">
                 <h2 className="display text-[48px] text-fufu mb-3">Verify OTP</h2>
-                <p className="text-sm text-slate-400 mb-8">
+                <p className="text-sm text-moringa-muted/70 mb-8">
                   We've sent a 6-digit verification code to{' '}
                   <span className="text-white font-medium">{email}</span>.
                 </p>
@@ -304,7 +304,7 @@ const ForgotPassword = () => {
                 {/* Cooldown Timer */}
                 <div className="mt-6 text-center">
                   {cooldown > 0 ? (
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-moringa-muted">
                       Resend code in <span className="text-white font-medium">{cooldown}s</span>
                     </p>
                   ) : (
@@ -324,7 +324,7 @@ const ForgotPassword = () => {
                   <button
                     type="button"
                     onClick={() => setStep(1)}
-                    className="text-sm text-slate-400 hover:text-white transition-colors inline-flex items-center gap-2"
+                    className="text-sm text-moringa-muted/70 hover:text-white transition-colors inline-flex items-center gap-2"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Change Email
@@ -337,13 +337,13 @@ const ForgotPassword = () => {
             {step === 3 && (
               <form onSubmit={handleResetPassword} className="flex flex-col">
                 <h2 className="display text-[48px] text-fufu mb-3">New Password</h2>
-                <p className="text-sm text-slate-400 mb-8">
+                <p className="text-sm text-moringa-muted/70 mb-8">
                   Choose a strong, unique password to secure your account.
                 </p>
 
                 {/* New Password Field */}
                 <div className="relative mb-4 flex items-center w-full bg-slate-800/50 border border-slate-700 h-14 rounded-xl overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
-                  <Lock className="w-5 h-5 text-slate-500" />
+                  <Lock className="w-5 h-5 text-moringa-muted" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     placeholder="New Password"
@@ -355,7 +355,7 @@ const ForgotPassword = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="text-slate-500 hover:text-slate-300"
+                    className="text-moringa-muted hover:text-slate-300"
                   >
                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
@@ -363,7 +363,7 @@ const ForgotPassword = () => {
 
                 {/* Confirm Password Field */}
                 <div className="relative mb-6 flex items-center w-full bg-slate-800/50 border border-slate-700 h-14 rounded-xl overflow-hidden px-4 gap-3 focus-within:ring-2 focus-within:ring-solid focus-within:border-transparent transition-all">
-                  <Lock className="w-5 h-5 text-slate-500" />
+                  <Lock className="w-5 h-5 text-moringa-muted" />
                   <input
                     type={showConfirmPassword ? 'text' : 'password'}
                     placeholder="Confirm New Password"
@@ -375,7 +375,7 @@ const ForgotPassword = () => {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="text-slate-500 hover:text-slate-300"
+                    className="text-moringa-muted hover:text-slate-300"
                   >
                     {showConfirmPassword ? (
                       <EyeOff className="w-5 h-5" />
@@ -387,16 +387,18 @@ const ForgotPassword = () => {
 
                 {/* Password Criteria Checklist */}
                 <div className="mb-6 p-4 bg-slate-800/30 border border-slate-800 rounded-xl space-y-2.5">
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  <p className="text-xs font-semibold text-moringa-muted/70 uppercase tracking-wider mb-1">
                     Password Requirements:
                   </p>
                   <div className="flex items-center gap-2 text-sm">
                     {criteria.minLength ? (
                       <CheckCircle2 className="w-4 h-4 text-green-500" />
                     ) : (
-                      <XCircle className="w-4 h-4 text-slate-600" />
+                      <XCircle className="w-4 h-4 text-moringa-muted" />
                     )}
-                    <span className={criteria.minLength ? 'text-green-400' : 'text-slate-400'}>
+                    <span
+                      className={criteria.minLength ? 'text-green-400' : 'text-moringa-muted/70'}
+                    >
                       At least 8 characters long
                     </span>
                   </div>
@@ -404,9 +406,11 @@ const ForgotPassword = () => {
                     {criteria.hasUpper ? (
                       <CheckCircle2 className="w-4 h-4 text-green-500" />
                     ) : (
-                      <XCircle className="w-4 h-4 text-slate-600" />
+                      <XCircle className="w-4 h-4 text-moringa-muted" />
                     )}
-                    <span className={criteria.hasUpper ? 'text-green-400' : 'text-slate-400'}>
+                    <span
+                      className={criteria.hasUpper ? 'text-green-400' : 'text-moringa-muted/70'}
+                    >
                       Contains an uppercase letter (A-Z)
                     </span>
                   </div>
@@ -414,9 +418,11 @@ const ForgotPassword = () => {
                     {criteria.hasLower ? (
                       <CheckCircle2 className="w-4 h-4 text-green-500" />
                     ) : (
-                      <XCircle className="w-4 h-4 text-slate-600" />
+                      <XCircle className="w-4 h-4 text-moringa-muted" />
                     )}
-                    <span className={criteria.hasLower ? 'text-green-400' : 'text-slate-400'}>
+                    <span
+                      className={criteria.hasLower ? 'text-green-400' : 'text-moringa-muted/70'}
+                    >
                       Contains a lowercase letter (a-z)
                     </span>
                   </div>
@@ -424,9 +430,11 @@ const ForgotPassword = () => {
                     {criteria.hasNumber ? (
                       <CheckCircle2 className="w-4 h-4 text-green-500" />
                     ) : (
-                      <XCircle className="w-4 h-4 text-slate-600" />
+                      <XCircle className="w-4 h-4 text-moringa-muted" />
                     )}
-                    <span className={criteria.hasNumber ? 'text-green-400' : 'text-slate-400'}>
+                    <span
+                      className={criteria.hasNumber ? 'text-green-400' : 'text-moringa-muted/70'}
+                    >
                       Contains a number (0-9)
                     </span>
                   </div>
@@ -457,7 +465,7 @@ const ForgotPassword = () => {
                 </div>
 
                 <h2 className="display text-[48px] text-fufu mb-3">Password Reset!</h2>
-                <p className="text-sm text-slate-400 mb-8">
+                <p className="text-sm text-moringa-muted/70 mb-8">
                   Your password has been successfully updated. You can now log in using your new
                   credentials.
                 </p>

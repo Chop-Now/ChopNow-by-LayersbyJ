@@ -750,8 +750,8 @@ const Settings = ({ initialTab = 'profile' }) => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Settings</h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-0.5 text-sm">
+          <h1 className="text-2xl font-bold text-moringa dark:text-slate-100">Settings</h1>
+          <p className="text-moringa-muted dark:text-slate-400 mt-0.5 text-sm">
             Manage your account settings and preferences
           </p>
         </div>
@@ -761,7 +761,7 @@ const Settings = ({ initialTab = 'profile' }) => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* Sidebar */}
         <div className="lg:col-span-1">
-          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-3">
+          <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-3">
             <nav className="space-y-1.5">
               {sidebarItems.map((item) => {
                 const Icon = item.icon;
@@ -772,7 +772,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                     className={`w-full flex items-center space-x-2.5 px-3 py-2.5 rounded-lg transition-all text-sm cursor-pointer ${
                       activeTab === item.id
                         ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 shadow-sm'
-                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                        : 'text-moringa-muted dark:text-slate-400 hover:bg-fufu dark:hover:bg-slate-800'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -789,8 +789,8 @@ const Settings = ({ initialTab = 'profile' }) => {
           {activeTab === 'profile' && (
             <div className="space-y-4">
               {/* Profile Form */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
-                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
+                <h2 className="text-lg font-semibold text-moringa dark:text-slate-100 mb-4">
                   Profile Information
                 </h2>
 
@@ -798,7 +798,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                   <div className="space-y-4">
                     {/* Business Name */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Business Name
                       </label>
                       <input
@@ -806,17 +806,17 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="businessName"
                         value={shopFormData.businessName}
                         onChange={handleShopInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
 
                     {/* Business Logo */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Business Logo
                       </label>
                       <div className="flex items-center space-x-3">
-                        <div className="w-20 h-20 rounded-lg bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-600 flex items-center justify-center overflow-hidden">
+                        <div className="w-20 h-20 rounded-lg bg-fufu-dim dark:bg-slate-800 border-2 border-dashed border-moringa/25 dark:border-slate-600 flex items-center justify-center overflow-hidden">
                           {shopFormData.businessLogo ? (
                             <img
                               src={shopFormData.businessLogo}
@@ -824,11 +824,11 @@ const Settings = ({ initialTab = 'profile' }) => {
                               className="w-full h-full object-cover"
                             />
                           ) : (
-                            <Camera className="w-7 h-7 text-slate-400" />
+                            <Camera className="w-7 h-7 text-moringa-muted/70" />
                           )}
                         </div>
                         <div className="flex-1">
-                          <label className="inline-flex items-center space-x-2 px-3 py-2 text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                          <label className="inline-flex items-center space-x-2 px-3 py-2 text-xs bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 rounded-lg cursor-pointer hover:bg-mint dark:hover:bg-slate-700 transition-all">
                             <Upload className="w-3.5 h-3.5" />
                             <span className="font-medium">Upload New Picture</span>
                             <input
@@ -838,7 +838,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                               className="hidden"
                             />
                           </label>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
+                          <p className="text-[10px] text-moringa-muted dark:text-slate-400 mt-1">
                             JPG, PNG or GIF. Max size 2MB.
                           </p>
                         </div>
@@ -847,7 +847,7 @@ const Settings = ({ initialTab = 'profile' }) => {
 
                     {/* Business Tagline */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Business Tagline
                       </label>
                       <input
@@ -855,13 +855,13 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="businessTagline"
                         value={shopFormData.businessTagline}
                         onChange={handleShopInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
 
                     {/* Business Email */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Business Email
                       </label>
                       <input
@@ -869,13 +869,13 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="businessEmail"
                         value={shopFormData.businessEmail}
                         onChange={handleShopInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
 
                     {/* Contact Person */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Contact Person
                       </label>
                       <input
@@ -883,13 +883,13 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="contactPerson"
                         value={shopFormData.contactPerson}
                         onChange={handleShopInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
 
                     {/* Contact Email */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Contact Email
                       </label>
                       <input
@@ -897,13 +897,13 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="contactEmail"
                         value={shopFormData.contactEmail}
                         onChange={handleShopInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
 
                     {/* Phone Number */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Phone Number
                       </label>
                       <input
@@ -911,7 +911,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="phoneNumber"
                         value={shopFormData.phoneNumber}
                         onChange={handleShopInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -919,7 +919,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                   <div className="space-y-4">
                     {/* Name */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Name
                       </label>
                       <input
@@ -927,17 +927,17 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="name"
                         value={adminFormData.name}
                         onChange={handleAdminInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
 
                     {/* Profile Picture */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Profile Picture
                       </label>
                       <div className="flex items-center space-x-3">
-                        <div className="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-300 dark:border-slate-600 flex items-center justify-center overflow-hidden">
+                        <div className="w-20 h-20 rounded-full bg-fufu-dim dark:bg-slate-800 border-2 border-dashed border-moringa/25 dark:border-slate-600 flex items-center justify-center overflow-hidden">
                           {adminFormData.profilePicture ? (
                             <img
                               src={adminFormData.profilePicture}
@@ -945,11 +945,11 @@ const Settings = ({ initialTab = 'profile' }) => {
                               className="w-full h-full object-cover"
                             />
                           ) : (
-                            <CircleUserRound className="w-10 h-10 text-slate-400" />
+                            <CircleUserRound className="w-10 h-10 text-moringa-muted/70" />
                           )}
                         </div>
                         <div className="flex-1">
-                          <label className="inline-flex items-center space-x-2 px-3 py-2 text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                          <label className="inline-flex items-center space-x-2 px-3 py-2 text-xs bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 rounded-lg cursor-pointer hover:bg-mint dark:hover:bg-slate-700 transition-all">
                             <Upload className="w-3.5 h-3.5" />
                             <span className="font-medium">Upload New Picture</span>
                             <input
@@ -959,7 +959,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                               className="hidden"
                             />
                           </label>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1">
+                          <p className="text-[10px] text-moringa-muted dark:text-slate-400 mt-1">
                             JPG, PNG or GIF. Max size 2MB.
                           </p>
                         </div>
@@ -968,7 +968,7 @@ const Settings = ({ initialTab = 'profile' }) => {
 
                     {/* Email */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Email
                       </label>
                       <input
@@ -976,13 +976,13 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="email"
                         value={adminFormData.email}
                         onChange={handleAdminInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
 
                     {/* Phone Number */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Phone Number
                       </label>
                       <input
@@ -990,14 +990,14 @@ const Settings = ({ initialTab = 'profile' }) => {
                         name="phoneNumber"
                         value={adminFormData.phoneNumber}
                         onChange={handleAdminInputChange}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
                 )}
 
                 {/* Update Profile Button */}
-                <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                <div className="mt-4 pt-4 border-t border-hairline dark:border-slate-700">
                   <button
                     onClick={handleUpdateProfile}
                     disabled={profileLoading}
@@ -1010,8 +1010,8 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Account Actions */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
-                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
+                <h2 className="text-lg font-semibold text-moringa dark:text-slate-100 mb-4">
                   Account Actions
                 </h2>
 
@@ -1023,10 +1023,10 @@ const Settings = ({ initialTab = 'profile' }) => {
                         <Power className="w-4 h-4 text-red-600 dark:text-red-400" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                        <h3 className="text-sm font-medium text-moringa dark:text-slate-100">
                           Logout From All Devices
                         </h3>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+                        <p className="text-xs text-moringa-muted dark:text-slate-400 mt-0.5">
                           Sign out from all active sessions
                         </p>
                       </div>
@@ -1048,10 +1048,10 @@ const Settings = ({ initialTab = 'profile' }) => {
                         <Trash2 className="w-4 h-4 text-red-600 dark:text-red-400" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                        <h3 className="text-sm font-medium text-moringa dark:text-slate-100">
                           Delete Account
                         </h3>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+                        <p className="text-xs text-moringa-muted dark:text-slate-400 mt-0.5">
                           Permanently delete your account and all data
                         </p>
                       </div>
@@ -1074,24 +1074,24 @@ const Settings = ({ initialTab = 'profile' }) => {
             <div className="space-y-4">
               {/* Header */}
               <div>
-                <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
+                <h1 className="text-2xl font-bold text-moringa dark:text-slate-100">
                   Business Details
                 </h1>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-sm text-moringa-muted dark:text-slate-400 mt-1">
                   Manage your store's hours, location, contact info, and legal documents.
                 </p>
               </div>
 
               {/* Business Hours Section */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
-                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
+                <h2 className="text-lg font-semibold text-moringa dark:text-slate-100 mb-4">
                   Business Hours
                 </h2>
                 <div className="space-y-3">
                   {businessHours.map((hour, index) => (
                     <div key={hour.day} className="flex items-center space-x-3">
                       <div className="w-24">
-                        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <span className="text-sm font-medium text-moringa dark:text-slate-300">
                           {hour.day}
                         </span>
                       </div>
@@ -1101,15 +1101,15 @@ const Settings = ({ initialTab = 'profile' }) => {
                           value={hour.from}
                           onChange={(e) => handleBusinessHourChange(index, 'from', e.target.value)}
                           disabled={hour.closed}
-                          className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         />
-                        <span className="text-xs text-slate-500 dark:text-slate-400">to</span>
+                        <span className="text-xs text-moringa-muted dark:text-slate-400">to</span>
                         <input
                           type="time"
                           value={hour.to}
                           onChange={(e) => handleBusinessHourChange(index, 'to', e.target.value)}
                           disabled={hour.closed}
-                          className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         />
                         <label className="flex items-center space-x-2 ml-4">
                           <input
@@ -1118,16 +1118,18 @@ const Settings = ({ initialTab = 'profile' }) => {
                             onChange={(e) =>
                               handleBusinessHourChange(index, 'closed', e.target.checked)
                             }
-                            className="w-4 h-4 text-solid bg-slate-100 border-slate-300 rounded focus:ring-solid dark:focus:ring-solid dark:ring-offset-slate-800 focus:ring-2 dark:bg-slate-700 dark:border-slate-600"
+                            className="w-4 h-4 text-solid bg-fufu-dim border-moringa/25 rounded focus:ring-solid dark:focus:ring-solid dark:ring-offset-slate-800 focus:ring-2 dark:bg-slate-700 dark:border-slate-600"
                           />
-                          <span className="text-xs text-slate-600 dark:text-slate-400">Closed</span>
+                          <span className="text-xs text-moringa-muted dark:text-slate-400">
+                            Closed
+                          </span>
                         </label>
                       </div>
                     </div>
                   ))}
 
                   {/* Horizontal Line */}
-                  <div className="border-t border-slate-200 dark:border-slate-700 my-4"></div>
+                  <div className="border-t border-hairline dark:border-slate-700 my-4"></div>
 
                   {/* Special Hours */}
                   {specialHours.map((special, index) => (
@@ -1139,7 +1141,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                         type="date"
                         value={special.date}
                         onChange={(e) => handleSpecialHourChange(index, 'date', e.target.value)}
-                        className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                       <input
                         type="text"
@@ -1148,22 +1150,22 @@ const Settings = ({ initialTab = 'profile' }) => {
                         onChange={(e) =>
                           handleSpecialHourChange(index, 'description', e.target.value)
                         }
-                        className="flex-1 px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="flex-1 px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                       <input
                         type="time"
                         value={special.from}
                         onChange={(e) => handleSpecialHourChange(index, 'from', e.target.value)}
                         disabled={special.closed}
-                        className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50"
+                        className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50"
                       />
-                      <span className="text-xs text-slate-500">to</span>
+                      <span className="text-xs text-moringa-muted">to</span>
                       <input
                         type="time"
                         value={special.to}
                         onChange={(e) => handleSpecialHourChange(index, 'to', e.target.value)}
                         disabled={special.closed}
-                        className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50"
+                        className="px-3 py-1.5 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all disabled:opacity-50"
                       />
                       <label className="flex items-center space-x-1">
                         <input
@@ -1172,9 +1174,11 @@ const Settings = ({ initialTab = 'profile' }) => {
                           onChange={(e) =>
                             handleSpecialHourChange(index, 'closed', e.target.checked)
                           }
-                          className="w-4 h-4 text-solid bg-slate-100 border-slate-300 rounded focus:ring-solid"
+                          className="w-4 h-4 text-solid bg-fufu-dim border-moringa/25 rounded focus:ring-solid"
                         />
-                        <span className="text-xs text-slate-600 dark:text-slate-400">Closed</span>
+                        <span className="text-xs text-moringa-muted dark:text-slate-400">
+                          Closed
+                        </span>
                       </label>
                       <button
                         onClick={() => handleRemoveSpecialHour(index)}
@@ -1196,27 +1200,27 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Business Information Section */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
-                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
+                <h2 className="text-lg font-semibold text-moringa dark:text-slate-100 mb-4">
                   Business Information
                 </h2>
                 <div className="space-y-4">
                   {/* Contact Phone Number */}
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                       Contact Phone Number
                     </label>
                     <input
                       type="tel"
                       value={businessInfo.contactPhone}
                       onChange={(e) => handleBusinessInfoChange('contactPhone', e.target.value)}
-                      className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     />
                   </div>
 
                   {/* Physical Address with Map */}
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                    <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                       Physical Address
                     </label>
 
@@ -1229,7 +1233,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                           value={addressSearch}
                           onChange={(e) => setAddressSearch(e.target.value)}
                           onKeyPress={(e) => e.key === 'Enter' && handleSearchAddress()}
-                          className="flex-1 px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                          className="flex-1 px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                         />
                         <button
                           onClick={handleSearchAddress}
@@ -1256,30 +1260,30 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Certificates Section */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
-                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
+                <h2 className="text-lg font-semibold text-moringa dark:text-slate-100 mb-4">
                   Certificates & Documents
                 </h2>
                 <div className="space-y-3">
                   {certificates.map((cert) => (
                     <div
                       key={cert.id}
-                      className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700"
+                      className="flex items-center justify-between p-3 bg-fufu dark:bg-slate-800/50 rounded-lg border border-hairline dark:border-slate-700"
                     >
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
                           <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                          <h3 className="text-sm font-medium text-moringa dark:text-slate-100">
                             {cert.name}
                           </h3>
-                          <p className="text-xs text-slate-600 dark:text-slate-400">
+                          <p className="text-xs text-moringa-muted dark:text-slate-400">
                             {cert.file} • Uploaded: {cert.uploadDate}
                           </p>
                         </div>
                       </div>
-                      <label className="inline-flex items-center space-x-2 px-3 py-1.5 text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                      <label className="inline-flex items-center space-x-2 px-3 py-1.5 text-xs bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 rounded-lg cursor-pointer hover:bg-mint dark:hover:bg-slate-700 transition-all">
                         <Upload className="w-3.5 h-3.5" />
                         <span>Update</span>
                         <input
@@ -1298,7 +1302,7 @@ const Settings = ({ initialTab = 'profile' }) => {
               <div className="flex items-center justify-end space-x-3 pt-2">
                 <button
                   onClick={handleCancelBusinessDetails}
-                  className="px-4 py-2 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-all font-medium cursor-pointer"
+                  className="px-4 py-2 text-sm bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 rounded-lg hover:bg-mint dark:hover:bg-slate-700 transition-all font-medium cursor-pointer"
                 >
                   Cancel
                 </button>
@@ -1318,25 +1322,25 @@ const Settings = ({ initialTab = 'profile' }) => {
             <div className="space-y-4">
               {/* Header */}
               <div>
-                <h1 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
+                <h1 className="text-2xl font-bold text-moringa dark:text-slate-100">
                   Platform Settings
                 </h1>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-sm text-moringa-muted dark:text-slate-400 mt-1">
                   Configure platform-wide settings and preferences
                 </p>
               </div>
 
               {/* General Settings */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
                     <Globe className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
+                    <h2 className="text-lg font-semibold text-moringa dark:text-slate-100">
                       General Settings
                     </h2>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs text-moringa-muted dark:text-slate-400">
                       Basic platform information
                     </p>
                   </div>
@@ -1344,7 +1348,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Platform Name
                       </label>
                       <input
@@ -1353,11 +1357,11 @@ const Settings = ({ initialTab = 'profile' }) => {
                         onChange={(e) =>
                           handlePlatformSettingChange('platformName', e.target.value)
                         }
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Platform Tagline
                       </label>
                       <input
@@ -1366,11 +1370,11 @@ const Settings = ({ initialTab = 'profile' }) => {
                         onChange={(e) =>
                           handlePlatformSettingChange('platformTagline', e.target.value)
                         }
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Support Email
                       </label>
                       <input
@@ -1379,11 +1383,11 @@ const Settings = ({ initialTab = 'profile' }) => {
                         onChange={(e) =>
                           handlePlatformSettingChange('supportEmail', e.target.value)
                         }
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Support Phone
                       </label>
                       <input
@@ -1392,7 +1396,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                         onChange={(e) =>
                           handlePlatformSettingChange('supportPhone', e.target.value)
                         }
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -1400,16 +1404,16 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Commission & Payout Settings */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
                     <Percent className="w-5 h-5 text-green-600 dark:text-green-400" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
+                    <h2 className="text-lg font-semibold text-moringa dark:text-slate-100">
                       Commission & Payouts
                     </h2>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs text-moringa-muted dark:text-slate-400">
                       Configure fees and payout schedules
                     </p>
                   </div>
@@ -1417,7 +1421,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Platform Fee (%)
                       </label>
                       <div className="relative">
@@ -1432,15 +1436,15 @@ const Settings = ({ initialTab = 'profile' }) => {
                               parseFloat(e.target.value)
                             )
                           }
-                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                         />
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 text-moringa-muted text-sm">
                           %
                         </span>
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Minimum Withdrawal (RWF)
                       </label>
                       <input
@@ -1450,14 +1454,14 @@ const Settings = ({ initialTab = 'profile' }) => {
                         onChange={(e) =>
                           handlePlatformSettingChange('minimumWithdrawal', parseInt(e.target.value))
                         }
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Earnings Holding Period (days)
                       </label>
                       <input
@@ -1471,16 +1475,16 @@ const Settings = ({ initialTab = 'profile' }) => {
                             parseInt(e.target.value) || 0
                           )
                         }
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      <p className="text-xs text-moringa-muted dark:text-slate-400 mt-1">
                         A vendor's earnings from a completed order become withdrawable this many
                         days later. Keeps money on hand to cover refunds/disputes on that order.
                         Rider delivery earnings are never held.
                       </p>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Minimum Days Between Payout Requests
                       </label>
                       <input
@@ -1494,9 +1498,9 @@ const Settings = ({ initialTab = 'profile' }) => {
                             parseInt(e.target.value) || 0
                           )
                         }
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      <p className="text-xs text-moringa-muted dark:text-slate-400 mt-1">
                         A vendor or rider can request at most one payout every this many days. A
                         failed or cancelled payout doesn't count against them.
                       </p>
@@ -1528,7 +1532,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                       },
                     ].map((field) => (
                       <div key={field.key}>
-                        <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                        <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                           {field.label}
                         </label>
                         <input
@@ -1544,12 +1548,12 @@ const Settings = ({ initialTab = 'profile' }) => {
                                 : field.parse(e.target.value)
                             )
                           }
-                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                         />
                       </div>
                     ))}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Tax Label
                       </label>
                       <input
@@ -1557,7 +1561,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                         maxLength={30}
                         value={platformSettings.taxLabel}
                         onChange={(e) => handlePlatformSettingChange('taxLabel', e.target.value)}
-                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -1571,10 +1575,10 @@ const Settings = ({ initialTab = 'profile' }) => {
                       className="mt-0.5 w-4 h-4"
                     />
                     <span>
-                      <span className="block text-sm font-medium text-slate-800 dark:text-slate-200">
+                      <span className="block text-sm font-medium text-moringa dark:text-slate-200">
                         Allow cash payments
                       </span>
-                      <span className="block text-xs text-slate-600 dark:text-slate-400">
+                      <span className="block text-xs text-moringa-muted dark:text-slate-400">
                         Off by default: with cash the vendor keeps the money, so ChopNow can't
                         collect its commission and riders aren't paid through the app.
                       </span>
@@ -1584,16 +1588,16 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Feature Toggles */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
                     <ToggleLeft className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
+                    <h2 className="text-lg font-semibold text-moringa dark:text-slate-100">
                       Feature Toggles
                     </h2>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs text-moringa-muted dark:text-slate-400">
                       Enable or disable platform features
                     </p>
                   </div>
@@ -1636,14 +1640,16 @@ const Settings = ({ initialTab = 'profile' }) => {
                       className={`flex items-center justify-between p-3 rounded-lg border ${
                         feature.key === 'maintenanceMode' && platformSettings.maintenanceMode
                           ? 'bg-red-50 dark:bg-red-900/10 border-red-200 dark:border-red-900/30'
-                          : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700'
+                          : 'bg-fufu dark:bg-slate-800/50 border-hairline dark:border-slate-700'
                       }`}
                     >
                       <div>
-                        <h3 className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                        <h3 className="text-sm font-medium text-moringa dark:text-slate-100">
                           {feature.label}
                         </h3>
-                        <p className="text-xs text-slate-600 dark:text-slate-400">{feature.desc}</p>
+                        <p className="text-xs text-moringa-muted dark:text-slate-400">
+                          {feature.desc}
+                        </p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input
@@ -1657,8 +1663,8 @@ const Settings = ({ initialTab = 'profile' }) => {
                         <div
                           className={`w-11 h-6 peer-focus:outline-none peer-focus:ring-2 rounded-full peer after:content-[''] after:absolute after:top-0.5 after:start-0.5 after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all ${
                             feature.key === 'maintenanceMode'
-                              ? 'bg-slate-200 dark:bg-slate-700 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 peer-checked:after:translate-x-full peer-checked:bg-red-600'
-                              : 'bg-slate-200 dark:bg-slate-700 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:bg-green-600'
+                              ? 'bg-hairline dark:bg-slate-700 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 peer-checked:after:translate-x-full peer-checked:bg-red-600'
+                              : 'bg-hairline dark:bg-slate-700 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 peer-checked:after:translate-x-full peer-checked:bg-green-600'
                           }`}
                         ></div>
                       </label>
@@ -1668,16 +1674,16 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Notification Preferences */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
                     <Bell className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
+                    <h2 className="text-lg font-semibold text-moringa dark:text-slate-100">
                       Admin Notifications
                     </h2>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">
+                    <p className="text-xs text-moringa-muted dark:text-slate-400">
                       Configure which notifications you receive
                     </p>
                   </div>
@@ -1707,13 +1713,13 @@ const Settings = ({ initialTab = 'profile' }) => {
                   ].map((notification) => (
                     <div
                       key={notification.key}
-                      className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700"
+                      className="flex items-center justify-between p-3 bg-fufu dark:bg-slate-800/50 rounded-lg border border-hairline dark:border-slate-700"
                     >
                       <div>
-                        <h3 className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                        <h3 className="text-sm font-medium text-moringa dark:text-slate-100">
                           {notification.label}
                         </h3>
-                        <p className="text-xs text-slate-600 dark:text-slate-400">
+                        <p className="text-xs text-moringa-muted dark:text-slate-400">
                           {notification.desc}
                         </p>
                       </div>
@@ -1726,7 +1732,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                           }
                           className="sr-only peer"
                         />
-                        <div className="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-0.5 after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-green-600"></div>
+                        <div className="w-11 h-6 bg-hairline dark:bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-0.5 after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-green-600"></div>
                       </label>
                     </div>
                   ))}
@@ -1750,20 +1756,20 @@ const Settings = ({ initialTab = 'profile' }) => {
           {activeTab === 'security' && (
             <div className="space-y-4">
               {/* Change Password Section */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
+                    <h2 className="text-lg font-semibold text-moringa dark:text-slate-100">
                       Change Password
                     </h2>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
+                    <p className="text-xs text-moringa-muted dark:text-slate-400 mt-0.5">
                       Update your password regularly to keep your account secure
                     </p>
                   </div>
                   {!showPasswordFields && (
                     <button
                       onClick={() => setShowPasswordFields(true)}
-                      className="px-4 py-2 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-all font-medium cursor-pointer"
+                      className="px-4 py-2 text-sm bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 rounded-lg hover:bg-mint dark:hover:bg-slate-700 transition-all font-medium cursor-pointer"
                     >
                       Change Password
                     </button>
@@ -1771,10 +1777,10 @@ const Settings = ({ initialTab = 'profile' }) => {
                 </div>
 
                 {showPasswordFields && (
-                  <div className="space-y-4 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                  <div className="space-y-4 mt-4 pt-4 border-t border-hairline dark:border-slate-700">
                     {/* Current Password */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Current Password
                       </label>
                       <div className="relative">
@@ -1783,12 +1789,12 @@ const Settings = ({ initialTab = 'profile' }) => {
                           name="currentPassword"
                           value={passwordData.currentPassword}
                           onChange={handlePasswordChange}
-                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all pr-10"
+                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all pr-10"
                         />
                         <button
                           type="button"
                           onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70 hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer"
                         >
                           {showCurrentPassword ? (
                             <EyeOff className="w-4 h-4" />
@@ -1801,7 +1807,7 @@ const Settings = ({ initialTab = 'profile' }) => {
 
                     {/* New Password */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         New Password
                       </label>
                       <div className="relative">
@@ -1810,12 +1816,12 @@ const Settings = ({ initialTab = 'profile' }) => {
                           name="newPassword"
                           value={passwordData.newPassword}
                           onChange={handlePasswordChange}
-                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all pr-10"
+                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all pr-10"
                         />
                         <button
                           type="button"
                           onClick={() => setShowNewPassword(!showNewPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70 hover:text-slate-600 dark:hover:text-slate-300"
                         >
                           {showNewPassword ? (
                             <EyeOff className="w-4 h-4" />
@@ -1828,7 +1834,7 @@ const Settings = ({ initialTab = 'profile' }) => {
 
                     {/* Confirm Password */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                         Confirm Password
                       </label>
                       <div className="relative">
@@ -1837,12 +1843,12 @@ const Settings = ({ initialTab = 'profile' }) => {
                           name="confirmPassword"
                           value={passwordData.confirmPassword}
                           onChange={handlePasswordChange}
-                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all pr-10"
+                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all pr-10"
                         />
                         <button
                           type="button"
                           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70 hover:text-slate-600 dark:hover:text-slate-300"
                         >
                           {showConfirmPassword ? (
                             <EyeOff className="w-4 h-4" />
@@ -1855,7 +1861,7 @@ const Settings = ({ initialTab = 'profile' }) => {
 
                     {passwordOtpSent && (
                       <div>
-                        <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                        <label className="block text-xs font-medium text-moringa dark:text-slate-300 mb-1.5">
                           Verification Code
                         </label>
                         <input
@@ -1863,7 +1869,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                           placeholder="Enter the code sent to your email"
                           value={passwordOtp}
                           onChange={(e) => setPasswordOtp(e.target.value)}
-                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                          className="w-full px-3 py-2 text-sm bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                         />
                       </div>
                     )}
@@ -1886,8 +1892,8 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Active Sessions */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
-                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
+                <h2 className="text-lg font-semibold text-moringa dark:text-slate-100 mb-4">
                   Active Sessions
                 </h2>
                 <div className="space-y-3">
@@ -1896,7 +1902,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                       <Loader2 className="w-6 h-6 text-solid animate-spin" />
                     </div>
                   ) : activeSessions.length === 0 ? (
-                    <p className="text-sm text-slate-500 dark:text-slate-400 text-center py-4">
+                    <p className="text-sm text-moringa-muted dark:text-slate-400 text-center py-4">
                       No active sessions found
                     </p>
                   ) : (
@@ -1905,25 +1911,25 @@ const Settings = ({ initialTab = 'profile' }) => {
                       return (
                         <div
                           key={session.id}
-                          className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700"
+                          className="flex items-center justify-between p-3 bg-fufu dark:bg-slate-800/50 rounded-lg border border-hairline dark:border-slate-700"
                         >
                           <div className="flex items-center space-x-3">
                             <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
                               <Icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                             </div>
                             <div>
-                              <h3 className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                              <h3 className="text-sm font-medium text-moringa dark:text-slate-100">
                                 {session.device}
                               </h3>
                               <div className="flex items-center space-x-2 mt-0.5">
-                                <MapPin className="w-4 h-4 text-slate-500 dark:text-slate-400" />
-                                <p className="text-xs text-slate-600 dark:text-slate-400">
+                                <MapPin className="w-4 h-4 text-moringa-muted dark:text-slate-400" />
+                                <p className="text-xs text-moringa-muted dark:text-slate-400">
                                   {session.location}
                                 </p>
-                                <span className="text-xs text-slate-500 dark:text-slate-400">
+                                <span className="text-xs text-moringa-muted dark:text-slate-400">
                                   •
                                 </span>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">
+                                <p className="text-xs text-moringa-muted dark:text-slate-400">
                                   {session.lastActive}
                                 </p>
                               </div>
@@ -1943,8 +1949,8 @@ const Settings = ({ initialTab = 'profile' }) => {
               </div>
 
               {/* Recent Login Activity */}
-              <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-5">
-                <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+              <div className="bg-white dark:bg-slate-900/80 rounded-lg border border-hairline dark:border-slate-700/50 p-5">
+                <h2 className="text-lg font-semibold text-moringa dark:text-slate-100 mb-4">
                   Recent Login Activity
                 </h2>
                 {activityLoading ? (
@@ -1952,24 +1958,24 @@ const Settings = ({ initialTab = 'profile' }) => {
                     <Loader2 className="w-6 h-6 text-solid animate-spin" />
                   </div>
                 ) : loginActivity.length === 0 ? (
-                  <p className="text-sm text-slate-500 dark:text-slate-400 text-center py-4">
+                  <p className="text-sm text-moringa-muted dark:text-slate-400 text-center py-4">
                     No login activity found
                   </p>
                 ) : (
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
-                        <tr className="border-b border-slate-200 dark:border-slate-700">
-                          <th className="text-left text-xs font-medium text-slate-600 dark:text-slate-400 pb-3">
+                        <tr className="border-b border-hairline dark:border-slate-700">
+                          <th className="text-left text-xs font-medium text-moringa-muted dark:text-slate-400 pb-3">
                             Date & Time
                           </th>
-                          <th className="text-left text-xs font-medium text-slate-600 dark:text-slate-400 pb-3">
+                          <th className="text-left text-xs font-medium text-moringa-muted dark:text-slate-400 pb-3">
                             Device
                           </th>
-                          <th className="text-left text-xs font-medium text-slate-600 dark:text-slate-400 pb-3">
+                          <th className="text-left text-xs font-medium text-moringa-muted dark:text-slate-400 pb-3">
                             Location
                           </th>
-                          <th className="text-left text-xs font-medium text-slate-600 dark:text-slate-400 pb-3">
+                          <th className="text-left text-xs font-medium text-moringa-muted dark:text-slate-400 pb-3">
                             Status
                           </th>
                         </tr>
@@ -1978,15 +1984,15 @@ const Settings = ({ initialTab = 'profile' }) => {
                         {loginActivity.map((activity) => (
                           <tr
                             key={activity.id}
-                            className="border-b border-slate-100 dark:border-slate-800 last:border-b-0"
+                            className="border-b border-hairline dark:border-slate-800 last:border-b-0"
                           >
-                            <td className="py-3 text-xs text-slate-700 dark:text-slate-300">
+                            <td className="py-3 text-xs text-moringa dark:text-slate-300">
                               {activity.dateTime}
                             </td>
-                            <td className="py-3 text-xs text-slate-700 dark:text-slate-300">
+                            <td className="py-3 text-xs text-moringa dark:text-slate-300">
                               {activity.device}
                             </td>
-                            <td className="py-3 text-xs text-slate-600 dark:text-slate-400">
+                            <td className="py-3 text-xs text-moringa-muted dark:text-slate-400">
                               {activity.location}
                             </td>
                             <td className="py-3">
@@ -2014,7 +2020,7 @@ const Settings = ({ initialTab = 'profile' }) => {
               <div className="flex items-center justify-end space-x-3 pt-2">
                 <button
                   onClick={handleCancelSecurityChanges}
-                  className="px-4 py-2 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-all font-medium cursor-pointer"
+                  className="px-4 py-2 text-sm bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 rounded-lg hover:bg-mint dark:hover:bg-slate-700 transition-all font-medium cursor-pointer"
                 >
                   Cancel
                 </button>

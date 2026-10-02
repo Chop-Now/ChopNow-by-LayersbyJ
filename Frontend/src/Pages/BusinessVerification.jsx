@@ -189,7 +189,7 @@ const BusinessVerification = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gray-100">
+    <div className="min-h-screen w-full bg-fufu-dim">
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* Breadcrumbs */}
         <div
@@ -217,7 +217,7 @@ const BusinessVerification = () => {
         </div>
 
         {/* Main Content */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-8 md:p-12">
+        <div className="bg-white rounded-2xl border border-hairline p-8 md:p-12">
           {/* Information Notice */}
           <div className="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
@@ -264,10 +264,10 @@ const BusinessVerification = () => {
                   searchPlaceholder="Search country"
                   placeholder="Enter phone number"
                   containerClass="w-full"
-                  inputClass={`!w-full !h-12 !rounded-lg !text-sm !bg-transparent ${errors.phone ? '!border-red-500' : '!border-gray-300'}`}
-                  buttonClass={`!rounded-l-lg !bg-transparent !h-12 !hover:bg-gray-100 ${errors.phone ? '!border-red-500' : '!border-gray-300'}`}
-                  dropdownClass="!text-sm !bg-white !border !border-gray-300 !rounded-lg !shadow-lg"
-                  searchClass="!text-sm !p-2 !border-gray-300 !m-2 !rounded-md"
+                  inputClass={`!w-full !h-12 !rounded-lg !text-sm !bg-transparent ${errors.phone ? '!border-red-500' : '!border-moringa/25'}`}
+                  buttonClass={`!rounded-l-lg !bg-transparent !h-12 !hover:bg-fufu ${errors.phone ? '!border-red-500' : '!border-moringa/25'}`}
+                  dropdownClass="!text-sm !bg-white !border !border-moringa/25 !rounded-lg !shadow-lg"
+                  searchClass="!text-sm !p-2 !border-moringa/25 !m-2 !rounded-md"
                   inputStyle={{ color: 'var(--color-textColor)' }}
                 />
               </div>
@@ -308,7 +308,7 @@ const BusinessVerification = () => {
                   );
                 }}
                 disabled={isLoadingLocation}
-                className={`w-full flex items-center justify-center gap-2 h-12 rounded-lg border hover:bg-gray-50 transition-colors disabled:opacity-50 mb-3 ${errors.location ? 'border-red-500' : 'border-gray-300'}`}
+                className={`w-full flex items-center justify-center gap-2 h-12 rounded-lg border hover:bg-fufu transition-colors disabled:opacity-50 mb-3 ${errors.location ? 'border-red-500' : 'border-moringa/25'}`}
               >
                 <LocateFixed className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
                 <span className="text-sm font-medium" style={{ color: 'var(--color-textColor)' }}>
@@ -319,7 +319,7 @@ const BusinessVerification = () => {
               {/* Manual Address Input */}
               <div className="relative mb-3">
                 <div
-                  className={`flex items-center w-full bg-transparent border h-12 rounded-lg overflow-hidden px-4 gap-3 ${errors.location ? 'border-red-500' : 'border-gray-300'}`}
+                  className={`flex items-center w-full bg-transparent border h-12 rounded-lg overflow-hidden px-4 gap-3 ${errors.location ? 'border-red-500' : 'border-moringa/25'}`}
                 >
                   <MapPin className="w-5 h-5" style={{ color: 'var(--color-moringa-muted)' }} />
                   <input
@@ -443,7 +443,7 @@ const BusinessVerification = () => {
                   <p className="text-xs text-orange-600 mb-2">
                     {CATEGORY_REQUIREMENTS[businessType].requiredDocs}
                   </p>
-                  <div className="text-xs text-gray-600">
+                  <div className="text-xs text-moringa-muted">
                     <p className="font-medium mb-1">Accepted documents:</p>
                     <ul className="list-disc list-inside space-y-0.5">
                       {CATEGORY_REQUIREMENTS[businessType].examples.map((doc, idx) => (
@@ -470,7 +470,7 @@ const BusinessVerification = () => {
               >
                 <CloudUpload className="w-10 h-10" style={{ color: 'var(--color-solid)' }} />
                 <p style={{ color: 'var(--color-moringa-muted)' }}>Drag & drop your files here</p>
-                <p className="text-gray-400 text-xs">
+                <p className="text-moringa-muted/70 text-xs">
                   Or{' '}
                   <span className="underline" style={{ color: 'var(--color-solid)' }}>
                     click
@@ -492,10 +492,10 @@ const BusinessVerification = () => {
                   {uploadedFiles.map((file, index) => (
                     <div
                       key={index}
-                      className="border border-gray-300 rounded-lg p-3 flex items-center justify-between"
+                      className="border border-moringa/25 rounded-lg p-3 flex items-center justify-between"
                     >
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded bg-gray-100 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded bg-fufu-dim flex items-center justify-center">
                           <CloudUpload
                             className="w-4 h-4"
                             style={{ color: 'var(--color-solid)' }}
@@ -519,7 +519,7 @@ const BusinessVerification = () => {
                       <button
                         type="button"
                         onClick={() => removeFile(index)}
-                        className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                        className="p-1 hover:bg-fufu rounded-full transition-colors"
                       >
                         <X className="w-4 h-4 text-red-500" />
                       </button>

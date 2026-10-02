@@ -46,10 +46,10 @@ const SalesChart = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 backdrop-blur-xl rounded-b-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
+    <div className="bg-white dark:bg-slate-900 rounded-b-2xl p-6 border border-hairline dark:border-slate-700/50">
       <div className="mb-6">
-        <h3 className="text-lg- font-bold text-slate-800 dark:text-white">Sales by Category</h3>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <h3 className="text-lg- font-bold text-moringa dark:text-white">Sales by Category</h3>
+        <p className="text-sm text-moringa-muted dark:text-slate-400">
           {adminMode === 'shop' ? 'Sales Distribution' : 'Production Distribution'}
         </p>
       </div>
@@ -60,7 +60,9 @@ const SalesChart = () => {
           </div>
         ) : data.length === 0 ? (
           <div className="w-full h-full flex items-center justify-center">
-            <p className="text-sm text-slate-400 dark:text-slate-500 italic">No sales data yet</p>
+            <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
+              No sales data yet
+            </p>
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
@@ -101,9 +103,11 @@ const SalesChart = () => {
                     className="w-2.5 h-2.5 rounded-full"
                     style={{ backgroundColor: item.color }}
                   />
-                  <span className="text-xs text-slate-600 dark:text-slate-400">{item.name}</span>
+                  <span className="text-xs text-moringa-muted dark:text-slate-400">
+                    {item.name}
+                  </span>
                 </div>
-                <div className="text-xs font-semibold text-slate-800 dark:text-white">
+                <div className="text-xs font-semibold text-moringa dark:text-white">
                   {item.value}%
                 </div>
               </div>

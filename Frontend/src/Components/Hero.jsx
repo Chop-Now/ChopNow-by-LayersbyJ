@@ -56,7 +56,7 @@ const Hero = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
         >
-          <div className="flex items-center gap-2 md:gap-2 border border-moringa/15 p-1.5 md:p-2 pr-3 md:pr-4 rounded-full bg-surface/85 backdrop-blur-sm whitespace-nowrap">
+          <div className="flex items-center gap-2 md:gap-2 border border-moringa/15 p-1.5 md:p-2 pr-3 md:pr-4 rounded-full bg-surface/85 whitespace-nowrap">
             <div className="flex -space-x-2">
               <img
                 src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D"
@@ -224,7 +224,7 @@ const Hero = () => {
       {/* Video Modal */}
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
           onClick={() => setIsModalOpen(false)}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

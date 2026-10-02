@@ -52,7 +52,7 @@ const ExpiryCountdown = ({ until, variant = 'pill', className = '' }) => {
     }
     return (
       <div
-        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${className}`}
+        className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold ${className}`}
         style={{ backgroundColor: '#fef2f2', color: '#dc2626' }}
       >
         <Clock className="w-3 h-3" />
@@ -75,10 +75,10 @@ const ExpiryCountdown = ({ until, variant = 'pill', className = '' }) => {
   else level = 'critical'; // < 15 min
 
   const styles = {
-    calm: { bg: 'var(--color-primary)', text: 'var(--color-solid)', border: 'transparent' },
-    warn: { bg: '#fff7ed', text: '#b45309', border: 'transparent' },
-    urgent: { bg: '#fff3e0', text: 'var(--color-solidOne)', border: 'transparent' },
-    critical: { bg: '#fef2f2', text: '#dc2626', border: 'transparent' },
+    calm: { bg: 'var(--color-mint)', text: 'var(--color-moringa)' },
+    warn: { bg: 'var(--color-yellow)', text: 'var(--color-moringa)' },
+    urgent: { bg: 'var(--color-peach)', text: 'var(--color-clay)' },
+    critical: { bg: 'var(--color-pepper)', text: 'var(--color-char)' },
   };
 
   const { bg, text } = styles[level];
@@ -97,13 +97,13 @@ const ExpiryCountdown = ({ until, variant = 'pill', className = '' }) => {
   if (variant === 'banner') {
     return (
       <div
-        className={`flex items-center gap-2 rounded-xl px-4 py-3 ${pulse} ${className}`}
+        className={`flex items-center gap-2 px-4 py-3 ${pulse} ${className}`}
         style={{ backgroundColor: bg }}
       >
         <Clock className="w-4 h-4 shrink-0" style={{ color: text }} />
         <div>
           <p className="text-xs font-semibold leading-none" style={{ color: text }}>
-            {level === 'critical' ? '⚠️ Grab it now!' : 'Time-sensitive deal'}
+            {level === 'critical' ? 'Grab it now' : 'Time-sensitive deal'}
           </p>
           <p className="text-xs mt-0.5" style={{ color: text, opacity: 0.85 }}>
             {label}
@@ -116,7 +116,7 @@ const ExpiryCountdown = ({ until, variant = 'pill', className = '' }) => {
   // default: pill
   return (
     <div
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${pulse} ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold ${pulse} ${className}`}
       style={{ backgroundColor: bg, color: text }}
     >
       <Clock className="w-3 h-3" />

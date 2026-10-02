@@ -20,13 +20,13 @@ const LoadingSpinner = ({ size = 'md', message = '', fullScreen = false, classNa
   const spinner = (
     <div className={`flex flex-col items-center justify-center ${className}`}>
       <Loader2 className={`${sizeClasses[size]} text-solid animate-spin`} />
-      {message && <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{message}</p>}
+      {message && <p className="mt-3 text-sm text-moringa-muted dark:text-slate-400">{message}</p>}
     </div>
   );
 
   if (fullScreen) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900">
         {spinner}
       </div>
     );
@@ -39,7 +39,7 @@ const LoadingSpinner = ({ size = 'md', message = '', fullScreen = false, classNa
  * Loading overlay for sections
  */
 export const LoadingOverlay = ({ message = 'Loading...' }) => (
-  <div className="absolute inset-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50">
+  <div className="absolute inset-0 bg-white dark:bg-slate-900/80 flex items-center justify-center z-50">
     <LoadingSpinner size="lg" message={message} />
   </div>
 );
@@ -48,7 +48,7 @@ export const LoadingOverlay = ({ message = 'Loading...' }) => (
  * Inline loading indicator
  */
 export const InlineLoader = ({ text = 'Loading' }) => (
-  <span className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400">
+  <span className="inline-flex items-center gap-2 text-moringa-muted dark:text-slate-400">
     <Loader2 className="w-4 h-4 animate-spin" />
     <span className="text-sm">{text}</span>
   </span>
@@ -58,7 +58,7 @@ export const InlineLoader = ({ text = 'Loading' }) => (
  * Skeleton loader for content placeholders
  */
 export const Skeleton = ({ className = '', variant = 'text' }) => {
-  const baseClasses = 'animate-pulse bg-slate-200 dark:bg-slate-700 rounded';
+  const baseClasses = 'animate-pulse bg-hairline dark:bg-slate-700 rounded';
 
   const variantClasses = {
     text: 'h-4 w-full',
@@ -76,7 +76,7 @@ export const Skeleton = ({ className = '', variant = 'text' }) => {
  * Card skeleton for product/order cards
  */
 export const CardSkeleton = () => (
-  <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+  <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-hairline dark:border-slate-700">
     <Skeleton variant="thumbnail" className="w-full h-32 mb-4" />
     <Skeleton variant="title" className="mb-2" />
     <Skeleton variant="text" className="w-1/2 mb-2" />

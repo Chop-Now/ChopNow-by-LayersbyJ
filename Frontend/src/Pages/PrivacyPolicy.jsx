@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-fufu">
       {/* Header */}
-      <div className="bg-fufu/95 backdrop-blur-md border-b border-fufu-border sticky top-0 z-10">
+      <div className="bg-fufu/95 border-b border-fufu-border sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <Link
             to="/"

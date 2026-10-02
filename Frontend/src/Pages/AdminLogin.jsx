@@ -148,7 +148,7 @@ const AdminLogin = () => {
           {/* Header */}
           <div className="text-center lg:text-left mb-8">
             <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
-            <p className="text-slate-400">Sign in to access the admin dashboard</p>
+            <p className="text-moringa-muted/70">Sign in to access the admin dashboard</p>
           </div>
 
           {/* Login Form */}
@@ -166,8 +166,8 @@ const AdminLogin = () => {
               />
               {(isGoogleLoading || isLoading) && (
                 <div className="absolute inset-0 flex items-center justify-center gap-2 bg-white rounded-xl">
-                  <div className="w-5 h-5 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
-                  <span className="text-slate-800 font-medium">Signing in...</span>
+                  <div className="w-5 h-5 border-2 border-moringa/25 border-t-transparent rounded-full animate-spin"></div>
+                  <span className="text-moringa font-medium">Signing in...</span>
                 </div>
               )}
             </div>
@@ -175,15 +175,17 @@ const AdminLogin = () => {
             {/* Divider */}
             <div className="flex items-center gap-4">
               <div className="flex-1 h-px bg-slate-700"></div>
-              <span className="text-sm text-slate-500">or sign in with email</span>
+              <span className="text-sm text-moringa-muted">or sign in with email</span>
               <div className="flex-1 h-px bg-slate-700"></div>
             </div>
 
             {/* Email Field */}
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+              <label className="block text-sm font-medium text-moringa/40 mb-2">
+                Email Address
+              </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-moringa-muted" />
                 <input
                   type="email"
                   value={email}
@@ -198,7 +200,7 @@ const AdminLogin = () => {
             {/* Password Field */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="block text-sm font-medium text-slate-300">Password</label>
+                <label className="block text-sm font-medium text-moringa/40">Password</label>
                 <Link
                   to="/forgot-password"
                   className="text-sm text-solid hover:text-tertiary transition-colors"
@@ -207,7 +209,7 @@ const AdminLogin = () => {
                 </Link>
               </div>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-moringa-muted" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
@@ -219,7 +221,7 @@ const AdminLogin = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-moringa-muted hover:text-slate-300 transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -233,7 +235,7 @@ const AdminLogin = () => {
                 id="remember"
                 className="w-4 h-4 rounded border-slate-600 bg-slate-800 text-solid focus:ring-solid focus:ring-offset-0 cursor-pointer"
               />
-              <label htmlFor="remember" className="text-sm text-slate-400 cursor-pointer">
+              <label htmlFor="remember" className="text-sm text-moringa-muted/70 cursor-pointer">
                 Keep me signed in on this device
               </label>
             </div>
@@ -273,7 +275,7 @@ const AdminLogin = () => {
           <div className="mt-8 text-center">
             <a
               href="/login"
-              className="text-sm text-slate-500 hover:text-slate-300 transition-colors"
+              className="text-sm text-moringa-muted hover:text-slate-300 transition-colors"
             >
               ← Back to main site
             </a>
@@ -281,7 +283,7 @@ const AdminLogin = () => {
 
           {/* Footer */}
           <div className="mt-8 text-center">
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-moringa-muted">
               © {new Date().getFullYear()} ChopNow. All rights reserved.
             </p>
           </div>

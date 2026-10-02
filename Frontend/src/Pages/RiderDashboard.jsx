@@ -166,7 +166,7 @@ const RiderDashboard = () => {
         );
       default:
         return (
-          <span className="bg-slate-50 text-slate-700 border border-slate-200 rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider">
+          <span className="bg-fufu text-moringa border border-hairline rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider">
             {status}
           </span>
         );
@@ -174,7 +174,7 @@ const RiderDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8 mt-16">
+    <div className="min-h-screen bg-fufu py-8 px-4 sm:px-6 lg:px-8 mt-16">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Top Header Card */}
         <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -188,7 +188,7 @@ const RiderDashboard = () => {
             <h1 className="text-3xl font-extrabold tracking-tight">
               Hello, {user?.firstName || 'Rider'} 👋
             </h1>
-            <p className="text-slate-300 text-sm max-w-md">
+            <p className="text-moringa/40 text-sm max-w-md">
               Welcome back to your dashboard. Deliver surplus meals, earn fees, and reduce food
               waste!
             </p>
@@ -197,9 +197,9 @@ const RiderDashboard = () => {
           {/* Action Row */}
           <div className="flex flex-wrap items-center gap-4 z-10">
             {/* Go Online Switcher Card */}
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-3.5 border border-white/10 shrink-0 flex items-center gap-4">
+            <div className="bg-white/10 rounded-xl p-3.5 border border-white/10 shrink-0 flex items-center gap-4">
               <div>
-                <p className="text-[10px] uppercase tracking-wider text-slate-400 font-medium">
+                <p className="text-[10px] uppercase tracking-wider text-moringa-muted/70 font-medium">
                   Status
                 </p>
                 <p className="text-xs font-bold flex items-center gap-1.5 mt-0.5">
@@ -225,7 +225,7 @@ const RiderDashboard = () => {
             {/* Switch to Buyer Mode shortcut */}
             <button
               onClick={handleSwitchToBuyer}
-              className="bg-white text-slate-900 hover:bg-slate-100 px-4 py-3 rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
+              className="bg-white text-moringa hover:bg-fufu px-4 py-3 rounded-xl text-xs font-bold transition-all shadow-md flex items-center gap-1.5 cursor-pointer"
             >
               Switch to Buyer Mode 🛒
             </button>
@@ -242,10 +242,10 @@ const RiderDashboard = () => {
               <Smartphone className="w-6 h-6" />
             </div>
             <div className="space-y-1">
-              <h3 className="font-bold text-sm text-slate-900">
+              <h3 className="font-bold text-sm text-moringa">
                 Rider Deliveries are Mobile-Only 📱
               </h3>
-              <p className="text-xs text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-xs text-moringa-muted leading-relaxed max-w-xl">
                 To accept orders, use live GPS navigation, and upload proof of delivery, please use
                 the ChopNow Mobile App. Download it from the Google Play Store or iOS App Store
                 today.
@@ -253,11 +253,11 @@ const RiderDashboard = () => {
             </div>
           </div>
           <div className="flex gap-3 w-full sm:w-auto shrink-0 justify-end">
-            <button className="flex items-center gap-2 px-4 py-2 border border-slate-200 hover:border-slate-300 bg-white text-xs font-bold rounded-xl transition-all cursor-pointer">
+            <button className="flex items-center gap-2 px-4 py-2 border border-hairline hover:border-slate-300 bg-white text-xs font-bold rounded-xl transition-all cursor-pointer">
               <Download className="w-4 h-4" />
               Get Android App
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 border border-slate-200 hover:border-slate-300 bg-white text-xs font-bold rounded-xl transition-all cursor-pointer">
+            <button className="flex items-center gap-2 px-4 py-2 border border-hairline hover:border-slate-300 bg-white text-xs font-bold rounded-xl transition-all cursor-pointer">
               <Download className="w-4 h-4" />
               Get iOS App
             </button>
@@ -265,16 +265,16 @@ const RiderDashboard = () => {
         </div>
 
         {/* Payout & Earnings Summary Card */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="p-4 bg-emerald-50 text-emerald-700 rounded-2xl border border-emerald-100">
               <CreditCard className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+              <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
                 Available Balance
               </p>
-              <h2 className="text-3xl font-black text-slate-900 mt-0.5">
+              <h2 className="text-3xl font-black text-moringa mt-0.5">
                 {formatCurrency(user?.stats?.riderBalance || 0)}
               </h2>
             </div>
@@ -291,7 +291,7 @@ const RiderDashboard = () => {
         {/* Quick Stats Summary Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {/* Earnings Card */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
             {loadingStats ? (
               <div className="flex items-center justify-center h-20">
                 <Loader2 className="w-6 h-6 animate-spin text-green-500" />
@@ -300,10 +300,10 @@ const RiderDashboard = () => {
               <>
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                    <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
                       All-Time Earnings
                     </p>
-                    <p className="text-2xl font-black text-slate-900">
+                    <p className="text-2xl font-black text-moringa">
                       {formatCurrency(stats?.totalEarnings || 0)}
                     </p>
                   </div>
@@ -320,7 +320,7 @@ const RiderDashboard = () => {
           </div>
 
           {/* Deliveries Card */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
             {loadingStats ? (
               <div className="flex items-center justify-center h-20">
                 <Loader2 className="w-6 h-6 animate-spin text-blue-500" />
@@ -329,10 +329,10 @@ const RiderDashboard = () => {
               <>
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                    <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
                       Total Deliveries
                     </p>
-                    <p className="text-2xl font-black text-slate-900">
+                    <p className="text-2xl font-black text-moringa">
                       {stats?.totalTrips || 0} Trips
                     </p>
                   </div>
@@ -340,7 +340,7 @@ const RiderDashboard = () => {
                     <Bike className="w-5 h-5" />
                   </div>
                 </div>
-                <p className="mt-4 text-[11px] text-slate-400">
+                <p className="mt-4 text-[11px] text-moringa-muted/70">
                   {stats?.activeTrips > 0 ? (
                     <span className="text-green-600 font-semibold">
                       {stats.activeTrips} active deliveries
@@ -354,7 +354,7 @@ const RiderDashboard = () => {
           </div>
 
           {/* Rating Card */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
             {loadingStats ? (
               <div className="flex items-center justify-center h-20">
                 <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
@@ -363,10 +363,10 @@ const RiderDashboard = () => {
               <>
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                    <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
                       Rider Rating
                     </p>
-                    <p className="text-2xl font-black text-slate-900">
+                    <p className="text-2xl font-black text-moringa">
                       {(stats?.rating || 4.9).toFixed(1)} / 5.0
                     </p>
                   </div>
@@ -386,10 +386,10 @@ const RiderDashboard = () => {
         {/* Lower Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left / Center: Weekly Earnings Chart Panel */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm lg:col-span-2 space-y-6">
+          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm lg:col-span-2 space-y-6">
             <div>
-              <h3 className="font-bold text-sm text-slate-900">Weekly Earnings</h3>
-              <p className="text-[11px] text-slate-400 mt-0.5">
+              <h3 className="font-bold text-sm text-moringa">Weekly Earnings</h3>
+              <p className="text-[11px] text-moringa-muted/70 mt-0.5">
                 Overview of earnings for the last 7 days
               </p>
             </div>
@@ -401,7 +401,7 @@ const RiderDashboard = () => {
             ) : (
               <>
                 {/* Custom SVG/CSS Bar Chart */}
-                <div className="h-64 flex items-end gap-3 sm:gap-6 pt-4 border-b border-slate-100 pb-2">
+                <div className="h-64 flex items-end gap-3 sm:gap-6 pt-4 border-b border-hairline pb-2">
                   {(stats?.weeklyData || []).map((bar, index) => {
                     const maxAmount = Math.max(
                       ...(stats?.weeklyData || []).map((b) => b.amount),
@@ -424,18 +424,20 @@ const RiderDashboard = () => {
                             className={`w-full max-w-[28px] rounded-t-lg transition-all duration-500 ${
                               bar.amount > 0
                                 ? 'bg-gradient-to-t from-green-500 to-emerald-600'
-                                : 'bg-slate-100'
+                                : 'bg-fufu-dim'
                             }`}
                             style={{ height: `${heightPercent || 5}%` }}
                           />
                         </div>
-                        <span className="text-[10px] text-slate-500 font-medium">{bar.day}</span>
+                        <span className="text-[10px] text-moringa-muted font-medium">
+                          {bar.day}
+                        </span>
                       </div>
                     );
                   })}
                 </div>
-                <div className="flex justify-between items-center text-xs text-slate-500 pt-2">
-                  <span className="font-semibold text-slate-800">Total Weekly Earnings:</span>
+                <div className="flex justify-between items-center text-xs text-moringa-muted pt-2">
+                  <span className="font-semibold text-moringa">Total Weekly Earnings:</span>
                   <span className="font-bold text-green-700">
                     {formatCurrency(stats?.weeklyEarningsSum || 0)}
                   </span>
@@ -445,14 +447,14 @@ const RiderDashboard = () => {
           </div>
 
           {/* Right: Payout Details & History */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6 flex flex-col justify-between">
+          <div className="bg-white border border-hairline rounded-2xl p-6 shadow-sm space-y-6 flex flex-col justify-between">
             <div className="space-y-6">
               <div>
-                <h3 className="font-bold text-sm text-slate-900 font-sans flex items-center gap-2">
-                  <History className="w-4 h-4 text-slate-500" />
+                <h3 className="font-bold text-sm text-moringa font-sans flex items-center gap-2">
+                  <History className="w-4 h-4 text-moringa-muted" />
                   Payout History
                 </h3>
-                <p className="text-[11px] text-slate-400 mt-0.5">
+                <p className="text-[11px] text-moringa-muted/70 mt-0.5">
                   Overview of recent cashouts completed
                 </p>
               </div>
@@ -462,7 +464,7 @@ const RiderDashboard = () => {
                   <Loader2 className="w-6 h-6 animate-spin text-green-500" />
                 </div>
               ) : payouts.length === 0 ? (
-                <div className="text-center py-12 text-slate-400">
+                <div className="text-center py-12 text-moringa-muted/70">
                   <AlertCircle className="w-8 h-8 mx-auto mb-2 opacity-50" />
                   <p className="text-xs">No payouts requested yet</p>
                 </div>
@@ -474,10 +476,10 @@ const RiderDashboard = () => {
                       className="flex items-center justify-between border-b border-slate-50 pb-3 last:border-0 last:pb-0"
                     >
                       <div className="space-y-0.5">
-                        <p className="text-xs font-bold text-slate-800">
+                        <p className="text-xs font-bold text-moringa">
                           {formatCurrency(pay.amount)}
                         </p>
-                        <p className="text-[10px] text-slate-400">
+                        <p className="text-[10px] text-moringa-muted/70">
                           {new Date(pay.createdAt).toLocaleDateString(undefined, {
                             month: 'short',
                             day: 'numeric',
@@ -498,8 +500,8 @@ const RiderDashboard = () => {
 
       {/* Payout Request Modal */}
       {showPayoutModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-all">
-          <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-100 overflow-hidden animate-scaleIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 transition-all">
+          <div className="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-hairline overflow-hidden animate-scaleIn">
             <div className="p-6 bg-slate-900 text-white flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-emerald-400" />
@@ -507,24 +509,24 @@ const RiderDashboard = () => {
               </div>
               <button
                 onClick={() => setShowPayoutModal(false)}
-                className="text-slate-400 hover:text-white transition-colors"
+                className="text-moringa-muted/70 hover:text-white transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <form onSubmit={handleRequestPayoutSubmit} className="p-6 space-y-6">
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+              <div className="bg-fufu p-4 rounded-xl border border-hairline text-center">
+                <p className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider">
                   Available Balance
                 </p>
-                <p className="text-2xl font-black text-slate-900 mt-1">
+                <p className="text-2xl font-black text-moringa mt-1">
                   {formatCurrency(user?.stats?.riderBalance || 0)}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <label className="block text-xs font-bold text-slate-700">
+                <label className="block text-xs font-bold text-moringa">
                   Withdrawal Amount (RWF)
                 </label>
                 <input
@@ -535,12 +537,12 @@ const RiderDashboard = () => {
                   placeholder="Minimum 5,000 RWF"
                   value={payoutAmount}
                   onChange={(e) => setPayoutAmount(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 outline-none transition-all font-semibold"
+                  className="w-full px-4 py-3 bg-white border border-hairline rounded-xl text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 outline-none transition-all font-semibold"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="block text-xs font-bold text-slate-700">Payment Method</label>
+                <label className="block text-xs font-bold text-moringa">Payment Method</label>
                 <div className="grid grid-cols-2 gap-4">
                   <button
                     type="button"
@@ -548,7 +550,7 @@ const RiderDashboard = () => {
                     className={`p-3 rounded-xl border text-center font-bold text-xs transition-all ${
                       payoutMethod === 'mobile'
                         ? 'border-emerald-600 bg-emerald-50/50 text-emerald-950 ring-2 ring-emerald-600/20'
-                        : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                        : 'border-hairline text-moringa-muted hover:bg-fufu'
                     }`}
                   >
                     Mobile Money
@@ -559,7 +561,7 @@ const RiderDashboard = () => {
                     className={`p-3 rounded-xl border text-center font-bold text-xs transition-all ${
                       payoutMethod === 'bank'
                         ? 'border-emerald-600 bg-emerald-50/50 text-emerald-950 ring-2 ring-emerald-600/20'
-                        : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                        : 'border-hairline text-moringa-muted hover:bg-fufu'
                     }`}
                   >
                     Bank Transfer

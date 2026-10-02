@@ -127,8 +127,8 @@ const MyImpact = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           {/* Header */}
           <div className="mb-6 text-center">
-            <h2 className="text-xl font-bold text-gray-900 mb-1">Your Impact Summary</h2>
-            <p className="text-sm text-gray-600">
+            <h2 className="text-xl font-bold text-moringa mb-1">Your Impact Summary</h2>
+            <p className="text-sm text-moringa-muted">
               Thank you for making a difference! Here's a summary of your positive environmental
               impact.
             </p>
@@ -141,10 +141,10 @@ const MyImpact = () => {
               <div className="flex items-center justify-center mb-1">
                 <Leaf className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'var(--color-solid)' }} />
               </div>
-              <h3 className="text-gray-600 text-[10px] md:text-xs font-medium mb-1">
+              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
                 Meals Rescued
               </h3>
-              <p className="text-lg md:text-2xl font-bold text-gray-900">
+              <p className="text-lg md:text-2xl font-bold text-moringa">
                 {impactData.mealsRescued.toLocaleString()}
               </p>
               {impactData.comparison && (
@@ -169,8 +169,10 @@ const MyImpact = () => {
               <div className="flex items-center justify-center mb-1">
                 <Wind className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'var(--color-solid)' }} />
               </div>
-              <h3 className="text-gray-600 text-[10px] md:text-xs font-medium mb-1">CO2e Saved</h3>
-              <p className="text-lg md:text-2xl font-bold text-gray-900">
+              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
+                CO2e Saved
+              </h3>
+              <p className="text-lg md:text-2xl font-bold text-moringa">
                 {impactData.co2Saved.toLocaleString()}
                 <span className="text-sm md:text-base">kg</span>
               </p>
@@ -184,8 +186,10 @@ const MyImpact = () => {
                   style={{ color: 'var(--color-solid)' }}
                 />
               </div>
-              <h3 className="text-gray-600 text-[10px] md:text-xs font-medium mb-1">Water Saved</h3>
-              <p className="text-lg md:text-2xl font-bold text-gray-900">
+              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
+                Water Saved
+              </h3>
+              <p className="text-lg md:text-2xl font-bold text-moringa">
                 {impactData.waterSaved.toLocaleString()}
                 <span className="text-sm md:text-base">L</span>
               </p>
@@ -196,10 +200,10 @@ const MyImpact = () => {
               <div className="flex items-center justify-center mb-1">
                 <Scale className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'var(--color-solid)' }} />
               </div>
-              <h3 className="text-gray-600 text-[10px] md:text-xs font-medium mb-1">
+              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
                 Food Waste Saved
               </h3>
-              <p className="text-lg md:text-2xl font-bold text-gray-900">
+              <p className="text-lg md:text-2xl font-bold text-moringa">
                 {impactData.foodWasteSaved.toLocaleString()}
                 <span className="text-sm md:text-base">kg</span>
               </p>
@@ -208,10 +212,10 @@ const MyImpact = () => {
 
           {/* Milestones Section */}
           <div className="mb-8">
-            <h2 className="text-lg font-bold text-gray-900 mb-1 text-center">
+            <h2 className="text-lg font-bold text-moringa mb-1 text-center">
               Your Contribution Milestones
             </h2>
-            <p className="text-sm text-gray-600 mb-4 text-center">
+            <p className="text-sm text-moringa-muted mb-4 text-center">
               See how you're progressing towards the next level of impact.
             </p>
 
@@ -220,8 +224,8 @@ const MyImpact = () => {
               <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-base font-bold text-gray-900 mb-1">Food Waste Warrior</h3>
-                    <p className="text-gray-600 text-xs">
+                    <h3 className="text-base font-bold text-moringa mb-1">Food Waste Warrior</h3>
+                    <p className="text-moringa-muted text-xs">
                       Rescue {mealsRemaining} more meals to reach your next milestone!
                     </p>
                   </div>
@@ -236,14 +240,14 @@ const MyImpact = () => {
 
                 <div className="mb-2">
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-medium text-gray-700">
+                    <span className="font-medium text-moringa">
                       {impactData.mealsRescued} / {mealsMilestone} meals
                     </span>
                     <span className="font-bold" style={{ color: 'var(--color-solid)' }}>
                       {Math.round(mealsProgress)}%
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-hairline rounded-full h-2">
                     <div
                       className="h-2 rounded-full transition-all duration-500"
                       style={{
@@ -259,8 +263,8 @@ const MyImpact = () => {
               <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-base font-bold text-gray-900 mb-1">Carbon Crusader</h3>
-                    <p className="text-gray-600 text-xs">
+                    <h3 className="text-base font-bold text-moringa mb-1">Carbon Crusader</h3>
+                    <p className="text-moringa-muted text-xs">
                       Save {co2Remaining.toFixed(1)} more kg of CO2e to reach your next milestone!
                     </p>
                   </div>
@@ -275,14 +279,14 @@ const MyImpact = () => {
 
                 <div className="mb-2">
                   <div className="flex justify-between text-xs mb-1">
-                    <span className="font-medium text-gray-700">
+                    <span className="font-medium text-moringa">
                       {impactData.co2Saved.toFixed(1)} / {co2Milestone} kg
                     </span>
                     <span className="font-bold" style={{ color: 'var(--color-solidOne)' }}>
                       {Math.round(co2Progress)}%
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-hairline rounded-full h-2">
                     <div
                       className="h-2 rounded-full transition-all duration-500"
                       style={{
@@ -299,8 +303,8 @@ const MyImpact = () => {
           {/* Impact Over Time Chart */}
           <div className="mb-8">
             <div className="text-center mb-4">
-              <h2 className="text-lg font-bold text-gray-900 mb-1">Your Impact Over Time</h2>
-              <p className="text-sm text-gray-600">
+              <h2 className="text-lg font-bold text-moringa mb-1">Your Impact Over Time</h2>
+              <p className="text-sm text-moringa-muted">
                 This chart visualizes your growing contribution to a healthier planet each month.
               </p>
             </div>
@@ -312,21 +316,21 @@ const MyImpact = () => {
                     className="w-3 h-3 rounded"
                     style={{ backgroundColor: 'var(--color-solid)' }}
                   ></div>
-                  <span className="text-xs text-gray-600">Meals Rescued</span>
+                  <span className="text-xs text-moringa-muted">Meals Rescued</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div
                     className="w-3 h-3 rounded"
                     style={{ backgroundColor: 'var(--color-solidOne)' }}
                   ></div>
-                  <span className="text-xs text-gray-600">CO2e Saved (kg)</span>
+                  <span className="text-xs text-moringa-muted">CO2e Saved (kg)</span>
                 </div>
               </div>
 
               {/* Chart */}
               <div className="relative h-64">
                 {/* Y-axis labels */}
-                <div className="absolute left-0 top-0 bottom-8 flex flex-col justify-between text-xs text-gray-500 w-8">
+                <div className="absolute left-0 top-0 bottom-8 flex flex-col justify-between text-xs text-moringa-muted w-8">
                   <span>{Math.max(maxMeals, maxCo2)}</span>
                   <span>{Math.floor(Math.max(maxMeals, maxCo2) * 0.75)}</span>
                   <span>{Math.floor(Math.max(maxMeals, maxCo2) * 0.5)}</span>
@@ -339,7 +343,7 @@ const MyImpact = () => {
                   {/* Grid lines */}
                   <div className="absolute inset-0 flex flex-col justify-between">
                     {[0, 1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-full border-t border-gray-200"></div>
+                      <div key={i} className="w-full border-t border-hairline"></div>
                     ))}
                   </div>
 
@@ -387,7 +391,7 @@ const MyImpact = () => {
                 </div>
 
                 {/* X-axis labels */}
-                <div className="absolute left-10 right-0 bottom-0 flex justify-between text-xs text-gray-500">
+                <div className="absolute left-10 right-0 bottom-0 flex justify-between text-xs text-moringa-muted">
                   {chartData.map((d) => (
                     <span key={d.month}>{d.month}</span>
                   ))}

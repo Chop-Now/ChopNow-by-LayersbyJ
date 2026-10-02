@@ -53,10 +53,10 @@ const ContactUs = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h1 className="text-3xl md:text-4xl font-semibold text-slate-800 mt-2">
+          <h1 className="text-3xl md:text-4xl font-semibold text-moringa mt-2">
             Get in touch with us
           </h1>
-          <p className="text-sm text-slate-500 text-center mt-4 max-w-xl">
+          <p className="text-sm text-moringa-muted text-center mt-4 max-w-xl">
             Have questions about ChopNow? We'd love to hear from you.
             <br />
             Send us a message and we'll respond as soon as possible.
@@ -69,15 +69,15 @@ const ContactUs = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="flex items-center gap-2 text-sm text-slate-600">
+            <div className="flex items-center gap-2 text-sm text-moringa-muted">
               <MapPin size={18} style={{ color: 'var(--color-solid)' }} />
               <span>Kigali, Rwanda</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-slate-600">
+            <div className="flex items-center gap-2 text-sm text-moringa-muted">
               <Phone size={18} style={{ color: 'var(--color-solid)' }} />
               <span>+250 788 123 456</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-slate-600">
+            <div className="flex items-center gap-2 text-sm text-moringa-muted">
               <Mail size={18} style={{ color: 'var(--color-solid)' }} />
               <span>chopnow.app@gmail.com</span>
             </div>
@@ -92,16 +92,16 @@ const ContactUs = () => {
         >
           <div className="flex flex-col md:flex-row items-start gap-6 w-full">
             <div className="w-full">
-              <label className="text-slate-700 font-medium" htmlFor="name">
+              <label className="text-moringa font-medium" htmlFor="name">
                 Your Name
               </label>
               <div className="relative mt-2">
                 <User
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-moringa-muted/70"
                   size={18}
                 />
                 <input
-                  className="h-12 pl-10 pr-4 w-full border-2 border-gray-200 rounded-lg outline-none transition-all duration-200 focus:border-(--color-solid)"
+                  className="h-12 pl-10 pr-4 w-full border-2 border-hairline rounded-lg outline-none transition-all duration-200 focus:border-(--color-solid)"
                   type="text"
                   placeholder="John Doe"
                   required
@@ -109,16 +109,16 @@ const ContactUs = () => {
               </div>
             </div>
             <div className="w-full">
-              <label className="text-slate-700 font-medium" htmlFor="email">
+              <label className="text-moringa font-medium" htmlFor="email">
                 Your Email
               </label>
               <div className="relative mt-2">
                 <Mail
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-moringa-muted/70"
                   size={18}
                 />
                 <input
-                  className="h-12 pl-10 pr-4 w-full border-2 border-gray-200 rounded-lg outline-none transition-all duration-200 focus:border-(--color-solid)"
+                  className="h-12 pl-10 pr-4 w-full border-2 border-hairline rounded-lg outline-none transition-all duration-200 focus:border-(--color-solid)"
                   type="email"
                   placeholder="john@example.com"
                   required
@@ -128,11 +128,11 @@ const ContactUs = () => {
           </div>
 
           <div className="mt-6 w-full">
-            <label className="text-slate-700 font-medium" htmlFor="message">
+            <label className="text-moringa font-medium" htmlFor="message">
               Message
             </label>
             <textarea
-              className="w-full mt-2 p-4 h-40 border-2 border-gray-200 rounded-lg resize-none outline-none transition-all duration-200 focus:border-(--color-solid)"
+              className="w-full mt-2 p-4 h-40 border-2 border-hairline rounded-lg resize-none outline-none transition-all duration-200 focus:border-(--color-solid)"
               placeholder="Tell us how we can help you..."
               required
             ></textarea>

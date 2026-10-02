@@ -128,8 +128,8 @@ const SignUp = () => {
           <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <User className="w-8 h-8 text-yellow-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Registration Closed</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-2xl font-bold text-moringa mb-2">Registration Closed</h2>
+          <p className="text-moringa-muted mb-6">
             New user registrations are currently disabled. Please check back later or contact
             support at{' '}
             <a href={`mailto:${settings.supportEmail}`} className="text-primary hover:underline">
@@ -829,7 +829,7 @@ const SignUp = () => {
                             {BUSINESS_CATEGORIES.find((c) => c.value === businessCategory)
                               ?.requiredDocs || 'Valid business documents'}
                           </p>
-                          <p className="text-xs text-gray-500 mt-1">
+                          <p className="text-xs text-moringa-muted mt-1">
                             You'll need to upload verification documents after registration before
                             you can start selling.
                           </p>

@@ -14,9 +14,9 @@ const PendingReview = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full bg-gray-100 flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen w-full bg-fufu-dim flex items-center justify-center px-4 py-8">
       <div className="max-w-2xl w-full">
-        <div className="bg-white rounded-2xl border border-gray-200 p-8 md:p-12">
+        <div className="bg-white rounded-2xl border border-hairline p-8 md:p-12">
           {/* Hourglass Icon */}
           <div className="flex justify-center mb-5">
             <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
@@ -146,14 +146,14 @@ const PendingReview = () => {
             {/* Action Buttons */}
             <div className="flex flex-row gap-2">
               <button
-                className="flex-1 h-9 rounded-lg border border-gray-300 flex items-center justify-center gap-2 text-xs font-medium hover:bg-gray-50 transition-colors cursor-pointer"
+                className="flex-1 h-9 rounded-lg border border-moringa/25 flex items-center justify-center gap-2 text-xs font-medium hover:bg-fufu transition-colors cursor-pointer"
                 style={{ color: 'var(--color-textColor)' }}
               >
                 <MessageCircleQuestion className="w-3.5 h-3.5" />
                 Visit FAQ
               </button>
               <button
-                className="flex-1 h-9 rounded-lg border border-gray-300 flex items-center justify-center gap-2 text-xs font-medium hover:bg-gray-50 transition-colors cursor-pointer"
+                className="flex-1 h-9 rounded-lg border border-moringa/25 flex items-center justify-center gap-2 text-xs font-medium hover:bg-fufu transition-colors cursor-pointer"
                 style={{ color: 'var(--color-textColor)' }}
               >
                 <Mail className="w-3.5 h-3.5" />

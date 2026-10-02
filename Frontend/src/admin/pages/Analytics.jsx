@@ -118,7 +118,7 @@ const ShopAdminOverview = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading business data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading business data...</p>
         </div>
       </div>
     );
@@ -129,7 +129,7 @@ const ShopAdminOverview = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -139,8 +139,8 @@ const ShopAdminOverview = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Shop Overview</h1>
-        <p className="text-slate-600 dark:text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-moringa dark:text-white">Shop Overview</h1>
+        <p className="text-moringa-muted dark:text-slate-400 mt-1">
           View your shop's performance metrics and insights
         </p>
       </div>
@@ -148,13 +148,13 @@ const ShopAdminOverview = () => {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Total Revenue */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                 Total Revenue
               </p>
-              <p className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
+              <p className="text-2xl font-bold text-moringa dark:text-white mb-2">
                 RWF {totalRevenue.toLocaleString()}
               </p>
               <div className="flex items-center space-x-1.5">
@@ -166,7 +166,7 @@ const ShopAdminOverview = () => {
                   )
                 ) : null}
                 <span
-                  className={`text-xs font-semibold ${revenueChange > 0 ? 'text-emerald-500' : revenueChange < 0 ? 'text-red-500' : 'text-slate-400 dark:text-slate-500'}`}
+                  className={`text-xs font-semibold ${revenueChange > 0 ? 'text-emerald-500' : revenueChange < 0 ? 'text-red-500' : 'text-moringa-muted/70 dark:text-slate-500'}`}
                 >
                   {revenueChange !== 0
                     ? `${revenueChange > 0 ? '+' : ''}${revenueChange}%`
@@ -181,15 +181,13 @@ const ShopAdminOverview = () => {
         </div>
 
         {/* Total Orders */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                 Total Orders
               </p>
-              <p className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
-                {totalOrders}
-              </p>
+              <p className="text-2xl font-bold text-moringa dark:text-white mb-2">{totalOrders}</p>
               <div className="flex items-center space-x-1.5">
                 {ordersChange !== 0 ? (
                   ordersChange > 0 ? (
@@ -199,7 +197,7 @@ const ShopAdminOverview = () => {
                   )
                 ) : null}
                 <span
-                  className={`text-xs font-semibold ${ordersChange > 0 ? 'text-emerald-500' : ordersChange < 0 ? 'text-red-500' : 'text-slate-400 dark:text-slate-500'}`}
+                  className={`text-xs font-semibold ${ordersChange > 0 ? 'text-emerald-500' : ordersChange < 0 ? 'text-red-500' : 'text-moringa-muted/70 dark:text-slate-500'}`}
                 >
                   {ordersChange !== 0
                     ? `${ordersChange > 0 ? '+' : ''}${ordersChange}%`
@@ -214,13 +212,13 @@ const ShopAdminOverview = () => {
         </div>
 
         {/* Average Order Value */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                 Avg Order Value
               </p>
-              <p className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
+              <p className="text-2xl font-bold text-moringa dark:text-white mb-2">
                 RWF {avgOrderValue.toLocaleString()}
               </p>
               <div className="flex items-center space-x-1.5">
@@ -232,7 +230,7 @@ const ShopAdminOverview = () => {
                   )
                 ) : null}
                 <span
-                  className={`text-xs font-semibold ${avgOrderChange > 0 ? 'text-emerald-500' : avgOrderChange < 0 ? 'text-red-500' : 'text-slate-400 dark:text-slate-500'}`}
+                  className={`text-xs font-semibold ${avgOrderChange > 0 ? 'text-emerald-500' : avgOrderChange < 0 ? 'text-red-500' : 'text-moringa-muted/70 dark:text-slate-500'}`}
                 >
                   {avgOrderChange !== 0
                     ? `${avgOrderChange > 0 ? '+' : ''}${avgOrderChange}%`
@@ -248,13 +246,11 @@ const ShopAdminOverview = () => {
       </div>
 
       {/* Sales Trend Chart */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
           <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">
-              Sales & Orders Trend
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <h3 className="text-lg font-bold text-moringa dark:text-white">Sales & Orders Trend</h3>
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               Last 30 days breakdown by week
             </p>
           </div>
@@ -339,12 +335,12 @@ const ShopAdminOverview = () => {
       </div>
 
       {/* Top Selling Products */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-hairline dark:border-slate-700/50">
         <div className="mb-4">
-          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-lg font-semibold text-moringa dark:text-white">
             Top 5 Selling Products
           </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+          <p className="text-sm text-moringa-muted dark:text-slate-400 mt-1">
             Best performing products this month
           </p>
         </div>
@@ -352,20 +348,20 @@ const ShopAdminOverview = () => {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-200 dark:border-slate-700">
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <tr className="border-b border-hairline dark:border-slate-700">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Rank
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Product Name
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Units Sold
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Revenue
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Stock
                 </th>
               </tr>
@@ -374,7 +370,7 @@ const ShopAdminOverview = () => {
               {topProducts.map((product) => (
                 <tr
                   key={product.rank}
-                  className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                  className="border-b border-hairline dark:border-slate-800 hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors"
                 >
                   <td className="py-3 px-4">
                     <div
@@ -382,19 +378,19 @@ const ShopAdminOverview = () => {
                         product.rank === 1
                           ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'
                           : product.rank === 2
-                            ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                            ? 'bg-hairline dark:bg-slate-700 text-moringa dark:text-slate-300'
                             : product.rank === 3
                               ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400'
-                              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                              : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400'
                       }`}
                     >
                       {product.rank}
                     </div>
                   </td>
-                  <td className="py-3 px-4 text-sm font-medium text-slate-900 dark:text-white">
+                  <td className="py-3 px-4 text-sm font-medium text-moringa dark:text-white">
                     {product.name}
                   </td>
-                  <td className="py-3 px-4 text-sm font-semibold text-slate-900 dark:text-white">
+                  <td className="py-3 px-4 text-sm font-semibold text-moringa dark:text-white">
                     {product.sold}
                   </td>
                   <td className="py-3 px-4 text-sm font-semibold text-solid">{product.revenue}</td>
@@ -496,7 +492,7 @@ const WebsiteAdminOverview = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading platform data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading platform data...</p>
         </div>
       </div>
     );
@@ -507,7 +503,7 @@ const WebsiteAdminOverview = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -517,8 +513,8 @@ const WebsiteAdminOverview = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Platform Overview</h1>
-        <p className="text-slate-600 dark:text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-moringa dark:text-white">Platform Overview</h1>
+        <p className="text-moringa-muted dark:text-slate-400 mt-1">
           Monitor overall platform performance and environmental impact
         </p>
       </div>
@@ -526,18 +522,18 @@ const WebsiteAdminOverview = () => {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Total Meals Rescued */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                 Total Meals Rescued
               </p>
-              <p className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
+              <p className="text-2xl font-bold text-moringa dark:text-white mb-2">
                 {totalMealsRescued.toLocaleString()}
               </p>
               <div className="flex items-center space-x-1.5">
                 {mealsChange === null ? (
-                  <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                  <span className="text-xs text-moringa-muted/70 dark:text-slate-500 italic">
                     No historical data yet
                   </span>
                 ) : (
@@ -553,7 +549,7 @@ const WebsiteAdminOverview = () => {
                       {mealsChange > 0 ? '+' : ''}
                       {mealsChange}%
                     </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       vs Last Month
                     </span>
                   </>
@@ -567,18 +563,18 @@ const WebsiteAdminOverview = () => {
         </div>
 
         {/* Total CO2e Saved */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                 Total CO2e Saved
               </p>
-              <p className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
+              <p className="text-2xl font-bold text-moringa dark:text-white mb-2">
                 {totalCo2Saved.toLocaleString()} kg
               </p>
               <div className="flex items-center space-x-1.5">
                 {co2Change === null ? (
-                  <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                  <span className="text-xs text-moringa-muted/70 dark:text-slate-500 italic">
                     No historical data yet
                   </span>
                 ) : (
@@ -594,7 +590,7 @@ const WebsiteAdminOverview = () => {
                       {co2Change > 0 ? '+' : ''}
                       {co2Change}%
                     </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       vs Last Month
                     </span>
                   </>
@@ -608,18 +604,18 @@ const WebsiteAdminOverview = () => {
         </div>
 
         {/* Total Water Saved */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+              <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                 Total Water Saved
               </p>
-              <p className="text-2xl font-bold text-slate-800 dark:text-white mb-2">
+              <p className="text-2xl font-bold text-moringa dark:text-white mb-2">
                 {(totalWaterSaved / 1000).toFixed(1)}k L
               </p>
               <div className="flex items-center space-x-1.5">
                 {waterChange === null ? (
-                  <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                  <span className="text-xs text-moringa-muted/70 dark:text-slate-500 italic">
                     No historical data yet
                   </span>
                 ) : (
@@ -635,7 +631,7 @@ const WebsiteAdminOverview = () => {
                       {waterChange > 0 ? '+' : ''}
                       {waterChange}%
                     </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       vs Last Month
                     </span>
                   </>
@@ -650,11 +646,11 @@ const WebsiteAdminOverview = () => {
       </div>
 
       {/* CO2e Saved Trend Chart */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
           <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">CO2e Saved Trend</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <h3 className="text-lg font-bold text-moringa dark:text-white">CO2e Saved Trend</h3>
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               Last 30 days breakdown by week
             </p>
           </div>
@@ -718,7 +714,7 @@ const WebsiteAdminOverview = () => {
           </div>
         ) : (
           <div className="h-72 flex items-center justify-center">
-            <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+            <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
               No order activity in the last 4 weeks yet
             </p>
           </div>
@@ -726,12 +722,12 @@ const WebsiteAdminOverview = () => {
       </div>
 
       {/* Vendor Leaderboard */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-hairline dark:border-slate-700/50">
         <div className="mb-4">
-          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+          <h2 className="text-lg font-semibold text-moringa dark:text-white">
             Top 10 Vendor Leaderboard
           </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+          <p className="text-sm text-moringa-muted dark:text-slate-400 mt-1">
             Vendors ranked by environmental impact
           </p>
         </div>
@@ -739,20 +735,20 @@ const WebsiteAdminOverview = () => {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-200 dark:border-slate-700">
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <tr className="border-b border-hairline dark:border-slate-700">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Rank
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Vendor Name
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Meals Rescued
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   CO2e Saved (kg)
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Water Saved (L)
                 </th>
               </tr>
@@ -761,7 +757,7 @@ const WebsiteAdminOverview = () => {
               {vendorLeaderboard.map((vendor) => (
                 <tr
                   key={vendor.rank}
-                  className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                  className="border-b border-hairline dark:border-slate-800 hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors"
                 >
                   <td className="py-3 px-4">
                     <div
@@ -769,19 +765,19 @@ const WebsiteAdminOverview = () => {
                         vendor.rank === 1
                           ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'
                           : vendor.rank === 2
-                            ? 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                            ? 'bg-hairline dark:bg-slate-700 text-moringa dark:text-slate-300'
                             : vendor.rank === 3
                               ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400'
-                              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
+                              : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400'
                       }`}
                     >
                       {vendor.rank}
                     </div>
                   </td>
-                  <td className="py-3 px-4 text-sm font-medium text-slate-900 dark:text-white">
+                  <td className="py-3 px-4 text-sm font-medium text-moringa dark:text-white">
                     {vendor.name}
                   </td>
-                  <td className="py-3 px-4 text-sm font-semibold text-slate-900 dark:text-white">
+                  <td className="py-3 px-4 text-sm font-semibold text-moringa dark:text-white">
                     {vendor.mealsRescued.toLocaleString()}
                   </td>
                   <td className="py-3 px-4 text-sm font-semibold text-green-600 dark:text-green-400">
@@ -886,7 +882,7 @@ const ShopAdminReports = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading reports data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading reports data...</p>
         </div>
       </div>
     );
@@ -897,7 +893,7 @@ const ShopAdminReports = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -908,8 +904,8 @@ const ShopAdminReports = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Shop Reports</h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-1">
+          <h1 className="text-2xl font-bold text-moringa dark:text-white">Shop Reports</h1>
+          <p className="text-moringa-muted dark:text-slate-400 mt-1">
             Generate and download detailed shop reports
           </p>
         </div>
@@ -920,13 +916,15 @@ const ShopAdminReports = () => {
       </div>
 
       {/* Revenue vs Cost Chart */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Revenue & Cost Analysis
         </h3>
         {!hasRevenueData ? (
           <div className="h-72 flex items-center justify-center">
-            <p className="text-sm text-slate-400 dark:text-slate-500 italic">No revenue data yet</p>
+            <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
+              No revenue data yet
+            </p>
           </div>
         ) : (
           <div className="h-72">
@@ -974,13 +972,11 @@ const ShopAdminReports = () => {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Category Distribution */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
-            Sales by Category
-          </h3>
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+          <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">Sales by Category</h3>
           {categoryData.length === 0 ? (
             <div className="h-64 flex items-center justify-center">
-              <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+              <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
                 No completed orders yet
               </p>
             </div>
@@ -1025,11 +1021,11 @@ const ShopAdminReports = () => {
                         className="w-3 h-3 rounded-full"
                         style={{ backgroundColor: category.color }}
                       ></div>
-                      <span className="text-sm text-slate-600 dark:text-slate-400">
+                      <span className="text-sm text-moringa-muted dark:text-slate-400">
                         {category.name}
                       </span>
                     </div>
-                    <span className="text-sm font-semibold text-slate-800 dark:text-white">
+                    <span className="text-sm font-semibold text-moringa dark:text-white">
                       {category.value}%
                     </span>
                   </div>
@@ -1040,13 +1036,11 @@ const ShopAdminReports = () => {
         </div>
 
         {/* Peak Hours */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
-            Peak Sales Hours
-          </h3>
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+          <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">Peak Sales Hours</h3>
           {!hasPeakHoursData ? (
             <div className="h-64 flex items-center justify-center">
-              <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+              <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
                 No orders in the last 30 days
               </p>
             </div>
@@ -1090,25 +1084,25 @@ const ShopAdminReports = () => {
       </div>
 
       {/* Order Fulfillment Status */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Order Fulfillment Status
         </h3>
         {fulfillmentMetrics.length === 0 || !fb.total ? (
-          <p className="text-sm text-slate-400 dark:text-slate-500 italic">No orders yet</p>
+          <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">No orders yet</p>
         ) : (
           <div className="space-y-4">
             {fulfillmentMetrics.map((metric) => (
               <div key={metric.status}>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                  <span className="text-sm font-medium text-moringa dark:text-slate-300">
                     {metric.status}
                   </span>
-                  <span className="text-sm font-bold text-slate-900 dark:text-white">
+                  <span className="text-sm font-bold text-moringa dark:text-white">
                     {metric.value}%
                   </span>
                 </div>
-                <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5">
+                <div className="w-full bg-hairline dark:bg-slate-700 rounded-full h-2.5">
                   <div
                     className="h-2.5 rounded-full transition-all duration-500"
                     style={{ width: `${metric.value}%`, backgroundColor: metric.color }}
@@ -1223,7 +1217,7 @@ const WebsiteAdminReports = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading reports data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading reports data...</p>
         </div>
       </div>
     );
@@ -1234,7 +1228,7 @@ const WebsiteAdminReports = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -1245,8 +1239,8 @@ const WebsiteAdminReports = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Platform Reports</h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-1">
+          <h1 className="text-2xl font-bold text-moringa dark:text-white">Platform Reports</h1>
+          <p className="text-moringa-muted dark:text-slate-400 mt-1">
             Generate comprehensive platform-wide reports
           </p>
         </div>
@@ -1258,44 +1252,46 @@ const WebsiteAdminReports = () => {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
-          <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+        <div className="bg-white dark:bg-slate-900/80 rounded-xl p-4 border border-hairline dark:border-slate-700/50">
+          <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
             Total Orders
           </p>
-          <p className="text-2xl font-bold text-slate-800 dark:text-white">
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             {totalOrders.toLocaleString()}
           </p>
         </div>
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
-          <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+        <div className="bg-white dark:bg-slate-900/80 rounded-xl p-4 border border-hairline dark:border-slate-700/50">
+          <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
             Active Vendors
           </p>
-          <p className="text-2xl font-bold text-slate-800 dark:text-white">
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             {activeVendors.toLocaleString()}
           </p>
         </div>
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
-          <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Total Users</p>
-          <p className="text-2xl font-bold text-slate-800 dark:text-white">
+        <div className="bg-white dark:bg-slate-900/80 rounded-xl p-4 border border-hairline dark:border-slate-700/50">
+          <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
+            Total Users
+          </p>
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             {totalUsers.toLocaleString()}
           </p>
         </div>
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-xl p-4 border border-slate-200/50 dark:border-slate-700/50">
-          <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+        <div className="bg-white dark:bg-slate-900/80 rounded-xl p-4 border border-hairline dark:border-slate-700/50">
+          <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
             Avg Order Value
           </p>
-          <p className="text-2xl font-bold text-slate-800 dark:text-white">
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             RWF {avgOrderValue.toLocaleString()}
           </p>
         </div>
       </div>
 
       {/* Revenue Chart */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
           <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">Revenue</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <h3 className="text-lg font-bold text-moringa dark:text-white">Revenue</h3>
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               This month vs. last month (All values in RWF)
             </p>
           </div>
@@ -1303,7 +1299,7 @@ const WebsiteAdminReports = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 rounded-full bg-solid"></div>
-                <span className="text-xs text-slate-600 dark:text-slate-400">Revenue</span>
+                <span className="text-xs text-moringa-muted dark:text-slate-400">Revenue</span>
               </div>
             </div>
           )}
@@ -1344,7 +1340,7 @@ const WebsiteAdminReports = () => {
           </div>
         ) : (
           <div className="h-72 flex items-center justify-center">
-            <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+            <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
               No completed orders yet
             </p>
           </div>
@@ -1354,14 +1350,14 @@ const WebsiteAdminReports = () => {
       {/* Category Distribution & Peak Hours */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Category Distribution */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
           <div className="mb-4">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">Sales by Category</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Product distribution</p>
+            <h3 className="text-lg font-bold text-moringa dark:text-white">Sales by Category</h3>
+            <p className="text-xs text-moringa-muted dark:text-slate-400">Product distribution</p>
           </div>
           {categoryData.length === 0 ? (
             <div className="h-64 flex items-center justify-center">
-              <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+              <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
                 No completed orders yet
               </p>
             </div>
@@ -1403,11 +1399,11 @@ const WebsiteAdminReports = () => {
                         className="w-2.5 h-2.5 rounded-full"
                         style={{ backgroundColor: item.color }}
                       />
-                      <span className="text-xs text-slate-600 dark:text-slate-400">
+                      <span className="text-xs text-moringa-muted dark:text-slate-400">
                         {item.name}
                       </span>
                     </div>
-                    <span className="text-xs font-semibold text-slate-800 dark:text-white">
+                    <span className="text-xs font-semibold text-moringa dark:text-white">
                       {item.value}%
                     </span>
                   </div>
@@ -1418,10 +1414,10 @@ const WebsiteAdminReports = () => {
         </div>
 
         {/* Peak Hours */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
           <div className="mb-4">
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">Peak Order Hours</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <h3 className="text-lg font-bold text-moringa dark:text-white">Peak Order Hours</h3>
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               Orders by hour of day (last 30 days)
             </p>
           </div>
@@ -1461,7 +1457,7 @@ const WebsiteAdminReports = () => {
             </div>
           ) : (
             <div className="h-64 flex items-center justify-center">
-              <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+              <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
                 No orders in the last 30 days yet
               </p>
             </div>
@@ -1470,27 +1466,27 @@ const WebsiteAdminReports = () => {
       </div>
 
       {/* Order Fulfillment Status */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-hairline dark:border-slate-700/50">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Order Fulfillment Status
         </h3>
         <div className="space-y-4">
           {fulfillmentData.map((item, index) => (
             <div key={index}>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                <span className="text-sm font-medium text-moringa dark:text-slate-300">
                   {item.type}
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-slate-900 dark:text-white">
+                  <span className="text-sm font-semibold text-moringa dark:text-white">
                     {item.count.toLocaleString()}
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                  <span className="text-xs text-moringa-muted dark:text-slate-400">
                     ({item.percentage}%)
                   </span>
                 </div>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+              <div className="w-full bg-hairline dark:bg-slate-700 rounded-full h-2">
                 <div
                   className={`h-2 rounded-full ${
                     item.type === 'Completed'
@@ -1611,7 +1607,7 @@ const ShopAdminInsights = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading insights data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading insights data...</p>
         </div>
       </div>
     );
@@ -1622,7 +1618,7 @@ const ShopAdminInsights = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -1632,8 +1628,8 @@ const ShopAdminInsights = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Shop Insights</h1>
-        <p className="text-slate-600 dark:text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-moringa dark:text-white">Shop Insights</h1>
+        <p className="text-moringa-muted dark:text-slate-400 mt-1">
           Discover insights to grow your business
         </p>
       </div>
@@ -1643,7 +1639,7 @@ const ShopAdminInsights = () => {
         {insights.map((insight) => (
           <div
             key={insight.title}
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group"
+            className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300 group"
           >
             <div className="flex items-start justify-between mb-3">
               <div
@@ -1670,55 +1666,57 @@ const ShopAdminInsights = () => {
                 />
               </div>
             </div>
-            <h3 className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+            <h3 className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
               {insight.title}
             </h3>
             {insight.value !== null ? (
-              <p className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+              <p className="text-2xl font-bold text-moringa dark:text-white mb-2">
                 {insight.value}
               </p>
             ) : (
-              <p className="text-sm font-medium text-slate-400 dark:text-slate-500 italic mb-2">
+              <p className="text-sm font-medium text-moringa-muted/70 dark:text-slate-500 italic mb-2">
                 Not available yet
               </p>
             )}
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">{insight.description}</p>
+            <p className="text-xs text-moringa-muted dark:text-slate-400 mb-2">
+              {insight.description}
+            </p>
             {insight.trend && <p className="text-xs font-semibold text-solid">{insight.trend}</p>}
           </div>
         ))}
       </div>
 
       {/* Customer Behavior Chart */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Customer Behavior (Last 7 Days)
         </h3>
         <div className="flex items-center justify-center py-8">
-          <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+          <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
             Day-by-day new vs. returning customer tracking is not available yet
           </p>
         </div>
       </div>
 
       {/* Product Performance Table */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Product Conversion Funnel
         </h3>
         <div className="flex items-center justify-center py-8">
-          <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+          <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
             Conversion tracking (views, cart adds, checkouts) is not available yet
           </p>
         </div>
       </div>
 
       {/* Growth Opportunities */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Growth Opportunities
         </h3>
         <div className="flex items-center justify-center py-8">
-          <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+          <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
             Personalized growth recommendations are not available yet
           </p>
         </div>
@@ -1782,7 +1780,7 @@ const WebsiteAdminInsights = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading insights data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading insights data...</p>
         </div>
       </div>
     );
@@ -1793,7 +1791,7 @@ const WebsiteAdminInsights = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -1803,23 +1801,23 @@ const WebsiteAdminInsights = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Platform Insights</h1>
-        <p className="text-slate-600 dark:text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-moringa dark:text-white">Platform Insights</h1>
+        <p className="text-moringa-muted dark:text-slate-400 mt-1">
           Data-driven insights for platform optimization
         </p>
       </div>
 
       {/* New Signups Chart */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
         <div className="mb-4">
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white">New Signups</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <h3 className="text-lg font-bold text-moringa dark:text-white">New Signups</h3>
+          <p className="text-xs text-moringa-muted dark:text-slate-400">
             New user registrations, last month vs this month
           </p>
         </div>
         {!hasUserGrowthData ? (
           <div className="h-72 flex items-center justify-center">
-            <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+            <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
               No signups recorded yet
             </p>
           </div>
@@ -1869,12 +1867,12 @@ const WebsiteAdminInsights = () => {
           satisfaction and delivery time are not tracked anywhere in the
           backend yet, so this is an honest placeholder rather than the
           fabricated "12 mins" / "94%" / "4.7/5" figures that were here. */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-hairline dark:border-slate-700/50">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Vendor Performance Metrics
         </h3>
         <div className="flex items-center justify-center py-8">
-          <p className="text-sm text-slate-400 dark:text-slate-500 italic">
+          <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
             Vendor response time, acceptance rate and delivery time tracking is not available yet
           </p>
         </div>
@@ -2021,7 +2019,7 @@ const ShopAdminImpact = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading impact data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading impact data...</p>
         </div>
       </div>
     );
@@ -2032,7 +2030,7 @@ const ShopAdminImpact = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -2042,8 +2040,8 @@ const ShopAdminImpact = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Shop Impact</h1>
-        <p className="text-slate-600 dark:text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-moringa dark:text-white">Shop Impact</h1>
+        <p className="text-moringa-muted dark:text-slate-400 mt-1">
           Track your environmental and social impact
         </p>
       </div>
@@ -2051,9 +2049,9 @@ const ShopAdminImpact = () => {
       {/* Impact Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Meals Rescued */}
-        <div className="bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 backdrop-blur-xl rounded-2xl p-5 border border-blue-200/50 dark:border-blue-700/50 hover:shadow-xl hover:shadow-blue-200/30 dark:hover:shadow-blue-900/20 transition-all duration-300 group">
+        <div className="bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 rounded-2xl p-5 border border-blue-200/50 dark:border-blue-700/50 hover:shadow-xl hover:shadow-blue-200/30 dark:hover:shadow-blue-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between mb-3">
-            <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
+            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
               <UtensilsCrossed className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
@@ -2067,9 +2065,9 @@ const ShopAdminImpact = () => {
         </div>
 
         {/* CO2e Saved */}
-        <div className="bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/20 backdrop-blur-xl rounded-2xl p-5 border border-green-200/50 dark:border-green-700/50 hover:shadow-xl hover:shadow-green-200/30 dark:hover:shadow-green-900/20 transition-all duration-300 group">
+        <div className="bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/20 rounded-2xl p-5 border border-green-200/50 dark:border-green-700/50 hover:shadow-xl hover:shadow-green-200/30 dark:hover:shadow-green-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between mb-3">
-            <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
+            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
               <Leaf className="w-6 h-6 text-green-600 dark:text-green-400" />
             </div>
             <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
@@ -2084,9 +2082,9 @@ const ShopAdminImpact = () => {
         </div>
 
         {/* Water Saved */}
-        <div className="bg-linear-to-br from-cyan-50 to-cyan-100 dark:from-cyan-900/30 dark:to-cyan-800/20 backdrop-blur-xl rounded-2xl p-5 border border-cyan-200/50 dark:border-cyan-700/50 hover:shadow-xl hover:shadow-cyan-200/30 dark:hover:shadow-cyan-900/20 transition-all duration-300 group">
+        <div className="bg-linear-to-br from-cyan-50 to-cyan-100 dark:from-cyan-900/30 dark:to-cyan-800/20 rounded-2xl p-5 border border-cyan-200/50 dark:border-cyan-700/50 hover:shadow-xl hover:shadow-cyan-200/30 dark:hover:shadow-cyan-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between mb-3">
-            <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
+            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
               <Droplet className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
             </div>
             <TrendingUp className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
@@ -2101,9 +2099,9 @@ const ShopAdminImpact = () => {
         </div>
 
         {/* Shop Ranking */}
-        <div className="bg-linear-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/20 backdrop-blur-xl rounded-2xl p-5 border border-orange-200/50 dark:border-orange-700/50 hover:shadow-xl hover:shadow-orange-200/30 dark:hover:shadow-orange-900/20 transition-all duration-300 group">
+        <div className="bg-linear-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/20 rounded-2xl p-5 border border-orange-200/50 dark:border-orange-700/50 hover:shadow-xl hover:shadow-orange-200/30 dark:hover:shadow-orange-900/20 transition-all duration-300 group">
           <div className="flex items-start justify-between mb-3">
-            <div className="p-3 rounded-xl bg-white/80 dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
+            <div className="p-3 rounded-xl bg-white dark:bg-slate-900/40 group-hover:scale-110 transition-all duration-300">
               <Award className="w-6 h-6 text-orange-600 dark:text-orange-400" />
             </div>
             <TrendingUp className="w-5 h-5 text-orange-600 dark:text-orange-400" />
@@ -2121,8 +2119,8 @@ const ShopAdminImpact = () => {
       </div>
 
       {/* Monthly Impact Trend */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Monthly Impact Trend
         </h3>
         <div className="h-72">
@@ -2199,27 +2197,25 @@ const ShopAdminImpact = () => {
       </div>
 
       {/* Category Impact Table */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
-          Impact by Category
-        </h3>
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">Impact by Category</h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-200 dark:border-slate-700">
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <tr className="border-b border-hairline dark:border-slate-700">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Category
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Meals
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   CO2e (kg)
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Water (L)
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Share
                 </th>
               </tr>
@@ -2229,29 +2225,29 @@ const ShopAdminImpact = () => {
                 categoryImpact.map((item) => (
                   <tr
                     key={item.category}
-                    className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                    className="border-b border-hairline dark:border-slate-800 hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors"
                   >
-                    <td className="py-3 px-4 text-sm font-medium text-slate-900 dark:text-white">
+                    <td className="py-3 px-4 text-sm font-medium text-moringa dark:text-white">
                       {item.category}
                     </td>
-                    <td className="py-3 px-4 text-sm text-slate-700 dark:text-slate-300">
+                    <td className="py-3 px-4 text-sm text-moringa dark:text-slate-300">
                       {item.meals}
                     </td>
-                    <td className="py-3 px-4 text-sm text-slate-700 dark:text-slate-300">
+                    <td className="py-3 px-4 text-sm text-moringa dark:text-slate-300">
                       {item.co2}
                     </td>
-                    <td className="py-3 px-4 text-sm text-slate-700 dark:text-slate-300">
+                    <td className="py-3 px-4 text-sm text-moringa dark:text-slate-300">
                       {item.water.toLocaleString()}
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 max-w-[100px] bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                        <div className="flex-1 max-w-[100px] bg-hairline dark:bg-slate-700 rounded-full h-2">
                           <div
                             className="bg-solid h-2 rounded-full"
                             style={{ width: `${item.percentage}%` }}
                           ></div>
                         </div>
-                        <span className="text-sm font-semibold text-slate-900 dark:text-white">
+                        <span className="text-sm font-semibold text-moringa dark:text-white">
                           {item.percentage}%
                         </span>
                       </div>
@@ -2262,7 +2258,7 @@ const ShopAdminImpact = () => {
                 <tr>
                   <td
                     colSpan={5}
-                    className="py-6 text-center text-sm text-slate-400 dark:text-slate-500 italic"
+                    className="py-6 text-center text-sm text-moringa-muted/70 dark:text-slate-500 italic"
                   >
                     No completed orders yet
                   </td>
@@ -2275,70 +2271,70 @@ const ShopAdminImpact = () => {
 
       {/* Environmental Equivalents */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50">
           <div className="flex items-center gap-3 mb-2">
-            <Car className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <Car className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
+            <span className="text-sm font-medium text-moringa dark:text-slate-300">
               Cars Off Road
             </span>
           </div>
-          <p className="text-2xl font-bold text-slate-900 dark:text-white">
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             {equivalents.carsOffRoad}
           </p>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">For a full year</p>
+          <p className="text-xs text-moringa-muted dark:text-slate-400 mt-1">For a full year</p>
         </div>
 
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50">
           <div className="flex items-center gap-3 mb-2">
-            <Trees className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <Trees className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
+            <span className="text-sm font-medium text-moringa dark:text-slate-300">
               Trees Planted
             </span>
           </div>
-          <p className="text-2xl font-bold text-slate-900 dark:text-white">
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             {equivalents.treesPlanted}
           </p>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Carbon absorbed</p>
+          <p className="text-xs text-moringa-muted dark:text-slate-400 mt-1">Carbon absorbed</p>
         </div>
 
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50">
           <div className="flex items-center gap-3 mb-2">
-            <Waves className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <Waves className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
+            <span className="text-sm font-medium text-moringa dark:text-slate-300">
               Olympic Pools
             </span>
           </div>
-          <p className="text-2xl font-bold text-slate-900 dark:text-white">
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             {equivalents.poolsFilled}
           </p>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Water saved</p>
+          <p className="text-xs text-moringa-muted dark:text-slate-400 mt-1">Water saved</p>
         </div>
 
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50">
           <div className="flex items-center gap-3 mb-2">
-            <Home className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <Home className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
+            <span className="text-sm font-medium text-moringa dark:text-slate-300">
               Households Fed
             </span>
           </div>
-          <p className="text-2xl font-bold text-slate-900 dark:text-white">
+          <p className="text-2xl font-bold text-moringa dark:text-white">
             {equivalents.householdsPowered}
           </p>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">For a month</p>
+          <p className="text-xs text-moringa-muted dark:text-slate-400 mt-1">For a month</p>
         </div>
       </div>
 
       {/* Impact Statement Banner */}
-      <div className="bg-linear-to-r from-solid/10 via-solid/5 to-tertiary/10 dark:from-solid/20 dark:via-solid/10 dark:to-tertiary/20 backdrop-blur-xl rounded-2xl p-6 border border-solid/20 dark:border-solid/30">
+      <div className="bg-linear-to-r from-solid/10 via-solid/5 to-tertiary/10 dark:from-solid/20 dark:via-solid/10 dark:to-tertiary/20 rounded-2xl p-6 border border-solid/20 dark:border-solid/30">
         <div className="flex items-start gap-4">
           <div className="p-3 bg-solid/20 dark:bg-solid/30 rounded-xl">
             <Sparkles className="w-6 h-6 text-solid" />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+            <h3 className="text-lg font-bold text-moringa dark:text-white mb-2">
               Your Impact Matters!
             </h3>
-            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <p className="text-sm text-moringa dark:text-slate-300 leading-relaxed">
               By rescuing {totalMeals.toLocaleString()} meals, you've saved{' '}
               {totalCo2.toLocaleString()} kg of CO2e from entering the atmosphere and conserved{' '}
               {totalWater.toLocaleString()} liters of water.
@@ -2451,7 +2447,7 @@ const WebsiteAdminImpact = () => {
       <div className="flex items-center justify-center h-96">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading impact data...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading impact data...</p>
         </div>
       </div>
     );
@@ -2462,7 +2458,7 @@ const WebsiteAdminImpact = () => {
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
           <p className="text-red-500 mb-2">Error loading data</p>
-          <p className="text-slate-600 dark:text-slate-400 text-sm">{error}</p>
+          <p className="text-moringa-muted dark:text-slate-400 text-sm">{error}</p>
         </div>
       </div>
     );
@@ -2472,8 +2468,8 @@ const WebsiteAdminImpact = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Platform Impact</h1>
-        <p className="text-slate-600 dark:text-slate-400 mt-1">
+        <h1 className="text-2xl font-bold text-moringa dark:text-white">Platform Impact</h1>
+        <p className="text-moringa-muted dark:text-slate-400 mt-1">
           Measure the platform's overall environmental and social impact
         </p>
       </div>
@@ -2522,10 +2518,10 @@ const WebsiteAdminImpact = () => {
       </div>
 
       {/* Monthly Impact Trend */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
         <div className="mb-4">
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white">Monthly Impact Trend</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <h3 className="text-lg font-bold text-moringa dark:text-white">Monthly Impact Trend</h3>
+          <p className="text-xs text-moringa-muted dark:text-slate-400">
             Environmental impact over time
           </p>
         </div>
@@ -2595,27 +2591,27 @@ const WebsiteAdminImpact = () => {
       </div>
 
       {/* Impact by Category */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-hairline dark:border-slate-700/50">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Impact by Food Category
         </h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-200 dark:border-slate-700">
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <tr className="border-b border-hairline dark:border-slate-700">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Category
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Meals Rescued
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   CO2e Saved (kg)
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Water Saved (L)
                 </th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-moringa dark:text-slate-300">
                   Impact
                 </th>
               </tr>
@@ -2625,7 +2621,7 @@ const WebsiteAdminImpact = () => {
                 categoryImpactData.map((item, index) => (
                   <tr
                     key={index}
-                    className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                    className="border-b border-hairline dark:border-slate-800 hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors"
                   >
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
@@ -2633,12 +2629,12 @@ const WebsiteAdminImpact = () => {
                           className="w-3 h-3 rounded-full"
                           style={{ backgroundColor: item.color }}
                         ></div>
-                        <span className="text-sm font-medium text-slate-900 dark:text-white">
+                        <span className="text-sm font-medium text-moringa dark:text-white">
                           {item.category}
                         </span>
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-sm font-semibold text-slate-900 dark:text-white">
+                    <td className="py-3 px-4 text-sm font-semibold text-moringa dark:text-white">
                       {item.meals.toLocaleString()}
                     </td>
                     <td className="py-3 px-4 text-sm font-semibold text-green-600 dark:text-green-400">
@@ -2648,7 +2644,7 @@ const WebsiteAdminImpact = () => {
                       {item.water.toLocaleString()}
                     </td>
                     <td className="py-3 px-4">
-                      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                      <div className="w-full bg-hairline dark:bg-slate-700 rounded-full h-2">
                         <div
                           className="h-2 rounded-full"
                           style={{
@@ -2664,7 +2660,7 @@ const WebsiteAdminImpact = () => {
                 <tr>
                   <td
                     colSpan={5}
-                    className="py-6 text-center text-sm text-slate-400 dark:text-slate-500 italic"
+                    className="py-6 text-center text-sm text-moringa-muted/70 dark:text-slate-500 italic"
                   >
                     No completed orders yet
                   </td>
@@ -2677,21 +2673,21 @@ const WebsiteAdminImpact = () => {
 
       {/* Environmental Equivalents */}
       <div>
-        <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">
+        <h3 className="text-lg font-bold text-moringa dark:text-white mb-4">
           Environmental Equivalents
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {environmentalEquivalents.map((item, index) => (
             <div
               key={index}
-              className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl transition-all duration-300"
+              className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50 hover:shadow-xl transition-all duration-300"
             >
               <div className="text-4xl mb-3">{item.icon}</div>
-              <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">{item.value}</p>
-              <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+              <p className="text-3xl font-bold text-moringa dark:text-white mb-1">{item.value}</p>
+              <p className="text-sm font-semibold text-moringa dark:text-slate-300 mb-2">
                 {item.title}
               </p>
-              <p className="text-xs text-slate-600 dark:text-slate-400">{item.description}</p>
+              <p className="text-xs text-moringa-muted dark:text-slate-400">{item.description}</p>
             </div>
           ))}
         </div>

@@ -930,8 +930,8 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
       default:
         return {
           icon: Bell,
-          iconBg: 'bg-slate-100 dark:bg-slate-700',
-          iconColor: 'text-slate-600 dark:text-slate-400',
+          iconBg: 'bg-fufu-dim dark:bg-slate-700',
+          iconColor: 'text-moringa-muted dark:text-slate-400',
         };
     }
   };
@@ -1151,13 +1151,13 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
 
   return (
     <>
-      <div className="z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 px-6 py-4">
+      <div className="z-50 bg-white dark:bg-slate-900/80 border-b border-hairline dark:border-slate-700/50 px-6 py-4">
         <div className="flex items-center justify-between">
           {/*Left section*/}
           <div className="flex items-center gap-4">
             <button
               onClick={onMenuClick}
-              className="p-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-2.5 rounded-lg border-2 border-hairline dark:border-slate-600 text-moringa-muted dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               <MenuIcon className="w-5 h-5" />
             </button>
@@ -1165,14 +1165,14 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
             {/* Mobile search button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="sm:hidden p-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="sm:hidden p-2.5 rounded-lg border-2 border-hairline dark:border-slate-600 text-moringa-muted dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               <Search className="w-5 h-5" />
             </button>
 
             {/* Desktop search input */}
             <div className="relative hidden sm:block" ref={searchRef}>
-              <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 dark:text-slate-400" />
+              <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted dark:text-slate-400" />
               <input
                 type="text"
                 placeholder="Search or type command..."
@@ -1183,7 +1183,7 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                     setIsSearchOpen(true);
                   }
                 }}
-                className="w-64 md:w-80 lg:w-96 pl-10 pr-12 py-2.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                className="w-64 md:w-80 lg:w-96 pl-10 pr-12 py-2.5 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
               />
               {searchQuery && (
                 <button
@@ -1192,7 +1192,7 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                     setIsSearchOpen(false);
                     setSearchResults([]);
                   }}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 text-moringa-muted/70 hover:text-slate-600 dark:hover:text-slate-300 rounded-md hover:bg-fufu dark:hover:bg-slate-700"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -1236,7 +1236,7 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
             {/*Toggle switch*/}
             <button
               onClick={toggleDarkMode}
-              className="p-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-2.5 rounded-lg border-2 border-hairline dark:border-slate-600 text-moringa-muted dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-800 transition-colors cursor-pointer"
             >
               {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -1247,7 +1247,7 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                   setIsNotificationOpen(!isNotificationOpen);
                   if (!isNotificationOpen) fetchNotifications();
                 }}
-                className="relative p-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="relative p-2.5 rounded-lg border-2 border-hairline dark:border-slate-600 text-moringa-muted dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 <Bell className="w-5 h-5" />
                 {unreadCount > 0 && (
@@ -1260,11 +1260,11 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
 
               {/* Notification Dropdown */}
               {isNotificationOpen && (
-                <div className="absolute right-0 mt-3 w-90 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-9999">
+                <div className="absolute right-0 mt-3 w-90 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 z-9999">
                   {/* Header */}
-                  <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center justify-between px-4 py-3 border-b border-hairline dark:border-slate-700">
                     <div className="flex items-center gap-2">
-                      <h3 className="text-base font-semibold text-slate-800 dark:text-white">
+                      <h3 className="text-base font-semibold text-moringa dark:text-white">
                         Notifications
                       </h3>
                       {unreadCount > 0 && (
@@ -1284,9 +1284,9 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                       )}
                       <button
                         onClick={() => setIsNotificationOpen(false)}
-                        className="p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                        className="p-1 rounded-md hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer"
                       >
-                        <X className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+                        <X className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
                       </button>
                     </div>
                   </div>
@@ -1299,8 +1299,8 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                       </div>
                     ) : notifications.length === 0 ? (
                       <div className="flex flex-col items-center justify-center py-8 px-4 text-center">
-                        <Bell className="w-10 h-10 text-slate-300 dark:text-slate-600 mb-2" />
-                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                        <Bell className="w-10 h-10 text-moringa/40 dark:text-slate-600 mb-2" />
+                        <p className="text-sm text-moringa-muted dark:text-slate-400">
                           No notifications yet
                         </p>
                       </div>
@@ -1313,9 +1313,9 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                             onClick={() => {
                               if (!notif.read) handleMarkNotifRead(notif._id);
                             }}
-                            className={`px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer ${
+                            className={`px-4 py-3 hover:bg-fufu dark:hover:bg-slate-700/50 transition-colors cursor-pointer ${
                               !notif.read ? 'bg-orange-50/40 dark:bg-orange-900/10' : ''
-                            } ${index < notifications.length - 1 ? 'border-b border-slate-100 dark:border-slate-700' : ''}`}
+                            } ${index < notifications.length - 1 ? 'border-b border-hairline dark:border-slate-700' : ''}`}
                           >
                             <div className="flex items-start space-x-3">
                               <div className={`p-2 ${iconBg} rounded-full shrink-0 relative`}>
@@ -1326,14 +1326,14 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                               </div>
                               <div className="flex-1 min-w-0">
                                 <p
-                                  className={`text-sm font-medium text-slate-800 dark:text-white truncate ${!notif.read ? 'font-semibold' : ''}`}
+                                  className={`text-sm font-medium text-moringa dark:text-white truncate ${!notif.read ? 'font-semibold' : ''}`}
                                 >
                                   {notif.title}
                                 </p>
-                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2">
+                                <p className="text-xs text-moringa-muted dark:text-slate-400 mt-0.5 line-clamp-2">
                                   {notif.message}
                                 </p>
-                                <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                                <p className="text-xs text-moringa-muted/70 dark:text-slate-500 mt-1">
                                   {formatNotifTime(notif.createdAt)}
                                 </p>
                               </div>
@@ -1345,13 +1345,13 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                   </div>
 
                   {/* Footer Button */}
-                  <div className="p-4 border-t border-slate-200 dark:border-slate-700 flex justify-center">
+                  <div className="p-4 border-t border-hairline dark:border-slate-700 flex justify-center">
                     <button
                       onClick={() => {
                         setIsNotificationOpen(false);
                         if (onPageChange) onPageChange('notifications');
                       }}
-                      className="w-9/10 px-4 py-2.5 bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-600 rounded-lg font-medium text-sm hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors cursor-pointer"
+                      className="w-9/10 px-4 py-2.5 bg-white dark:bg-slate-700 text-moringa dark:text-slate-200 border border-moringa/25 dark:border-slate-600 rounded-lg font-medium text-sm hover:bg-fufu dark:hover:bg-slate-600 transition-colors cursor-pointer"
                     >
                       View All Notifications
                     </button>
@@ -1364,7 +1364,7 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
             <div className="relative" ref={profileRef}>
               <button
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
-                className="flex items-center gap-3 pl-4 ml-2 border-l border-slate-200 dark:border-slate-700 cursor-pointer hover:opacity-80 transition-opacity"
+                className="flex items-center gap-3 pl-4 ml-2 border-l border-hairline dark:border-slate-700 cursor-pointer hover:opacity-80 transition-opacity"
               >
                 <img
                   src={
@@ -1372,13 +1372,13 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                     `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.email || 'default'}`
                   }
                   alt="user"
-                  className="w-9 h-9 rounded-full object-cover border-2 border-slate-200 dark:border-slate-600 flex-shrink-0"
+                  className="w-9 h-9 rounded-full object-cover border-2 border-hairline dark:border-slate-600 flex-shrink-0"
                 />
                 <div className="hidden md:flex md:flex-col md:justify-center text-left min-w-0">
-                  <p className="text-sm font-medium text-slate-700 dark:text-slate-300 truncate max-w-[120px]">
+                  <p className="text-sm font-medium text-moringa dark:text-slate-300 truncate max-w-[120px]">
                     {user?.firstName || 'User'}
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[120px]">
+                  <p className="text-xs text-moringa-muted dark:text-slate-400 truncate max-w-[120px]">
                     {user?.activeRole === 'admin'
                       ? 'Administrator'
                       : user?.activeRole === 'business_owner'
@@ -1387,19 +1387,19 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                   </p>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 flex-shrink-0 ${isProfileOpen ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 text-moringa-muted/70 transition-transform duration-200 flex-shrink-0 ${isProfileOpen ? 'rotate-180' : ''}`}
                 />
               </button>
 
               {/* Profile Dropdown */}
               {isProfileOpen && (
-                <div className="absolute right-0 mt-3 w-72 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 py-2 z-9999">
+                <div className="absolute right-0 mt-3 w-72 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 py-2 z-9999">
                   {/* User Info Section */}
-                  <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700">
-                    <p className="text-sm font-semibold text-slate-800 dark:text-white">
+                  <div className="px-4 py-3 border-b border-hairline dark:border-slate-700">
+                    <p className="text-sm font-semibold text-moringa dark:text-white">
                       {user?.firstName} {user?.lastName}
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    <p className="text-xs text-moringa-muted dark:text-slate-400 mt-0.5">
                       {user?.email}
                     </p>
                   </div>
@@ -1408,32 +1408,30 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                   <div className="py-2">
                     <button
                       onClick={handleEditProfile}
-                      className="w-full px-4 py-2.5 flex items-center space-x-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors text-left cursor-pointer"
+                      className="w-full px-4 py-2.5 flex items-center space-x-3 hover:bg-fufu dark:hover:bg-slate-700/50 transition-colors text-left cursor-pointer"
                     >
-                      <CircleUserRound className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-                      <span className="text-sm text-slate-700 dark:text-slate-300">
-                        Edit Profile
-                      </span>
+                      <CircleUserRound className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
+                      <span className="text-sm text-moringa dark:text-slate-300">Edit Profile</span>
                     </button>
 
                     <button
                       onClick={handleAccountSettings}
-                      className="w-full px-4 py-2.5 flex items-center space-x-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors text-left cursor-pointer"
+                      className="w-full px-4 py-2.5 flex items-center space-x-3 hover:bg-fufu dark:hover:bg-slate-700/50 transition-colors text-left cursor-pointer"
                     >
-                      <Settings className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-                      <span className="text-sm text-slate-700 dark:text-slate-300">
+                      <Settings className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
+                      <span className="text-sm text-moringa dark:text-slate-300">
                         Account Settings
                       </span>
                     </button>
 
-                    <button className="w-full px-4 py-2.5 flex items-center space-x-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors text-left cursor-pointer">
-                      <BadgeInfo className="w-5 h-5 text-slate-600 dark:text-slate-400" />
-                      <span className="text-sm text-slate-700 dark:text-slate-300">Support</span>
+                    <button className="w-full px-4 py-2.5 flex items-center space-x-3 hover:bg-fufu dark:hover:bg-slate-700/50 transition-colors text-left cursor-pointer">
+                      <BadgeInfo className="w-5 h-5 text-moringa-muted dark:text-slate-400" />
+                      <span className="text-sm text-moringa dark:text-slate-300">Support</span>
                     </button>
                   </div>
 
                   {/* Divider */}
-                  <div className="border-t border-slate-200 dark:border-slate-700 my-2"></div>
+                  <div className="border-t border-hairline dark:border-slate-700 my-2"></div>
 
                   {/* Sign Out */}
                   <div className="py-2">
@@ -1469,7 +1467,7 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
         <>
           {/* Dark Overlay */}
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-9998"
+            className="fixed inset-0 bg-black/50 z-9998"
             onMouseDown={() => {
               setIsSearchOpen(false);
               setSearchQuery('');
@@ -1482,18 +1480,18 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
             className="fixed top-24 left-1/2 transform -translate-x-1/2 w-full max-w-2xl z-9999"
             onMouseDown={(e) => e.stopPropagation()}
           >
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden mx-4">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-hairline dark:border-slate-700 overflow-hidden mx-4">
               {/* Search Input in Modal */}
-              <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+              <div className="px-6 py-4 border-b border-hairline dark:border-slate-700">
                 <div className="relative">
-                  <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-600 dark:text-slate-400" />
+                  <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted dark:text-slate-400" />
                   <input
                     type="text"
                     placeholder="Search or type command..."
                     value={searchQuery}
                     onChange={handleSearchChange}
                     autoFocus
-                    className="w-full pl-10 pr-10 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                    className="w-full pl-10 pr-10 py-3 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-600 rounded-xl text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                   />
                   {searchQuery && (
                     <button
@@ -1501,7 +1499,7 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                         setSearchQuery('');
                         setSearchResults([]);
                       }}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1.5 text-moringa-muted/70 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-mint dark:hover:bg-slate-700 rounded-lg transition-colors"
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -1510,9 +1508,9 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
               </div>
 
               {/* Header */}
-              <div className="px-6 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+              <div className="px-6 py-3 border-b border-hairline dark:border-slate-700 bg-fufu dark:bg-slate-900/50">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-slate-600 dark:text-slate-400">
+                  <h3 className="text-sm font-semibold text-moringa-muted dark:text-slate-400">
                     {searchResults.length > 0 ? (
                       <>
                         {searchResults.length} {searchResults.length === 1 ? 'result' : 'results'}{' '}
@@ -1528,9 +1526,9 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                       setSearchQuery('');
                       setSearchResults([]);
                     }}
-                    className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                    className="p-1.5 rounded-lg hover:bg-mint dark:hover:bg-slate-700 transition-colors"
                   >
-                    <X className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                    <X className="w-4 h-4 text-moringa-muted dark:text-slate-400" />
                   </button>
                 </div>
               </div>
@@ -1629,31 +1627,31 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
                               setSearchResults([]);
                             }
                           }}
-                          className="w-full px-6 py-3 flex items-center space-x-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors text-left border-b border-slate-100 dark:border-slate-700 last:border-0 cursor-pointer"
+                          className="w-full px-6 py-3 flex items-center space-x-4 hover:bg-fufu dark:hover:bg-slate-700/50 transition-colors text-left border-b border-hairline dark:border-slate-700 last:border-0 cursor-pointer"
                         >
                           <div className="p-2 bg-solid/10 dark:bg-solid/20 rounded-lg shrink-0">
                             {IconComponent && <IconComponent className="w-5 h-5 text-solid" />}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-slate-800 dark:text-white truncate">
+                            <p className="text-sm font-medium text-moringa dark:text-white truncate">
                               {item.label}
                             </p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                            <p className="text-xs text-moringa-muted dark:text-slate-400 truncate">
                               {item.path}
                             </p>
                           </div>
-                          <ChevronDown className="w-4 h-4 text-slate-400 -rotate-90 shrink-0" />
+                          <ChevronDown className="w-4 h-4 text-moringa-muted/70 -rotate-90 shrink-0" />
                         </div>
                       );
                     })}
                   </div>
                 ) : (
                   <div className="py-12 px-6 text-center">
-                    <Search className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
-                    <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <Search className="w-12 h-12 text-moringa/40 dark:text-slate-600 mx-auto mb-3" />
+                    <p className="text-sm font-medium text-moringa-muted dark:text-slate-400">
                       No results found for "{searchQuery}"
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
+                    <p className="text-xs text-moringa-muted dark:text-slate-500 mt-1">
                       Try searching with different keywords
                     </p>
                   </div>
@@ -1662,14 +1660,14 @@ const Header = ({ onMenuClick, onNavigateToSettings, onPageChange, isAdminDashbo
 
               {/* Footer Hint */}
               {searchResults.length > 0 && (
-                <div className="px-6 py-3 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-700">
-                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                <div className="px-6 py-3 bg-fufu dark:bg-slate-900/50 border-t border-hairline dark:border-slate-700">
+                  <div className="flex items-center justify-between text-xs text-moringa-muted dark:text-slate-400">
                     <span>Press ESC to close</span>
                     <span className="flex items-center gap-1">
-                      <kbd className="px-2 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded text-xs">
+                      <kbd className="px-2 py-1 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded text-xs">
                         ↑
                       </kbd>
-                      <kbd className="px-2 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded text-xs">
+                      <kbd className="px-2 py-1 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded text-xs">
                         ↓
                       </kbd>
                       <span className="ml-1">to navigate</span>

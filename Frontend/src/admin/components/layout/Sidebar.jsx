@@ -21,12 +21,12 @@ import { useAppContext } from '../../../context/AppContext';
 const shopAdminMenuItems = [
   {
     id: 'dashboard',
-    icon: <LayoutDashboard className="w-5 h-5 text-slate-400" />,
+    icon: <LayoutDashboard className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Dashboard',
   },
   {
     id: 'analytics',
-    icon: <ChartNoAxesCombined className="w-5 h-5 text-slate-400" />,
+    icon: <ChartNoAxesCombined className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Analytics',
     submenu: [
       { id: 'overview', label: 'Overview' },
@@ -37,7 +37,7 @@ const shopAdminMenuItems = [
   },
   {
     id: 'orders',
-    icon: <ShoppingBasket className="w-5 h-5 text-slate-400" />,
+    icon: <ShoppingBasket className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Orders',
     submenu: [
       { id: 'all-orders', label: 'All Orders' },
@@ -48,7 +48,7 @@ const shopAdminMenuItems = [
   },
   {
     id: 'listings',
-    icon: <List className="w-5 h-5 text-slate-400" />,
+    icon: <List className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Listings',
     submenu: [
       { id: 'all-listings', label: 'All Listings' },
@@ -57,12 +57,12 @@ const shopAdminMenuItems = [
   },
   {
     id: 'payouts',
-    icon: <Coins className="w-5 h-5 text-slate-400" />,
+    icon: <Coins className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Payouts',
   },
   {
     id: 'settings',
-    icon: <Settings className="w-5 h-5 text-slate-400" />,
+    icon: <Settings className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Settings',
   },
 ];
@@ -70,12 +70,12 @@ const shopAdminMenuItems = [
 const websiteAdminMenuItems = [
   {
     id: 'dashboard',
-    icon: <LayoutDashboard className="w-5 h-5 text-slate-400" />,
+    icon: <LayoutDashboard className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Dashboard',
   },
   {
     id: 'analytics',
-    icon: <ChartNoAxesCombined className="w-5 h-5 text-slate-400" />,
+    icon: <ChartNoAxesCombined className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Analytics',
     submenu: [
       { id: 'overview', label: 'Overview' },
@@ -86,7 +86,7 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'users',
-    icon: <User className="w-5 h-5 text-slate-400" />,
+    icon: <User className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Users',
     submenu: [
       { id: 'all-users', label: 'All Users' },
@@ -96,7 +96,7 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'orders',
-    icon: <ShoppingBasket className="w-5 h-5 text-slate-400" />,
+    icon: <ShoppingBasket className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Orders',
     submenu: [
       { id: 'all-orders', label: 'All Orders' },
@@ -107,13 +107,13 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'listings',
-    icon: <List className="w-5 h-5 text-slate-400" />,
+    icon: <List className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Listings',
     submenu: [{ id: 'all-listings', label: 'All Listings' }],
   },
   {
     id: 'vendors',
-    icon: <Store className="w-5 h-5 text-slate-400" />,
+    icon: <Store className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Vendors',
     submenu: [
       { id: 'all-vendors', label: 'All Vendors' },
@@ -122,7 +122,7 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'riders',
-    icon: <Bike className="w-5 h-5 text-slate-400" />,
+    icon: <Bike className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Riders',
     submenu: [
       { id: 'all-riders', label: 'All Riders' },
@@ -131,18 +131,18 @@ const websiteAdminMenuItems = [
   },
   {
     id: 'disputes',
-    icon: <ServerCrash className="w-5 h-5 text-slate-400" />,
+    icon: <ServerCrash className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Disputes',
     submenu: [{ id: 'complaints', label: 'Complaints' }],
   },
   {
     id: 'payouts',
-    icon: <Coins className="w-5 h-5 text-slate-400" />,
+    icon: <Coins className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Payouts',
   },
   {
     id: 'settings',
-    icon: <Settings className="w-5 h-5 text-slate-400" />,
+    icon: <Settings className="w-5 h-5 text-moringa-muted/70" />,
     label: 'Settings',
   },
 ];
@@ -169,20 +169,20 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
 
   return (
     <div
-      className={`${isExpanded ? 'w-72' : 'w-20'} transition-all duration-300 ease-in-out bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 flex flex-col relative z-10`}
+      className={`${isExpanded ? 'w-72' : 'w-20'} transition-all duration-300 ease-in-out bg-white dark:bg-slate-900/80 border-r border-hairline dark:border-slate-700/50 flex flex-col relative z-10`}
       onMouseEnter={() => collapsed && setIsHovered(true)}
       onMouseLeave={() => collapsed && setIsHovered(false)}
     >
       {/*Logo*/}
-      <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50">
+      <div className="p-6 border-b border-hairline dark:border-slate-700/50">
         <div className="flex items-center space-x-3">
           <img src={assets.logomarkgreen} alt="ChopNow" className="w-10 h-10" />
 
           {/*Conditional Rendering*/}
           {isExpanded && (
             <div>
-              <h1 className="text-lg font-bold text-slate-800 dark:text-white">ChopNow</h1>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <h1 className="text-lg font-bold text-moringa dark:text-white">ChopNow</h1>
+              <p className="text-xs text-moringa-muted dark:text-slate-400">
                 {isAdminDashboard ? 'Admin Panel' : 'Vendor Dashboard'}
               </p>
             </div>
@@ -204,8 +204,8 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
               }}
               className={`w-full flex items-center ${isExpanded ? 'justify-between pl-5' : 'justify-center'} p-2.5 rounded-lg transition-all duration-200 cursor-pointer ${
                 currentPage === item.id
-                  ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white'
-                  : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50'
+                  ? 'bg-hairline dark:bg-slate-700 text-moringa dark:text-white'
+                  : 'text-moringa-muted dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-800/50'
               }`}
             >
               <div className={`flex items-center ${isExpanded ? 'space-x-3' : ''}`}>
@@ -213,7 +213,7 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
                 {/*conditional rendering*/}
                 {isExpanded && (
                   <>
-                    <span className="text-sm text-slate-800 dark:text-white font-medium">
+                    <span className="text-sm text-moringa dark:text-white font-medium">
                       {item.label}
                     </span>
                     {item.count && (
@@ -242,8 +242,8 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
                     onClick={() => onPageChange(subitem.id)}
                     className={`w-full text-left px-3 py-1.5 text-sm font-medium rounded-lg transition-colors cursor-pointer ${
                       currentPage === subitem.id
-                        ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                        ? 'bg-hairline dark:bg-slate-700 text-moringa dark:text-white'
+                        : 'text-moringa-muted dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-fufu dark:hover:bg-slate-800'
                     }`}
                   >
                     {subitem.label}
@@ -257,7 +257,7 @@ const Sidebar = ({ collapsed, onToggle, currentPage, onPageChange, isAdminDashbo
 
       {/* View Storefront Button - Only for Vendor Dashboard */}
       {!isAdminDashboard && (
-        <div className="p-4 border-t border-slate-200 dark:border-slate-700">
+        <div className="p-4 border-t border-hairline dark:border-slate-700">
           <button
             onClick={() => {
               // Navigate to storefront - you can customize the URL or navigation logic

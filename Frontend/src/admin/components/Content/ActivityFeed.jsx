@@ -75,12 +75,14 @@ const ActivityFeed = () => {
   };
 
   return (
-    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 h-full flex flex-col">
-      <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50 shrink-0">
+    <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 h-full flex flex-col">
+      <div className="p-6 border-b border-hairline dark:border-slate-700/50 shrink-0">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-bold text-slate-800 dark:text-white">Activity Feed</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">Recent System Activities</p>
+            <h3 className="text-lg font-bold text-moringa dark:text-white">Activity Feed</h3>
+            <p className="text-sm text-moringa-muted dark:text-slate-400">
+              Recent System Activities
+            </p>
           </div>
           <button
             onClick={fetchActivities}
@@ -96,7 +98,7 @@ const ActivityFeed = () => {
         <div className="flex-1 flex items-center justify-center p-8">
           <div className="text-center">
             <Loader2 className="w-6 h-6 animate-spin text-solid mx-auto mb-2" />
-            <p className="text-sm text-slate-500 dark:text-slate-400">Loading activities...</p>
+            <p className="text-sm text-moringa-muted dark:text-slate-400">Loading activities...</p>
           </div>
         </div>
       )}
@@ -106,7 +108,7 @@ const ActivityFeed = () => {
         <div className="flex-1 flex items-center justify-center p-8">
           <div className="text-center">
             <AlertCircle className="w-6 h-6 text-red-500 mx-auto mb-2" />
-            <p className="text-sm text-slate-500 dark:text-slate-400">{error}</p>
+            <p className="text-sm text-moringa-muted dark:text-slate-400">{error}</p>
             <button onClick={fetchActivities} className="mt-2 text-sm text-solid hover:underline">
               Try again
             </button>
@@ -117,7 +119,7 @@ const ActivityFeed = () => {
       {/* Empty State */}
       {!loading && !error && activities.length === 0 && (
         <div className="flex-1 flex items-center justify-center p-8">
-          <p className="text-sm text-slate-500 dark:text-slate-400">No recent activity</p>
+          <p className="text-sm text-moringa-muted dark:text-slate-400">No recent activity</p>
         </div>
       )}
 
@@ -130,7 +132,7 @@ const ActivityFeed = () => {
               return (
                 <div
                   key={activity.id}
-                  className="flex items-start space-x-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                  className="flex items-start space-x-4 p-3 rounded-xl hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors"
                 >
                   <div
                     className={`p-2 rounded-lg ${bgColor} flex items-center justify-center mt-1`}
@@ -138,15 +140,15 @@ const ActivityFeed = () => {
                     <Icon className={`w-4 h-4 ${color}`} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-slate-800 dark:text-white">
+                    <h4 className="text-sm font-semibold text-moringa dark:text-white">
                       {activity.title}
                     </h4>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 truncate">
+                    <p className="text-sm text-moringa-muted dark:text-slate-400 truncate">
                       {activity.description}
                     </p>
                     <div className="flex items-center space-x-1 mt-1">
-                      <Clock className="w-3 h-3 text-slate-400" />
-                      <span className="text-xs text-slate-500 dark:text-slate-400">
+                      <Clock className="w-3 h-3 text-moringa-muted/70" />
+                      <span className="text-xs text-moringa-muted dark:text-slate-400">
                         {formatTimestamp(activity.timestamp)}
                       </span>
                     </div>

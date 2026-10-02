@@ -48,7 +48,7 @@ const ErrorDisplay = ({
       icon: AlertCircle,
       defaultTitle: 'Not Found',
       defaultMessage: 'The requested resource could not be found.',
-      iconColor: 'text-slate-500',
+      iconColor: 'text-moringa-muted',
     },
   };
 
@@ -58,14 +58,14 @@ const ErrorDisplay = ({
   const content = (
     <div className={`text-center ${className}`}>
       <div
-        className={`w-16 h-16 mx-auto mb-4 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center`}
+        className={`w-16 h-16 mx-auto mb-4 rounded-full bg-fufu-dim dark:bg-slate-800 flex items-center justify-center`}
       >
         <Icon className={`w-8 h-8 ${config.iconColor}`} />
       </div>
-      <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-2">
+      <h3 className="text-lg font-semibold text-moringa dark:text-white mb-2">
         {title || config.defaultTitle}
       </h3>
-      <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 max-w-md mx-auto">
+      <p className="text-sm text-moringa-muted dark:text-slate-400 mb-4 max-w-md mx-auto">
         {message || config.defaultMessage}
       </p>
       {onRetry && (
@@ -82,8 +82,8 @@ const ErrorDisplay = ({
 
   if (fullPage) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 p-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-700 max-w-md w-full">
+      <div className="min-h-screen flex items-center justify-center bg-fufu dark:bg-slate-900 p-4">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-hairline dark:border-slate-700 max-w-md w-full">
           {content}
         </div>
       </div>
@@ -91,7 +91,7 @@ const ErrorDisplay = ({
   }
 
   return (
-    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50">
+    <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-8 border border-hairline dark:border-slate-700/50">
       {content}
     </div>
   );
@@ -128,7 +128,7 @@ export const ErrorBanner = ({ message, onDismiss, onRetry }) => (
           {onDismiss && (
             <button
               onClick={onDismiss}
-              className="text-sm text-slate-600 dark:text-slate-400 hover:underline"
+              className="text-sm text-moringa-muted dark:text-slate-400 hover:underline"
             >
               Dismiss
             </button>

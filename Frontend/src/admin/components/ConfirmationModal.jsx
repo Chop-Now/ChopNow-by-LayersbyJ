@@ -18,10 +18,10 @@ const ConfirmationModal = ({
   const modalContent = (
     <div className="fixed inset-0 z-99999 flex items-center justify-center">
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative flex flex-col items-center bg-white dark:bg-slate-800 shadow-xl rounded-xl py-6 px-5 md:w-[460px] w-[370px] border border-gray-200 dark:border-slate-700 z-10">
+      <div className="relative flex flex-col items-center bg-white dark:bg-slate-800 shadow-xl rounded-xl py-6 px-5 md:w-[460px] w-[370px] border border-hairline dark:border-slate-700 z-10">
         {/* Icon */}
         <div
           className={`flex items-center justify-center p-4 rounded-full ${
@@ -37,12 +37,12 @@ const ConfirmationModal = ({
         </div>
 
         {/* Title */}
-        <h2 className="text-gray-900 dark:text-white font-semibold mt-4 text-xl">
+        <h2 className="text-moringa dark:text-white font-semibold mt-4 text-xl">
           {title || (isLogout ? 'Sign Out?' : 'Are you sure?')}
         </h2>
 
         {/* Message */}
-        <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">
+        <p className="text-sm text-moringa-muted dark:text-gray-400 mt-2 text-center">
           {message ||
             (isLogout
               ? 'Do you really want to sign out from your account?'
@@ -54,7 +54,7 @@ const ConfirmationModal = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-full md:w-36 h-10 rounded-md border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-600 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-slate-600 active:scale-95 transition cursor-pointer"
+            className="w-full md:w-36 h-10 rounded-md border border-moringa/25 dark:border-slate-600 bg-white dark:bg-slate-700 text-moringa-muted dark:text-gray-300 font-medium text-sm hover:bg-fufu dark:hover:bg-slate-600 active:scale-95 transition cursor-pointer"
           >
             Cancel
           </button>

@@ -322,13 +322,13 @@ const Notification = () => {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="sticky top-0 bg-white border-b border-gray-100 p-4 flex items-center justify-between">
+          <div className="sticky top-0 bg-white border-b border-hairline p-4 flex items-center justify-between">
             <h2 className="text-lg font-semibold text-textColor">Notification Details</h2>
             <button
               onClick={closeDetail}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 hover:bg-fufu rounded-full transition-colors"
             >
-              <X size={20} className="text-gray-500" />
+              <X size={20} className="text-moringa-muted" />
             </button>
           </div>
 
@@ -350,7 +350,7 @@ const Notification = () => {
                   <h3 className="text-xl font-bold text-textColor mb-1">
                     {selectedNotification.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-moringa-muted">
                     {selectedNotification.description || selectedNotification.message}
                   </p>
                 </div>
@@ -376,15 +376,15 @@ const Notification = () => {
                   <div className="space-y-2">
                     {meta.orderNumber && (
                       <div className="flex items-center gap-2 text-sm">
-                        <Package size={16} className="text-gray-400" />
-                        <span className="text-gray-600">Order:</span>
+                        <Package size={16} className="text-moringa-muted/70" />
+                        <span className="text-moringa-muted">Order:</span>
                         <span className="font-medium text-textColor">#{meta.orderNumber}</span>
                       </div>
                     )}
 
                     {meta.orderTotal && (
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="text-gray-600 ml-6">Total:</span>
+                        <span className="text-moringa-muted ml-6">Total:</span>
                         <span className="font-bold text-green-600">
                           {meta.currency || 'RWF'} {meta.orderTotal?.toLocaleString()}
                         </span>
@@ -393,15 +393,15 @@ const Notification = () => {
 
                     {meta.businessName && (
                       <div className="flex items-center gap-2 text-sm">
-                        <Store size={16} className="text-gray-400" />
-                        <span className="text-gray-600">From:</span>
+                        <Store size={16} className="text-moringa-muted/70" />
+                        <span className="text-moringa-muted">From:</span>
                         <span className="font-medium text-textColor">{meta.businessName}</span>
                       </div>
                     )}
 
                     {meta.customerName && (
                       <div className="flex items-center gap-2 text-sm">
-                        <span className="text-gray-600 ml-6">Customer:</span>
+                        <span className="text-moringa-muted ml-6">Customer:</span>
                         <span className="font-medium text-textColor">{meta.customerName}</span>
                       </div>
                     )}
@@ -435,11 +435,11 @@ const Notification = () => {
 
               {/* Fulfillment Type */}
               {meta.fulfillmentType && (
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
+                <div className="flex items-center gap-2 text-sm text-moringa-muted mb-4">
                   {meta.fulfillmentType === 'delivery' ? (
-                    <Truck size={16} className="text-gray-400" />
+                    <Truck size={16} className="text-moringa-muted/70" />
                   ) : (
-                    <Store size={16} className="text-gray-400" />
+                    <Store size={16} className="text-moringa-muted/70" />
                   )}
                   <span className="capitalize">{meta.fulfillmentType}</span>
                 </div>
@@ -456,17 +456,17 @@ const Notification = () => {
                         className={
                           i < meta.reviewRating
                             ? 'text-yellow-400 fill-yellow-400'
-                            : 'text-gray-300'
+                            : 'text-moringa/40'
                         }
                       />
                     ))}
                   </div>
-                  {meta.reviewText && <p className="text-gray-700 italic">"{meta.reviewText}"</p>}
+                  {meta.reviewText && <p className="text-moringa italic">"{meta.reviewText}"</p>}
                 </div>
               )}
 
               {/* Timestamp */}
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+              <div className="flex items-center gap-2 text-sm text-moringa-muted mb-6">
                 <Clock size={16} />
                 <span>{formatFullDate(selectedNotification.createdAt)}</span>
               </div>
@@ -507,7 +507,7 @@ const Notification = () => {
                   className={`flex-1 px-4 py-2 rounded-lg transition-colors text-center cursor-pointer ${
                     selectedFilter === 'all'
                       ? 'bg-solid text-white'
-                      : 'bg-white text-textColor hover:bg-gray-100'
+                      : 'bg-white text-textColor hover:bg-fufu'
                   }`}
                 >
                   All
@@ -517,7 +517,7 @@ const Notification = () => {
                   className={`flex-1 px-4 py-2 rounded-lg transition-colors text-center cursor-pointer ${
                     selectedFilter === 'unread'
                       ? 'bg-solid text-white'
-                      : 'bg-white text-textColor hover:bg-gray-100'
+                      : 'bg-white text-textColor hover:bg-fufu'
                   }`}
                 >
                   Unread
@@ -534,7 +534,7 @@ const Notification = () => {
                         type="checkbox"
                         checked={selectedCategories.includes(category.id)}
                         onChange={() => toggleCategory(category.id)}
-                        className="w-4 h-4 text-solid border-gray-300 rounded focus:ring-solid"
+                        className="w-4 h-4 text-solid border-moringa/25 rounded focus:ring-solid"
                       />
                       <span className="text-sm text-textColor">{category.label}</span>
                     </label>
@@ -569,7 +569,7 @@ const Notification = () => {
                   className={`flex-1 px-4 py-2 rounded-lg transition-colors text-center text-sm ${
                     selectedFilter === 'all'
                       ? 'bg-solid text-white'
-                      : 'bg-white text-textColor hover:bg-gray-100'
+                      : 'bg-white text-textColor hover:bg-fufu'
                   }`}
                 >
                   All
@@ -579,7 +579,7 @@ const Notification = () => {
                   className={`flex-1 px-4 py-2 rounded-lg transition-colors text-center text-sm ${
                     selectedFilter === 'unread'
                       ? 'bg-solid text-white'
-                      : 'bg-white text-textColor hover:bg-gray-100'
+                      : 'bg-white text-textColor hover:bg-fufu'
                   }`}
                 >
                   Unread
@@ -595,7 +595,7 @@ const Notification = () => {
                     className={`px-3 py-1.5 rounded-full text-xs transition-colors ${
                       selectedCategories.includes(category.id)
                         ? 'bg-solid text-white'
-                        : 'bg-white text-textColor hover:bg-gray-100'
+                        : 'bg-white text-textColor hover:bg-fufu'
                     }`}
                   >
                     {category.label}
@@ -615,7 +615,7 @@ const Notification = () => {
             </div>
 
             {/* Actions Bar */}
-            <div className="flex justify-end items-center gap-6 mb-6 pb-4 border-b border-gray-200">
+            <div className="flex justify-end items-center gap-6 mb-6 pb-4 border-b border-hairline">
               <button
                 onClick={markAllAsRead}
                 className="flex items-center gap-2 text-sm text-textColor hover:text-moringa-muted transition-colors cursor-pointer"
@@ -641,7 +641,7 @@ const Notification = () => {
                 </div>
               ) : filteredNotifications.length === 0 ? (
                 <div className="text-center py-12 text-moringa-muted">
-                  <Bell size={48} className="mx-auto mb-4 text-gray-300" />
+                  <Bell size={48} className="mx-auto mb-4 text-moringa/40" />
                   <p>No notifications to display</p>
                 </div>
               ) : (
@@ -679,15 +679,15 @@ const Notification = () => {
                               <h3 className="font-semibold text-textColor mb-1 text-sm">
                                 {notification.title}
                               </h3>
-                              <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                              <p className="text-sm text-moringa-muted mb-2 line-clamp-2">
                                 {notification.description}
                               </p>
 
                               {/* Quick info preview */}
-                              <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+                              <div className="flex flex-wrap items-center gap-3 text-xs text-moringa-muted">
                                 <span>{notification.timestamp}</span>
                                 {meta.orderNumber && (
-                                  <span className="bg-gray-100 px-2 py-0.5 rounded">
+                                  <span className="bg-fufu-dim px-2 py-0.5 rounded">
                                     #{meta.orderNumber}
                                   </span>
                                 )}
@@ -708,19 +708,19 @@ const Notification = () => {
                                     dropdownOpen === notification.id ? null : notification.id
                                   );
                                 }}
-                                className="p-1 text-gray-400 hover:text-textColor transition-colors rounded-full hover:bg-gray-100"
+                                className="p-1 text-moringa-muted/70 hover:text-textColor transition-colors rounded-full hover:bg-fufu"
                               >
                                 <EllipsisVertical size={18} />
                               </button>
 
                               {dropdownOpen === notification.id && (
-                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-10">
+                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-hairline py-2 z-10">
                                   <button
                                     onClick={(e) => {
                                       e.stopPropagation();
                                       markAsRead(notification.id);
                                     }}
-                                    className="w-full text-left px-4 py-2 text-sm text-textColor hover:bg-gray-100 transition-colors"
+                                    className="w-full text-left px-4 py-2 text-sm text-textColor hover:bg-fufu transition-colors"
                                   >
                                     Mark as read
                                   </button>
@@ -729,7 +729,7 @@ const Notification = () => {
                                       e.stopPropagation();
                                       deleteNotification(notification.id);
                                     }}
-                                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors"
+                                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-fufu transition-colors"
                                   >
                                     Delete
                                   </button>

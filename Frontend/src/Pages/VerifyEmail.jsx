@@ -101,7 +101,7 @@ const VerifyEmail = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="h-11 rounded-lg border border-gray-300 px-3 text-sm"
+                className="h-11 rounded-lg border border-moringa/25 px-3 text-sm"
               />
               <button
                 type="submit"

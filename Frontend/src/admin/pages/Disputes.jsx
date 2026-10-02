@@ -66,7 +66,7 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
       className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer ${
         action === value
           ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-          : 'border-slate-200 dark:border-slate-700'
+          : 'border-hairline dark:border-slate-700'
       }`}
     >
       <input
@@ -77,10 +77,8 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
         className="mt-1"
       />
       <span>
-        <span className="block text-sm font-medium text-slate-800 dark:text-slate-100">
-          {label}
-        </span>
-        {hint && <span className="block text-xs text-slate-500">{hint}</span>}
+        <span className="block text-sm font-medium text-moringa dark:text-slate-100">{label}</span>
+        {hint && <span className="block text-xs text-moringa-muted">{hint}</span>}
       </span>
     </label>
   );
@@ -90,10 +88,10 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
       <div className="w-full max-w-lg rounded-xl bg-white dark:bg-slate-900 p-6 shadow-2xl">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100">
+            <h3 className="text-lg font-semibold text-moringa dark:text-slate-100">
               Resolve dispute
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-moringa-muted">
               Order {issue.orderId}
               {orderTotal ? ` · RWF ${orderTotal.toLocaleString()}` : ''}
             </p>
@@ -101,7 +99,7 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
           <button
             onClick={onCancel}
             aria-label="Close"
-            className="text-slate-400 hover:text-slate-600"
+            className="text-moringa-muted/70 hover:text-slate-600"
           >
             <X className="w-5 h-5" />
           </button>
@@ -122,7 +120,7 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
               placeholder="Refund amount (RWF)"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-600 rounded-lg dark:bg-slate-800"
+              className="w-full px-3 py-2 text-sm border border-hairline dark:border-slate-600 rounded-lg dark:bg-slate-800"
             />
           )}
           {option('replacement', 'Replacement arranged', 'No money is refunded')}
@@ -131,7 +129,7 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
 
         {isRefund && (
           <div className="mb-4">
-            <p className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+            <p className="text-xs font-medium text-moringa dark:text-slate-300 mb-2">
               Who pays for this refund?
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -146,13 +144,13 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
                   className={`text-left p-3 rounded-lg border ${
                     fundedBy === value
                       ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                      : 'border-slate-200 dark:border-slate-700'
+                      : 'border-hairline dark:border-slate-700'
                   }`}
                 >
-                  <span className="block text-sm font-medium text-slate-800 dark:text-slate-100">
+                  <span className="block text-sm font-medium text-moringa dark:text-slate-100">
                     {label}
                   </span>
-                  <span className="block text-xs text-slate-500">{hint}</span>
+                  <span className="block text-xs text-moringa-muted">{hint}</span>
                 </button>
               ))}
             </div>
@@ -164,13 +162,13 @@ const ResolveDisputeDialog = ({ issue, submitting, onCancel, onSubmit }) => {
           placeholder="Note for the record (optional)"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="w-full px-3 py-2 text-sm border border-slate-200 dark:border-slate-600 rounded-lg dark:bg-slate-800 mb-4"
+          className="w-full px-3 py-2 text-sm border border-hairline dark:border-slate-600 rounded-lg dark:bg-slate-800 mb-4"
         />
 
         <div className="flex gap-2 justify-end">
           <button
             onClick={onCancel}
-            className="px-4 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-600"
+            className="px-4 py-2 text-sm rounded-lg border border-hairline dark:border-slate-600"
           >
             Cancel
           </button>
@@ -243,14 +241,14 @@ export const RefundRequests = () => {
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div>
           <h1 className="text-2xl font-bold dark:text-white">Refund Requests</h1>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-moringa-muted">
             Send the money back to the customer&apos;s mobile money number, then record it here.
           </p>
         </div>
         <select
           value={status}
           onChange={(e) => setStatus(e.target.value)}
-          className="px-3 py-2 text-sm border border-slate-200 dark:border-slate-600 rounded-lg dark:bg-slate-800 dark:text-slate-200"
+          className="px-3 py-2 text-sm border border-hairline dark:border-slate-600 rounded-lg dark:bg-slate-800 dark:text-slate-200"
         >
           <option value="pending_manual">To process</option>
           <option value="completed">Refunded</option>
@@ -261,10 +259,10 @@ export const RefundRequests = () => {
 
       {loading ? (
         <div className="flex justify-center p-10">
-          <Loader2 className="w-6 h-6 animate-spin text-slate-400" />
+          <Loader2 className="w-6 h-6 animate-spin text-moringa-muted/70" />
         </div>
       ) : refunds.length === 0 ? (
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center text-gray-600 dark:text-gray-400">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-8 text-center text-moringa-muted dark:text-gray-400">
           No refund requests here.
         </div>
       ) : (
@@ -272,16 +270,16 @@ export const RefundRequests = () => {
           {refunds.map((refund) => (
             <div
               key={refund._id}
-              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg p-4 flex flex-wrap items-center justify-between gap-4"
+              className="bg-white dark:bg-slate-900 border border-hairline dark:border-slate-700 rounded-lg p-4 flex flex-wrap items-center justify-between gap-4"
             >
               <div className="min-w-0">
-                <p className="font-semibold text-slate-800 dark:text-slate-100">
+                <p className="font-semibold text-moringa dark:text-slate-100">
                   {fmt(refund.amount)} ·{' '}
-                  <span className="font-normal text-slate-600 dark:text-slate-300">
+                  <span className="font-normal text-moringa-muted dark:text-slate-300">
                     Order {refund.order?.orderNumber || '—'}
                   </span>
                 </p>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-moringa-muted dark:text-slate-400">
                   {[refund.customer?.firstName, refund.customer?.lastName]
                     .filter(Boolean)
                     .join(' ') || 'Customer'}
@@ -294,7 +292,7 @@ export const RefundRequests = () => {
                     ? ` (${refund.payment.correspondent === 'AIRTEL_RWA' ? 'Airtel' : 'MTN'})`
                     : ''}
                 </p>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-moringa-muted">
                   {refund.business?.name ? `${refund.business.name} · ` : ''}
                   {refund.reason || 'Refund'} ·{' '}
                   {refund.fundedBy === 'vendor'
@@ -303,7 +301,7 @@ export const RefundRequests = () => {
                   · {new Date(refund.createdAt).toLocaleString()}
                 </p>
                 {refund.notes && (
-                  <p className="text-xs text-slate-500 mt-1">Note: {refund.notes}</p>
+                  <p className="text-xs text-moringa-muted mt-1">Note: {refund.notes}</p>
                 )}
               </div>
               {refund.status === 'pending_manual' ? (
@@ -311,7 +309,7 @@ export const RefundRequests = () => {
                   <button
                     onClick={() => settle(refund, 'failed')}
                     disabled={busyId === refund._id}
-                    className="px-3 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-600 disabled:opacity-50"
+                    className="px-3 py-2 text-sm rounded-lg border border-hairline dark:border-slate-600 disabled:opacity-50"
                   >
                     Couldn&apos;t refund
                   </button>
@@ -627,7 +625,7 @@ export const CustomerComplaints = () => {
       case 'medium':
         return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800';
       default:
-        return 'bg-slate-100 text-slate-800 dark:bg-slate-900/30 dark:text-slate-400 border-slate-200 dark:border-slate-800';
+        return 'bg-fufu-dim text-moringa dark:bg-slate-900/30 dark:text-slate-400 border-hairline dark:border-slate-800';
     }
   };
 
@@ -711,13 +709,13 @@ export const CustomerComplaints = () => {
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Problem Queue</h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+          <h1 className="text-2xl font-bold text-moringa dark:text-white">Problem Queue</h1>
+          <p className="text-sm text-moringa-muted dark:text-slate-400 mt-1">
             {activeIssues} active issues require immediate resolution
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+          <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer">
             <History className="w-4 h-4" />
             History
           </button>
@@ -737,17 +735,17 @@ export const CustomerComplaints = () => {
         {statsCards.map((stat, index) => (
           <div
             key={index}
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl transition-all duration-300 group"
+            className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50 hover:shadow-xl transition-all duration-300 group"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
+                <p className="text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1">
                   {stat.title}
                 </p>
-                <p className="text-2xl font-bold text-slate-800 dark:text-white mb-1">
-                  {stat.value}
+                <p className="text-2xl font-bold text-moringa dark:text-white mb-1">{stat.value}</p>
+                <p className="text-[11px] text-moringa-muted dark:text-slate-500">
+                  {stat.subtitle}
                 </p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-500">{stat.subtitle}</p>
               </div>
               <div
                 className={`p-3 rounded-xl ${stat.bgColor} group-hover:scale-110 transition-all duration-300`}
@@ -760,16 +758,16 @@ export const CustomerComplaints = () => {
       </div>
 
       {/* Search and Filters */}
-      <div className="relative z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 space-y-4">
+      <div className="relative z-20 bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 space-y-4">
         {/* Search Bar */}
         <div className="relative">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
           <input
             type="text"
             placeholder="Filter by order ID, customer name, or vendor name..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+            className="w-full pl-9 pr-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
           />
         </div>
 
@@ -782,7 +780,7 @@ export const CustomerComplaints = () => {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                 categoryFilter === 'all'
                   ? 'bg-solid text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 hover:bg-mint dark:hover:bg-slate-700'
               }`}
             >
               All Issues ({categoryCounts.all})
@@ -792,7 +790,7 @@ export const CustomerComplaints = () => {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                 categoryFilter === 'missing'
                   ? 'bg-solid text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 hover:bg-mint dark:hover:bg-slate-700'
               }`}
             >
               Missing Items ({categoryCounts.missing})
@@ -802,7 +800,7 @@ export const CustomerComplaints = () => {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                 categoryFilter === 'vendor'
                   ? 'bg-solid text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 hover:bg-mint dark:hover:bg-slate-700'
               }`}
             >
               Vendor Issues ({categoryCounts.vendor})
@@ -812,7 +810,7 @@ export const CustomerComplaints = () => {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                 categoryFilter === 'delivery'
                   ? 'bg-solid text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 hover:bg-mint dark:hover:bg-slate-700'
               }`}
             >
               Late Delivery ({categoryCounts.delivery})
@@ -824,18 +822,18 @@ export const CustomerComplaints = () => {
             <div className="relative">
               <button
                 onClick={() => setShowPriorityMenu(!showPriorityMenu)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 rounded-lg text-sm font-medium hover:bg-mint dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 Priority Filter
               </button>
               {showPriorityMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-60 p-2">
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 z-60 p-2">
                   <button
                     onClick={() => {
                       setPriorityFilter('all');
                       setShowPriorityMenu(false);
                     }}
-                    className="w-full text-left px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
+                    className="w-full text-left px-3 py-2 text-sm text-moringa dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
                   >
                     All Priorities
                   </button>
@@ -874,18 +872,18 @@ export const CustomerComplaints = () => {
             <div className="relative">
               <button
                 onClick={() => setShowSortMenu(!showSortMenu)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 rounded-lg text-sm font-medium hover:bg-mint dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 Sort Order
               </button>
               {showSortMenu && (
-                <div className="absolute right-0 mt-2 w-52 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-60 p-2">
+                <div className="absolute right-0 mt-2 w-52 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-hairline dark:border-slate-700 z-60 p-2">
                   <button
                     onClick={() => {
                       setSortBy('priority');
                       setShowSortMenu(false);
                     }}
-                    className="w-full text-left px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
+                    className="w-full text-left px-3 py-2 text-sm text-moringa dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
                   >
                     By Priority (Default)
                   </button>
@@ -894,7 +892,7 @@ export const CustomerComplaints = () => {
                       setSortBy('received');
                       setShowSortMenu(false);
                     }}
-                    className="w-full text-left px-3 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
+                    className="w-full text-left px-3 py-2 text-sm text-moringa dark:text-slate-300 hover:bg-fufu dark:hover:bg-slate-700 rounded-md transition-colors cursor-pointer"
                   >
                     By Time Received
                   </button>
@@ -907,12 +905,12 @@ export const CustomerComplaints = () => {
 
       {/* Loading State */}
       {loading && (
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-12 border border-slate-200/50 dark:border-slate-700/50 text-center">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-12 border border-hairline dark:border-slate-700/50 text-center">
           <Loader2 className="w-12 h-12 mx-auto text-solid animate-spin mb-4" />
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">
+          <h3 className="text-lg font-bold text-moringa dark:text-white mb-2">
             Loading Disputes...
           </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-sm text-moringa-muted dark:text-slate-400">
             Please wait while we fetch the latest issues.
           </p>
         </div>
@@ -925,13 +923,13 @@ export const CustomerComplaints = () => {
             const getBorderColor = (priority) => {
               if (priority === 'critical') return 'border-red-500 dark:border-red-500';
               if (priority === 'high') return 'border-orange-500 dark:border-orange-500';
-              return 'border-slate-200/50 dark:border-slate-700/50';
+              return 'border-hairline dark:border-slate-700/50';
             };
 
             return (
               <div
                 key={issue.id}
-                className={`bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border-2 ${getBorderColor(issue.priority)} hover:shadow-xl transition-all duration-300 flex flex-col h-full`}
+                className={`bg-white dark:bg-slate-900/80 rounded-2xl p-5 border-2 ${getBorderColor(issue.priority)} hover:shadow-xl transition-all duration-300 flex flex-col h-full`}
               >
                 {/* Header with Priority Tag and Time */}
                 <div className="flex items-start justify-between mb-3">
@@ -940,30 +938,30 @@ export const CustomerComplaints = () => {
                   >
                     {issue.priority}
                   </span>
-                  <div className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-1 text-[11px] text-moringa-muted dark:text-slate-400">
                     <Clock className="w-3.5 h-3.5" />
                     since {issue.since}
                   </div>
                 </div>
 
                 {/* Title - Fixed Height */}
-                <h3 className="text-[15px] font-bold text-slate-800 dark:text-white mb-3 h-11 line-clamp-2">
+                <h3 className="text-[15px] font-bold text-moringa dark:text-white mb-3 h-11 line-clamp-2">
                   {issue.title}
                 </h3>
 
                 {/* Incident Description - Fixed Height with Scrollable Content */}
-                <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg mb-3 h-[120px] overflow-y-auto">
-                  <p className="text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <div className="p-3 bg-fufu dark:bg-slate-800 rounded-lg mb-3 h-[120px] overflow-y-auto">
+                  <p className="text-[11px] font-semibold text-moringa-muted dark:text-slate-400 mb-1">
                     Incident:
                   </p>
-                  <p className="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <p className="text-[13px] text-moringa dark:text-slate-300 leading-relaxed">
                     {issue.incident}
                   </p>
                 </div>
 
                 {/* Order Info */}
-                <div className="flex items-center justify-between py-2 border-y border-slate-200 dark:border-slate-700 mb-3">
-                  <span className="text-[13px] text-slate-600 dark:text-slate-400">
+                <div className="flex items-center justify-between py-2 border-y border-hairline dark:border-slate-700 mb-3">
+                  <span className="text-[13px] text-moringa-muted dark:text-slate-400">
                     {issue.orderId}
                   </span>
                   <span className="text-[13px] font-bold text-solid">
@@ -973,7 +971,7 @@ export const CustomerComplaints = () => {
 
                 {/* Customer Information */}
                 <div className="space-y-2 mb-3 grow">
-                  <p className="text-[11px] font-semibold text-slate-600 dark:text-slate-400">
+                  <p className="text-[11px] font-semibold text-moringa-muted dark:text-slate-400">
                     Customer Information:
                   </p>
                   <div className="flex items-center gap-3">
@@ -981,10 +979,10 @@ export const CustomerComplaints = () => {
                       {issue.customer.name.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[13px] font-medium text-slate-800 dark:text-white truncate">
+                      <p className="text-[13px] font-medium text-moringa dark:text-white truncate">
                         {issue.customer.name}
                       </p>
-                      <div className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <div className="flex items-center gap-1 text-[11px] text-moringa-muted dark:text-slate-400">
                         <Phone className="w-3.5 h-3.5" />
                         {issue.customer.phone}
                       </div>
@@ -996,7 +994,7 @@ export const CustomerComplaints = () => {
                 </div>
 
                 {/* Action Buttons - Always at Bottom */}
-                <div className="flex items-center gap-2 pt-3 border-t border-slate-200 dark:border-slate-700 mt-auto">
+                <div className="flex items-center gap-2 pt-3 border-t border-hairline dark:border-slate-700 mt-auto">
                   {issue.actions.map((action, idx) => (
                     <React.Fragment key={idx}>{getActionButton(action, issue)}</React.Fragment>
                   ))}
@@ -1009,10 +1007,10 @@ export const CustomerComplaints = () => {
 
       {/* Empty State */}
       {filteredIssues.length === 0 && (
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-12 border border-slate-200/50 dark:border-slate-700/50 text-center">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-12 border border-hairline dark:border-slate-700/50 text-center">
           <CheckCircle className="w-16 h-16 mx-auto text-green-500 mb-4" />
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">No Issues Found</h3>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <h3 className="text-lg font-bold text-moringa dark:text-white mb-2">No Issues Found</h3>
+          <p className="text-sm text-moringa-muted dark:text-slate-400">
             All complaints matching your filters have been resolved or there are no active issues.
           </p>
         </div>
@@ -1020,8 +1018,8 @@ export const CustomerComplaints = () => {
 
       {/* Pagination */}
       {filteredIssues.length > 0 && (
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between">
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 flex items-center justify-between">
+          <p className="text-sm text-moringa-muted dark:text-slate-400">
             Showing {showingFrom} to {showingTo} of {filteredIssues.length} issues
           </p>
 
@@ -1029,7 +1027,7 @@ export const CustomerComplaints = () => {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="px-4 py-2 text-sm font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
             >
               Previous
             </button>
@@ -1043,7 +1041,7 @@ export const CustomerComplaints = () => {
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                     currentPage === pageNum
                       ? 'bg-solid text-white'
-                      : 'text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
+                      : 'text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 hover:bg-fufu dark:hover:bg-slate-700 cursor-pointer'
                   }`}
                 >
                   {pageNum}
@@ -1054,7 +1052,7 @@ export const CustomerComplaints = () => {
             <button
               onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="px-4 py-2 text-sm font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
             >
               Next
             </button>
@@ -1076,12 +1074,12 @@ export const CustomerComplaints = () => {
             <div className="p-5">
               {/* Header with Close Button */}
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+                <h2 className="text-lg font-bold text-moringa dark:text-white">
                   Complaint Details
                 </h2>
                 <button
                   onClick={() => setSelectedIssue(null)}
-                  className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors cursor-pointer p-1 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full"
+                  className="text-moringa-muted/70 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors cursor-pointer p-1 hover:bg-fufu dark:hover:bg-slate-800 rounded-full"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -1094,30 +1092,30 @@ export const CustomerComplaints = () => {
                 >
                   {selectedIssue.priority} Priority
                 </span>
-                <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
+                <div className="flex items-center gap-1 text-xs text-moringa-muted dark:text-slate-400">
                   <Clock className="w-4 h-4" />
                   Since {selectedIssue.since}
                 </div>
               </div>
 
               {/* Order Information */}
-              <div className="mb-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+              <div className="mb-4 p-4 bg-fufu dark:bg-slate-800 rounded-lg border border-hairline dark:border-slate-700">
                 <div className="flex items-center justify-between mb-2">
                   <div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">Order ID</p>
-                    <p className="text-sm font-mono font-bold text-slate-900 dark:text-white">
+                    <p className="text-xs text-moringa-muted dark:text-slate-400">Order ID</p>
+                    <p className="text-sm font-mono font-bold text-moringa dark:text-white">
                       {selectedIssue.orderId}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-slate-600 dark:text-slate-400">Order Value</p>
+                    <p className="text-xs text-moringa-muted dark:text-slate-400">Order Value</p>
                     <p className="text-sm font-bold text-solid">
                       RWF {selectedIssue.orderValue.toLocaleString()}
                     </p>
                   </div>
                 </div>
-                <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-1">Issue Type</p>
+                <div className="pt-2 border-t border-hairline dark:border-slate-700">
+                  <p className="text-xs text-moringa-muted dark:text-slate-400 mb-1">Issue Type</p>
                   <span className="inline-flex px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded text-xs font-medium">
                     {selectedIssue.type.charAt(0).toUpperCase() + selectedIssue.type.slice(1)} Issue
                   </span>
@@ -1126,22 +1124,22 @@ export const CustomerComplaints = () => {
 
               {/* Complaint Title */}
               <div className="mb-4">
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
+                <h3 className="text-base font-bold text-moringa dark:text-white mb-2">
                   {selectedIssue.title}
                 </h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400">Brief Description</p>
-                <p className="text-sm text-slate-700 dark:text-slate-300 mt-1">
+                <p className="text-xs text-moringa-muted dark:text-slate-400">Brief Description</p>
+                <p className="text-sm text-moringa dark:text-slate-300 mt-1">
                   {selectedIssue.incident}
                 </p>
               </div>
 
               {/* Full Complaint Text */}
               <div className="mb-4 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
-                <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                <h4 className="text-sm font-semibold text-moringa dark:text-white mb-2 flex items-center gap-2">
                   <FileText className="w-4 h-4 text-red-600 dark:text-red-400" />
                   Full Complaint
                 </h4>
-                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <p className="text-sm text-moringa dark:text-slate-300 leading-relaxed">
                   {selectedIssue.fullComplaint || selectedIssue.incident}
                 </p>
               </div>
@@ -1149,12 +1147,12 @@ export const CustomerComplaints = () => {
               {/* Customer-Provided Photos */}
               {selectedIssue.images && selectedIssue.images.length > 0 && (
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                    <ImageIcon className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                  <h4 className="text-sm font-semibold text-moringa dark:text-white mb-2 flex items-center gap-2">
+                    <ImageIcon className="w-4 h-4 text-moringa-muted dark:text-slate-400" />
                     Customer Photos ({selectedIssue.images.length}{' '}
                     {selectedIssue.images.length === 1 ? 'photo' : 'photos'})
                   </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">
+                  <p className="text-xs text-moringa-muted dark:text-slate-400 mb-2">
                     Photos provided by customer as evidence
                   </p>
                   <div className="grid grid-cols-2 gap-2">
@@ -1163,7 +1161,7 @@ export const CustomerComplaints = () => {
                         key={idx}
                         src={img}
                         alt={`Evidence ${idx + 1}`}
-                        className="w-full h-32 object-cover rounded-lg border-2 border-slate-200 dark:border-slate-700 hover:border-solid dark:hover:border-solid transition-colors cursor-pointer"
+                        className="w-full h-32 object-cover rounded-lg border-2 border-hairline dark:border-slate-700 hover:border-solid dark:hover:border-solid transition-colors cursor-pointer"
                         onClick={() => window.open(img, '_blank')}
                       />
                     ))}
@@ -1173,7 +1171,7 @@ export const CustomerComplaints = () => {
 
               {/* Customer Information */}
               <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                <h4 className="text-sm font-semibold text-moringa dark:text-white mb-3 flex items-center gap-2">
                   <User className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   Customer Information
                 </h4>
@@ -1183,10 +1181,10 @@ export const CustomerComplaints = () => {
                       {selectedIssue.customer.name.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-900 dark:text-white">
+                      <p className="text-sm font-medium text-moringa dark:text-white">
                         {selectedIssue.customer.name}
                       </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-400">
+                      <p className="text-xs text-moringa-muted dark:text-slate-400">
                         {selectedIssue.customer.email || 'No email provided'}
                       </p>
                     </div>
@@ -1194,14 +1192,14 @@ export const CustomerComplaints = () => {
                   <div className="pt-2 border-t border-blue-200 dark:border-blue-800 space-y-1">
                     <div className="flex items-center gap-2">
                       <Phone className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                      <p className="text-xs text-slate-700 dark:text-slate-300">
+                      <p className="text-xs text-moringa dark:text-slate-300">
                         {selectedIssue.customer.phone}
                       </p>
                     </div>
                     {selectedIssue.customer.location && (
                       <div className="flex items-center gap-2">
                         <MapPin className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                        <p className="text-xs text-slate-700 dark:text-slate-300">
+                        <p className="text-xs text-moringa dark:text-slate-300">
                           {selectedIssue.customer.location}
                         </p>
                       </div>
@@ -1216,26 +1214,28 @@ export const CustomerComplaints = () => {
               {/* Vendor Information */}
               {selectedIssue.vendor && (
                 <div className="mb-4 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                  <h4 className="text-sm font-semibold text-moringa dark:text-white mb-3 flex items-center gap-2">
                     <Store className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                     Vendor Information
                   </h4>
                   <div className="space-y-2">
                     <div>
-                      <p className="text-xs text-slate-600 dark:text-slate-400">Business Name</p>
-                      <p className="text-sm font-medium text-slate-900 dark:text-white">
+                      <p className="text-xs text-moringa-muted dark:text-slate-400">
+                        Business Name
+                      </p>
+                      <p className="text-sm font-medium text-moringa dark:text-white">
                         {selectedIssue.vendor.name}
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Phone className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                      <p className="text-xs text-slate-700 dark:text-slate-300">
+                      <p className="text-xs text-moringa dark:text-slate-300">
                         {selectedIssue.vendor.phone}
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                      <p className="text-xs text-slate-700 dark:text-slate-300">
+                      <p className="text-xs text-moringa dark:text-slate-300">
                         {selectedIssue.vendor.location}
                       </p>
                     </div>
@@ -1248,7 +1248,7 @@ export const CustomerComplaints = () => {
                 (selectedIssue.deliveryStatus === 'delivered' ||
                   selectedIssue.deliveryStatus === 'in_transit') && (
                   <div className="mb-4 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-                    <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-semibold text-moringa dark:text-white mb-3 flex items-center gap-2">
                       <Truck className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                       Rider Information
                     </h4>
@@ -1258,10 +1258,10 @@ export const CustomerComplaints = () => {
                           {selectedIssue.rider.name.charAt(0)}
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-slate-900 dark:text-white">
+                          <p className="text-sm font-medium text-moringa dark:text-white">
                             {selectedIssue.rider.name}
                           </p>
-                          <p className="text-xs text-slate-600 dark:text-slate-400">
+                          <p className="text-xs text-moringa-muted dark:text-slate-400">
                             {selectedIssue.deliveryStatus === 'delivered'
                               ? 'Delivered order'
                               : 'Currently delivering'}
@@ -1271,13 +1271,13 @@ export const CustomerComplaints = () => {
                       <div className="pt-2 border-t border-orange-200 dark:border-orange-800 space-y-1">
                         <div className="flex items-center gap-2">
                           <Phone className="w-3.5 h-3.5 text-orange-600 dark:text-orange-400" />
-                          <p className="text-xs text-slate-700 dark:text-slate-300">
+                          <p className="text-xs text-moringa dark:text-slate-300">
                             {selectedIssue.rider.phone}
                           </p>
                         </div>
                         <div className="flex items-center gap-2">
                           <Truck className="w-3.5 h-3.5 text-orange-600 dark:text-orange-400" />
-                          <p className="text-xs text-slate-700 dark:text-slate-300">
+                          <p className="text-xs text-moringa dark:text-slate-300">
                             Vehicle: {selectedIssue.rider.vehicleNumber}
                           </p>
                         </div>
@@ -1289,22 +1289,22 @@ export const CustomerComplaints = () => {
               {/* Timeline */}
               {selectedIssue.timeline && selectedIssue.timeline.length > 0 && (
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                  <h4 className="text-sm font-semibold text-moringa dark:text-white mb-3 flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-moringa-muted dark:text-slate-400" />
                     Issue Timeline
                   </h4>
                   <div className="space-y-2">
                     {selectedIssue.timeline.map((item, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 p-2 border border-slate-200 dark:border-slate-700 rounded-lg"
+                        className="flex items-start gap-3 p-2 border border-hairline dark:border-slate-700 rounded-lg"
                       >
                         <div className="w-2 h-2 bg-solid rounded-full mt-1.5 shrink-0"></div>
                         <div className="flex-1">
-                          <p className="text-xs font-medium text-slate-900 dark:text-white">
+                          <p className="text-xs font-medium text-moringa dark:text-white">
                             {item.event}
                           </p>
-                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                          <p className="text-xs text-moringa-muted dark:text-slate-400 mt-0.5">
                             {item.time}
                           </p>
                         </div>
@@ -1315,11 +1315,11 @@ export const CustomerComplaints = () => {
               )}
 
               {/* Divider */}
-              <div className="border-t border-slate-200 dark:border-slate-700 my-4"></div>
+              <div className="border-t border-hairline dark:border-slate-700 my-4"></div>
 
               {/* Quick Actions */}
               <div className="mb-4">
-                <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">
+                <h4 className="text-sm font-semibold text-moringa dark:text-white mb-3">
                   Quick Actions
                 </h4>
                 <div className="grid grid-cols-2 gap-2">

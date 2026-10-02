@@ -157,20 +157,20 @@ const OrderTrendsChart = () => {
 
   if (loading) {
     return (
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-4 h-96 flex items-center justify-center">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-4 h-96 flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-emerald-500" />
       </div>
     );
   }
 
   return (
-    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-4 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
+    <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-4 hover:shadow-xl hover:shadow-slate-200/20 dark:hover:shadow-slate-900/20 transition-all duration-300">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
         <div>
-          <h3 className="text-lg font-bold text-slate-800 dark:text-white">
+          <h3 className="text-lg font-bold text-moringa dark:text-white">
             Order Trends Comparison
           </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-moringa-muted dark:text-slate-400">
             Compare current period with previous period
           </p>
         </div>
@@ -180,7 +180,7 @@ const OrderTrendsChart = () => {
             className={`px-5 py-2.5 text-xs font-medium rounded-md transition-all duration-200 ${
               period === 'monthly'
                 ? 'bg-linear-to-r from-solid to-tertiary text-white shadow-md'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer'
+                : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 hover:bg-mint dark:hover:bg-slate-700 cursor-pointer'
             }`}
           >
             Monthly
@@ -190,7 +190,7 @@ const OrderTrendsChart = () => {
             className={`px-5 py-2.5 text-xs font-medium rounded-md transition-all duration-200 ${
               period === 'quarterly'
                 ? 'bg-linear-to-r from-solid to-tertiary text-white shadow-md'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer'
+                : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 hover:bg-mint dark:hover:bg-slate-700 cursor-pointer'
             }`}
           >
             Quarterly
@@ -200,7 +200,7 @@ const OrderTrendsChart = () => {
             className={`px-5 py-2.5 text-xs font-medium rounded-md transition-all duration-200 ${
               period === 'annually'
                 ? 'bg-linear-to-r from-solid to-tertiary text-white shadow-md'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer'
+                : 'bg-fufu-dim dark:bg-slate-800 text-moringa-muted dark:text-slate-400 hover:bg-mint dark:hover:bg-slate-700 cursor-pointer'
             }`}
           >
             Annually
@@ -211,14 +211,14 @@ const OrderTrendsChart = () => {
       <div className="flex items-center justify-center space-x-6 mb-4">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 bg-linear-to-r from-solid to-tertiary rounded-full"></div>
-          <span className="text-xs text-slate-600 dark:text-slate-400">
+          <span className="text-xs text-moringa-muted dark:text-slate-400">
             {dataKeys.currentLabel}
           </span>
         </div>
         {dataKeys.previousLabel && (
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-linear-to-r from-solidOne to-solidTwo rounded-full"></div>
-            <span className="text-xs text-slate-600 dark:text-slate-400">
+            <span className="text-xs text-moringa-muted dark:text-slate-400">
               {dataKeys.previousLabel}
             </span>
           </div>
@@ -227,7 +227,9 @@ const OrderTrendsChart = () => {
 
       {currentData.length === 0 ? (
         <div className="h-64 sm:h-72 md:h-80 flex items-center justify-center">
-          <p className="text-sm text-slate-400 dark:text-slate-500 italic">No order data yet</p>
+          <p className="text-sm text-moringa-muted/70 dark:text-slate-500 italic">
+            No order data yet
+          </p>
         </div>
       ) : (
         <div className="h-64 sm:h-72 md:h-80">

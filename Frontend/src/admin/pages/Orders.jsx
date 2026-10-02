@@ -324,24 +324,24 @@ const OrdersTable = ({ title, statusFilter }) => {
       case 'Cancelled':
         return 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400';
       default:
-        return 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300';
+        return 'bg-fufu-dim text-moringa dark:bg-slate-700 dark:text-slate-300';
     }
   };
 
   return (
     <div className="space-y-6">
       {/* Search, Filter, and Action Header */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-5 border border-slate-200/50 dark:border-slate-700/50 shadow-xs">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-hairline dark:border-slate-700/50 shadow-xs">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="flex-1 relative w-full">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+              <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
               <input
                 type="text"
                 placeholder="Search by order ID, customer, or vendor..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                className="w-full pl-9 pr-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
               />
             </div>
 
@@ -360,7 +360,7 @@ const OrdersTable = ({ title, statusFilter }) => {
 
               <button
                 onClick={fetchOrders}
-                className="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg transition-colors cursor-pointer"
+                className="p-2 bg-fufu-dim hover:bg-mint dark:bg-slate-800 dark:hover:bg-slate-700 text-moringa-muted dark:text-slate-300 rounded-lg transition-colors cursor-pointer"
                 title="Refresh List"
               >
                 <RefreshCw className="w-4 h-4" />
@@ -370,45 +370,45 @@ const OrdersTable = ({ title, statusFilter }) => {
 
           <div className="flex flex-col md:flex-row gap-4 items-end">
             <div className="flex-1 w-full">
-              <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1.5">
                 Date From
               </label>
               <div className="relative">
-                <Calendar className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+                <Calendar className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
                 <input
                   type="date"
                   value={dateFrom}
                   onChange={(e) => setDateFrom(e.target.value)}
-                  className="w-full pl-9 pr-4 py-1.5 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                  className="w-full pl-9 pr-4 py-1.5 bg-fufu dark:bg-slate-800/80 border border-hairline dark:border-slate-700 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             <div className="flex-1 w-full">
-              <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1.5">
                 Date To
               </label>
               <div className="relative">
-                <Calendar className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+                <Calendar className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
                 <input
                   type="date"
                   value={dateTo}
                   onChange={(e) => setDateTo(e.target.value)}
-                  className="w-full pl-9 pr-4 py-1.5 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                  className="w-full pl-9 pr-4 py-1.5 bg-fufu dark:bg-slate-800/80 border border-hairline dark:border-slate-700 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             <div className="flex-1 w-full">
-              <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-medium text-moringa-muted dark:text-slate-400 mb-1.5">
                 Sort By
               </label>
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                <SlidersHorizontal className="w-4 h-4 text-moringa-muted dark:text-slate-400" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="flex-1 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
+                  className="flex-1 px-3 py-1.5 bg-fufu dark:bg-slate-800/80 border border-hairline dark:border-slate-700 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
                 >
                   <option value="newest">Newest First</option>
                   <option value="oldest">Oldest First</option>
@@ -423,8 +423,8 @@ const OrdersTable = ({ title, statusFilter }) => {
 
       {/* Bulk Actions */}
       {selectedOrders.length > 0 && (
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between shadow-xs">
-          <p className="text-xs text-slate-600 dark:text-slate-400">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 flex items-center justify-between shadow-xs">
+          <p className="text-xs text-moringa-muted dark:text-slate-400">
             {selectedOrders.length} order{selectedOrders.length > 1 ? 's' : ''} selected
           </p>
           <div className="flex gap-2">
@@ -447,11 +447,11 @@ const OrdersTable = ({ title, statusFilter }) => {
       )}
 
       {/* Main Table Card */}
-      <div className="bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xs">
-        <div className="p-5 border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between">
+      <div className="bg-white/85 dark:bg-slate-900/85 rounded-2xl border border-hairline dark:border-slate-700/50 overflow-hidden shadow-xs">
+        <div className="p-5 border-b border-hairline dark:border-slate-700/50 flex items-center justify-between">
           <div>
-            <h3 className="text-sm font-bold text-slate-800 dark:text-white">{title}</h3>
-            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+            <h3 className="text-sm font-bold text-moringa dark:text-white">{title}</h3>
+            <p className="text-[10px] text-moringa-muted dark:text-slate-400 mt-0.5">
               Manage and update order fulfillment processes
             </p>
           </div>
@@ -469,33 +469,33 @@ const OrdersTable = ({ title, statusFilter }) => {
                       selectedOrders.length === currentOrders.length && currentOrders.length > 0
                     }
                     onChange={handleSelectAll}
-                    className="w-4 h-4 rounded border-slate-300 text-solid focus:ring-solid cursor-pointer"
+                    className="w-4 h-4 rounded border-moringa/25 text-solid focus:ring-solid cursor-pointer"
                   />
                 </th>
-                <th className="px-5 py-3 text-left text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-5 py-3 text-left text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Order ID
                 </th>
-                <th className="px-5 py-3 text-left text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-5 py-3 text-left text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Customer
                 </th>
-                <th className="px-5 py-3 text-left text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-5 py-3 text-left text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Date
                 </th>
-                <th className="px-5 py-3 text-left text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-5 py-3 text-left text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Fulfillment Type
                 </th>
-                <th className="px-5 py-3 text-left text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-5 py-3 text-left text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-5 py-3 text-left text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">
+                <th className="px-5 py-3 text-left text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider text-right">
                   Total
                 </th>
-                <th className="px-5 py-3 text-right text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-5 py-3 text-right text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800/80">
+            <tbody className="divide-y divide-hairline dark:divide-slate-800/80">
               {currentOrders.map((order) => (
                 <tr
                   key={order.orderId}
@@ -506,7 +506,7 @@ const OrdersTable = ({ title, statusFilter }) => {
                       type="checkbox"
                       checked={selectedOrders.includes(order.orderId)}
                       onChange={() => handleSelect(order.orderId)}
-                      className="w-4 h-4 rounded border-slate-300 text-solid focus:ring-solid cursor-pointer"
+                      className="w-4 h-4 rounded border-moringa/25 text-solid focus:ring-solid cursor-pointer"
                     />
                   </td>
                   <td className="px-5 py-3.5 whitespace-nowrap">
@@ -518,16 +518,16 @@ const OrdersTable = ({ title, statusFilter }) => {
                     </button>
                   </td>
                   <td className="px-5 py-3.5 whitespace-nowrap">
-                    <span className="text-xs font-semibold text-slate-900 dark:text-white">
+                    <span className="text-xs font-semibold text-moringa dark:text-white">
                       {order.customerName}
                     </span>
                   </td>
                   <td className="px-5 py-3.5 whitespace-nowrap">
                     <div className="flex flex-col">
-                      <span className="text-xs text-slate-900 dark:text-white">
+                      <span className="text-xs text-moringa dark:text-white">
                         {new Date(order.createdAt).toLocaleDateString()}
                       </span>
-                      <span className="text-[9px] text-slate-500 dark:text-slate-400">
+                      <span className="text-[9px] text-moringa-muted dark:text-slate-400">
                         {new Date(order.createdAt).toLocaleTimeString([], {
                           hour: '2-digit',
                           minute: '2-digit',
@@ -553,14 +553,14 @@ const OrdersTable = ({ title, statusFilter }) => {
                       {order.status}
                     </span>
                   </td>
-                  <td className="px-5 py-3.5 whitespace-nowrap text-right font-bold text-slate-900 dark:text-white">
+                  <td className="px-5 py-3.5 whitespace-nowrap text-right font-bold text-moringa dark:text-white">
                     RWF {order.total.toLocaleString()}
                   </td>
                   <td className="px-5 py-3.5 whitespace-nowrap text-right">
                     <div className="flex items-center justify-end gap-1.5">
                       <button
                         onClick={() => handleRowClick(order.orderId)}
-                        className="p-1 text-slate-500 hover:text-solid dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition-colors cursor-pointer"
+                        className="p-1 text-moringa-muted hover:text-solid dark:text-slate-400 hover:bg-fufu dark:hover:bg-slate-800 rounded transition-colors cursor-pointer"
                         title="View Full Details"
                       >
                         <Eye className="w-4 h-4" />
@@ -629,8 +629,8 @@ const OrdersTable = ({ title, statusFilter }) => {
 
         {/* Empty state */}
         {filteredOrders.length === 0 && (
-          <div className="p-12 text-center text-slate-500 dark:text-slate-400 space-y-2">
-            <Package className="w-10 h-10 text-slate-300 dark:text-slate-700 mx-auto" />
+          <div className="p-12 text-center text-moringa-muted dark:text-slate-400 space-y-2">
+            <Package className="w-10 h-10 text-moringa/40 dark:text-slate-700 mx-auto" />
             <p className="font-semibold text-xs">No orders found</p>
             <p className="text-[10px]">Verify your filter conditions or reload the list.</p>
           </div>
@@ -638,8 +638,8 @@ const OrdersTable = ({ title, statusFilter }) => {
 
         {/* Pagination */}
         {filteredOrders.length > 0 && (
-          <div className="px-6 py-4 border-t border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between bg-slate-50/40 dark:bg-slate-900/10">
-            <p className="text-[10px] text-slate-500 dark:text-slate-400">
+          <div className="px-6 py-4 border-t border-hairline dark:border-slate-700/50 flex items-center justify-between bg-slate-50/40 dark:bg-slate-900/10">
+            <p className="text-[10px] text-moringa-muted dark:text-slate-400">
               Showing {showingFrom} to {showingTo} of {filteredOrders.length} orders
             </p>
 
@@ -647,7 +647,7 @@ const OrdersTable = ({ title, statusFilter }) => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className="px-2.5 py-1 text-[10px] font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-2.5 py-1 text-[10px] font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Previous
               </button>
@@ -659,7 +659,7 @@ const OrdersTable = ({ title, statusFilter }) => {
                   className={`px-2.5 py-1 text-[10px] font-bold rounded-lg transition-colors ${
                     currentPage === index + 1
                       ? 'bg-green-600 text-white shadow-md shadow-green-500/15'
-                      : 'text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
+                      : 'text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 hover:bg-fufu dark:hover:bg-slate-700 cursor-pointer'
                   }`}
                 >
                   {index + 1}
@@ -669,7 +669,7 @@ const OrdersTable = ({ title, statusFilter }) => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className="px-2.5 py-1 text-[10px] font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-2.5 py-1 text-[10px] font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Next
               </button>
@@ -680,24 +680,22 @@ const OrdersTable = ({ title, statusFilter }) => {
 
       {/* Order Details Drawer Modal */}
       {showDetailsModal && selectedOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
-          <div className="bg-white dark:bg-slate-950 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60">
+          <div className="bg-white dark:bg-slate-950 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden border border-hairline dark:border-slate-800 shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
-            <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
+            <div className="px-6 py-4 border-b border-hairline dark:border-slate-800 flex items-center justify-between bg-fufu dark:bg-slate-900/50">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                    Order Details
-                  </h3>
+                  <h3 className="text-sm font-bold text-moringa dark:text-white">Order Details</h3>
                   <span
                     className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wide ${getStatusColor(formatStatus(selectedOrder.status))}`}
                   >
                     {formatStatus(selectedOrder.status)}
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-[10px] text-moringa-muted dark:text-slate-400 mt-0.5">
                   ID:{' '}
-                  <span className="font-semibold text-slate-700 dark:text-slate-300">
+                  <span className="font-semibold text-moringa dark:text-slate-300">
                     {selectedOrder.orderNumber || selectedOrder._id}
                   </span>
                 </p>
@@ -707,41 +705,45 @@ const OrdersTable = ({ title, statusFilter }) => {
                   setSelectedOrder(null);
                   setShowDetailsModal(false);
                 }}
-                className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-lg transition-colors cursor-pointer"
+                className="p-1.5 hover:bg-mint dark:hover:bg-slate-800 text-moringa-muted dark:text-slate-400 rounded-lg transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 overflow-y-auto space-y-6 flex-1 text-slate-800 dark:text-slate-200 text-xs">
+            <div className="p-6 overflow-y-auto space-y-6 flex-1 text-moringa dark:text-slate-200 text-xs">
               {/* Order Info & Customer Card */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">
+                  <h4 className="font-bold text-moringa dark:text-white uppercase tracking-wider text-[10px]">
                     Order Information
                   </h4>
-                  <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800/80 rounded-xl p-3.5 space-y-2">
+                  <div className="bg-fufu dark:bg-slate-900/40 border border-hairline dark:border-slate-800/80 rounded-xl p-3.5 space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-slate-500 dark:text-slate-400">Date:</span>
+                      <span className="text-moringa-muted dark:text-slate-400">Date:</span>
                       <span className="font-medium">
                         {new Date(selectedOrder.createdAt).toLocaleString()}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-500 dark:text-slate-400">Type:</span>
+                      <span className="text-moringa-muted dark:text-slate-400">Type:</span>
                       <span className="font-semibold text-solid">
                         {selectedOrder.fulfillmentType === 'delivery' ? 'Delivery' : 'Pickup'}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-500 dark:text-slate-400">Payment Method:</span>
+                      <span className="text-moringa-muted dark:text-slate-400">
+                        Payment Method:
+                      </span>
                       <span className="font-medium uppercase">
                         {selectedOrder.payment?.paymentMethod || 'COD'}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-500 dark:text-slate-400">Payment Status:</span>
+                      <span className="text-moringa-muted dark:text-slate-400">
+                        Payment Status:
+                      </span>
                       <span
                         className={`font-semibold ${selectedOrder.payment?.paymentStatus === 'completed' ? 'text-green-600' : 'text-yellow-600'}`}
                       >
@@ -752,12 +754,12 @@ const OrdersTable = ({ title, statusFilter }) => {
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">
+                  <h4 className="font-bold text-moringa dark:text-white uppercase tracking-wider text-[10px]">
                     Customer Details
                   </h4>
-                  <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800/80 rounded-xl p-3.5 space-y-2">
+                  <div className="bg-fufu dark:bg-slate-900/40 border border-hairline dark:border-slate-800/80 rounded-xl p-3.5 space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-slate-500 dark:text-slate-400">Name:</span>
+                      <span className="text-moringa-muted dark:text-slate-400">Name:</span>
                       <span className="font-medium">
                         {selectedOrder.customer
                           ? `${selectedOrder.customer.firstName || ''} ${selectedOrder.customer.lastName || ''}`.trim()
@@ -765,11 +767,11 @@ const OrdersTable = ({ title, statusFilter }) => {
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-500 dark:text-slate-400">Email:</span>
+                      <span className="text-moringa-muted dark:text-slate-400">Email:</span>
                       <span className="font-medium">{selectedOrder.customer?.email || 'N/A'}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-500 dark:text-slate-400">Phone:</span>
+                      <span className="text-moringa-muted dark:text-slate-400">Phone:</span>
                       {selectedOrder.customer?.phone ? (
                         <div className="flex items-center gap-1.5">
                           <a
@@ -783,7 +785,7 @@ const OrdersTable = ({ title, statusFilter }) => {
                             onClick={() =>
                               handleCopyToClipboard(selectedOrder.customer.phone, 'Phone number')
                             }
-                            className="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600"
+                            className="p-1 hover:bg-mint dark:hover:bg-slate-700 rounded text-moringa-muted/70 hover:text-slate-600"
                             title="Copy Phone"
                           >
                             <Copy className="w-3 h-3" />
@@ -799,31 +801,31 @@ const OrdersTable = ({ title, statusFilter }) => {
 
               {/* Items List */}
               <div className="space-y-3">
-                <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">
+                <h4 className="font-bold text-moringa dark:text-white uppercase tracking-wider text-[10px]">
                   Items Ordered
                 </h4>
-                <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+                <div className="border border-hairline dark:border-slate-800 rounded-xl overflow-hidden">
                   <table className="w-full text-left">
-                    <thead className="bg-slate-50 dark:bg-slate-900">
+                    <thead className="bg-fufu dark:bg-slate-900">
                       <tr>
-                        <th className="px-4 py-2 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                        <th className="px-4 py-2 text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                           Item
                         </th>
-                        <th className="px-4 py-2 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center">
+                        <th className="px-4 py-2 text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider text-center">
                           Qty
                         </th>
-                        <th className="px-4 py-2 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">
+                        <th className="px-4 py-2 text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider text-right">
                           Price
                         </th>
-                        <th className="px-4 py-2 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right">
+                        <th className="px-4 py-2 text-[10px] font-bold text-moringa-muted dark:text-slate-400 uppercase tracking-wider text-right">
                           Total
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                    <tbody className="divide-y divide-hairline dark:divide-slate-800">
                       {selectedOrder.items?.map((item, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/30">
-                          <td className="px-4 py-3 font-semibold text-slate-900 dark:text-white">
+                          <td className="px-4 py-3 font-semibold text-moringa dark:text-white">
                             {item.name || 'Product'}
                           </td>
                           <td className="px-4 py-3 text-center">{item.quantity}</td>
@@ -838,18 +840,18 @@ const OrdersTable = ({ title, statusFilter }) => {
                       <tr className="bg-slate-50/50 dark:bg-slate-900/30">
                         <td
                           colSpan="3"
-                          className="px-4 py-3 text-right font-semibold text-slate-500 dark:text-slate-400"
+                          className="px-4 py-3 text-right font-semibold text-moringa-muted dark:text-slate-400"
                         >
                           Delivery Fee:
                         </td>
-                        <td className="px-4 py-3 text-right font-medium text-slate-800 dark:text-white">
+                        <td className="px-4 py-3 text-right font-medium text-moringa dark:text-white">
                           RWF {selectedOrder.pricing?.deliveryFee?.toLocaleString() || 0}
                         </td>
                       </tr>
-                      <tr className="bg-slate-50 dark:bg-slate-900">
+                      <tr className="bg-fufu dark:bg-slate-900">
                         <td
                           colSpan="3"
-                          className="px-4 py-3 text-right font-bold text-slate-900 dark:text-white"
+                          className="px-4 py-3 text-right font-bold text-moringa dark:text-white"
                         >
                           Grand Total:
                         </td>
@@ -865,17 +867,17 @@ const OrdersTable = ({ title, statusFilter }) => {
               {/* Delivery / Shipping details */}
               {selectedOrder.fulfillmentType === 'delivery' && (
                 <div className="space-y-3">
-                  <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">
+                  <h4 className="font-bold text-moringa dark:text-white uppercase tracking-wider text-[10px]">
                     Delivery Details
                   </h4>
-                  <div className="bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800/80 rounded-xl p-4">
+                  <div className="bg-fufu dark:bg-slate-900/40 border border-hairline dark:border-slate-800/80 rounded-xl p-4">
                     <div className="flex items-start gap-2.5">
                       <MapPin className="w-4 h-4 text-solid shrink-0 mt-0.5" />
                       <div className="flex-1">
-                        <p className="font-semibold text-slate-900 dark:text-white">
+                        <p className="font-semibold text-moringa dark:text-white">
                           Delivery Address
                         </p>
-                        <p className="text-slate-600 dark:text-slate-400 mt-1">
+                        <p className="text-moringa-muted dark:text-slate-400 mt-1">
                           {selectedOrder.deliveryDetails?.address
                             ? typeof selectedOrder.deliveryDetails.address === 'string'
                               ? selectedOrder.deliveryDetails.address
@@ -886,12 +888,12 @@ const OrdersTable = ({ title, statusFilter }) => {
                     </div>
 
                     {selectedOrder.delivery && (
-                      <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex justify-between items-center">
+                      <div className="mt-4 pt-4 border-t border-hairline dark:border-slate-800/80 flex justify-between items-center">
                         <div>
-                          <p className="font-semibold text-slate-900 dark:text-white">
+                          <p className="font-semibold text-moringa dark:text-white">
                             Assigned Rider
                           </p>
-                          <p className="text-slate-600 dark:text-slate-400">
+                          <p className="text-moringa-muted dark:text-slate-400">
                             {selectedOrder.delivery.riderName || 'Rider Assigned'}
                           </p>
                         </div>
@@ -911,7 +913,7 @@ const OrdersTable = ({ title, statusFilter }) => {
               )}
 
               {/* Vendor Actions Area */}
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
+              <div className="pt-4 border-t border-hairline dark:border-slate-800">
                 {/* 1. Verify Pickup Code Block */}
                 {selectedOrder.fulfillmentType === 'pickup' &&
                   ['paid', 'confirmed', 'ready_for_pickup'].includes(selectedOrder.status) && (
@@ -1074,13 +1076,13 @@ const OrdersTable = ({ title, statusFilter }) => {
             </div>
 
             {/* Modal Footer */}
-            <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-end gap-3">
+            <div className="px-6 py-4 border-t border-hairline dark:border-slate-800 bg-fufu dark:bg-slate-900/50 flex justify-end gap-3">
               <button
                 onClick={() => {
                   setSelectedOrder(null);
                   setShowDetailsModal(false);
                 }}
-                className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="px-4 py-2 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg text-moringa dark:text-slate-300 font-semibold hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -1091,17 +1093,17 @@ const OrdersTable = ({ title, statusFilter }) => {
 
       {/* Quick Verify Modal */}
       {showQuickVerify && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-slate-950 rounded-2xl w-full max-w-md border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-slate-950 rounded-2xl w-full max-w-md border border-hairline dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden zoom-in-95 duration-200">
             {/* Header */}
-            <div className="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
-              <h3 className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <div className="px-5 py-4 border-b border-hairline dark:border-slate-800 flex items-center justify-between bg-fufu dark:bg-slate-900/50">
+              <h3 className="text-xs font-bold text-moringa dark:text-white flex items-center gap-2">
                 <CheckCircle className="w-4.5 h-4.5 text-green-600" />
                 Quick Verify Pickup Code
               </h3>
               <button
                 onClick={() => setShowQuickVerify(false)}
-                className="p-1.5 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-lg transition-colors cursor-pointer"
+                className="p-1.5 hover:bg-mint dark:hover:bg-slate-800 text-moringa-muted dark:text-slate-400 rounded-lg transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1109,13 +1111,13 @@ const OrdersTable = ({ title, statusFilter }) => {
 
             {/* Form */}
             <form onSubmit={handleDirectQuickVerify} className="p-5 space-y-4 text-xs">
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-moringa-muted dark:text-slate-400">
                 Enter the customer's 6-digit pickup code to instantly complete the order. No need to
                 locate the order first.
               </p>
 
               <div className="space-y-2">
-                <label className="block font-medium text-slate-700 dark:text-slate-300">
+                <label className="block font-medium text-moringa dark:text-slate-300">
                   Pickup Code
                 </label>
                 <input
@@ -1124,7 +1126,7 @@ const OrdersTable = ({ title, statusFilter }) => {
                   placeholder="e.g. A9B8C7"
                   value={quickCode}
                   onChange={(e) => setQuickCode(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-lg text-center font-bold tracking-widest uppercase focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-slate-800 dark:text-white"
+                  className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-900 border border-hairline dark:border-slate-800 rounded-lg text-lg text-center font-bold tracking-widest uppercase focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-moringa dark:text-white"
                   required
                 />
               </div>
@@ -1177,7 +1179,7 @@ const OrdersTable = ({ title, statusFilter }) => {
                 <button
                   type="button"
                   onClick={() => setShowQuickVerify(false)}
-                  className="px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                  className="px-4 py-2 border border-hairline dark:border-slate-700 rounded-lg text-moringa dark:text-slate-300 font-semibold hover:bg-fufu dark:hover:bg-slate-700 transition-colors cursor-pointer"
                 >
                   Close
                 </button>

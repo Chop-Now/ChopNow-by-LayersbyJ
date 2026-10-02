@@ -47,8 +47,8 @@ class ErrorBoundary extends React.Component {
                 />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Something went wrong</h1>
-            <p className="text-gray-600 mb-6">
+            <h1 className="text-2xl font-bold text-moringa mb-2">Something went wrong</h1>
+            <p className="text-moringa-muted mb-6">
               We're sorry for the inconvenience. Please try refreshing the page.
             </p>
             <div className="flex gap-3 justify-center">
@@ -60,15 +60,17 @@ class ErrorBoundary extends React.Component {
               </button>
               <button
                 onClick={() => (window.location.href = '/')}
-                className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors"
+                className="px-4 py-2 bg-hairline text-moringa rounded-lg hover:bg-gray-300 transition-colors"
               >
                 Go Home
               </button>
             </div>
             {!import.meta.env.PROD && this.state.error && (
               <details className="mt-6 text-left">
-                <summary className="cursor-pointer text-sm text-gray-500">Error Details</summary>
-                <pre className="mt-2 p-3 bg-gray-100 rounded text-xs overflow-auto text-red-600">
+                <summary className="cursor-pointer text-sm text-moringa-muted">
+                  Error Details
+                </summary>
+                <pre className="mt-2 p-3 bg-fufu-dim rounded text-xs overflow-auto text-red-600">
                   {this.state.error.toString()}
                 </pre>
               </details>

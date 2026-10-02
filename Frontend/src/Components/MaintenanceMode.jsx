@@ -22,14 +22,14 @@ const MaintenanceMode = () => {
         <h2 className="text-2xl font-semibold text-yellow-500 mb-6">Under Maintenance</h2>
 
         {/* Message */}
-        <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+        <p className="text-moringa/40 text-lg mb-8 leading-relaxed">
           We're currently performing scheduled maintenance to improve your experience. We'll be back
           shortly. Thank you for your patience!
         </p>
 
         {/* Contact Info */}
-        <div className="bg-slate-800/50 rounded-xl p-6 backdrop-blur-sm border border-slate-700">
-          <p className="text-slate-400 mb-4">Need urgent assistance? Contact us:</p>
+        <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+          <p className="text-moringa-muted/70 mb-4">Need urgent assistance? Contact us:</p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -40,7 +40,7 @@ const MaintenanceMode = () => {
               <span>{settings.supportEmail || 'chopnow.app@gmail.com'}</span>
             </a>
 
-            <span className="hidden sm:block text-slate-600">|</span>
+            <span className="hidden sm:block text-moringa-muted">|</span>
 
             <a
               href={`tel:${settings.supportPhone || '+250788000000'}`}
@@ -53,7 +53,7 @@ const MaintenanceMode = () => {
         </div>
 
         {/* Tagline */}
-        <p className="text-slate-500 mt-8 text-sm">
+        <p className="text-moringa-muted mt-8 text-sm">
           {settings.platformTagline || 'Save Food, Save Money, Save the Planet'}
         </p>
       </div>

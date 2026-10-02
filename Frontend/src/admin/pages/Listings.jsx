@@ -282,7 +282,7 @@ export const AllListings = () => {
       <div className="min-h-[400px] flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading listings...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading listings...</p>
         </div>
       </div>
     );
@@ -292,12 +292,10 @@ export const AllListings = () => {
   if (!businessId && adminMode === 'shop' && !isAdmin) {
     return (
       <div className="min-h-[400px] flex items-center justify-center">
-        <div className="text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-8 max-w-md">
-          <Package className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-2">
-            No Business Found
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 mb-4">
+        <div className="text-center bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-8 max-w-md">
+          <Package className="w-16 h-16 text-moringa-muted/70 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-moringa dark:text-white mb-2">No Business Found</h2>
+          <p className="text-moringa-muted dark:text-slate-400 mb-4">
             You need to complete your business setup to manage listings.
           </p>
           <button
@@ -318,14 +316,14 @@ export const AllListings = () => {
         {statsCards.map((stat, index) => (
           <div
             key={index}
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50 hover:shadow-xl transition-all duration-300 group"
+            className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50 hover:shadow-xl transition-all duration-300 group"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <p className="text-[10px] font-medium text-slate-600 dark:text-slate-400 mb-1">
+                <p className="text-[10px] font-medium text-moringa-muted dark:text-slate-400 mb-1">
                   {stat.title}
                 </p>
-                <p className="text-xl font-bold text-slate-800 dark:text-white">{stat.value}</p>
+                <p className="text-xl font-bold text-moringa dark:text-white">{stat.value}</p>
               </div>
               <div
                 className={`p-2.5 rounded-xl ${stat.bgColor} group-hover:scale-110 transition-all duration-300`}
@@ -338,24 +336,24 @@ export const AllListings = () => {
       </div>
 
       {/* Search and Filter Section */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50">
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
             <input
               type="text"
               placeholder="Search listings..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+              className="w-full pl-9 pr-4 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
             />
           </div>
           <div className="flex items-center gap-2">
-            <SlidersHorizontal className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+            <SlidersHorizontal className="w-4 h-4 text-moringa-muted dark:text-slate-400" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
+              className="px-3 py-2 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-xs text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="active">Active</option>
@@ -368,9 +366,9 @@ export const AllListings = () => {
 
       {/* Bulk Actions */}
       {selectedProducts.length > 0 && (
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-4 border border-slate-200/50 dark:border-slate-700/50">
+        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-4 border border-hairline dark:border-slate-700/50">
           <div className="flex items-center justify-between">
-            <p className="text-xs text-slate-600 dark:text-slate-400">
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               {selectedProducts.length} item{selectedProducts.length > 1 ? 's' : ''} selected
             </p>
             <div className="flex gap-3">
@@ -389,15 +387,17 @@ export const AllListings = () => {
       )}
 
       {/* Products Table */}
-      <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
-        <div className="p-6 border-b border-slate-200/50 dark:border-slate-700/50">
-          <h3 className="text-base font-bold text-slate-800 dark:text-white">All Products</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">Manage your product listings</p>
+      <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 overflow-hidden">
+        <div className="p-6 border-b border-hairline dark:border-slate-700/50">
+          <h3 className="text-base font-bold text-moringa dark:text-white">All Products</h3>
+          <p className="text-xs text-moringa-muted dark:text-slate-400">
+            Manage your product listings
+          </p>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-slate-50 dark:bg-slate-800/50">
+            <thead className="bg-fufu dark:bg-slate-800/50">
               <tr>
                 <th className="px-6 py-3 text-left">
                   <input
@@ -407,44 +407,44 @@ export const AllListings = () => {
                       currentProducts.length > 0
                     }
                     onChange={handleSelectAll}
-                    className="w-4 h-4 rounded border-slate-300 text-solid focus:ring-solid cursor-pointer"
+                    className="w-4 h-4 rounded border-moringa/25 text-solid focus:ring-solid cursor-pointer"
                   />
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Product
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Stock
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Pickup Window
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Date Created
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-[10px] font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-[10px] font-semibold text-moringa-muted dark:text-slate-400 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+            <tbody className="divide-y divide-hairline dark:divide-slate-700">
               {currentProducts.map((product) => (
                 <tr
                   key={product._id}
-                  className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                  className="hover:bg-fufu dark:hover:bg-slate-800/50 transition-colors"
                 >
                   <td className="px-6 py-4">
                     <input
                       type="checkbox"
                       checked={selectedProducts.includes(product._id)}
                       onChange={() => handleSelect(product._id)}
-                      className="w-4 h-4 rounded border-slate-300 text-solid focus:ring-solid cursor-pointer"
+                      className="w-4 h-4 rounded border-moringa/25 text-solid focus:ring-solid cursor-pointer"
                     />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -452,30 +452,30 @@ export const AllListings = () => {
                       <img
                         src={product.image?.[0] || product.images?.[0] || '/placeholder-food.jpg'}
                         alt={product.name || product.title || 'Product'}
-                        className="w-10 h-10 rounded-lg object-cover border border-slate-200 dark:border-slate-700"
+                        className="w-10 h-10 rounded-lg object-cover border border-hairline dark:border-slate-700"
                       />
-                      <span className="text-xs font-medium text-slate-900 dark:text-white truncate max-w-xs">
+                      <span className="text-xs font-medium text-moringa dark:text-white truncate max-w-xs">
                         {product.name || product.title || 'Unnamed Product'}
                       </span>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-xs text-slate-600 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       {product.category || 'N/A'}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-xs font-semibold text-slate-900 dark:text-white">
+                    <span className="text-xs font-semibold text-moringa dark:text-white">
                       {product.stock || product.inventory?.quantity || 0}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-xs text-slate-600 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       {product.pickupTime || 'Flexible'}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-xs text-slate-600 dark:text-slate-400">
+                    <span className="text-xs text-moringa-muted dark:text-slate-400">
                       {new Date(product.createdAt).toLocaleDateString()}
                     </span>
                   </td>
@@ -509,9 +509,9 @@ export const AllListings = () => {
                       {adminMode === 'shop' && (
                         <button
                           onClick={() => handleEditProduct(product)}
-                          className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                          className="p-2 hover:bg-fufu dark:hover:bg-slate-700 rounded-lg transition-colors"
                         >
-                          <Pencil className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                          <Pencil className="w-4 h-4 text-moringa-muted dark:text-slate-400" />
                         </button>
                       )}
                       <button
@@ -530,8 +530,8 @@ export const AllListings = () => {
 
         {/* Pagination */}
         {filteredProducts.length > 0 && (
-          <div className="px-6 py-4 border-t border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between">
-            <p className="text-xs text-slate-600 dark:text-slate-400">
+          <div className="px-6 py-4 border-t border-hairline dark:border-slate-700/50 flex items-center justify-between">
+            <p className="text-xs text-moringa-muted dark:text-slate-400">
               Showing {showingFrom} to {showingTo} of {filteredProducts.length} listings
             </p>
 
@@ -539,7 +539,7 @@ export const AllListings = () => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Previous
               </button>
@@ -551,7 +551,7 @@ export const AllListings = () => {
                   className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
                     currentPage === index + 1
                       ? 'bg-solid text-white'
-                      : 'text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
+                      : 'text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 hover:bg-fufu dark:hover:bg-slate-700 cursor-pointer'
                   }`}
                 >
                   {index + 1}
@@ -561,7 +561,7 @@ export const AllListings = () => {
               <button
                 onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="px-3 py-1.5 text-xs font-medium text-moringa-muted dark:text-slate-400 bg-white dark:bg-slate-800 border border-hairline dark:border-slate-700 rounded-lg hover:bg-fufu dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
                 Next
               </button>
@@ -571,7 +571,7 @@ export const AllListings = () => {
 
         {filteredProducts.length === 0 && (
           <div className="p-12 text-center">
-            <p className="text-slate-500 dark:text-slate-400">No products found</p>
+            <p className="text-moringa-muted dark:text-slate-400">No products found</p>
           </div>
         )}
       </div>
@@ -816,7 +816,7 @@ export const NewListing = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-solid border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600 dark:text-slate-400">Loading business information...</p>
+          <p className="text-moringa-muted dark:text-slate-400">Loading business information...</p>
         </div>
       </div>
     );
@@ -826,12 +826,10 @@ export const NewListing = () => {
   if (!businessId) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-8 max-w-md">
-          <Package className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-2">
-            No Business Found
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 mb-4">
+        <div className="text-center bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-8 max-w-md">
+          <Package className="w-16 h-16 text-moringa-muted/70 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-moringa dark:text-white mb-2">No Business Found</h2>
+          <p className="text-moringa-muted dark:text-slate-400 mb-4">
             You need to have a verified business to create listings.
           </p>
           <button
@@ -850,8 +848,8 @@ export const NewListing = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Side - Form */}
         <div className="lg:col-span-2">
-          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-            <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">
+          <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+            <h2 className="text-2xl font-bold text-moringa dark:text-white mb-6">
               Create New Listing
             </h2>
 
@@ -859,7 +857,7 @@ export const NewListing = () => {
               {/* Basic Information */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  <label className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2">
                     Product Images
                   </label>
                   <div className="flex flex-wrap gap-3">
@@ -868,7 +866,7 @@ export const NewListing = () => {
                         <img
                           src={img.preview}
                           alt="Product"
-                          className="w-24 h-24 object-cover rounded-lg border-2 border-slate-200 dark:border-slate-700"
+                          className="w-24 h-24 object-cover rounded-lg border-2 border-hairline dark:border-slate-700"
                         />
                         <button
                           type="button"
@@ -895,7 +893,7 @@ export const NewListing = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Product Name
                   </label>
@@ -905,7 +903,7 @@ export const NewListing = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     placeholder="Enter product name"
                   />
                 </div>
@@ -913,7 +911,7 @@ export const NewListing = () => {
                 <div>
                   <label
                     htmlFor="description"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Description
                   </label>
@@ -923,7 +921,7 @@ export const NewListing = () => {
                     value={formData.description}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
                     placeholder="Describe your product"
                   />
                 </div>
@@ -931,7 +929,7 @@ export const NewListing = () => {
                 <div>
                   <label
                     htmlFor="vendor"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Vendor Name
                   </label>
@@ -941,7 +939,7 @@ export const NewListing = () => {
                     name="vendor"
                     value={formData.vendor}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     placeholder="Enter vendor name"
                   />
                 </div>
@@ -950,7 +948,7 @@ export const NewListing = () => {
                   <div>
                     <label
                       htmlFor="category"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Category
                     </label>
@@ -959,7 +957,7 @@ export const NewListing = () => {
                       name="category"
                       value={formData.category}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
                     >
                       <option value="">Select Category</option>
                       {categories.map((cat, index) => (
@@ -973,7 +971,7 @@ export const NewListing = () => {
                   <div>
                     <label
                       htmlFor="stock"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Stock Count
                     </label>
@@ -983,7 +981,7 @@ export const NewListing = () => {
                       name="stock"
                       value={formData.stock}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="0"
                       min="0"
                     />
@@ -994,7 +992,7 @@ export const NewListing = () => {
                   <div>
                     <label
                       htmlFor="price"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Price
                     </label>
@@ -1004,7 +1002,7 @@ export const NewListing = () => {
                       name="price"
                       value={formData.price}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="0.00"
                       step="0.01"
                       min="0"
@@ -1014,7 +1012,7 @@ export const NewListing = () => {
                   <div>
                     <label
                       htmlFor="offerPrice"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Offer Price
                     </label>
@@ -1024,7 +1022,7 @@ export const NewListing = () => {
                       name="offerPrice"
                       value={formData.offerPrice}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="0.00"
                       step="0.01"
                       min="0"
@@ -1034,15 +1032,15 @@ export const NewListing = () => {
               </div>
 
               {/* Pickup Window */}
-              <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-white">
+              <div className="space-y-4 pt-4 border-t border-hairline dark:border-slate-700">
+                <h3 className="text-lg font-semibold text-moringa dark:text-white">
                   Pickup Window
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="pickupFrom"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       From
                     </label>
@@ -1052,14 +1050,14 @@ export const NewListing = () => {
                       name="pickupFrom"
                       value={formData.pickupFrom}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="pickupTo"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       To
                     </label>
@@ -1069,23 +1067,23 @@ export const NewListing = () => {
                       name="pickupTo"
                       value={formData.pickupTo}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Nutritional Information */}
-              <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-white">
+              <div className="space-y-4 pt-4 border-t border-hairline dark:border-slate-700">
+                <h3 className="text-lg font-semibold text-moringa dark:text-white">
                   Nutritional Information{' '}
-                  <span className="text-xs font-normal text-slate-500">(Optional)</span>
+                  <span className="text-xs font-normal text-moringa-muted">(Optional)</span>
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
                     <label
                       htmlFor="calories"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Calories
                     </label>
@@ -1095,7 +1093,7 @@ export const NewListing = () => {
                       name="calories"
                       value={formData.calories}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="kcal"
                       min="0"
                     />
@@ -1104,7 +1102,7 @@ export const NewListing = () => {
                   <div>
                     <label
                       htmlFor="protein"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Protein
                     </label>
@@ -1114,7 +1112,7 @@ export const NewListing = () => {
                       name="protein"
                       value={formData.protein}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="g"
                       min="0"
                     />
@@ -1123,7 +1121,7 @@ export const NewListing = () => {
                   <div>
                     <label
                       htmlFor="carbs"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Carbs
                     </label>
@@ -1133,7 +1131,7 @@ export const NewListing = () => {
                       name="carbs"
                       value={formData.carbs}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="g"
                       min="0"
                     />
@@ -1142,7 +1140,7 @@ export const NewListing = () => {
                   <div>
                     <label
                       htmlFor="fats"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Fats
                     </label>
@@ -1152,7 +1150,7 @@ export const NewListing = () => {
                       name="fats"
                       value={formData.fats}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="g"
                       min="0"
                     />
@@ -1162,7 +1160,7 @@ export const NewListing = () => {
                 <div>
                   <label
                     htmlFor="allergens"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Allergens
                   </label>
@@ -1172,16 +1170,16 @@ export const NewListing = () => {
                     name="allergens"
                     value={formData.allergens}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     placeholder="e.g., Nuts, Dairy, Gluten"
                   />
                 </div>
               </div>
 
               {/* Recurring Listing */}
-              <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+              <div className="space-y-4 pt-4 border-t border-hairline dark:border-slate-700">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-slate-800 dark:text-white">
+                  <h3 className="text-lg font-semibold text-moringa dark:text-white">
                     Recurring Listing
                   </h3>
                   <label className="relative inline-flex items-center cursor-pointer">
@@ -1202,7 +1200,7 @@ export const NewListing = () => {
                     <div>
                       <label
                         htmlFor="frequency"
-                        className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                        className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                       >
                         Frequency
                       </label>
@@ -1211,7 +1209,7 @@ export const NewListing = () => {
                         name="frequency"
                         value={formData.frequency}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
+                        className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
                       >
                         <option value="daily">Daily</option>
                         <option value="weekly">Weekly</option>
@@ -1221,7 +1219,7 @@ export const NewListing = () => {
 
                     {formData.frequency === 'weekly' && (
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2">
                           Repeat On
                         </label>
                         <div className="flex flex-wrap gap-2">
@@ -1233,7 +1231,7 @@ export const NewListing = () => {
                               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                                 formData.repeatDays.includes(day)
                                   ? 'bg-solid text-white'
-                                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                                  : 'bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 hover:bg-mint dark:hover:bg-slate-700'
                               }`}
                             >
                               {day}
@@ -1246,10 +1244,10 @@ export const NewListing = () => {
                     <div>
                       <label
                         htmlFor="endDate"
-                        className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                        className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                       >
                         End Date{' '}
-                        <span className="text-xs font-normal text-slate-500">(Optional)</span>
+                        <span className="text-xs font-normal text-moringa-muted">(Optional)</span>
                       </label>
                       <input
                         type="date"
@@ -1257,7 +1255,7 @@ export const NewListing = () => {
                         name="endDate"
                         value={formData.endDate}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -1265,7 +1263,7 @@ export const NewListing = () => {
               </div>
 
               {/* Submit Buttons */}
-              <div className="flex gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
+              <div className="flex gap-4 pt-6 border-t border-hairline dark:border-slate-700">
                 <button
                   type="button"
                   onClick={handleSubmit}
@@ -1276,7 +1274,7 @@ export const NewListing = () => {
                 </button>
                 <button
                   type="button"
-                  className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-medium rounded-lg transition-colors"
+                  className="flex-1 px-6 py-3 bg-hairline dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-moringa dark:text-white font-medium rounded-lg transition-colors"
                 >
                   Save Draft
                 </button>
@@ -1288,13 +1286,13 @@ export const NewListing = () => {
         {/* Right Side - Preview */}
         <div className="lg:col-span-1 space-y-6">
           {/* Customer Preview Card */}
-          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-            <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">
+          <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+            <h3 className="text-lg font-semibold text-moringa dark:text-white mb-4">
               Customer Preview
             </h3>
             <div
               className="relative border rounded-xl bg-white w-full shadow-md overflow-hidden"
-              style={{ borderColor: '#E5E5E5' }}
+              style={{ borderColor: 'var(--color-hairline)' }}
             >
               {/* Discount Badge */}
               {formData.price && formData.offerPrice && formData.offerPrice < formData.price && (
@@ -1314,8 +1312,8 @@ export const NewListing = () => {
                     alt="Product preview"
                   />
                 ) : (
-                  <div className="w-full h-full bg-slate-200 flex items-center justify-center">
-                    <Package className="w-12 h-12 text-slate-400" />
+                  <div className="w-full h-full bg-hairline flex items-center justify-center">
+                    <Package className="w-12 h-12 text-moringa-muted/70" />
                   </div>
                 )}
               </div>
@@ -1376,30 +1374,30 @@ export const NewListing = () => {
 
           {/* Listing Photo Management */}
           {mainImage && (
-            <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">
+            <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+              <h3 className="text-lg font-semibold text-moringa dark:text-white mb-4">
                 Listing Photo
               </h3>
               <div className="relative group">
                 <img
                   src={mainImage.preview}
                   alt="Main listing"
-                  className="w-full h-64 object-cover rounded-lg border border-slate-200 dark:border-slate-700"
+                  className="w-full h-64 object-cover rounded-lg border border-hairline dark:border-slate-700"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center gap-3">
                   <button
                     type="button"
-                    className="p-3 bg-white/90 hover:bg-white rounded-lg transition-colors"
+                    className="p-3 bg-white hover:bg-white rounded-lg transition-colors"
                     title="Resize"
                   >
-                    <Maximize2 className="w-5 h-5 text-slate-800" />
+                    <Maximize2 className="w-5 h-5 text-moringa" />
                   </button>
                   <button
                     type="button"
-                    className="p-3 bg-white/90 hover:bg-white rounded-lg transition-colors"
+                    className="p-3 bg-white hover:bg-white rounded-lg transition-colors"
                     title="Crop"
                   >
-                    <Crop className="w-5 h-5 text-slate-800" />
+                    <Crop className="w-5 h-5 text-moringa" />
                   </button>
                   <button
                     type="button"
@@ -1583,14 +1581,14 @@ const EditListing = ({ product, onBack }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Side - Form */}
         <div className="lg:col-span-2">
-          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-            <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6">Edit Listing</h2>
+          <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+            <h2 className="text-2xl font-bold text-moringa dark:text-white mb-6">Edit Listing</h2>
 
             <form className="space-y-6">
               {/* Basic Information */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  <label className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2">
                     Product Images
                   </label>
                   <div className="flex flex-wrap gap-3">
@@ -1599,7 +1597,7 @@ const EditListing = ({ product, onBack }) => {
                         <img
                           src={img.preview}
                           alt="Product"
-                          className="w-24 h-24 object-cover rounded-lg border-2 border-slate-200 dark:border-slate-700"
+                          className="w-24 h-24 object-cover rounded-lg border-2 border-hairline dark:border-slate-700"
                         />
                         <button
                           type="button"
@@ -1626,7 +1624,7 @@ const EditListing = ({ product, onBack }) => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Product Name
                   </label>
@@ -1636,7 +1634,7 @@ const EditListing = ({ product, onBack }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     placeholder="Enter product name"
                   />
                 </div>
@@ -1644,7 +1642,7 @@ const EditListing = ({ product, onBack }) => {
                 <div>
                   <label
                     htmlFor="description"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Description
                   </label>
@@ -1654,7 +1652,7 @@ const EditListing = ({ product, onBack }) => {
                     value={formData.description}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all resize-none"
                     placeholder="Describe your product"
                   />
                 </div>
@@ -1662,7 +1660,7 @@ const EditListing = ({ product, onBack }) => {
                 <div>
                   <label
                     htmlFor="vendor"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Vendor Name
                   </label>
@@ -1672,7 +1670,7 @@ const EditListing = ({ product, onBack }) => {
                     name="vendor"
                     value={formData.vendor}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     placeholder="Enter vendor name"
                   />
                 </div>
@@ -1681,7 +1679,7 @@ const EditListing = ({ product, onBack }) => {
                   <div>
                     <label
                       htmlFor="category"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Category
                     </label>
@@ -1690,7 +1688,7 @@ const EditListing = ({ product, onBack }) => {
                       name="category"
                       value={formData.category}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
                     >
                       <option value="">Select Category</option>
                       {categories.map((cat, index) => (
@@ -1704,7 +1702,7 @@ const EditListing = ({ product, onBack }) => {
                   <div>
                     <label
                       htmlFor="stock"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Stock Count
                     </label>
@@ -1714,7 +1712,7 @@ const EditListing = ({ product, onBack }) => {
                       name="stock"
                       value={formData.stock}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="0"
                       min="0"
                     />
@@ -1725,7 +1723,7 @@ const EditListing = ({ product, onBack }) => {
                   <div>
                     <label
                       htmlFor="price"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Price
                     </label>
@@ -1735,7 +1733,7 @@ const EditListing = ({ product, onBack }) => {
                       name="price"
                       value={formData.price}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="0.00"
                       step="0.01"
                       min="0"
@@ -1745,7 +1743,7 @@ const EditListing = ({ product, onBack }) => {
                   <div>
                     <label
                       htmlFor="offerPrice"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Offer Price
                     </label>
@@ -1755,7 +1753,7 @@ const EditListing = ({ product, onBack }) => {
                       name="offerPrice"
                       value={formData.offerPrice}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="0.00"
                       step="0.01"
                       min="0"
@@ -1765,15 +1763,15 @@ const EditListing = ({ product, onBack }) => {
               </div>
 
               {/* Pickup Window */}
-              <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-white">
+              <div className="space-y-4 pt-4 border-t border-hairline dark:border-slate-700">
+                <h3 className="text-lg font-semibold text-moringa dark:text-white">
                   Pickup Window
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="pickupFrom"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       From
                     </label>
@@ -1783,14 +1781,14 @@ const EditListing = ({ product, onBack }) => {
                       name="pickupFrom"
                       value={formData.pickupFrom}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="pickupTo"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       To
                     </label>
@@ -1800,23 +1798,23 @@ const EditListing = ({ product, onBack }) => {
                       name="pickupTo"
                       value={formData.pickupTo}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Nutritional Information */}
-              <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-white">
+              <div className="space-y-4 pt-4 border-t border-hairline dark:border-slate-700">
+                <h3 className="text-lg font-semibold text-moringa dark:text-white">
                   Nutritional Information{' '}
-                  <span className="text-xs font-normal text-slate-500">(Optional)</span>
+                  <span className="text-xs font-normal text-moringa-muted">(Optional)</span>
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
                     <label
                       htmlFor="calories"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Calories
                     </label>
@@ -1826,7 +1824,7 @@ const EditListing = ({ product, onBack }) => {
                       name="calories"
                       value={formData.calories}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="kcal"
                       min="0"
                     />
@@ -1835,7 +1833,7 @@ const EditListing = ({ product, onBack }) => {
                   <div>
                     <label
                       htmlFor="protein"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Protein
                     </label>
@@ -1845,7 +1843,7 @@ const EditListing = ({ product, onBack }) => {
                       name="protein"
                       value={formData.protein}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="g"
                       min="0"
                     />
@@ -1854,7 +1852,7 @@ const EditListing = ({ product, onBack }) => {
                   <div>
                     <label
                       htmlFor="carbs"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Carbs
                     </label>
@@ -1864,7 +1862,7 @@ const EditListing = ({ product, onBack }) => {
                       name="carbs"
                       value={formData.carbs}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="g"
                       min="0"
                     />
@@ -1873,7 +1871,7 @@ const EditListing = ({ product, onBack }) => {
                   <div>
                     <label
                       htmlFor="fats"
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                     >
                       Fats
                     </label>
@@ -1883,7 +1881,7 @@ const EditListing = ({ product, onBack }) => {
                       name="fats"
                       value={formData.fats}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                      className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       placeholder="g"
                       min="0"
                     />
@@ -1893,7 +1891,7 @@ const EditListing = ({ product, onBack }) => {
                 <div>
                   <label
                     htmlFor="allergens"
-                    className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                    className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                   >
                     Allergens
                   </label>
@@ -1903,16 +1901,16 @@ const EditListing = ({ product, onBack }) => {
                     name="allergens"
                     value={formData.allergens}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                    className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                     placeholder="e.g., Nuts, Dairy, Gluten"
                   />
                 </div>
               </div>
 
               {/* Recurring Listing */}
-              <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+              <div className="space-y-4 pt-4 border-t border-hairline dark:border-slate-700">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-slate-800 dark:text-white">
+                  <h3 className="text-lg font-semibold text-moringa dark:text-white">
                     Recurring Listing
                   </h3>
                   <label className="relative inline-flex items-center cursor-pointer">
@@ -1933,7 +1931,7 @@ const EditListing = ({ product, onBack }) => {
                     <div>
                       <label
                         htmlFor="frequency"
-                        className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                        className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                       >
                         Frequency
                       </label>
@@ -1942,7 +1940,7 @@ const EditListing = ({ product, onBack }) => {
                         name="frequency"
                         value={formData.frequency}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
+                        className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all cursor-pointer"
                       >
                         <option value="daily">Daily</option>
                         <option value="weekly">Weekly</option>
@@ -1952,7 +1950,7 @@ const EditListing = ({ product, onBack }) => {
 
                     {formData.frequency === 'weekly' && (
                       <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        <label className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2">
                           Repeat On
                         </label>
                         <div className="flex flex-wrap gap-2">
@@ -1964,7 +1962,7 @@ const EditListing = ({ product, onBack }) => {
                               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                                 formData.repeatDays.includes(day)
                                   ? 'bg-solid text-white'
-                                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                                  : 'bg-fufu-dim dark:bg-slate-800 text-moringa dark:text-slate-300 hover:bg-mint dark:hover:bg-slate-700'
                               }`}
                             >
                               {day}
@@ -1977,10 +1975,10 @@ const EditListing = ({ product, onBack }) => {
                     <div>
                       <label
                         htmlFor="endDate"
-                        className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                        className="block text-sm font-medium text-moringa dark:text-slate-300 mb-2"
                       >
                         End Date{' '}
-                        <span className="text-xs font-normal text-slate-500">(Optional)</span>
+                        <span className="text-xs font-normal text-moringa-muted">(Optional)</span>
                       </label>
                       <input
                         type="date"
@@ -1988,7 +1986,7 @@ const EditListing = ({ product, onBack }) => {
                         name="endDate"
                         value={formData.endDate}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-lg text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 bg-fufu dark:bg-slate-800 border border-hairline dark:border-slate-600 rounded-lg text-sm text-moringa dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-solid focus:border-transparent transition-all"
                       />
                     </div>
                   </div>
@@ -1996,7 +1994,7 @@ const EditListing = ({ product, onBack }) => {
               </div>
 
               {/* Submit Buttons */}
-              <div className="flex gap-4 pt-6 border-t border-slate-200 dark:border-slate-700">
+              <div className="flex gap-4 pt-6 border-t border-hairline dark:border-slate-700">
                 <button
                   type="button"
                   onClick={handleUpdate}
@@ -2008,7 +2006,7 @@ const EditListing = ({ product, onBack }) => {
                 <button
                   type="button"
                   onClick={onBack}
-                  className="flex-1 px-6 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-medium rounded-lg transition-colors"
+                  className="flex-1 px-6 py-3 bg-hairline dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-moringa dark:text-white font-medium rounded-lg transition-colors"
                 >
                   Cancel
                 </button>
@@ -2020,13 +2018,13 @@ const EditListing = ({ product, onBack }) => {
         {/* Right Side - Preview */}
         <div className="lg:col-span-1 space-y-6">
           {/* Customer Preview Card */}
-          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-            <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">
+          <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+            <h3 className="text-lg font-semibold text-moringa dark:text-white mb-4">
               Customer Preview
             </h3>
             <div
               className="relative border rounded-xl bg-white w-full shadow-md overflow-hidden"
-              style={{ borderColor: '#E5E5E5' }}
+              style={{ borderColor: 'var(--color-hairline)' }}
             >
               {/* Discount Badge */}
               {formData.price && formData.offerPrice && formData.offerPrice < formData.price && (
@@ -2046,8 +2044,8 @@ const EditListing = ({ product, onBack }) => {
                     alt="Product preview"
                   />
                 ) : (
-                  <div className="w-full h-full bg-slate-200 flex items-center justify-center">
-                    <Package className="w-12 h-12 text-slate-400" />
+                  <div className="w-full h-full bg-hairline flex items-center justify-center">
+                    <Package className="w-12 h-12 text-moringa-muted/70" />
                   </div>
                 )}
               </div>
@@ -2108,30 +2106,30 @@ const EditListing = ({ product, onBack }) => {
 
           {/* Listing Photo Management */}
           {mainImage && (
-            <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 p-6">
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">
+            <div className="bg-white dark:bg-slate-900/80 rounded-2xl border border-hairline dark:border-slate-700/50 p-6">
+              <h3 className="text-lg font-semibold text-moringa dark:text-white mb-4">
                 Listing Photo
               </h3>
               <div className="relative group">
                 <img
                   src={mainImage.preview}
                   alt="Main listing"
-                  className="w-full h-64 object-cover rounded-lg border border-slate-200 dark:border-slate-700"
+                  className="w-full h-64 object-cover rounded-lg border border-hairline dark:border-slate-700"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center gap-3">
                   <button
                     type="button"
-                    className="p-3 bg-white/90 hover:bg-white rounded-lg transition-colors"
+                    className="p-3 bg-white hover:bg-white rounded-lg transition-colors"
                     title="Resize"
                   >
-                    <Maximize2 className="w-5 h-5 text-slate-800" />
+                    <Maximize2 className="w-5 h-5 text-moringa" />
                   </button>
                   <button
                     type="button"
-                    className="p-3 bg-white/90 hover:bg-white rounded-lg transition-colors"
+                    className="p-3 bg-white hover:bg-white rounded-lg transition-colors"
                     title="Crop"
                   >
-                    <Crop className="w-5 h-5 text-slate-800" />
+                    <Crop className="w-5 h-5 text-moringa" />
                   </button>
                   <button
                     type="button"
