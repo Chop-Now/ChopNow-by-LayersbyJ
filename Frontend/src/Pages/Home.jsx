@@ -1,36 +1,43 @@
 import React from 'react';
-import Hero from '../Components/Hero';
-import Apps from '../Components/Apps';
-// import Advisors from '../Components/Advisors';
-// import Testimonials from '../Components/Testimonials';
-import Milestones from '../Components/Milestones';
-import AboutUs from '../Components/AboutUs';
-import HowItWorks from '../Components/HowItWorks';
-import Header from '../Components/Header';
+import SiteHeader from '../Components/landing/SiteHeader';
+import {
+  Hero,
+  StatBand,
+  HowItWorks,
+  Vendors,
+  Milestones,
+  AboutUs,
+  Community,
+  ClosingCta,
+} from '../Components/landing/Sections';
 import Footer from '../Components/Footer';
 import SEO from '../Components/SEO';
 
-const Home = () => {
-  return (
-    // bg-scaffold scopes the new brand ground to this page. Once the rest of the
-    // site is migrated off the legacy green palette, move this to `body` in
-    // index.css and drop the wrapper.
-    <div className="bg-scaffold">
-      <SEO
-        title="ChopNow - Save Food, Save Money, Save the Planet"
-        description="ChopNow connects you with surplus food from local businesses at discounted prices. Reduce food waste and save money in Kigali, Rwanda."
-      />
-      <Header />
+/*
+ * Landing page, LayersbyJ tile revamp. Every section is a row of flat colour
+ * tiles on a 4-column grid (1440 max), collapsing to 2 and 1 columns.
+ * The old sections (Header, Hero, HowItWorks, Milestones, AboutUs, Apps) are
+ * kept in Components/ for reference but are no longer mounted here.
+ */
+const Home = () => (
+  <div className="bg-fufu">
+    <SEO
+      title="ChopNow - Save Food, Save Money, Save the Planet"
+      description="ChopNow connects you with surplus food from local businesses at discounted prices. Reduce food waste and save money in Kigali, Rwanda."
+    />
+    <SiteHeader />
+    <div>
       <Hero />
+      <StatBand />
       <HowItWorks />
-      {/* <Testimonials /> */}
-      {/* <Advisors /> */}
+      <Vendors />
       <Milestones />
       <AboutUs />
-      <Apps />
-      <Footer />
+      <Community />
+      <ClosingCta />
     </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
 export default Home;

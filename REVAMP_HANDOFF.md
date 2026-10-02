@@ -65,10 +65,11 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] Create private repo `J0SHUALU/chopnow-by-layersbyj`
 - [x] Copy full ChopNow codebase (commit `7430f34`)
 - [x] Frontend installs and builds before any change
-- [ ] Design tokens + fonts in `Frontend/src/index.css`
-- [ ] Brand kit: `Components/brand/` (Tile, Button, Eyebrow, Display, Illustrations)
-- [ ] Navbar (landing) + PageNavbar (app) + Footer
-- [ ] Landing page `Pages/Home.jsx` and its sections
+- [x] Design tokens + fonts in `Frontend/src/index.css` (radius 0, hairline shadows, Fufu ground, Anton/Geist/Geist Mono/Poppins in index.html)
+- [x] Brand kit: `Components/brand/Kit.jsx` (Logo, Eyebrow, Display, Button, Tile, PageHero) + `Illustrations.jsx` (CMark, Fork, Spoon, Chilli, Bread, Leaf, TomatoHalf, Pin, Bag, Plate, Coin)
+- [x] Landing header `Components/landing/SiteHeader.jsx` + new `Footer.jsx` (used site-wide)
+- [ ] App header `Components/PageNavbar.jsx`
+- [x] Landing page `Pages/Home.jsx` -> sections in `Components/landing/Sections.jsx` (checked at 1440 + 390)
 - [ ] Shop + CategoryPage + ProductCard + ShopSidebar
 - [ ] ProductDetails
 - [ ] Cart + payment modal
@@ -80,5 +81,8 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [ ] Final pass: 390px + 1440px check, build, lint, push
 
 ## Log
+
+- Screenshot tool: Google Fonts are blocked in the cloud container, so preview shots load fonts from local @fontsource files via Playwright route interception. Fonts load normally in a real browser.
+- Footer now lists only MTN MoMo + Airtel Money (the old Visa/Mastercard/Bank logos did not match pawaPay). Old dead newsletter form removed.
 
 - 2026-10-02: Repo created, codebase imported, baseline build passes.

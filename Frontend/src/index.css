@@ -6,6 +6,41 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+
+  /* ── Revamp (LayersbyJ): tile system ──
+     Flat colour tiles, square corners, no soft shadows. Display type is
+     Anton, UI is Geist, labels are Geist Mono, the wordmark is Poppins. */
+  --font-sans: 'Geist', ui-sans-serif, system-ui, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-wordmark: 'Poppins', 'Geist', sans-serif;
+
+  --color-lime: #b9e07a; /* tile tint: fresh green */
+  --color-peach: #f7c4a5; /* tile tint: warm pepper */
+  --color-mint: #cfe3d6; /* tile tint: cool moringa */
+  --color-clay: #9e2f14; /* deep pepper: text on peach, shapes */
+  --color-moringa-2: #1a4d3b; /* tonal shape on moringa */
+  --color-hairline: #e6dcc6; /* hairline between light tiles */
+
+  /* Square corners everywhere except true circles (rounded-full). */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  /* Elevation becomes a crisp hairline instead of a soft blur. */
+  --shadow-2xs: 0 0 0 1px rgb(23 21 15 / 0.08);
+  --shadow-xs: 0 0 0 1px rgb(23 21 15 / 0.08);
+  --shadow-sm: 0 0 0 1px rgb(23 21 15 / 0.1);
+  --shadow: 0 0 0 1px rgb(23 21 15 / 0.1);
+  --shadow-md: 0 0 0 1px rgb(23 21 15 / 0.12);
+  --shadow-lg: 0 0 0 1px rgb(23 21 15 / 0.14);
+  --shadow-xl: 0 0 0 1px rgb(23 21 15 / 0.16);
+  --shadow-2xl: 0 0 0 1px rgb(23 21 15 / 0.18);
   /* ── ChopNow brand palette ──
      Source of truth: root CLAUDE.md. Now Yellow is LIGHT — it carries
      Moringa/Char text, never white. Pepper takes white only at large sizes
@@ -38,7 +73,7 @@
      shadowed Tailwind's built-in near-white `gray-50`, which made every
      `bg-gray-50` surface paint mid-grey (it read as a dark overlay). Muted
      text now uses `--color-moringa-muted` instead. */
-  --color-primary: var(--color-scaffold); /* page ground (unchanged hex) */
+  --color-primary: var(--color-fufu); /* page ground: Fufu in the tile revamp */
   --color-solid: var(--color-moringa); /* was #00A86B green */
   --color-solidOne: var(--color-pepper); /* was #FF7A00 orange */
   --color-solidTwo: var(--color-yellow); /* was #FFB366 soft orange */
@@ -50,9 +85,8 @@ html,
 body {
   background-color: var(--color-primary);
   scroll-behavior: smooth;
-  font-family:
-    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
 ::-webkit-scrollbar {
@@ -60,10 +94,6 @@ body {
 }
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -98,7 +128,7 @@ body {
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0px;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -171,7 +201,51 @@ body {
     @apply border-border outline-ring/50;
   }
   body {
-    background-color: var(--color-scaffold) !important;
+    background-color: var(--color-fufu) !important;
     color: var(--color-char) !important;
+  }
+}
+
+/* ── Revamp utilities ── */
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: 0;
+  }
+  .wordmark {
+    font-family: var(--font-wordmark);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-char);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
