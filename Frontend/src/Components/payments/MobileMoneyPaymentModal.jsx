@@ -133,110 +133,99 @@ const MobileMoneyPaymentModal = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border border-gray-100 flex flex-col items-center text-center">
-        {!loading && (
-          <button
-            onClick={onClose}
-            aria-label="Close"
-            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition cursor-pointer"
-          >
-            <X className="w-6 h-6" />
-          </button>
-        )}
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-char/50 p-0 sm:p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pay-title"
+    >
+      <div className="bg-fufu max-w-md w-full relative border-t-4 sm:border-4 border-moringa">
+        <div
+          className={`${provider === 'momo' ? 'bg-yellow text-moringa' : 'bg-pepper text-char'} px-6 pt-6 pb-5`}
+        >
+          {!loading && (
+            <button
+              onClick={onClose}
+              aria-label="Close"
+              className="absolute top-3 right-3 w-11 h-11 flex items-center justify-center bg-moringa text-fufu cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+          <p className="eyebrow">Mobile money / {short}</p>
+          <h3 id="pay-title" className="display text-[44px] mt-2">
+            {label}
+          </h3>
+          <p className="mt-2 text-sm font-semibold">
+            {target?.orderIds?.length > 1
+              ? `One payment for your ${target.orderIds.length} vendor orders`
+              : 'Complete your rescue order'}
+          </p>
+          <p className="display text-[40px] mt-1">RWF {amount}</p>
+        </div>
 
-        <div className="mb-4 mt-2">
-          {provider === 'momo' ? (
-            <div className="w-16 h-16 rounded-2xl bg-amber-400 flex items-center justify-center text-xl font-black text-blue-900 shadow-md">
-              {short}
+        <div className="p-6">
+          {loading ? (
+            <div className="py-6 flex flex-col items-center gap-4 text-center" role="status">
+              <div className="w-12 h-12 rounded-full border-4 border-moringa border-t-yellow animate-spin" />
+              <p className="text-sm font-bold text-moringa">{statusText}</p>
+              <p className="text-sm text-moringa-muted max-w-xs leading-relaxed">
+                Check your phone for a PIN prompt to approve RWF {amount}.
+              </p>
             </div>
           ) : (
-            <div className="w-16 h-16 rounded-2xl bg-red-600 flex items-center justify-center text-xl font-black text-white shadow-md">
-              {short}
+            <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-2 border-2 border-moringa">
+                {Object.entries(PROVIDERS).map(([key, p]) => (
+                  <button
+                    key={key}
+                    onClick={() => setProvider(key)}
+                    aria-pressed={provider === key}
+                    className={`h-11 text-sm font-bold transition-colors cursor-pointer ${
+                      provider === key ? 'bg-moringa text-yellow' : 'text-moringa hover:bg-mint'
+                    }`}
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </div>
+              <div>
+                <label htmlFor="momo-phone" className="eyebrow text-moringa mb-2 block">
+                  Phone number
+                </label>
+                <input
+                  id="momo-phone"
+                  type="tel"
+                  inputMode="tel"
+                  placeholder="078xxxxxxx"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full h-12 px-4 bg-white border-2 border-moringa text-moringa font-semibold focus:outline-none focus:border-yellow"
+                />
+              </div>
+
+              {error && (
+                <div className="p-3 bg-peach text-clay text-sm font-semibold flex items-start gap-2">
+                  <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <button
+                onClick={pay}
+                className="w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer"
+              >
+                Confirm and pay RWF {amount}
+              </button>
+              <button
+                onClick={onClose}
+                className="w-full h-12 border-2 border-moringa text-moringa font-semibold hover:bg-mint transition-colors cursor-pointer"
+              >
+                Pay later from My orders
+              </button>
             </div>
           )}
         </div>
-
-        <h3 className="text-xl font-bold text-gray-800 mb-1">{label} Payment</h3>
-        <p className="text-sm text-gray-500 mb-6">
-          {target?.orderIds?.length > 1
-            ? `One payment for your ${target.orderIds.length} vendor orders: `
-            : 'Complete your rescue order for a total of '}
-          <strong className="text-gray-800">RWF {amount}</strong>
-        </p>
-
-        {loading ? (
-          <div className="py-8 flex flex-col items-center gap-4 w-full">
-            <div
-              className="w-12 h-12 rounded-full border-4 border-t-transparent animate-spin"
-              style={{
-                borderColor: 'var(--color-solid) transparent var(--color-solid) transparent',
-              }}
-            />
-            <p className="text-sm font-semibold text-gray-700">{statusText}</p>
-            <p className="text-xs text-gray-400 max-w-xs leading-relaxed">
-              Please check your phone for a PIN prompt to authorize RWF {amount}.
-            </p>
-          </div>
-        ) : (
-          <div className="w-full space-y-4">
-            <div className="flex gap-2">
-              {Object.entries(PROVIDERS).map(([key, p]) => (
-                <button
-                  key={key}
-                  onClick={() => setProvider(key)}
-                  className={`flex-1 py-2 rounded-lg text-xs font-semibold border transition cursor-pointer ${
-                    provider === key
-                      ? key === 'momo'
-                        ? 'border-amber-400 bg-amber-50 text-gray-800'
-                        : 'border-red-400 bg-red-50 text-gray-800'
-                      : 'border-gray-200 text-gray-500 hover:bg-gray-50'
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
-            </div>
-            <div className="text-left">
-              <label
-                htmlFor="momo-phone"
-                className="text-xs font-semibold text-gray-500 mb-1 block"
-              >
-                Phone Number
-              </label>
-              <input
-                id="momo-phone"
-                type="tel"
-                placeholder="078xxxxxxx"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl text-gray-800 focus:outline-none focus:border-amber-400 font-medium"
-              />
-            </div>
-
-            {error && (
-              <div className="p-3 bg-red-50 text-red-600 rounded-xl text-xs font-semibold text-left flex items-start gap-2">
-                <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>{error}</span>
-              </div>
-            )}
-
-            <button
-              onClick={pay}
-              className="w-full py-3 rounded-xl text-white font-semibold shadow-md transition-all hover:opacity-90 cursor-pointer"
-              style={{ backgroundColor: provider === 'momo' ? '#EAB308' : '#DC2626' }}
-            >
-              Confirm & Pay RWF {amount}
-            </button>
-
-            <button
-              onClick={onClose}
-              className="w-full py-3 rounded-xl border border-gray-200 text-gray-500 font-semibold hover:bg-gray-50 transition cursor-pointer"
-            >
-              Pay Later from My Orders
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );

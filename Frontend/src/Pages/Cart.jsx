@@ -8,7 +8,9 @@ import {
   MapPin,
   ExternalLink,
   Leaf,
-  Calendar,
+  Bike,
+  ShoppingBag,
+  Banknote,
   Trash2,
   AlertTriangle,
   Store,
@@ -19,6 +21,8 @@ import ExpiryCountdown from '../Components/ui/ExpiryCountdown';
 import api from '../services/api';
 import { reverseGeocode } from '../services/geocoding';
 import { toast } from 'react-hot-toast';
+import { assets } from '../assets/assets';
+import { PageHero } from '../Components/brand/Kit';
 
 // Mirrors Backend/controllers/analyticsController.js's IMPACT_FACTORS so the
 // cart's "your impact" preview matches what the backend actually records
@@ -38,6 +42,16 @@ const formatAddress = (address) => {
     'Address not available'
   );
 };
+
+const Panel = ({ step, title, children, tone = 'bg-white' }) => (
+  <section className={`${tone} p-5 sm:p-6 border-b border-hairline`}>
+    <div className="flex items-baseline gap-3 mb-4">
+      <span className="display text-[32px] text-moringa leading-none">{step}</span>
+      <h2 className="eyebrow text-moringa">{title}</h2>
+    </div>
+    {children}
+  </section>
+);
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -220,264 +234,236 @@ const Cart = () => {
 
   const checkoutDisabled = placing || quoteLoading || !!quoteError || !quote;
 
+  const payOptions = [
+    { key: 'momo', logo: assets.momo, title: 'MTN Mobile Money', subtitle: 'Pay with MoMo' },
+    {
+      key: 'airtel',
+      logo: assets.airtel_money,
+      title: 'Airtel Money',
+      subtitle: 'Pay with Airtel',
+    },
+    ...(cashEnabled
+      ? [
+          {
+            key: 'cash',
+            title: fulfillmentMethod === 'Delivery' ? 'Cash on delivery' : 'Cash on pickup',
+            subtitle: 'Pay in person',
+          },
+        ]
+      : []),
+  ];
+
   return (
-    <div className="bg-white min-h-screen pt-20">
+    <div className="bg-fufu min-h-screen pt-[72px]">
       <PageNavbar />
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <PageHero
+        eyebrow={`Your cart / ${getTotalCartItems()} ${getTotalCartItems() === 1 ? 'item' : 'items'}`}
+        title="Your rescue"
+      />
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
         {getTotalCartItems() === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-xl font-semibold mb-4" style={{ color: 'var(--color-textColor)' }}>
-              Your cart is empty
+          <div className="bg-yellow text-moringa px-6 py-14 text-center flex flex-col items-center">
+            <ShoppingBag className="w-10 h-10" aria-hidden="true" />
+            <h2 className="display text-[48px] md:text-[64px] mt-4">Your cart is empty</h2>
+            <p className="mt-3 max-w-sm font-medium">
+              Vendors near you post fresh surplus every day. Grab something before it is gone.
             </p>
             <button
               onClick={() => {
                 navigate('/shop');
                 window.scrollTo(0, 0);
               }}
-              className="px-6 py-3 rounded-lg text-white font-medium hover:opacity-90 transition cursor-pointer"
-              style={{ backgroundColor: 'var(--color-solid)' }}
+              className="mt-6 h-12 px-6 bg-moringa text-fufu font-semibold hover:bg-moringa-dark cursor-pointer"
             >
-              Start Shopping
+              Start shopping
             </button>
           </div>
         ) : (
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left Side - Cart Items */}
-            <div className="flex-1">
-              <h1
-                className="text-xl md:text-2xl font-semibold mb-4"
-                style={{ color: 'var(--color-textColor)' }}
-              >
-                Shopping Cart{' '}
-                <span
-                  className="text-sm font-normal"
-                  style={{ color: 'var(--color-moringa-muted)' }}
-                >
-                  ({getTotalCartItems()} Items)
-                </span>
-              </h1>
-
-              {/* Urgent expiry warning banner */}
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
+            {/* Items */}
+            <div className="flex-1 w-full">
               {urgentItems.length > 0 && (
-                <div
-                  className="flex items-start gap-3 p-4 rounded-xl mb-5 border"
-                  style={{ backgroundColor: '#fff3e0', borderColor: '#ffb74d' }}
-                >
-                  <AlertTriangle
-                    className="w-5 h-5 shrink-0 mt-0.5"
-                    style={{ color: 'var(--color-solidOne)' }}
-                  />
+                <div className="flex items-start gap-3 p-4 mb-4 bg-pepper text-char">
+                  <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
                   <div>
-                    <p className="text-sm font-semibold" style={{ color: '#b45309' }}>
+                    <p className="text-sm font-bold">
                       {urgentItems.length === 1
-                        ? `"${urgentItems[0].name}" is expiring soon!`
-                        : `${urgentItems.length} items in your cart are expiring soon!`}
+                        ? `"${urgentItems[0].name}" is expiring soon`
+                        : `${urgentItems.length} items in your cart are expiring soon`}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: '#92400e' }}>
-                      Complete your order before these time-sensitive deals are gone.
+                    <p className="text-xs mt-0.5 font-medium">
+                      Complete your order before these deals are gone.
                     </p>
                   </div>
                 </div>
               )}
 
-              <div className="space-y-4">
+              <ul className="bg-white border border-char/10">
                 {cartArray.map((product, index) => (
-                  <div
+                  <li
                     key={index}
-                    className="flex gap-4 p-4 border rounded-xl"
-                    style={{ borderColor: '#E5E5E5' }}
+                    className="flex gap-4 p-4 sm:p-5 border-b border-hairline last:border-b-0"
                   >
-                    <div
+                    <button
+                      type="button"
                       onClick={() => {
                         navigate(
                           `/shop/${(product.category || 'all').toLowerCase()}/${product._id}`
                         );
                         window.scrollTo(0, 0);
                       }}
-                      className="cursor-pointer w-24 h-24 shrink-0 rounded-lg overflow-hidden border"
-                      style={{ borderColor: '#E5E5E5' }}
+                      className="cursor-pointer w-24 h-24 sm:w-28 sm:h-28 shrink-0 overflow-hidden bg-fufu-dim"
+                      aria-label={`View ${product.name}`}
                     >
                       <img
                         className="w-full h-full object-cover"
                         src={product.image?.[0] || '/placeholder-food.jpg'}
-                        alt={product.name || 'Product'}
+                        alt=""
                       />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-1">
-                        <h3
-                          className="font-semibold text-sm"
-                          style={{ color: 'var(--color-textColor)' }}
-                        >
-                          {product.name}
-                        </h3>
-                        <p
-                          className="font-semibold text-base"
-                          style={{ color: 'var(--color-solid)' }}
-                        >
-                          RWF {(product.offerPrice * product.cartQuantity).toLocaleString()}
+                    </button>
+                    <div className="flex-1 min-w-0 flex flex-col">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <p className="eyebrow text-[10px] text-moringa-muted truncate">
+                            {product.vendor}
+                          </p>
+                          <h3 className="font-bold text-[15px] sm:text-base text-moringa mt-0.5">
+                            {product.name}
+                          </h3>
+                        </div>
+                        <p className="display text-[22px] sm:text-[26px] text-moringa whitespace-nowrap">
+                          <span className="text-[0.6em] mr-1">RWF</span>
+                          {(product.offerPrice * product.cartQuantity).toLocaleString()}
                         </p>
                       </div>
-                      <div className="flex items-center justify-between mb-2">
-                        <p className="text-xs" style={{ color: 'var(--color-moringa-muted)' }}>
-                          {product.vendor}
-                        </p>
-                        <button
-                          onClick={() => removeFromCart(product._id)}
-                          className="group text-xs transition cursor-pointer flex items-center justify-center"
-                          style={{ color: 'var(--color-moringa-muted)' }}
-                        >
-                          <Trash2 className="w-5 h-5 group-hover:stroke-solidOne transition" />
-                        </button>
-                      </div>
-                      {/* Per-item expiry countdown */}
                       {product.availableUntil && (
-                        <div className="mb-2">
+                        <div className="mt-2">
                           <ExpiryCountdown until={product.availableUntil} variant="inline" />
                         </div>
                       )}
-
-                      <div className="flex items-center gap-3">
+                      <div className="mt-auto pt-3 flex items-center justify-between">
+                        <div className="flex items-center h-10 border-2 border-moringa">
+                          <button
+                            onClick={() => removeFromCart(product._id)}
+                            className="w-9 h-full font-bold text-moringa hover:bg-mint cursor-pointer"
+                            aria-label={`Remove one ${product.name}`}
+                          >
+                            -
+                          </button>
+                          <span
+                            className="w-8 text-center font-bold text-sm text-moringa"
+                            aria-live="polite"
+                          >
+                            {product.cartQuantity}
+                          </span>
+                          <button
+                            onClick={() => addToCart(product._id)}
+                            disabled={product.cartQuantity >= product.quantity}
+                            className="w-9 h-full font-bold text-moringa hover:bg-mint disabled:opacity-40 cursor-pointer"
+                            aria-label={`Add one more ${product.name}`}
+                          >
+                            +
+                          </button>
+                        </div>
                         <button
                           onClick={() => removeFromCart(product._id)}
-                          className="w-7 h-7 rounded-lg flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 transition"
-                          style={{
-                            backgroundColor: 'var(--color-primary)',
-                            color: 'var(--color-solid)',
-                          }}
+                          className="h-10 w-10 flex items-center justify-center text-moringa-muted hover:text-clay hover:bg-peach transition-colors cursor-pointer"
+                          aria-label={`Remove ${product.name}`}
                         >
-                          -
-                        </button>
-                        <span
-                          className="font-semibold text-sm"
-                          style={{ color: 'var(--color-textColor)' }}
-                        >
-                          {product.cartQuantity}
-                        </span>
-                        <button
-                          onClick={() => addToCart(product._id)}
-                          disabled={product.cartQuantity >= product.quantity}
-                          className="w-7 h-7 rounded-lg flex items-center justify-center font-semibold disabled:opacity-50 cursor-pointer hover:opacity-80 transition"
-                          style={{
-                            backgroundColor: 'var(--color-primary)',
-                            color: 'var(--color-solid)',
-                          }}
-                        >
-                          +
+                          <Trash2 className="w-5 h-5" />
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <button
                 onClick={() => {
                   navigate('/shop');
                   window.scrollTo(0, 0);
                 }}
-                className="group flex items-center mt-6 gap-2 text-sm font-medium hover:opacity-70 transition cursor-pointer"
-                style={{ color: 'var(--color-solid)' }}
+                className="group flex items-center mt-5 gap-2 eyebrow text-moringa hover:underline underline-offset-4 cursor-pointer"
               >
-                <MoveLeft className="group-hover:-translate-x-1 transition" />
-                Continue Shopping
+                <MoveLeft
+                  className="w-4 h-4 group-hover:-translate-x-1 transition"
+                  aria-hidden="true"
+                />
+                Keep shopping
               </button>
 
-              {/* Positive Impact Banner */}
-              <div
-                className="mt-8 p-6 rounded-xl"
-                style={{ backgroundColor: 'var(--color-primary)' }}
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <Leaf className="w-5 h-5" style={{ color: 'var(--color-solid)' }} />
-                  <h3 className="text-lg font-semibold" style={{ color: 'var(--color-textColor)' }}>
-                    Your Positive Impact
-                  </h3>
+              <div className="mt-6 grid sm:grid-cols-2">
+                <div className="bg-lime text-moringa p-6">
+                  <p className="eyebrow flex items-center gap-2">
+                    <Leaf className="w-4 h-4" aria-hidden="true" /> Food kept out of the bin
+                  </p>
+                  <p className="display text-[56px] mt-3">
+                    {(getTotalCartItems() * IMPACT_FACTORS.AVG_MEAL_WEIGHT).toFixed(1)}
+                    <span className="text-[0.45em] ml-1">kg</span>
+                  </p>
                 </div>
-                <p
-                  className="text-xs leading-relaxed"
-                  style={{ color: 'var(--color-moringa-muted)' }}
-                >
-                  This order prevents{' '}
-                  <strong style={{ color: 'var(--color-solid)' }}>
-                    {(getTotalCartItems() * IMPACT_FACTORS.AVG_MEAL_WEIGHT).toFixed(1)}kg
-                  </strong>{' '}
-                  of food waste and saves{' '}
-                  <strong style={{ color: 'var(--color-solid)' }}>
-                    {(getTotalCartItems() * IMPACT_FACTORS.CO2_PER_MEAL).toFixed(1)}kg
-                  </strong>{' '}
-                  of CO₂ emissions. Thank you!
-                </p>
+                <div className="bg-moringa text-fufu p-6">
+                  <p className="eyebrow text-yellow">CO2 saved</p>
+                  <p className="display text-[56px] mt-3">
+                    {(getTotalCartItems() * IMPACT_FACTORS.CO2_PER_MEAL).toFixed(1)}
+                    <span className="text-[0.45em] ml-1">kg</span>
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Right Side - Fulfillment & Summary */}
-            <div className="lg:w-96 shrink-0">
-              {/* 1. Fulfillment Method */}
-              <div className="p-5 rounded-xl border mb-6" style={{ borderColor: '#E5E5E5' }}>
-                <h3
-                  className="text-base font-semibold mb-4"
-                  style={{ color: 'var(--color-textColor)' }}
-                >
-                  1. Fulfillment Method
-                </h3>
-                <div className="p-1 rounded-lg" style={{ backgroundColor: '#E5E5E5' }}>
-                  <div className="flex gap-2">
-                    {['Pickup', 'Delivery'].map((method) => (
-                      <button
-                        key={method}
-                        onClick={() => setFulfillmentMethod(method)}
-                        className={`flex-1 py-3 px-4 rounded-lg text-sm font-medium transition cursor-pointer flex items-center justify-center gap-2 ${fulfillmentMethod === method ? 'shadow-md' : ''}`}
-                        style={{
-                          backgroundColor: fulfillmentMethod === method ? 'white' : 'transparent',
-                          color: '#17150F',
-                        }}
-                      >
-                        <Calendar className="w-4 h-4" />
-                        {method}
-                      </button>
-                    ))}
-                  </div>
+            {/* Checkout column */}
+            <aside className="w-full lg:w-[420px] shrink-0 lg:sticky lg:top-[88px] border border-char/10 bg-white">
+              <Panel step="1" title="How you get it">
+                <div className="grid grid-cols-2 border-2 border-moringa">
+                  {['Pickup', 'Delivery'].map((method) => (
+                    <button
+                      key={method}
+                      onClick={() => setFulfillmentMethod(method)}
+                      aria-pressed={fulfillmentMethod === method}
+                      className={`h-12 text-sm font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors ${
+                        fulfillmentMethod === method
+                          ? 'bg-moringa text-yellow'
+                          : 'text-moringa hover:bg-mint'
+                      }`}
+                    >
+                      {method === 'Pickup' ? (
+                        <ShoppingBag className="w-4 h-4" aria-hidden="true" />
+                      ) : (
+                        <Bike className="w-4 h-4" aria-hidden="true" />
+                      )}
+                      {method}
+                    </button>
+                  ))}
                 </div>
                 {fulfillmentMethod === 'Delivery' && vendors.length > 1 && (
-                  <p className="text-xs mt-3" style={{ color: 'var(--color-moringa-muted)' }}>
+                  <p className="text-xs mt-3 text-moringa-muted">
                     Each vendor delivers separately, so there is one delivery fee per vendor.
                   </p>
                 )}
-              </div>
+              </Panel>
 
-              {/* 2. Address Section */}
-              <div className="p-5 rounded-xl border mb-6" style={{ borderColor: '#E5E5E5' }}>
-                <h3
-                  className="text-base font-semibold mb-4"
-                  style={{ color: 'var(--color-textColor)' }}
-                >
-                  2.{' '}
-                  {fulfillmentMethod === 'Delivery'
-                    ? 'Delivery Address'
+              <Panel
+                step="2"
+                title={
+                  fulfillmentMethod === 'Delivery'
+                    ? 'Delivery address'
                     : vendors.length > 1
-                      ? 'Pickup Addresses'
-                      : 'Vendor Address'}
-                </h3>
-
+                      ? 'Pickup addresses'
+                      : 'Pickup address'
+                }
+              >
                 {fulfillmentMethod === 'Delivery' ? (
                   <>
-                    <div className="mb-3">
-                      <p className="text-xs mb-2" style={{ color: 'var(--color-moringa-muted)' }}>
-                        {deliveryAddress || 'No delivery address set'}
-                      </p>
-                      <button
-                        onClick={() => setShowMapEdit(!showMapEdit)}
-                        className="text-xs font-medium hover:opacity-70 transition cursor-pointer"
-                        style={{ color: 'var(--color-solid)' }}
-                      >
-                        {showMapEdit
-                          ? 'Cancel'
-                          : deliveryLocation
-                            ? 'Change Address'
-                            : 'Set Address'}
-                      </button>
-                    </div>
+                    <p className="text-sm text-moringa">
+                      {deliveryAddress || 'No delivery address set'}
+                    </p>
+                    <button
+                      onClick={() => setShowMapEdit(!showMapEdit)}
+                      className="mt-3 h-10 px-4 border-2 border-moringa text-moringa text-sm font-bold hover:bg-mint cursor-pointer"
+                    >
+                      {showMapEdit ? 'Cancel' : deliveryLocation ? 'Change address' : 'Set address'}
+                    </button>
                     {showMapEdit && (
                       <div className="mt-4">
                         <LocationPicker
@@ -488,164 +474,115 @@ const Cart = () => {
                     )}
                   </>
                 ) : vendors.length === 0 ? (
-                  <p className="text-xs" style={{ color: 'var(--color-moringa-muted)' }}>
+                  <p className="text-sm text-moringa-muted">
                     {quoteLoading ? 'Loading pickup details…' : 'Pickup details unavailable'}
                   </p>
                 ) : (
-                  <div className="space-y-4">
+                  <ul className="flex flex-col gap-4">
                     {vendors.map((vendor) => (
-                      <div key={vendor.business._id}>
-                        <p
-                          className="font-medium text-xs mb-1 flex items-center gap-1"
-                          style={{ color: 'var(--color-textColor)' }}
-                        >
-                          <Store className="w-3.5 h-3.5" />
+                      <li key={vendor.business._id}>
+                        <p className="font-bold text-sm text-moringa flex items-center gap-1.5">
+                          <Store className="w-4 h-4" aria-hidden="true" />
                           {vendor.business.name}
                         </p>
-                        <p className="text-xs mb-1" style={{ color: 'var(--color-moringa-muted)' }}>
+                        <p className="text-sm text-moringa-muted mt-0.5">
                           {formatAddress(vendor.business.address)}
                         </p>
                         <a
                           href={mapsLink(vendor)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-xs font-medium hover:opacity-70 transition"
-                          style={{ color: 'var(--color-solid)' }}
+                          className="mt-1 inline-flex items-center gap-1.5 text-sm font-bold text-moringa underline underline-offset-4"
                         >
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="w-4 h-4" aria-hidden="true" />
                           Open in Google Maps
                         </a>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 )}
-              </div>
+              </Panel>
 
-              {/* 3. Payment Method */}
-              <div className="p-5 rounded-xl border mb-6" style={{ borderColor: '#E5E5E5' }}>
-                <h3
-                  className="text-base font-semibold mb-4"
-                  style={{ color: 'var(--color-textColor)' }}
-                >
-                  3. Payment Method
-                </h3>
-                <div className="space-y-3">
-                  {[
-                    {
-                      key: 'momo',
-                      icon: '📱',
-                      title: 'MTN Mobile Money',
-                      subtitle: 'Pay securely with MoMo',
-                      active: 'border-amber-400 bg-amber-50/50',
-                      accent: 'accent-amber-500',
-                    },
-                    {
-                      key: 'airtel',
-                      icon: '📲',
-                      title: 'Airtel Money',
-                      subtitle: 'Pay securely with Airtel',
-                      active: 'border-red-400 bg-red-50/50',
-                      accent: 'accent-red-500',
-                    },
-                    ...(cashEnabled
-                      ? [
-                          {
-                            key: 'cash',
-                            icon: '💵',
-                            title:
-                              fulfillmentMethod === 'Delivery'
-                                ? 'Cash on Delivery'
-                                : 'Cash on Pickup',
-                            subtitle: 'Pay in person',
-                            active: 'border-emerald-400 bg-emerald-50/50',
-                            accent: 'accent-emerald-500',
-                          },
-                        ]
-                      : []),
-                  ].map((option) => (
+              <Panel step="3" title="Payment">
+                <div className="flex flex-col gap-2">
+                  {payOptions.map((option) => (
                     <label
                       key={option.key}
-                      className={`flex items-center justify-between p-3 border rounded-xl cursor-pointer transition-all ${
+                      className={`flex items-center justify-between gap-3 p-3 border-2 cursor-pointer transition-colors ${
                         paymentMethod === option.key
-                          ? option.active
-                          : 'border-gray-200 hover:bg-gray-50'
+                          ? 'border-moringa bg-mint'
+                          : 'border-hairline hover:border-moringa'
                       }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <span className="text-xl">{option.icon}</span>
-                        <div>
-                          <p className="text-sm font-semibold text-gray-800">{option.title}</p>
-                          <p className="text-xs text-gray-500">{option.subtitle}</p>
-                        </div>
-                      </div>
+                      <span className="flex items-center gap-3">
+                        <span className="w-11 h-11 bg-fufu flex items-center justify-center p-1.5 shrink-0">
+                          {option.logo ? (
+                            <img
+                              src={option.logo}
+                              alt=""
+                              className="w-full h-full object-contain"
+                            />
+                          ) : (
+                            <Banknote className="w-5 h-5 text-moringa" aria-hidden="true" />
+                          )}
+                        </span>
+                        <span>
+                          <span className="block text-sm font-bold text-moringa">
+                            {option.title}
+                          </span>
+                          <span className="block text-xs text-moringa-muted">
+                            {option.subtitle}
+                          </span>
+                        </span>
+                      </span>
                       <input
                         type="radio"
                         name="payment_method"
                         checked={paymentMethod === option.key}
                         onChange={() => setPaymentMethod(option.key)}
-                        className={`w-4 h-4 ${option.accent}`}
+                        className="w-4 h-4 accent-[#0F3D2E]"
                       />
                     </label>
                   ))}
                 </div>
                 {vendors.length > 1 && paymentMethod !== 'cash' && (
-                  <p className="text-xs mt-3" style={{ color: 'var(--color-moringa-muted)' }}>
+                  <p className="text-xs mt-3 text-moringa-muted">
                     You pay once for all {vendors.length} vendors.
                   </p>
                 )}
-              </div>
+              </Panel>
 
-              {/* Order Summary */}
-              <div
-                className="p-5 rounded-xl border"
-                style={{ borderColor: '#E5E5E5', backgroundColor: 'var(--color-primary)' }}
-              >
-                <h3
-                  className="text-base font-semibold mb-4"
-                  style={{ color: 'var(--color-textColor)' }}
-                >
-                  Order Summary
-                </h3>
-
+              <section className="p-5 sm:p-6 bg-fufu">
+                <h2 className="eyebrow text-moringa mb-4">Order summary</h2>
                 {quoteError ? (
-                  <div className="p-3 bg-red-50 text-red-600 rounded-xl text-xs font-semibold flex items-start gap-2 mb-4">
-                    <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" />
+                  <div className="p-3 bg-peach text-clay text-sm font-semibold flex items-start gap-2 mb-4">
+                    <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5" aria-hidden="true" />
                     <span>{quoteError}</span>
                   </div>
                 ) : !quote ? (
-                  <p className="text-xs mb-4" style={{ color: 'var(--color-moringa-muted)' }}>
-                    Calculating your total…
-                  </p>
+                  <p className="text-sm mb-4 text-moringa-muted">Calculating your total…</p>
                 ) : (
                   <>
-                    {/* Per-vendor breakdown */}
-                    <div className="space-y-4 mb-4">
+                    <div className="flex flex-col gap-4 mb-4">
                       {vendors.map((vendor) => (
                         <div key={vendor.business._id}>
-                          <p
-                            className="text-xs font-semibold mb-1 flex items-center gap-1"
-                            style={{ color: 'var(--color-textColor)' }}
-                          >
-                            <Store className="w-3.5 h-3.5" />
+                          <p className="text-sm font-bold mb-1 text-moringa flex items-center gap-1.5">
+                            <Store className="w-3.5 h-3.5" aria-hidden="true" />
                             {vendor.business.name}
                           </p>
-                          <div className="space-y-1">
+                          <div className="flex flex-col gap-1 tabular-nums">
                             {vendor.items.map((item) => (
-                              <div key={item.listing} className="flex justify-between text-xs">
-                                <span style={{ color: 'var(--color-moringa-muted)' }}>
+                              <div key={item.listing} className="flex justify-between text-sm">
+                                <span className="text-moringa-muted">
                                   {item.title} x{item.quantity}
                                 </span>
-                                <span style={{ color: 'var(--color-textColor)' }}>
-                                  {formatRwf(item.subtotal)}
-                                </span>
+                                <span className="text-moringa">{formatRwf(item.subtotal)}</span>
                               </div>
                             ))}
                             {vendor.pricing.deliveryFee > 0 && (
-                              <div className="flex justify-between text-xs">
-                                <span style={{ color: 'var(--color-moringa-muted)' }}>
-                                  Delivery
-                                </span>
-                                <span style={{ color: 'var(--color-textColor)' }}>
+                              <div className="flex justify-between text-sm">
+                                <span className="text-moringa-muted">Delivery</span>
+                                <span className="text-moringa">
                                   {formatRwf(vendor.pricing.deliveryFee)}
                                 </span>
                               </div>
@@ -654,73 +591,60 @@ const Cart = () => {
                         </div>
                       ))}
                     </div>
-
-                    <hr className="my-4" style={{ borderColor: '#E5E5E5' }} />
-
-                    <div className="space-y-2 text-xs">
+                    <div className="border-t border-hairline pt-4 flex flex-col gap-2 text-sm tabular-nums">
                       <div className="flex justify-between">
-                        <span style={{ color: 'var(--color-moringa-muted)' }}>Subtotal</span>
-                        <span style={{ color: 'var(--color-textColor)' }}>
-                          {formatRwf(totals.subtotal)}
-                        </span>
+                        <span className="text-moringa-muted">Subtotal</span>
+                        <span className="text-moringa">{formatRwf(totals.subtotal)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span style={{ color: 'var(--color-moringa-muted)' }}>
-                          Delivery Fee
+                        <span className="text-moringa-muted">
+                          Delivery fee
                           {vendors.length > 1 && totals.deliveryFee > 0
                             ? ` (${vendors.length} vendors)`
                             : ''}
                         </span>
-                        <span style={{ color: 'var(--color-textColor)' }}>
+                        <span className="text-moringa">
                           {totals.deliveryFee === 0 ? 'Free' : formatRwf(totals.deliveryFee)}
                         </span>
                       </div>
                       {totals.tax > 0 && (
                         <div className="flex justify-between">
-                          <span style={{ color: 'var(--color-moringa-muted)' }}>
+                          <span className="text-moringa-muted">
                             {taxLabel} ({quote.options.taxPercent}%)
                           </span>
-                          <span style={{ color: 'var(--color-textColor)' }}>
-                            {formatRwf(totals.tax)}
-                          </span>
+                          <span className="text-moringa">{formatRwf(totals.tax)}</span>
                         </div>
                       )}
                     </div>
                   </>
                 )}
 
-                <hr className="my-4" style={{ borderColor: '#E5E5E5' }} />
-
-                <div className="flex justify-between text-base font-semibold mb-6">
-                  <span style={{ color: 'var(--color-textColor)' }}>Total</span>
-                  <span style={{ color: 'var(--color-solid)' }}>
-                    {totals ? formatRwf(totals.total) : '—'}
+                <div className="mt-4 pt-4 border-t-2 border-moringa flex items-end justify-between">
+                  <span className="eyebrow text-moringa">Total</span>
+                  <span className="display text-[40px] text-moringa tabular-nums">
+                    {totals ? formatRwf(totals.total) : '-'}
                   </span>
                 </div>
 
                 <button
                   onClick={handleCheckout}
                   disabled={checkoutDisabled}
-                  className="w-full py-3 rounded-lg text-sm text-white font-medium hover:opacity-90 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ backgroundColor: 'var(--color-solid)' }}
+                  className="mt-5 w-full h-14 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {placing
                     ? 'Placing your order…'
                     : vendors.length > 1
-                      ? `Place ${vendors.length} orders · ${totals ? formatRwf(totals.total) : ''}`
-                      : 'Proceed to Checkout'}
+                      ? `Place ${vendors.length} orders / ${totals ? formatRwf(totals.total) : ''}`
+                      : 'Place order'}
                 </button>
                 {fulfillmentMethod === 'Delivery' && !deliveryLocation && (
-                  <p
-                    className="text-xs mt-2 flex items-center gap-1"
-                    style={{ color: 'var(--color-moringa-muted)' }}
-                  >
-                    <MapPin className="w-3.5 h-3.5" />
+                  <p className="text-xs mt-2 flex items-center gap-1 text-moringa-muted">
+                    <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
                     Set your delivery address to continue
                   </p>
                 )}
-              </div>
-            </div>
+              </section>
+            </aside>
           </div>
         )}
       </div>

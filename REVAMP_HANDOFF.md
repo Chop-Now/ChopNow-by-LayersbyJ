@@ -77,7 +77,7 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] Landing page `Pages/Home.jsx` -> sections in `Components/landing/Sections.jsx` (checked at 1440 + 390)
 - [x] Shop + CategoryPage + ProductCard + ShopSidebar + Categories + Breadcrumb + Products grid
 - [x] ProductDetails
-- [ ] Cart + payment modal
+- [x] Cart + payment modal
 - [ ] Login, SignUp, ForgotPassword, VerifyEmail, AdminLogin
 - [ ] MyOrders, MyImpact, MyProfile, Notification
 - [ ] BusinessVerification, PendingReview, RiderRegistration, RiderDashboard

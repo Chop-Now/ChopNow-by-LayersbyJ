@@ -10,6 +10,20 @@ import toast from 'react-hot-toast';
 import ExpiryCountdown from '../Components/ui/ExpiryCountdown';
 import { Flame, Users, Clock } from 'lucide-react';
 
+const Star5 = ({ value, size = 'w-4 h-4' }) => (
+  <div className="flex gap-0.5" aria-label={`${value || 0} out of 5`}>
+    {[1, 2, 3, 4, 5].map((n) => (
+      <Star
+        key={n}
+        className={size}
+        fill={value >= n ? 'var(--color-pepper)' : 'none'}
+        stroke={value >= n ? 'var(--color-pepper)' : 'var(--color-moringa-muted)'}
+        aria-hidden="true"
+      />
+    ))}
+  </div>
+);
+
 const ProductDetails = () => {
   const { products, addToCart, cartItems, removeAllFromCart, isAuthenticated } = useAppContext();
   const navigate = useNavigate();
@@ -194,20 +208,6 @@ const ProductDetails = () => {
   const soldPct = totalQty > 0 ? (product?.soldCount || 0) / totalQty : 0;
   const isSellingFast = soldPct >= 0.5 && qty > 0;
   const cartCount = product?.cartCount || 0;
-
-  const Star5 = ({ value, size = 'w-4 h-4' }) => (
-    <div className="flex gap-0.5" aria-label={`${value || 0} out of 5`}>
-      {[1, 2, 3, 4, 5].map((n) => (
-        <Star
-          key={n}
-          className={size}
-          fill={value >= n ? 'var(--color-pepper)' : 'none'}
-          stroke={value >= n ? 'var(--color-pepper)' : 'var(--color-moringa-muted)'}
-          aria-hidden="true"
-        />
-      ))}
-    </div>
-  );
 
   return (
     <div className="bg-fufu min-h-screen pt-[72px]">
