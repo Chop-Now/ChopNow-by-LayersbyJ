@@ -1,155 +1,122 @@
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
 import { ArrowLeft, MapPin, Phone, Mail, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import PageNavbar from '../Components/PageNavbar';
+import Footer from '../Components/Footer';
+import { PageHero } from '../Components/brand/Kit';
+
+const FIELD =
+  'h-12 pl-10 pr-4 w-full bg-white border-2 border-moringa text-sm font-medium text-moringa placeholder:text-moringa-muted/70 outline-none focus:bg-fufu';
+const LABEL = 'block eyebrow text-[11px] text-moringa-muted mb-2';
+
+const CONTACTS = [
+  { Icon: MapPin, label: 'Visit', value: 'Kigali, Rwanda', tone: 'bg-lime text-moringa' },
+  { Icon: Phone, label: 'Call', value: '+250 788 123 456', tone: 'bg-yellow text-moringa' },
+  { Icon: Mail, label: 'Email', value: 'chopnow.app@gmail.com', tone: 'bg-peach text-clay' },
+];
 
 const ContactUs = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <style>{`
-            .button-wrapper::before {
-                animation: spin-gradient 4s linear infinite;
-            }
-        
-            @keyframes spin-gradient {
-                from {
-                    transform: rotate(0deg);
-                }
-        
-                to {
-                    transform: rotate(360deg);
-                }
-            }
-        `}</style>
-      <div className="min-h-screen w-full bg-white px-6 md:px-16 lg:px-24 xl:px-32 py-12">
-        {/* Back button */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="relative inline-block p-0.5 rounded-full overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,#0F3D2E,#0F3D2E30,#E8552F,#E8552F30,#0F3D2E)] button-wrapper">
-            <motion.button
-              onClick={() => navigate(-1)}
-              className="relative z-10 rounded-full px-6 py-2.5 font-medium text-sm flex items-center gap-2 cursor-pointer text-white"
-              style={{ backgroundColor: 'var(--color-solid)' }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            >
-              <ArrowLeft size={18} />
-              Back
-            </motion.button>
-          </div>
-        </motion.div>
+    <div className="bg-fufu min-h-screen pt-[72px]">
+      <PageNavbar />
+      <PageHero
+        eyebrow="Contact"
+        title="Get in touch"
+        art="pin"
+        intro="Have questions about ChopNow? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+      />
 
-        <motion.div
-          className="flex flex-col items-center text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
+        <button
+          onClick={() => navigate(-1)}
+          className="group flex items-center gap-2 eyebrow text-moringa hover:underline underline-offset-4 cursor-pointer mb-6"
         >
-          <h1 className="text-3xl md:text-4xl font-semibold text-moringa mt-2">
-            Get in touch with us
-          </h1>
-          <p className="text-sm text-moringa-muted text-center mt-4 max-w-xl">
-            Have questions about ChopNow? We'd love to hear from you.
-            <br />
-            Send us a message and we'll respond as soon as possible.
-          </p>
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition" aria-hidden="true" />
+          Back
+        </button>
 
+        <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6 lg:gap-8 items-start">
           {/* Contact Info */}
-          <motion.div
-            className="flex flex-col md:flex-row items-center gap-6 mt-8 mb-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="flex items-center gap-2 text-sm text-moringa-muted">
-              <MapPin size={18} style={{ color: 'var(--color-solid)' }} />
-              <span>Kigali, Rwanda</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-moringa-muted">
-              <Phone size={18} style={{ color: 'var(--color-solid)' }} />
-              <span>+250 788 123 456</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-moringa-muted">
-              <Mail size={18} style={{ color: 'var(--color-solid)' }} />
-              <span>chopnow.app@gmail.com</span>
-            </div>
-          </motion.div>
-        </motion.div>
+          <ul className="grid sm:grid-cols-3 lg:grid-cols-1">
+            {CONTACTS.map(({ Icon, label, value, tone }) => (
+              <li key={label} className={`${tone} p-6 min-h-[140px] flex flex-col`}>
+                <p className="eyebrow text-[11px] flex items-center gap-2">
+                  <Icon className="w-4 h-4" aria-hidden="true" />
+                  {label}
+                </p>
+                <p className="mt-auto pt-6 text-lg font-bold break-words select-all">{value}</p>
+              </li>
+            ))}
+          </ul>
 
-        <motion.form
-          className="flex flex-col items-center text-sm max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <div className="flex flex-col md:flex-row items-start gap-6 w-full">
-            <div className="w-full">
-              <label className="text-moringa font-medium" htmlFor="name">
-                Your Name
-              </label>
-              <div className="relative mt-2">
-                <User
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-moringa-muted/70"
-                  size={18}
-                />
-                <input
-                  className="h-12 pl-10 pr-4 w-full border-2 border-hairline rounded-lg outline-none transition-all duration-200 focus:border-(--color-solid)"
-                  type="text"
-                  placeholder="John Doe"
-                  required
-                />
+          {/* Form */}
+          <form className="bg-white border border-char/10 p-5 sm:p-8">
+            <p className="eyebrow text-moringa">Send a message</p>
+            <h2 className="display text-[40px] sm:text-[48px] text-moringa mt-2">
+              How can we help?
+            </h2>
+
+            <div className="mt-6 grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className={LABEL} htmlFor="name">
+                  Your name
+                </label>
+                <div className="relative">
+                  <User
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-moringa pointer-events-none"
+                    size={18}
+                    aria-hidden="true"
+                  />
+                  <input id="name" className={FIELD} type="text" placeholder="John Doe" required />
+                </div>
+              </div>
+              <div>
+                <label className={LABEL} htmlFor="email">
+                  Your email
+                </label>
+                <div className="relative">
+                  <Mail
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-moringa pointer-events-none"
+                    size={18}
+                    aria-hidden="true"
+                  />
+                  <input
+                    id="email"
+                    className={FIELD}
+                    type="email"
+                    placeholder="john@example.com"
+                    required
+                  />
+                </div>
               </div>
             </div>
-            <div className="w-full">
-              <label className="text-moringa font-medium" htmlFor="email">
-                Your Email
+
+            <div className="mt-4">
+              <label className={LABEL} htmlFor="message">
+                Message
               </label>
-              <div className="relative mt-2">
-                <Mail
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-moringa-muted/70"
-                  size={18}
-                />
-                <input
-                  className="h-12 pl-10 pr-4 w-full border-2 border-hairline rounded-lg outline-none transition-all duration-200 focus:border-(--color-solid)"
-                  type="email"
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
+              <textarea
+                id="message"
+                className="w-full p-4 h-40 bg-white border-2 border-moringa text-sm font-medium text-moringa placeholder:text-moringa-muted/70 resize-none outline-none focus:bg-fufu"
+                placeholder="Tell us how we can help you..."
+                required
+              ></textarea>
             </div>
-          </div>
 
-          <div className="mt-6 w-full">
-            <label className="text-moringa font-medium" htmlFor="message">
-              Message
-            </label>
-            <textarea
-              className="w-full mt-2 p-4 h-40 border-2 border-hairline rounded-lg resize-none outline-none transition-all duration-200 focus:border-(--color-solid)"
-              placeholder="Tell us how we can help you..."
-              required
-            ></textarea>
-          </div>
-
-          <motion.button
-            type="submit"
-            className="mt-8 text-white h-12 px-8 rounded-lg font-medium transition-all duration-200 hover:opacity-90"
-            style={{ backgroundColor: 'var(--color-solid)' }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Send Message
-          </motion.button>
-        </motion.form>
+            <button
+              type="submit"
+              className="mt-6 h-14 px-8 bg-moringa text-fufu font-bold hover:bg-moringa-dark transition-colors cursor-pointer w-full sm:w-auto"
+            >
+              Send message
+            </button>
+          </form>
+        </div>
       </div>
-    </>
+
+      <Footer />
+    </div>
   );
 };
 
