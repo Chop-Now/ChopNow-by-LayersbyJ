@@ -1,8 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'motion/react';
+import PageNavbar from '../Components/PageNavbar';
+import Footer from '../Components/Footer';
+import { PageHero } from '../Components/brand/Kit';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = React.useState(null);
@@ -12,7 +13,7 @@ const FAQ = () => {
     {
       question: 'How does ChopNow help me save money on food?',
       answer:
-        'ChopNow connects you with restaurants, bakeries, and shops selling surplus food at discounted prices—often up to 50-70% off. You get quality meals while helping reduce food waste.',
+        'ChopNow connects you with restaurants, bakeries, and shops selling surplus food at discounted prices, often 50 to 70% off. You get quality meals while helping reduce food waste.',
     },
     {
       question: 'Is the food on ChopNow safe to eat?',
@@ -65,7 +66,7 @@ const FAQ = () => {
     {
       question: 'What payment methods do you support?',
       answer:
-        "Customers pay you via MTN Mobile Money or Airtel Money - there's no card payment option. Your earnings build up in your ChopNow balance as orders are completed, and you request a payout to your mobile money account or bank account whenever you want it - there's no fixed daily/weekly/monthly schedule.",
+        "Customers pay you via MTN Mobile Money or Airtel Money. There's no card payment option. Your earnings build up in your ChopNow balance as orders are completed, and you request a payout to your mobile money account or bank account whenever you want it. There's no fixed daily, weekly or monthly schedule.",
     },
     {
       question: 'Do I need special equipment or training?',
@@ -75,196 +76,118 @@ const FAQ = () => {
   ];
 
   const navigate = useNavigate();
+  const faqs = userType === 'buyer' ? buyerFAQs : vendorFAQs;
 
   return (
-    <>
-      <style>{`
-                .button-wrapper::before {
-                    animation: spin-gradient 4s linear infinite;
-                }
-            
-                @keyframes spin-gradient {
-                    from {
-                        transform: rotate(0deg);
-                    }
-            
-                    to {
-                        transform: rotate(360deg);
-                    }
-                }
-                
-                html {
-                    scroll-behavior: auto !important;
-                }
-            `}</style>
-      <div className="flex flex-col items-center text-center text-moringa px-6 md:px-16 lg:px-24 xl:px-32 py-12 bg-fufu min-h-screen">
-        {/* Back button for mobile - visible only on small screens */}
-        <motion.div
-          className="w-full max-w-7xl mb-8 md:hidden"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="relative inline-block p-0.5 rounded-full overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,#0F3D2E,#0F3D2E30,#E8552F,#E8552F30,#0F3D2E)] button-wrapper">
-            <motion.button
-              onClick={() => navigate(-1)}
-              className="relative z-10 rounded-full px-6 py-2.5 font-medium text-sm flex items-center gap-2 cursor-pointer text-moringa"
-              style={{ backgroundColor: 'var(--color-yellow)' }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            >
-              <ArrowLeft size={18} />
-              Back
-            </motion.button>
-          </div>
-        </motion.div>
+    <div className="bg-fufu min-h-screen pt-[72px]">
+      <PageNavbar />
+      <PageHero
+        eyebrow="Help centre"
+        title="FAQs"
+        intro="Find answers to common questions about ChopNow and how we're fighting food waste together."
+      />
 
-        {/* Title with back button on desktop */}
-        <motion.div
-          className="w-full max-w-7xl flex flex-col md:flex-row md:items-center md:justify-between mb-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
+        <button
+          onClick={() => navigate(-1)}
+          className="group flex items-center gap-2 eyebrow text-moringa hover:underline underline-offset-4 cursor-pointer mb-6"
         >
-          {/* Back button for desktop - visible only on medium screens and up */}
-          <div className="hidden md:block">
-            <div className="relative inline-block p-0.5 rounded-full overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,#0F3D2E,#0F3D2E30,#E8552F,#E8552F30,#0F3D2E)] button-wrapper">
-              <motion.button
-                onClick={() => navigate(-1)}
-                className="relative z-10 rounded-full px-6 py-2.5 font-medium text-sm flex items-center gap-2 cursor-pointer text-moringa"
-                style={{ backgroundColor: 'var(--color-yellow)' }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-              >
-                <ArrowLeft size={18} />
-                Back
-              </motion.button>
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition" aria-hidden="true" />
+          Back
+        </button>
+
+        <div className="grid lg:grid-cols-[360px_1fr] gap-6 lg:gap-8 items-start">
+          {/* Audience switch */}
+          <aside className="lg:sticky lg:top-[88px]">
+            <div className="bg-yellow text-moringa p-6">
+              <p className="eyebrow">I am a</p>
+              <div className="mt-4 grid grid-cols-2 border-2 border-moringa" role="tablist">
+                {[
+                  ['buyer', 'Buyer'],
+                  ['vendor', 'Vendor'],
+                ].map(([value, label]) => (
+                  <button
+                    key={value}
+                    role="tab"
+                    aria-selected={userType === value}
+                    onClick={() => {
+                      setUserType(value);
+                      setOpenIndex(null);
+                    }}
+                    className={`h-12 text-sm font-bold transition-colors cursor-pointer ${
+                      userType === value
+                        ? 'bg-moringa text-yellow'
+                        : 'bg-yellow text-moringa hover:bg-yellow-dark'
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <p className="mt-4 text-sm font-medium">
+                {userType === 'buyer'
+                  ? 'Ordering, pickup, safety and how your orders cut waste.'
+                  : 'Joining, pricing, verification and getting paid.'}
+              </p>
             </div>
-          </div>
-
-          <div className="flex-1 md:text-center">
-            <h1 className="text-3xl md:text-4xl font-semibold">Frequently Asked Questions</h1>
-          </div>
-
-          {/* Spacer for symmetry on desktop */}
-          <div className="hidden md:block md:w-[120px]"></div>
-        </motion.div>
-
-        <motion.p
-          className="text-sm text-moringa-muted mt-2 max-w-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          Find answers to common questions about ChopNow and how we're fighting food waste together.
-        </motion.p>
-        <motion.div
-          className="flex space-x-2 bg-fufu p-1 border border-moringa/25 rounded-full text-sm mt-8"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <div className="flex items-center">
-            <input
-              type="radio"
-              name="options"
-              id="option1"
-              className="hidden peer"
-              checked={userType === 'buyer'}
-              onChange={() => {
-                setUserType('buyer');
-                setOpenIndex(null);
-              }}
-            />
-            <motion.label
-              htmlFor="option1"
-              className="cursor-pointer rounded-full py-2 px-9 text-moringa-muted transition-colors duration-200 peer-checked:text-fufu"
-              style={{
-                backgroundColor: userType === 'buyer' ? 'var(--color-moringa)' : 'transparent',
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              For Buyers
-            </motion.label>
-          </div>
-          <div className="flex items-center">
-            <input
-              type="radio"
-              name="options"
-              id="option2"
-              className="hidden peer"
-              checked={userType === 'vendor'}
-              onChange={() => {
-                setUserType('vendor');
-                setOpenIndex(null);
-              }}
-            />
-            <motion.label
-              htmlFor="option2"
-              className="cursor-pointer rounded-full py-2 px-9 text-moringa-muted transition-colors duration-200 peer-checked:text-fufu"
-              style={{
-                backgroundColor: userType === 'vendor' ? 'var(--color-moringa)' : 'transparent',
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              For Vendors
-            </motion.label>
-          </div>
-        </motion.div>
-        <div className="max-w-xl w-full mt-6 flex flex-col gap-4 items-start text-left">
-          {(userType === 'buyer' ? buyerFAQs : vendorFAQs).map((faq, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col items-start w-full"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-            >
-              <motion.div
-                className="flex items-center justify-between w-full cursor-pointer bg-linear-to-r from-yellow/25 via-pepper/10 to-fufu border-2 border-fufu-border p-4 rounded transition-all duration-200"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                whileHover={{
-                  scale: 1.01,
-                  borderColor: '#0F3D2E',
-                  boxShadow:
-                    '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                }}
-                whileTap={{ scale: 0.99 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            <div className="bg-moringa text-fufu p-6">
+              <p className="eyebrow text-yellow">Still stuck?</p>
+              <p className="mt-2 text-sm opacity-90">
+                Our support team is happy to help with anything not covered here.
+              </p>
+              <Link
+                to="/contact-us"
+                className="mt-4 inline-flex h-11 px-5 items-center bg-yellow text-moringa text-sm font-bold hover:bg-yellow-dark transition-colors"
               >
-                <h2 className="text-sm font-medium">{faq.question}</h2>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                >
-                  <ChevronDown
-                    className="shrink-0 ml-4"
-                    size={20}
-                    style={{ color: 'var(--color-moringa)' }}
-                  />
-                </motion.div>
-              </motion.div>
-              <motion.p
-                className="text-sm text-moringa-muted px-4 overflow-hidden"
-                initial={false}
-                animate={{
-                  opacity: openIndex === index ? 1 : 0,
-                  maxHeight: openIndex === index ? 300 : 0,
-                  paddingTop: openIndex === index ? 16 : 0,
-                }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-              >
-                {faq.answer}
-              </motion.p>
-            </motion.div>
-          ))}
+                Contact us
+              </Link>
+            </div>
+          </aside>
+
+          {/* Questions */}
+          <ul className="bg-white border border-char/10">
+            {faqs.map((faq, index) => {
+              const open = openIndex === index;
+              return (
+                <li key={index} className="border-b border-hairline last:border-b-0">
+                  <button
+                    onClick={() => setOpenIndex(open ? null : index)}
+                    aria-expanded={open}
+                    className={`w-full flex items-start gap-4 text-left p-5 sm:p-6 cursor-pointer transition-colors ${
+                      open ? 'bg-mint' : 'hover:bg-fufu'
+                    }`}
+                  >
+                    <span className="display text-[28px] text-moringa leading-none w-8 shrink-0">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h2 className="flex-1 font-bold text-moringa text-base sm:text-lg pt-0.5">
+                      {faq.question}
+                    </h2>
+                    <ChevronDown
+                      className={`w-5 h-5 text-moringa shrink-0 mt-1 transition-transform duration-300 ${
+                        open ? 'rotate-180' : ''
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-300 ${
+                      open ? 'grid-rows-[1fr] bg-mint' : 'grid-rows-[0fr]'
+                    }`}
+                  >
+                    <p className="overflow-hidden text-moringa pl-[68px] sm:pl-[72px] pr-6">
+                      <span className="block pb-6">{faq.answer}</span>
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
-    </>
+
+      <Footer />
+    </div>
   );
 };
 
