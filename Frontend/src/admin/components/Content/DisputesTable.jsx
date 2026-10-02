@@ -21,7 +21,7 @@ const TYPE_LABELS = {
 
 const formatAmount = (order) => {
   const total = order?.pricing?.total;
-  if (total === undefined || total === null) return '—';
+  if (total === undefined || total === null) return 'N/A';
   return `${Number(total).toLocaleString()} ${order?.pricing?.currency || 'Frw'}`;
 };
 

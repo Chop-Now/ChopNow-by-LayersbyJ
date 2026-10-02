@@ -89,7 +89,7 @@ const VerifyEmail = () => {
               We couldn't verify your email
             </h1>
             <p className="mb-6 text-sm" style={{ color: 'var(--color-moringa-muted)' }}>
-              {errorMessage} Links expire after 24 hours — request a new one below.
+              {errorMessage} Links expire after 24 hours. Request a new one below.
             </p>
             <form onSubmit={handleResend} className="flex flex-col gap-3 text-left">
               <label htmlFor="resend-email" className="text-sm font-medium">

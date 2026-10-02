@@ -1525,7 +1525,7 @@ const Settings = ({ initialTab = 'profile' }) => {
                       },
                       {
                         key: 'taxPercent',
-                        label: 'Tax (%) — 0 = no tax line',
+                        label: 'Tax (%). 0 means no tax line',
                         min: 0,
                         max: 100,
                         parse: parseFloat,

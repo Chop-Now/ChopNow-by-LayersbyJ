@@ -31,7 +31,7 @@ const NotFound = () => {
           <div className="mt-8 flex flex-col sm:flex-row">
             <Link
               to="/"
-              className="group h-14 px-6 bg-moringa text-fufu font-bold flex items-center justify-center gap-2 hover:bg-moringa-dark transition-colors"
+              className="group h-14 px-6 bg-moringa text-fufu font-bold flex items-center justify-center gap-2 hover:bg-moringa-dark transition-colors rounded-md"
             >
               <Home className="w-4 h-4" aria-hidden="true" />
               Back to home
@@ -42,7 +42,7 @@ const NotFound = () => {
             </Link>
             <Link
               to="/contact-us"
-              className="h-14 px-6 border-2 border-moringa sm:border-l-0 text-moringa font-bold flex items-center justify-center gap-2 hover:bg-yellow-dark transition-colors"
+              className="h-14 px-6 border-2 border-moringa sm:border-l-0 text-moringa font-bold flex items-center justify-center gap-2 hover:bg-yellow-dark transition-colors rounded-md"
             >
               <Mail className="w-4 h-4" aria-hidden="true" />
               Contact us

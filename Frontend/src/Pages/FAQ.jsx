@@ -137,7 +137,7 @@ const FAQ = () => {
               </p>
               <Link
                 to="/contact-us"
-                className="mt-4 inline-flex h-11 px-5 items-center bg-yellow text-moringa text-sm font-bold hover:bg-yellow-dark transition-colors"
+                className="mt-4 inline-flex h-11 px-5 items-center bg-yellow text-moringa text-sm font-bold hover:bg-yellow-dark transition-colors rounded-md"
               >
                 Contact us
               </Link>

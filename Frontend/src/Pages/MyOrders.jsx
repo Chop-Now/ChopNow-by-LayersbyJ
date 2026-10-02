@@ -1049,7 +1049,7 @@ const MyOrders = () => {
                             {orderDetails.business?.contact?.phone && (
                               <a
                                 href={`tel:${orderDetails.business.contact.phone}`}
-                                className="flex items-center gap-1.5 h-9 px-3 text-xs font-bold border-2 border-moringa text-moringa hover:bg-mint transition-colors"
+                                className="flex items-center gap-1.5 h-9 px-3 text-xs font-bold border-2 border-moringa text-moringa hover:bg-mint transition-colors rounded-md"
                               >
                                 <Phone className="w-3.5 h-3.5" aria-hidden="true" />
                                 Call store
@@ -1121,7 +1121,7 @@ const MyOrders = () => {
                                     href={`https://www.google.com/maps/dir/?api=1&destination=${getPickupCoords()[0]},${getPickupCoords()[1]}`}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="flex items-center gap-1.5 h-10 px-4 text-xs font-bold bg-moringa text-fufu hover:bg-moringa-dark transition-colors"
+                                    className="flex items-center gap-1.5 h-10 px-4 text-xs font-bold bg-moringa text-fufu hover:bg-moringa-dark transition-colors rounded-md"
                                   >
                                     <Navigation className="w-3.5 h-3.5" aria-hidden="true" />
                                     Google Maps
@@ -1130,7 +1130,7 @@ const MyOrders = () => {
                                     href={`https://waze.com/ul?ll=${getPickupCoords()[0]},${getPickupCoords()[1]}&navigate=yes`}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="flex items-center h-10 px-4 text-xs font-bold border-2 border-l-0 border-moringa text-moringa hover:bg-mint transition-colors"
+                                    className="flex items-center h-10 px-4 text-xs font-bold border-2 border-l-0 border-moringa text-moringa hover:bg-mint transition-colors rounded-md"
                                   >
                                     Waze
                                   </a>
@@ -1223,7 +1223,7 @@ const MyOrders = () => {
                             {orderDetails.delivery.riderPhone && (
                               <a
                                 href={`tel:${orderDetails.delivery.riderPhone}`}
-                                className="shrink-0 flex items-center gap-1.5 h-10 px-4 bg-yellow text-moringa text-xs font-bold hover:bg-yellow-dark transition-colors"
+                                className="shrink-0 flex items-center gap-1.5 h-10 px-4 bg-yellow text-moringa text-xs font-bold hover:bg-yellow-dark transition-colors rounded-md"
                               >
                                 <Phone className="w-3.5 h-3.5" aria-hidden="true" />
                                 Call rider

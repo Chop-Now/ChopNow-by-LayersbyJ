@@ -110,7 +110,7 @@ const Hero = () => {
               transition={{ duration: 0.7, delay: 0.6, ease: 'easeOut' }}
             >
               ChopNow connects you with African grocers, restaurants, and farmers to discover fresh
-              surplus meals at up to 70% off — reducing food waste while fueling communities.
+              surplus meals at up to 70% off, reducing food waste while fueling communities.
             </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row items-center sm:items-center justify-center md:justify-center lg:justify-start gap-2 sm:gap-2.5 mb-5"

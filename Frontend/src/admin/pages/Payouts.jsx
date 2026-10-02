@@ -18,6 +18,7 @@ import {
   ChevronRight,
   Info,
   RefreshCw,
+  X,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -1490,15 +1491,16 @@ const WebsiteAdminPayouts = () => {
           <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 max-w-2xl w-full max-h-[85vh] overflow-y-auto border border-hairline dark:border-slate-700 shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-moringa dark:text-white">
-                Balance History — {ledgerModal.name}
+                Balance history: {ledgerModal.name}
               </h3>
               <button
                 onClick={() =>
                   setLedgerModal({ open: false, name: '', entries: [], loading: false })
                 }
-                className="text-moringa-muted/70 hover:text-slate-600 dark:hover:text-slate-200"
+                className="h-9 w-9 flex items-center justify-center text-moringa hover:bg-mint dark:text-fufu dark:hover:bg-moringa-2 cursor-pointer"
+                aria-label="Close"
               >
-                ✕
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
             {ledgerModal.loading ? (

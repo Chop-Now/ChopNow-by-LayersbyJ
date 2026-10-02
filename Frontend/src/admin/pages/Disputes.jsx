@@ -276,7 +276,7 @@ export const RefundRequests = () => {
                 <p className="font-semibold text-moringa dark:text-slate-100">
                   {fmt(refund.amount)} ·{' '}
                   <span className="font-normal text-moringa-muted dark:text-slate-300">
-                    Order {refund.order?.orderNumber || '—'}
+                    Order {refund.order?.orderNumber || 'N/A'}
                   </span>
                 </p>
                 <p className="text-sm text-moringa-muted dark:text-slate-400">
