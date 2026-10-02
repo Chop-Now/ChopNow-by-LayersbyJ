@@ -1,4 +1,3 @@
-import { assets } from '../assets/assets';
 import React, { useEffect, useState } from 'react';
 import PageNavbar from '../Components/PageNavbar';
 import Footer from '../Components/Footer';
@@ -16,10 +15,35 @@ import {
   Copy,
   Check,
   Star,
+  Store,
+  Home,
+  Bike,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { orderService, reviewService } from '../services';
 import MobileMoneyPaymentModal from '../Components/payments/MobileMoneyPaymentModal';
+import { PageHero } from '../Components/brand/Kit';
+import { Bag } from '../Components/brand/Illustrations';
+
+// Brand select / input used by the desktop filter row.
+const FIELD =
+  'h-11 w-full border-2 border-moringa bg-white pl-9 pr-3 text-sm font-medium text-moringa focus:outline-none focus:bg-fufu cursor-pointer';
+
+// Status pill colours, keyed by getStatusCategory().
+const STATUS_PILL = {
+  completed: 'bg-lime text-moringa',
+  processing: 'bg-mint text-moringa',
+  cancelled: 'bg-fufu-dim text-moringa',
+  failed: 'bg-peach text-clay',
+};
+
+const StatusPill = ({ category, children }) => (
+  <span
+    className={`inline-block eyebrow text-[10px] px-2 py-1 whitespace-nowrap ${STATUS_PILL[category] || STATUS_PILL.processing}`}
+  >
+    {children}
+  </span>
+);
 
 // Mirrors Order.canBeCancelled() on the backend, which is what actually
 // enforces this - the button is just hidden for other states.
@@ -44,8 +68,7 @@ const createMarkerIcon = (color, svgPath) => {
         width: 38px;
         height: 38px;
         border-radius: 50%;
-        border: 3px solid white;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        border: 3px solid #FAF3E4;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -64,9 +87,9 @@ const restaurantSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height
 const customerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`;
 const riderSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/><path d="M15 6h1a2 2 0 0 1 2 2v2"/><path d="M12 17.5V14l-3-3-3 1"/><path d="m14 17.5-1.5-4h-3"/></svg>`;
 
-const vendorIcon = createMarkerIcon('#16a34a', restaurantSvg);
-const homeIcon = createMarkerIcon('#2563eb', customerSvg);
-const deliveryIcon = createMarkerIcon('#ea580c', riderSvg);
+const vendorIcon = createMarkerIcon('#0F3D2E', restaurantSvg);
+const homeIcon = createMarkerIcon('#17150F', customerSvg);
+const deliveryIcon = createMarkerIcon('#E8552F', riderSvg);
 
 // Component to dynamically fit map bounds to pickup, dropoff, and rider locations
 const ChangeMapBounds = ({ pickup, dropoff, rider }) => {
@@ -467,249 +490,219 @@ const MyOrders = () => {
 
   return (
     <>
-      <div className="bg-white min-h-screen pt-20">
+      <div className="bg-fufu min-h-screen pt-[72px]">
         <PageNavbar />
-        <div className="mt-10 pb-16 px-6 md:px-16 lg:px-24 xl:px-32">
-          <div className="flex flex-col items-start mb-8 mt-12">
-            <h2 className="text-2xl font-medium">Order History</h2>
-            <p className="text-moringa-muted">
-              Review your past and current orders. Thank you for helping reduce food waste!
-            </p>
-          </div>
-
+        <PageHero
+          eyebrow="Your account / Order history"
+          title="My orders"
+          intro="Your past and current rescues. Thank you for helping reduce food waste."
+        />
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
           {loading ? (
-            <div className="flex flex-col items-center justify-center py-16">
-              <Loader2 className="w-8 h-8 animate-spin text-green-600 mb-4" />
-              <p className="text-moringa-muted">Loading your orders...</p>
+            <div className="flex flex-col items-center justify-center py-20 bg-white border border-char/10">
+              <Loader2 className="w-8 h-8 animate-spin text-moringa mb-4" aria-hidden="true" />
+              <p className="eyebrow text-moringa-muted">Loading your orders</p>
             </div>
           ) : (
             <>
               {/* Mobile Delivery Type Filter */}
-              <div className="md:hidden mb-4">
-                <div className="flex gap-2 relative">
-                  {/* Sliding background */}
-                  <div
-                    className={`absolute top-0 bottom-0 w-[calc(50%-4px)] bg-green-600 rounded-md transition-transform duration-300 ease-in-out ${
-                      selectedDeliveryType === 'Delivery'
-                        ? 'transform translate-x-0'
-                        : 'transform translate-x-[calc(100%+8px)]'
-                    }`}
-                  />
+              <div className="md:hidden mb-3 grid grid-cols-2 border-2 border-moringa">
+                {['Delivery', 'Pickup'].map((type) => (
                   <button
-                    onClick={() => handleDeliveryTypeChange('Delivery')}
-                    className={`flex-1 py-3 px-6 rounded-md text-sm font-medium z-10 transition-colors duration-300 border ${
-                      selectedDeliveryType === 'Delivery'
-                        ? 'text-white border-green-600'
-                        : 'text-moringa border-moringa/25 bg-white'
+                    key={type}
+                    onClick={() => handleDeliveryTypeChange(type)}
+                    aria-pressed={selectedDeliveryType === type}
+                    className={`h-12 text-sm font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors ${
+                      selectedDeliveryType === type
+                        ? 'bg-moringa text-yellow'
+                        : 'bg-white text-moringa hover:bg-mint'
                     }`}
                   >
-                    Delivery
+                    {type === 'Delivery' ? (
+                      <Bike className="w-4 h-4" aria-hidden="true" />
+                    ) : (
+                      <Store className="w-4 h-4" aria-hidden="true" />
+                    )}
+                    {type}
                   </button>
-                  <button
-                    onClick={() => handleDeliveryTypeChange('Pickup')}
-                    className={`flex-1 py-3 px-6 rounded-md text-sm font-medium z-10 transition-colors duration-300 border ${
-                      selectedDeliveryType === 'Pickup'
-                        ? 'text-white border-green-600'
-                        : 'text-moringa border-moringa/25 bg-white'
-                    }`}
-                  >
-                    Pickup
-                  </button>
-                </div>
+                ))}
               </div>
 
               {/* Mobile Status Filter Tabs */}
-              <div className="md:hidden mb-6">
-                <div className="bg-fufu-dim rounded-full p-1 flex relative">
-                  {/* Sliding background */}
-                  <div
-                    className={`absolute top-1 bottom-1 w-1/3 bg-green-600 rounded-full transition-transform duration-300 ease-in-out ${
-                      mobileStatusFilter === 'processing'
-                        ? 'transform translate-x-0'
-                        : mobileStatusFilter === 'completed'
-                          ? 'transform translate-x-full'
-                          : 'transform translate-x-[200%]'
-                    }`}
-                  />
+              <div className="md:hidden mb-6 grid grid-cols-3 border-2 border-moringa">
+                {[
+                  ['processing', 'Processing'],
+                  ['completed', 'Completed'],
+                  ['failed', 'Failed'],
+                ].map(([value, label]) => (
                   <button
-                    onClick={() => handleMobileStatusChange('processing')}
-                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium z-10 transition-colors duration-300 ${
-                      mobileStatusFilter === 'processing' ? 'text-white' : 'text-moringa'
+                    key={value}
+                    onClick={() => handleMobileStatusChange(value)}
+                    aria-pressed={mobileStatusFilter === value}
+                    className={`h-11 text-[13px] font-bold cursor-pointer transition-colors border-r-2 border-moringa last:border-r-0 ${
+                      mobileStatusFilter === value
+                        ? 'bg-yellow text-moringa'
+                        : 'bg-white text-moringa hover:bg-mint'
                     }`}
                   >
-                    Processing
+                    {label}
                   </button>
-                  <button
-                    onClick={() => handleMobileStatusChange('completed')}
-                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium z-10 transition-colors duration-300 ${
-                      mobileStatusFilter === 'completed' ? 'text-white' : 'text-moringa'
-                    }`}
-                  >
-                    Completed
-                  </button>
-                  <button
-                    onClick={() => handleMobileStatusChange('failed')}
-                    className={`flex-1 py-2 px-4 rounded-full text-sm font-medium z-10 transition-colors duration-300 ${
-                      mobileStatusFilter === 'failed' ? 'text-white' : 'text-moringa'
-                    }`}
-                  >
-                    Failed
-                  </button>
-                </div>
+                ))}
               </div>
 
               {/* Desktop Filters */}
-              <div className="hidden md:block bg-white border border-hairline rounded-lg p-6 mb-8 shadow-sm">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
+              <div className="hidden md:block bg-white border border-char/10 p-6 mb-6">
+                <p className="eyebrow text-moringa mb-4">Filter orders</p>
+                <div className="grid grid-cols-5 gap-3 items-end">
                   {/* Vendor Filter */}
-                  <div className="flex flex-col">
-                    <label className="text-xs font-medium mb-1.5">Search by Vendor</label>
-                    <div className="relative">
-                      <Utensils className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
+                  <label className="flex flex-col">
+                    <span className="eyebrow text-[11px] text-moringa-muted mb-2">Vendor</span>
+                    <span className="relative">
+                      <Utensils
+                        className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-moringa pointer-events-none"
+                        aria-hidden="true"
+                      />
                       <select
                         value={selectedVendor}
                         onChange={(e) => setSelectedVendor(e.target.value)}
-                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className={FIELD}
                       >
                         {vendors.map((vendor, index) => (
                           <option key={index} value={vendor}>
-                            {vendor === 'all' ? 'All Vendors' : vendor}
+                            {vendor === 'all' ? 'All vendors' : vendor}
                           </option>
                         ))}
                       </select>
-                    </div>
-                  </div>
+                    </span>
+                  </label>
 
                   {/* Status Filter */}
-                  <div className="flex flex-col">
-                    <label className="text-xs font-medium mb-1.5">Status</label>
-                    <div className="relative">
-                      <Truck className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
+                  <label className="flex flex-col">
+                    <span className="eyebrow text-[11px] text-moringa-muted mb-2">Status</span>
+                    <span className="relative">
+                      <Truck
+                        className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-moringa pointer-events-none"
+                        aria-hidden="true"
+                      />
                       <select
                         value={selectedStatus}
                         onChange={(e) => setSelectedStatus(e.target.value)}
-                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className={FIELD}
                       >
-                        <option value="all">All Statuses</option>
+                        <option value="all">All statuses</option>
                         <option value="processing">Processing</option>
                         <option value="completed">Completed</option>
                         <option value="cancelled">Cancelled</option>
                         <option value="failed">Failed</option>
                       </select>
-                    </div>
-                  </div>
+                    </span>
+                  </label>
 
                   {/* Date Range Filter */}
-                  <div className="flex flex-col">
-                    <label className="text-xs font-medium mb-1.5">Start Date</label>
-                    <div className="relative">
-                      <Calendar className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
+                  <label className="flex flex-col">
+                    <span className="eyebrow text-[11px] text-moringa-muted mb-2">Start date</span>
+                    <span className="relative">
+                      <Calendar
+                        className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-moringa pointer-events-none"
+                        aria-hidden="true"
+                      />
                       <input
                         type="date"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
-                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className={FIELD}
                       />
-                    </div>
-                  </div>
+                    </span>
+                  </label>
 
-                  <div className="flex flex-col">
-                    <label className="text-xs font-medium mb-1.5">End Date</label>
-                    <div className="relative">
-                      <Calendar className="w-3.5 h-3.5 absolute left-2.5 top-1/2 transform -translate-y-1/2 text-moringa-muted/70" />
+                  <label className="flex flex-col">
+                    <span className="eyebrow text-[11px] text-moringa-muted mb-2">End date</span>
+                    <span className="relative">
+                      <Calendar
+                        className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-moringa pointer-events-none"
+                        aria-hidden="true"
+                      />
                       <input
                         type="date"
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
-                        className="border border-moringa/25 rounded-md pl-9 pr-2 py-1.5 text-xs w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className={FIELD}
                       />
-                    </div>
-                  </div>
+                    </span>
+                  </label>
 
                   {/* Filter Button */}
-                  <div className="flex flex-col">
-                    <label className="text-xs font-medium mb-1.5 opacity-0">Action</label>
-                    <button
-                      onClick={handleFilterOrders}
-                      className="bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 rounded-md text-xs font-medium transition-colors h-full cursor-pointer"
-                    >
-                      Filter Orders
-                    </button>
-                  </div>
+                  <button
+                    onClick={handleFilterOrders}
+                    className="h-11 px-5 bg-moringa text-fufu text-sm font-bold hover:bg-moringa-dark transition-colors cursor-pointer"
+                  >
+                    Filter orders
+                  </button>
                 </div>
               </div>
 
               {/* Orders List */}
               {currentOrders.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <img
-                    src={assets.oops}
-                    alt="No orders"
-                    className="w-48 h-48 mb-6 object-contain"
-                  />
-                  <p className="text-moringa-muted max-w-md mb-6 px-4">{getEmptyStateMessage()}</p>
-                  <button
-                    onClick={() => navigate('/shop')}
-                    className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md font-medium transition-colors"
-                  >
-                    Start Shopping
-                  </button>
+                <div className="grid md:grid-cols-[1fr_360px] border border-char/10">
+                  <div className="bg-yellow text-moringa px-6 py-12 md:p-12 flex flex-col items-start justify-center">
+                    <p className="eyebrow">Nothing here yet</p>
+                    <h2 className="display text-[44px] md:text-[64px] mt-3">No orders found</h2>
+                    <p className="mt-3 max-w-md font-medium">{getEmptyStateMessage()}</p>
+                    <button
+                      onClick={() => navigate('/shop')}
+                      className="mt-6 h-12 px-6 bg-moringa text-fufu font-semibold hover:bg-moringa-dark transition-colors cursor-pointer"
+                    >
+                      Start shopping
+                    </button>
+                  </div>
+                  <div className="relative hidden md:block bg-moringa min-h-[280px]">
+                    <Bag className="absolute w-[240px] -right-10 -bottom-12" rotate={-12} />
+                  </div>
                 </div>
               ) : (
                 <>
-                  {/* Desktop Table Header */}
-                  <div className="hidden md:block border border-hairline rounded-t-lg p-3 mb-1 bg-white">
-                    <div className="grid grid-cols-6 gap-3 text-xs font-semibold text-moringa">
-                      <div>Order ID</div>
-                      <div>Date</div>
-                      <div>Vendor</div>
-                      <div>Total</div>
-                      <div>Status</div>
-                      <div className="text-right">Action</div>
+                  {/* Desktop Table */}
+                  <div className="hidden md:block bg-white border border-char/10">
+                    <div className="grid grid-cols-6 gap-3 px-5 py-3 bg-moringa text-fufu">
+                      {['Order ID', 'Date', 'Vendor', 'Total', 'Status'].map((h) => (
+                        <div key={h} className="eyebrow text-[11px]">
+                          {h}
+                        </div>
+                      ))}
+                      <div className="eyebrow text-[11px] text-right">Action</div>
                     </div>
-                  </div>
-
-                  {/* Desktop Table Rows */}
-                  <div className="hidden md:block">
                     {currentOrders.map((order, index) => (
-                      <div key={index} className="border border-hairline border-t-0 p-3 bg-white">
-                        <div className="grid grid-cols-6 gap-3 items-center text-xs">
-                          <div className="font-semibold text-moringa">{order._id}</div>
-                          <div className="text-moringa-muted">{formatDate(order.createdAt)}</div>
-                          <div className="text-moringa-muted">{order.vendor}</div>
-                          <div className="font-semibold text-moringa">
-                            RWF {order.amount.toLocaleString()}
-                          </div>
-                          <div>
-                            <span
-                              className={`text-xs px-3 py-1 rounded-full ${
-                                order.status === 'Completed'
-                                  ? 'bg-green-100 text-green-700'
-                                  : order.status === 'Processing'
-                                    ? 'bg-blue-100 text-blue-700'
-                                    : order.status === 'Cancelled'
-                                      ? 'bg-fufu-dim text-moringa'
-                                      : 'bg-red-100 text-red-700'
-                              }`}
-                            >
-                              {order.status}
-                            </span>
-                          </div>
-                          <div className="text-right">
-                            <button
-                              onClick={() => handleViewDetails(order)}
-                              className="text-green-600 hover:text-green-700 text-sm font-medium underline cursor-pointer"
-                            >
-                              View Details
-                            </button>
-                          </div>
+                      <div
+                        key={index}
+                        className="grid grid-cols-6 gap-3 items-center px-5 py-4 text-sm border-b border-hairline last:border-b-0 hover:bg-fufu transition-colors"
+                      >
+                        <div className="font-mono text-[13px] font-medium text-moringa truncate">
+                          {order._id}
+                        </div>
+                        <div className="text-moringa-muted">{formatDate(order.createdAt)}</div>
+                        <div className="text-moringa font-medium truncate">{order.vendor}</div>
+                        <div className="font-bold text-moringa tabular-nums">
+                          RWF {order.amount.toLocaleString()}
+                        </div>
+                        <div>
+                          <StatusPill category={getStatusCategory(order.status)}>
+                            {order.status}
+                          </StatusPill>
+                        </div>
+                        <div className="text-right">
+                          <button
+                            onClick={() => handleViewDetails(order)}
+                            className="h-9 px-4 border-2 border-moringa text-moringa text-xs font-bold hover:bg-mint transition-colors cursor-pointer"
+                          >
+                            View details
+                          </button>
                         </div>
                       </div>
                     ))}
                   </div>
 
                   {/* Mobile Order Cards */}
-                  <div className="md:hidden space-y-3">
+                  <div className="md:hidden bg-white border border-char/10">
                     {currentOrders.map((order, index) => {
                       const firstProduct =
                         order.items?.[0]?.product || order.items?.[0]?.listing || {};
@@ -720,30 +713,33 @@ const MyOrders = () => {
                         <div
                           key={index}
                           onClick={() => handleViewDetails(order)}
-                          className="border border-hairline rounded-lg p-4 bg-white active:bg-gray-50 cursor-pointer"
+                          className="flex gap-4 p-4 border-b border-hairline last:border-b-0 active:bg-mint cursor-pointer"
                         >
-                          <div className="flex items-center gap-3 mb-3">
-                            <img
-                              src={productImage}
-                              alt={productName}
-                              className="w-12 h-12 rounded-full object-cover shrink-0"
-                            />
-                            <p className="text-sm font-medium text-moringa line-clamp-2">
+                          <img
+                            src={productImage}
+                            alt={productName}
+                            className="w-20 h-20 object-cover shrink-0 bg-fufu-dim"
+                          />
+                          <div className="flex-1 min-w-0 flex flex-col">
+                            <div className="flex items-start justify-between gap-2">
+                              <p className="font-mono text-[11px] text-moringa-muted truncate">
+                                {order._id}
+                              </p>
+                              <StatusPill category={getStatusCategory(order.status)}>
+                                {order.status}
+                              </StatusPill>
+                            </div>
+                            <p className="text-sm font-bold text-moringa line-clamp-2 mt-1">
                               {productName}
                             </p>
-                          </div>
-                          <div className="flex justify-between items-start">
-                            <div className="flex-1">
-                              <p className="text-sm font-semibold text-moringa mb-2">{order._id}</p>
+                            <div className="mt-auto pt-2 flex items-end justify-between gap-2">
                               <p className="text-xs text-moringa-muted">
-                                {formatDate(order.createdAt)}
+                                {formatDate(order.createdAt)} / {order.order_type}
                               </p>
-                            </div>
-                            <div className="flex flex-col items-end">
-                              <p className="text-sm font-semibold text-moringa mb-2">
-                                RWF {order.amount.toLocaleString()}
+                              <p className="display text-[20px] text-moringa whitespace-nowrap">
+                                <span className="text-[0.6em] mr-1">RWF</span>
+                                {order.amount.toLocaleString()}
                               </p>
-                              <p className="text-xs text-moringa-muted">{order.order_type}</p>
                             </div>
                           </div>
                         </div>
@@ -752,36 +748,28 @@ const MyOrders = () => {
                   </div>
 
                   {/* Pagination */}
-                  <div className="flex justify-between items-center mt-8 flex-wrap gap-4">
-                    <p className="text-sm text-moringa-muted">
+                  <div className="flex justify-between items-center mt-6 flex-wrap gap-4">
+                    <p className="eyebrow text-[11px] text-moringa-muted">
                       Showing {indexOfFirstItem + 1} to{' '}
                       {Math.min(indexOfLastItem, filteredOrders.length)} of {filteredOrders.length}{' '}
                       results
                     </p>
-                    <div className="flex gap-2">
+                    <div className="flex">
                       <button
                         onClick={handlePrevPage}
                         disabled={currentPage === 1}
-                        className={`flex items-center gap-1 px-4 py-2 border rounded-md text-sm font-medium transition-colors ${
-                          currentPage === 1
-                            ? 'bg-fufu-dim text-moringa-muted/70 cursor-not-allowed'
-                            : 'bg-white text-moringa hover:bg-fufu'
-                        }`}
+                        className="flex items-center gap-1 h-11 px-4 border-2 border-moringa text-sm font-bold text-moringa bg-white hover:bg-mint transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white"
                       >
-                        <ChevronLeft className="w-4 h-4" />
+                        <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                         Previous
                       </button>
                       <button
                         onClick={handleNextPage}
                         disabled={currentPage === totalPages}
-                        className={`flex items-center gap-1 px-4 py-2 border rounded-md text-sm font-medium transition-colors ${
-                          currentPage === totalPages
-                            ? 'bg-fufu-dim text-moringa-muted/70 cursor-not-allowed'
-                            : 'bg-white text-moringa hover:bg-fufu'
-                        }`}
+                        className="flex items-center gap-1 h-11 px-4 border-2 border-l-0 border-moringa text-sm font-bold text-moringa bg-white hover:bg-mint transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white"
                       >
                         Next
-                        <ChevronRight className="w-4 h-4" />
+                        <ChevronRight className="w-4 h-4" aria-hidden="true" />
                       </button>
                     </div>
                   </div>
@@ -793,37 +781,43 @@ const MyOrders = () => {
 
         {/* Order Details Modal */}
         {selectedOrder && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-              <div className="sticky top-0 bg-white border-b px-6 py-4 flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                  <h3 className="text-xl font-semibold">Order Details</h3>
+          <div className="fixed inset-0 bg-char/60 z-50 flex items-center justify-center p-0 sm:p-4">
+            <div className="bg-fufu w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[90vh] overflow-y-auto">
+              <div className="sticky top-0 z-20 bg-moringa text-fufu px-5 sm:px-6 py-4 flex justify-between items-center gap-4">
+                <div className="min-w-0">
+                  <p className="eyebrow text-yellow text-[11px]">Order details</p>
+                  <h3 className="display text-[28px] sm:text-[34px] mt-1 truncate">
+                    {selectedOrder._id}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-1 shrink-0">
                   <button
-                    className="text-red-500 hover:text-red-700 transition-colors"
+                    className="h-10 w-10 flex items-center justify-center text-fufu hover:bg-moringa-2 transition-colors cursor-pointer"
                     title="Delete Order"
+                    aria-label="Delete order"
                   >
-                    <Trash2 className="w-5 h-5" />
+                    <Trash2 className="w-5 h-5" aria-hidden="true" />
+                  </button>
+                  <button
+                    onClick={() => setSelectedOrder(null)}
+                    className="h-10 w-10 flex items-center justify-center bg-yellow text-moringa hover:bg-yellow-dark transition-colors cursor-pointer"
+                    aria-label="Close"
+                  >
+                    <X className="w-5 h-5" aria-hidden="true" />
                   </button>
                 </div>
-                <button
-                  onClick={() => setSelectedOrder(null)}
-                  className="text-moringa-muted hover:text-gray-700"
-                >
-                  <X className="w-6 h-6" />
-                </button>
               </div>
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 {/* Complete an unpaid mobile-money order */}
                 {selectedOrder.rawStatus === 'pending_payment' &&
                   selectedOrder.rawPaymentMethod !== 'cash' && (
-                    <div className="mb-6 flex items-center justify-between gap-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
-                      <p className="text-sm text-moringa">
+                    <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-yellow text-moringa p-4">
+                      <p className="text-sm font-semibold">
                         This order is waiting for payment. The vendor sees it once it's paid.
                       </p>
                       <button
                         onClick={() => handleCompletePayment(selectedOrder)}
-                        className="shrink-0 rounded-md px-4 py-2 text-sm font-medium text-white hover:opacity-90"
-                        style={{ backgroundColor: 'var(--color-solid)' }}
+                        className="shrink-0 h-11 px-5 bg-moringa text-fufu text-sm font-bold hover:bg-moringa-dark transition-colors cursor-pointer"
                       >
                         Complete payment
                       </button>
@@ -832,14 +826,14 @@ const MyOrders = () => {
 
                 {/* Cancel order */}
                 {CANCELLABLE_STATUSES.includes(selectedOrder.rawStatus) && (
-                  <div className="mb-6 flex items-center justify-between gap-4 rounded-lg border border-red-100 bg-red-50 p-4">
-                    <p className="text-sm text-moringa">
+                  <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-peach text-clay p-4">
+                    <p className="text-sm font-semibold">
                       Changed your mind? You can cancel until the vendor starts preparing it.
                     </p>
                     <button
                       onClick={() => handleCancelOrder(selectedOrder)}
                       disabled={cancelling}
-                      className="shrink-0 rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:opacity-50"
+                      className="shrink-0 h-11 px-5 border-2 border-clay text-clay text-sm font-bold hover:bg-clay hover:text-fufu transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {cancelling ? 'Cancelling…' : 'Cancel order'}
                     </button>
@@ -849,13 +843,13 @@ const MyOrders = () => {
                 {/* Leave a review */}
                 {selectedOrder.rawStatus === 'completed' &&
                   (reviewedOrderIds.has(String(selectedOrder.orderId)) ? (
-                    <div className="mb-6 flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 p-4 text-sm text-green-700">
-                      <Check className="h-4 w-4" />
+                    <div className="mb-4 flex items-center gap-2 bg-lime text-moringa p-4 text-sm font-semibold">
+                      <Check className="h-4 w-4" aria-hidden="true" />
                       You reviewed this order. Thank you!
                     </div>
                   ) : (
-                    <div className="mb-6 rounded-lg border border-hairline p-4">
-                      <h4 className="mb-2 font-semibold">How was your order?</h4>
+                    <div className="mb-4 bg-white border border-char/10 p-4 sm:p-5">
+                      <h4 className="eyebrow text-moringa mb-3">How was your order?</h4>
                       <div className="mb-3 flex gap-1">
                         {[1, 2, 3, 4, 5].map((star) => (
                           <button
@@ -863,11 +857,12 @@ const MyOrders = () => {
                             type="button"
                             aria-label={`${star} star${star > 1 ? 's' : ''}`}
                             onClick={() => setReviewForm((f) => ({ ...f, rating: star }))}
+                            className="cursor-pointer"
                           >
                             <Star
                               className="h-7 w-7"
-                              fill={reviewForm.rating >= star ? '#F59E0B' : 'none'}
-                              stroke={reviewForm.rating >= star ? '#F59E0B' : '#9CA3AF'}
+                              fill={reviewForm.rating >= star ? '#FFC531' : 'none'}
+                              stroke={reviewForm.rating >= star ? '#0F3D2E' : '#4F625A'}
                             />
                           </button>
                         ))}
@@ -878,12 +873,12 @@ const MyOrders = () => {
                         maxLength={1000}
                         rows={3}
                         placeholder="Tell others about the food and the vendor (optional)"
-                        className="mb-3 w-full rounded-md border border-moringa/25 p-2 text-sm"
+                        className="mb-3 w-full border-2 border-moringa bg-white p-3 text-sm text-moringa placeholder:text-moringa-muted focus:outline-none focus:bg-fufu"
                       />
                       <button
                         onClick={() => handleSubmitReview(selectedOrder)}
                         disabled={submittingReview}
-                        className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 disabled:opacity-50"
+                        className="h-11 px-5 bg-moringa text-fufu text-sm font-bold hover:bg-moringa-dark transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {submittingReview ? 'Submitting…' : 'Submit review'}
                       </button>
@@ -891,86 +886,67 @@ const MyOrders = () => {
                   ))}
 
                 {/* Order Info */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-lg mb-3">Order Information</h4>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <p className="text-moringa-muted">Order ID</p>
-                      <p className="font-medium">{selectedOrder._id}</p>
-                    </div>
-                    <div>
-                      <p className="text-moringa-muted">Date & Time</p>
-                      <p className="font-medium">{formatDate(selectedOrder.createdAt, true)}</p>
-                    </div>
-                    <div>
-                      <p className="text-moringa-muted">Status</p>
-                      <p
-                        className={`font-medium ${
-                          selectedOrder.status === 'Completed'
-                            ? 'text-green-700'
-                            : selectedOrder.status === 'Processing'
-                              ? 'text-blue-700'
-                              : selectedOrder.status === 'Cancelled'
-                                ? 'text-moringa'
-                                : 'text-red-700'
-                        }`}
-                      >
-                        {selectedOrder.status}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-moringa-muted">Order Type</p>
-                      <p className="font-medium">{selectedOrder.order_type}</p>
-                    </div>
-                    <div>
-                      <p className="text-moringa-muted">Delivery Type</p>
-                      <p className="font-medium">{selectedOrder.type}</p>
-                    </div>
-                    <div>
-                      <p className="text-moringa-muted">Vendor</p>
-                      <p className="font-medium">{selectedOrder.vendor}</p>
-                    </div>
-                    <div>
-                      <p className="text-moringa-muted">Payment Method</p>
-                      <p className="font-medium">{selectedOrder.paymentMethod}</p>
-                    </div>
-                    <div>
-                      <p className="text-moringa-muted">Payment Status</p>
-                      <p className="font-medium">{selectedOrder.isPaid ? 'Paid' : 'Unpaid'}</p>
-                    </div>
-                  </div>
-                </div>
+                <section className="mb-4 bg-white border border-char/10">
+                  <h4 className="eyebrow text-moringa px-4 sm:px-5 pt-4 sm:pt-5">
+                    Order information
+                  </h4>
+                  <dl className="grid grid-cols-2 gap-x-4 gap-y-4 p-4 sm:p-5 text-sm">
+                    {[
+                      ['Order ID', selectedOrder._id],
+                      ['Date and time', formatDate(selectedOrder.createdAt, true)],
+                      [
+                        'Status',
+                        <StatusPill key="s" category={getStatusCategory(selectedOrder.status)}>
+                          {selectedOrder.status}
+                        </StatusPill>,
+                      ],
+                      ['Order type', selectedOrder.order_type],
+                      ['Delivery type', selectedOrder.type],
+                      ['Vendor', selectedOrder.vendor],
+                      ['Payment method', selectedOrder.paymentMethod],
+                      ['Payment status', selectedOrder.isPaid ? 'Paid' : 'Unpaid'],
+                    ].map(([label, value]) => (
+                      <div key={label} className="min-w-0">
+                        <dt className="eyebrow text-[10px] text-moringa-muted">{label}</dt>
+                        <dd className="mt-1 font-semibold text-moringa break-words">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </section>
 
                 {/* Products */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-lg mb-3">Products</h4>
-                  <div className="space-y-3">
+                <section className="mb-4 bg-white border border-char/10">
+                  <h4 className="eyebrow text-moringa px-4 sm:px-5 pt-4 sm:pt-5 pb-2">Products</h4>
+                  <ul>
                     {selectedOrder.items.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-4 p-3 border rounded-lg">
+                      <li
+                        key={idx}
+                        className="flex items-center gap-4 px-4 sm:px-5 py-3 border-t border-hairline"
+                      >
                         <img
                           src={item.product.image[0]}
                           alt={item.product.name}
-                          className="w-16 h-16 object-cover rounded"
+                          className="w-16 h-16 object-cover bg-fufu-dim shrink-0"
                         />
-                        <div className="flex-1">
-                          <p className="font-medium">{item.product.name}</p>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-bold text-moringa">{item.product.name}</p>
                           <p className="text-sm text-moringa-muted">Quantity: {item.quantity}</p>
                         </div>
-                        <p className="font-medium">
+                        <p className="font-bold text-moringa tabular-nums whitespace-nowrap">
                           RWF {(item.product.offerPrice * item.quantity).toLocaleString()}
                         </p>
-                      </div>
+                      </li>
                     ))}
-                  </div>
-                </div>
+                  </ul>
+                </section>
 
                 {/* Order Summary */}
-                <div className="border-t pt-4">
-                  <h4 className="font-semibold text-lg mb-3">Order Summary</h4>
-                  <div className="space-y-2 text-sm">
+                <section className="bg-white border border-char/10 p-4 sm:p-5">
+                  <h4 className="eyebrow text-moringa mb-3">Order summary</h4>
+                  <div className="space-y-2 text-sm tabular-nums">
                     <div className="flex justify-between">
                       <p className="text-moringa-muted">Subtotal</p>
-                      <p className="font-medium">
+                      <p className="text-moringa">
                         RWF{' '}
                         {selectedOrder.items
                           .reduce((sum, item) => sum + item.product.offerPrice * item.quantity, 0)
@@ -980,8 +956,8 @@ const MyOrders = () => {
                     {selectedOrder.type === 'Delivery' &&
                       (selectedOrder.pricing?.deliveryFee || 0) > 0 && (
                         <div className="flex justify-between">
-                          <p className="text-moringa-muted">Delivery Charges</p>
-                          <p className="font-medium">
+                          <p className="text-moringa-muted">Delivery charges</p>
+                          <p className="text-moringa">
                             RWF {selectedOrder.pricing.deliveryFee.toLocaleString()}
                           </p>
                         </div>
@@ -992,34 +968,39 @@ const MyOrders = () => {
                         and it was never included in the real Total below. Found during
                         the 2026-09-26 E2E pass; removed rather than wired up, since
                         there's no real fee to wire it to. */}
-                    <div className="flex justify-between pt-2 border-t">
-                      <p className="font-semibold text-base">Total</p>
-                      <p className="font-semibold text-base">
-                        RWF {selectedOrder.amount.toLocaleString()}
+                    <div className="flex justify-between items-end pt-3 mt-2 border-t-2 border-moringa">
+                      <p className="eyebrow text-moringa">Total</p>
+                      <p className="display text-[32px] text-moringa">
+                        <span className="text-[0.55em] mr-1">RWF</span>
+                        {selectedOrder.amount.toLocaleString()}
                       </p>
                     </div>
                   </div>
-                </div>
+                </section>
 
                 {selectedOrder.type === 'Pickup' && (
-                  <div className="mt-6 border-t pt-6">
-                    <h4 className="font-semibold text-lg mb-4 text-moringa font-medium">
-                      Pickup Information
+                  <section className="mt-6">
+                    <h4 className="eyebrow text-moringa mb-3 flex items-center gap-2">
+                      <Store className="w-4 h-4" aria-hidden="true" />
+                      Pickup information
                     </h4>
 
                     {fetchingDetails ? (
-                      <div className="flex items-center justify-center py-8">
-                        <Loader2 className="w-6 h-6 animate-spin text-green-600 mr-2" />
+                      <div className="flex items-center justify-center py-8 bg-white border border-char/10">
+                        <Loader2
+                          className="w-6 h-6 animate-spin text-moringa mr-2"
+                          aria-hidden="true"
+                        />
                         <span className="text-sm text-moringa-muted">
                           Loading pickup details...
                         </span>
                       </div>
                     ) : orderDetails ? (
-                      <div className="space-y-6">
+                      <div className="space-y-4">
                         {/* Pickup Code & QR Code Pass */}
-                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 p-5 rounded-2xl flex flex-col sm:flex-row items-center gap-5 shadow-sm text-left">
+                        <div className="bg-lime text-moringa p-5 flex flex-col sm:flex-row items-center gap-5 text-left">
                           {/* QR Code */}
-                          <div className="bg-white p-2.5 rounded-xl border border-green-100/50 shadow-sm flex-shrink-0">
+                          <div className="bg-white p-2.5 shrink-0">
                             <img
                               src={`https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${orderDetails.pickupDetails?.pickupCode || 'N/A'}`}
                               alt="Pickup QR Code"
@@ -1029,22 +1010,18 @@ const MyOrders = () => {
 
                           {/* Code details & Copy */}
                           <div className="flex-1 text-center sm:text-left space-y-2 w-full">
-                            <span className="text-[10px] tracking-wider font-bold text-green-700 uppercase bg-green-100/80 px-2.5 py-1 rounded-full">
-                              Your Store Pickup Pass
-                            </span>
+                            <p className="eyebrow text-[11px]">Your store pickup pass</p>
                             <div>
-                              <p className="text-moringa-muted font-semibold text-xs mt-1">
-                                PICKUP CODE
-                              </p>
+                              <p className="eyebrow text-[10px] opacity-80 mt-1">Pickup code</p>
                               <div className="flex items-center justify-center sm:justify-start gap-2 mt-1">
-                                <span className="text-2xl sm:text-3xl font-extrabold text-green-800 tracking-widest font-mono">
+                                <span className="display text-[40px] sm:text-[48px] tracking-widest">
                                   {orderDetails.pickupDetails?.pickupCode || 'N/A'}
                                 </span>
                                 <button
                                   onClick={() =>
                                     handleCopy(orderDetails.pickupDetails?.pickupCode || '', 'code')
                                   }
-                                  className="p-1.5 text-green-600 hover:text-green-800 hover:bg-green-100 rounded-lg transition-colors"
+                                  className="h-9 w-9 flex items-center justify-center border-2 border-moringa hover:bg-moringa hover:text-lime transition-colors cursor-pointer"
                                   title="Copy Code"
                                 >
                                   {copiedText === 'code' ? (
@@ -1055,7 +1032,7 @@ const MyOrders = () => {
                                 </button>
                               </div>
                             </div>
-                            <p className="text-xs text-green-800/80 leading-relaxed font-medium">
+                            <p className="text-xs leading-relaxed font-medium">
                               Show either this QR code or the code digits to the vendor at the
                               pickup counter.
                             </p>
@@ -1063,18 +1040,18 @@ const MyOrders = () => {
                         </div>
 
                         {/* Store Info Card */}
-                        <div className="bg-white border border-hairline rounded-2xl shadow-sm overflow-hidden text-left">
-                          <div className="p-4 border-b border-hairline bg-fufu-dim/50 flex justify-between items-center">
-                            <h5 className="font-semibold text-moringa text-sm">
-                              Store Info & Directions
+                        <div className="bg-white border border-char/10 text-left">
+                          <div className="px-4 py-3 border-b border-hairline flex justify-between items-center gap-3">
+                            <h5 className="eyebrow text-[11px] text-moringa">
+                              Store info and directions
                             </h5>
                             {orderDetails.business?.contact?.phone && (
                               <a
                                 href={`tel:${orderDetails.business.contact.phone}`}
-                                className="flex items-center gap-1.5 text-xs text-green-600 font-bold bg-green-50 border border-green-100 hover:bg-green-100 px-3 py-1.5 rounded-full transition-all duration-300 shadow-sm"
+                                className="flex items-center gap-1.5 h-9 px-3 text-xs font-bold border-2 border-moringa text-moringa hover:bg-mint transition-colors"
                               >
-                                <Phone className="w-3.5 h-3.5" />
-                                Call Store
+                                <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+                                Call store
                               </a>
                             )}
                           </div>
@@ -1082,8 +1059,8 @@ const MyOrders = () => {
                             {/* Name and Address */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                               <div className="space-y-1">
-                                <span className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider block">
-                                  Store Name
+                                <span className="eyebrow text-[10px] text-moringa-muted block">
+                                  Store name
                                 </span>
                                 <p className="font-bold text-moringa">
                                   {orderDetails.business?.name || 'N/A'}
@@ -1091,8 +1068,8 @@ const MyOrders = () => {
                               </div>
                               {orderDetails.pickupDetails?.pickupTime && (
                                 <div className="space-y-1">
-                                  <span className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider block">
-                                    Pickup Window
+                                  <span className="eyebrow text-[10px] text-moringa-muted block">
+                                    Pickup window
                                   </span>
                                   <p className="font-semibold text-moringa">
                                     {orderDetails.pickupDetails.pickupTime}
@@ -1101,10 +1078,10 @@ const MyOrders = () => {
                               )}
                             </div>
 
-                            <div className="border-t pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div className="border-t border-hairline pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                               <div className="space-y-1 max-w-md">
-                                <span className="text-[10px] text-moringa-muted/70 font-bold uppercase tracking-wider block">
-                                  Store Address
+                                <span className="eyebrow text-[10px] text-moringa-muted block">
+                                  Store address
                                 </span>
                                 <div className="flex items-start gap-1">
                                   <p className="font-medium text-moringa text-sm">
@@ -1124,11 +1101,11 @@ const MyOrders = () => {
                                           'address'
                                         )
                                       }
-                                      className="p-1 text-moringa-muted/70 hover:text-gray-600 hover:bg-fufu rounded transition-colors flex-shrink-0"
+                                      className="p-1 text-moringa-muted hover:text-moringa hover:bg-mint transition-colors shrink-0 cursor-pointer"
                                       title="Copy Address"
                                     >
                                       {copiedText === 'address' ? (
-                                        <Check className="w-3.5 h-3.5 text-green-600" />
+                                        <Check className="w-3.5 h-3.5 text-moringa" />
                                       ) : (
                                         <Copy className="w-3.5 h-3.5" />
                                       )}
@@ -1138,21 +1115,21 @@ const MyOrders = () => {
                               </div>
 
                               {getPickupCoords() && (
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex">
                                   <a
                                     href={`https://www.google.com/maps/dir/?api=1&destination=${getPickupCoords()[0]},${getPickupCoords()[1]}`}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="flex items-center gap-1.5 text-xs text-white font-bold bg-green-600 hover:bg-green-700 px-4 py-2 rounded-xl transition-all duration-300 shadow-md shadow-green-100"
+                                    className="flex items-center gap-1.5 h-10 px-4 text-xs font-bold bg-moringa text-fufu hover:bg-moringa-dark transition-colors"
                                   >
-                                    <Navigation className="w-3.5 h-3.5" />
+                                    <Navigation className="w-3.5 h-3.5" aria-hidden="true" />
                                     Google Maps
                                   </a>
                                   <a
                                     href={`https://waze.com/ul?ll=${getPickupCoords()[0]},${getPickupCoords()[1]}&navigate=yes`}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="flex items-center gap-1.5 text-xs text-blue-700 font-bold bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-xl transition-all duration-300 border border-blue-100 shadow-sm"
+                                    className="flex items-center h-10 px-4 text-xs font-bold border-2 border-l-0 border-moringa text-moringa hover:bg-mint transition-colors"
                                   >
                                     Waze
                                   </a>
@@ -1165,10 +1142,10 @@ const MyOrders = () => {
                         {/* Store Location Map */}
                         {getPickupCoords() && (
                           <div className="space-y-2 text-left">
-                            <span className="text-xs font-semibold text-moringa-muted block">
-                              Store Location Map
+                            <span className="eyebrow text-[11px] text-moringa-muted block">
+                              Store location map
                             </span>
-                            <div className="w-full h-60 rounded-2xl overflow-hidden relative shadow-sm border border-hairline z-10">
+                            <div className="w-full h-60 overflow-hidden relative border-2 border-moringa z-10">
                               <MapContainer
                                 center={getPickupCoords()}
                                 zoom={15}
@@ -1181,8 +1158,9 @@ const MyOrders = () => {
                                 />
                                 <Marker position={getPickupCoords()} icon={vendorIcon}>
                                   <Popup>
-                                    <div className="text-xs font-semibold text-center">
-                                      🏪 {orderDetails.business?.name || 'Store'}
+                                    <div className="text-xs font-semibold flex items-center gap-1.5">
+                                      <Store className="w-3.5 h-3.5" aria-hidden="true" />
+                                      {orderDetails.business?.name || 'Store'}
                                     </div>
                                   </Popup>
                                 </Marker>
@@ -1192,22 +1170,26 @@ const MyOrders = () => {
                         )}
                       </div>
                     ) : (
-                      <p className="text-sm text-moringa-muted">
+                      <p className="text-sm text-clay bg-peach p-4 font-semibold">
                         Failed to load pickup information.
                       </p>
                     )}
-                  </div>
+                  </section>
                 )}
 
                 {selectedOrder.type === 'Delivery' && (
-                  <div className="mt-6 border-t pt-6">
-                    <h4 className="font-semibold text-lg mb-3 text-moringa">
-                      Delivery Information
+                  <section className="mt-6">
+                    <h4 className="eyebrow text-moringa mb-3 flex items-center gap-2">
+                      <Bike className="w-4 h-4" aria-hidden="true" />
+                      Delivery information
                     </h4>
 
                     {fetchingDetails ? (
-                      <div className="flex items-center justify-center py-8">
-                        <Loader2 className="w-6 h-6 animate-spin text-green-600 mr-2" />
+                      <div className="flex items-center justify-center py-8 bg-white border border-char/10">
+                        <Loader2
+                          className="w-6 h-6 animate-spin text-moringa mr-2"
+                          aria-hidden="true"
+                        />
                         <span className="text-sm text-moringa-muted">
                           Loading live tracking details...
                         </span>
@@ -1216,16 +1198,16 @@ const MyOrders = () => {
                       <div className="space-y-4">
                         {/* Rider details card if assigned */}
                         {orderDetails.delivery?.rider ? (
-                          <div className="bg-green-50 border border-green-100 p-4 rounded-xl flex items-center justify-between shadow-sm transition-all duration-300">
-                            <div className="flex items-center gap-3">
-                              <div className="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-inner">
+                          <div className="bg-moringa text-fufu p-4 flex items-center justify-between gap-3">
+                            <div className="flex items-center gap-3 min-w-0">
+                              <div className="bg-yellow text-moringa w-11 h-11 flex items-center justify-center display text-[22px] shrink-0">
                                 {orderDetails.delivery.riderName?.charAt(0) || 'R'}
                               </div>
-                              <div>
-                                <p className="font-semibold text-sm text-moringa">
+                              <div className="min-w-0">
+                                <p className="font-bold text-sm">
                                   {orderDetails.delivery.riderName || 'Assigned Rider'}
                                 </p>
-                                <p className="text-xs text-moringa-muted">
+                                <p className="text-xs opacity-80">
                                   {orderDetails.delivery.status === 'assigned' &&
                                     'Rider heading to restaurant'}
                                   {orderDetails.delivery.status === 'picked_up' &&
@@ -1240,27 +1222,29 @@ const MyOrders = () => {
                             {orderDetails.delivery.riderPhone && (
                               <a
                                 href={`tel:${orderDetails.delivery.riderPhone}`}
-                                className="bg-white border border-green-200 text-green-700 px-3 py-1.5 rounded-lg text-xs font-semibold hover:bg-green-50 transition-colors shadow-sm"
+                                className="shrink-0 flex items-center gap-1.5 h-10 px-4 bg-yellow text-moringa text-xs font-bold hover:bg-yellow-dark transition-colors"
                               >
-                                Call Rider
+                                <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+                                Call rider
                               </a>
                             )}
                           </div>
                         ) : (
-                          <div className="bg-fufu-dim border border-hairline p-4 rounded-xl flex items-center justify-between text-sm">
+                          <div className="bg-white border border-char/10 p-4 flex items-center justify-between gap-3 text-sm">
                             <span className="text-moringa-muted">
                               Assigning a delivery agent...
                             </span>
-                            <span className="text-xs bg-yellow-100 text-yellow-800 font-semibold px-2.5 py-0.5 rounded-full animate-pulse">
+                            <span className="eyebrow text-[10px] bg-yellow text-moringa px-2.5 py-1 animate-pulse">
                               Pending
                             </span>
                           </div>
                         )}
 
                         {/* Address */}
-                        <div className="text-sm bg-fufu-dim p-3 rounded-lg border border-hairline">
-                          <p className="text-moringa-muted font-medium text-xs mb-1">
-                            DELIVERY ADDRESS
+                        <div className="text-sm bg-white border border-char/10 p-4">
+                          <p className="eyebrow text-[10px] text-moringa-muted mb-1 flex items-center gap-1.5">
+                            <Home className="w-3.5 h-3.5" aria-hidden="true" />
+                            Delivery address
                           </p>
                           <p className="font-semibold text-moringa">
                             {orderDetails.delivery?.dropoffLocation?.address ||
@@ -1278,16 +1262,18 @@ const MyOrders = () => {
                         {/* Real-time Tracking Map */}
                         {getPickupCoords() && getDropoffCoords() ? (
                           <div className="space-y-2">
-                            <div className="flex justify-between items-center text-xs text-moringa-muted">
-                              <span className="font-medium text-moringa">Live Delivery Route</span>
+                            <div className="flex justify-between items-center gap-3">
+                              <span className="eyebrow text-[11px] text-moringa">
+                                Live delivery route
+                              </span>
                               {riderLocation && (
-                                <span className="flex items-center text-orange-600 font-semibold gap-1">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping"></span>
-                                  Live GPS Connected
+                                <span className="eyebrow text-[10px] flex items-center gap-1.5 bg-pepper text-char px-2 py-1">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-char animate-ping"></span>
+                                  Live GPS connected
                                 </span>
                               )}
                             </div>
-                            <div className="w-full h-80 rounded-xl overflow-hidden relative shadow-sm border border-hairline z-10">
+                            <div className="w-full h-80 overflow-hidden relative border-2 border-moringa z-10">
                               <MapContainer
                                 center={getPickupCoords()}
                                 zoom={14}
@@ -1302,8 +1288,8 @@ const MyOrders = () => {
                                 {/* Pickup/Restaurant Marker */}
                                 <Marker position={getPickupCoords()} icon={vendorIcon}>
                                   <Popup>
-                                    <div className="text-xs font-semibold">
-                                      🏪{' '}
+                                    <div className="text-xs font-semibold flex items-center gap-1.5">
+                                      <Store className="w-3.5 h-3.5" aria-hidden="true" />
                                       {orderDetails.delivery?.pickupLocation?.businessName ||
                                         orderDetails.business?.name ||
                                         'Restaurant'}
@@ -1314,8 +1300,9 @@ const MyOrders = () => {
                                 {/* Dropoff/Customer Marker */}
                                 <Marker position={getDropoffCoords()} icon={homeIcon}>
                                   <Popup>
-                                    <div className="text-xs font-semibold">
-                                      🏠 Delivery Destination
+                                    <div className="text-xs font-semibold flex items-center gap-1.5">
+                                      <Home className="w-3.5 h-3.5" aria-hidden="true" />
+                                      Delivery destination
                                     </div>
                                   </Popup>
                                 </Marker>
@@ -1327,7 +1314,10 @@ const MyOrders = () => {
                                     icon={deliveryIcon}
                                   >
                                     <Popup>
-                                      <div className="text-xs font-semibold">🚴 Rider (Live)</div>
+                                      <div className="text-xs font-semibold flex items-center gap-1.5">
+                                        <Bike className="w-3.5 h-3.5" aria-hidden="true" />
+                                        Rider (live)
+                                      </div>
                                     </Popup>
                                   </Marker>
                                 )}
@@ -1341,18 +1331,18 @@ const MyOrders = () => {
                             </div>
                           </div>
                         ) : (
-                          <div className="p-4 bg-yellow-50 border border-yellow-100 rounded-xl text-xs text-yellow-800">
+                          <div className="p-4 bg-yellow text-moringa text-xs font-semibold">
                             Location coordinates are not available for this delivery. Live map
                             tracking is disabled.
                           </div>
                         )}
                       </div>
                     ) : (
-                      <p className="text-sm text-moringa-muted">
+                      <p className="text-sm text-clay bg-peach p-4 font-semibold">
                         Failed to load detailed delivery information.
                       </p>
                     )}
-                  </div>
+                  </section>
                 )}
               </div>
             </div>

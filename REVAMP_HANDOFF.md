@@ -80,8 +80,8 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] Cart + payment modal
 - [x] Login, SignUp, ForgotPassword, VerifyEmail, AdminLogin (left panel = `Components/brand/AuthArt.jsx`)
 - [~] Brand class sweep done on every page/component/admin file (grey/slate -> brand tokens, no blur). ExpiryCountdown restyled. Pages below still need a real layout pass.
-- [ ] MyOrders (next up): `pt-[72px]` + PageHero "My orders", square Moringa/Yellow segmented toggles, brand selects/inputs (border-2 moringa), status pills (Completed lime, Processing mint, Cancelled fufu-dim, Failed peach/clay), replace the store/home/bike emojis in the details modal with lucide Store/Home/Bike. Keep all handlers.
-- [ ] MyImpact, MyProfile, Notification
+- [x] MyOrders: `pt-[72px]` + PageHero "My orders", square Moringa/Yellow segmented toggles, brand selects/inputs (border-2 moringa), status pills (Completed lime, Processing mint, Cancelled fufu-dim, Failed peach/clay), replace the store/home/bike emojis in the details modal with lucide Store/Home/Bike. Keep all handlers.
+- [ ] MyImpact, MyProfile, Notification (next up)
 - [ ] BusinessVerification, PendingReview, RiderRegistration, RiderDashboard (remove emojis in toasts/headings)
 - [ ] FAQ, ContactUs, Terms, Privacy, NotFound (still old dark "Lost?" design), Maintenance, ErrorBoundary, ui/EmptyState, ui/ErrorDisplay, ui/LoadingSpinner
 - [ ] Admin dashboard shell: admin/components/layout Sidebar + Header, Analytics emojis
