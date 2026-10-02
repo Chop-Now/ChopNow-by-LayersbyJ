@@ -4,6 +4,8 @@ import PageNavbar from '../Components/PageNavbar';
 import Products from '../Components/Products';
 import ShopSidebar from '../Components/ShopSidebar';
 import React, { useState, useRef } from 'react';
+import Categories from '../Components/Categories';
+import { PageHero } from '../Components/brand/Kit';
 import { useParams } from 'react-router-dom';
 
 const CategoryPage = () => {
@@ -18,13 +20,18 @@ const CategoryPage = () => {
     : 'All Products';
 
   return (
-    <div className="bg-white min-h-screen pt-20">
+    <div className="bg-fufu min-h-screen pt-[72px]">
       <PageNavbar onMobileFilterClick={() => productsRef.current?.openMobileSort()} />
 
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-6">
-        <Breadcrumb category={displayCategory} />
+      <PageHero eyebrow="Shop / category" title={displayCategory}>
+        <div className="mt-5">
+          <Breadcrumb category={displayCategory} />
+        </div>
+      </PageHero>
+      <Categories />
 
-        <div className="flex gap-6 mt-6 items-start pb-20">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8">
+        <div className="flex gap-6 items-start pb-24">
           {/* Left Sidebar */}
           <aside className="hidden lg:block w-72 shrink-0 self-stretch">
             <ShopSidebar

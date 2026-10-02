@@ -110,7 +110,7 @@ const ProductCard = memo(({ product }) => {
           </p>
         ) : null}
 
-        <div className="mt-auto pt-3 flex items-end justify-between gap-2">
+        <div className="mt-auto pt-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
           <div className="min-w-0">
             {price > offerPrice && (
               <p className="text-xs line-through text-moringa-muted">
@@ -123,7 +123,10 @@ const ProductCard = memo(({ product }) => {
             </p>
           </div>
 
-          <div onClick={(e) => e.stopPropagation()} className="shrink-0">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="shrink-0 [&>button]:w-full sm:[&>button]:w-auto [&>div]:justify-between"
+          >
             {!cartItems[product._id] || cartItems[product._id] === 0 ? (
               <button
                 className="flex items-center justify-center gap-1.5 h-10 px-3 md:px-4 bg-moringa text-fufu text-xs font-bold hover:bg-moringa-dark transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"

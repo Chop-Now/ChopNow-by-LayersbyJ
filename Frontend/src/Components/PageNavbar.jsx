@@ -131,8 +131,7 @@ const PageNavbar = ({ onMobileFilterClick }) => {
             aria-label="ChopNow home"
             className="shrink-0"
           >
-            <Logo tone="dark" size="sm" className="sm:hidden" />
-            <Logo tone="dark" size="md" className="hidden sm:inline-flex" />
+            <Logo tone="dark" size="md" />
           </NavLink>
 
           {/* Desktop */}

@@ -73,10 +73,10 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] Design tokens + fonts in `Frontend/src/index.css` (radius 0, hairline shadows, Fufu ground, Anton/Geist/Geist Mono/Poppins in index.html)
 - [x] Brand kit: `Components/brand/Kit.jsx` (Logo, Eyebrow, Display, Button, Tile, PageHero) + `Illustrations.jsx` (CMark, Fork, Spoon, Chilli, Bread, Leaf, TomatoHalf, Pin, Bag, Plate, Coin)
 - [x] Landing header `Components/landing/SiteHeader.jsx` + new `Footer.jsx` (used site-wide)
-- [ ] App header `Components/PageNavbar.jsx`
+- [x] App header `Components/PageNavbar.jsx`
 - [x] Landing page `Pages/Home.jsx` -> sections in `Components/landing/Sections.jsx` (checked at 1440 + 390)
-- [ ] Shop + CategoryPage + ProductCard + ShopSidebar
-- [ ] ProductDetails
+- [x] Shop + CategoryPage + ProductCard + ShopSidebar + Categories + Breadcrumb + Products grid
+- [x] ProductDetails
 - [ ] Cart + payment modal
 - [ ] Login, SignUp, ForgotPassword, VerifyEmail, AdminLogin
 - [ ] MyOrders, MyImpact, MyProfile, Notification
