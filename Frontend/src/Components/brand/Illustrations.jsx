@@ -33,6 +33,10 @@ const Svg = ({ viewBox, className, rotate = 0, origin, children, label }) => (
     role={label ? 'img' : undefined}
     aria-label={label}
     focusable="false"
+    // Rotated shapes reach past the viewBox; let them, so only the tile edge
+    // crops them (browsers clip inline SVG to its box by default).
+    overflow="visible"
+    style={{ overflow: 'visible' }}
   >
     <g transform={rotate ? `rotate(${rotate} ${origin})` : undefined}>{children}</g>
   </svg>
