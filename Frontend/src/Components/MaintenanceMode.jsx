@@ -1,61 +1,61 @@
 import React from 'react';
 import { Wrench, Mail, Phone } from 'lucide-react';
 import { usePlatformSettings } from '../context/PlatformSettingsContext';
+import { CMark } from './brand/Illustrations';
 
 const MaintenanceMode = () => {
   const { settings } = usePlatformSettings();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
-      <div className="max-w-lg w-full text-center">
-        {/* Animated wrench icon */}
-        <div className="relative mb-8">
-          <div className="w-24 h-24 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto animate-pulse">
-            <Wrench className="w-12 h-12 text-yellow-500" />
-          </div>
-          <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full border-4 border-yellow-500/30 animate-ping" />
-        </div>
-
-        {/* Title */}
-        <h1 className="text-4xl font-bold text-white mb-4">{settings.platformName || 'ChopNow'}</h1>
-
-        <h2 className="text-2xl font-semibold text-yellow-500 mb-6">Under Maintenance</h2>
-
+    <div className="min-h-screen bg-moringa text-fufu flex flex-col">
+      <div className="flex-1 grid lg:grid-cols-[1.2fr_1fr]">
         {/* Message */}
-        <p className="text-moringa/40 text-lg mb-8 leading-relaxed">
-          We're currently performing scheduled maintenance to improve your experience. We'll be back
-          shortly. Thank you for your patience!
-        </p>
+        <section className="px-4 sm:px-8 lg:px-12 py-12 md:py-16 flex flex-col justify-center">
+          <div className="flex items-center gap-3">
+            <CMark fill="var(--color-yellow)" className="w-9" />
+            <span className="wordmark text-2xl">{settings.platformName || 'ChopNow'}</span>
+          </div>
+
+          <p className="eyebrow text-yellow mt-12 flex items-center gap-2">
+            <Wrench className="w-4 h-4 animate-pulse" aria-hidden="true" />
+            Scheduled maintenance
+          </p>
+          <h1 className="display text-[64px] sm:text-[96px] lg:text-[128px] mt-3 leading-[0.86]">
+            Under <span className="text-yellow">maintenance</span>
+          </h1>
+
+          <p className="mt-6 max-w-xl text-lg font-medium opacity-90 leading-relaxed">
+            We're currently performing scheduled maintenance to improve your experience. We'll be
+            back shortly. Thank you for your patience!
+          </p>
+
+          <p className="mt-10 eyebrow text-[11px] opacity-80">
+            {settings.platformTagline || 'Save Food, Save Money, Save the Planet'}
+          </p>
+        </section>
 
         {/* Contact Info */}
-        <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-          <p className="text-moringa-muted/70 mb-4">Need urgent assistance? Contact us:</p>
+        <section className="bg-yellow text-moringa px-4 sm:px-8 lg:px-12 py-12 flex flex-col justify-center">
+          <p className="eyebrow">Need urgent assistance?</p>
+          <p className="display text-[40px] sm:text-[48px] mt-2">Contact us</p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-6 flex flex-col border-2 border-moringa">
             <a
               href={`mailto:${settings.supportEmail || 'chopnow.app@gmail.com'}`}
-              className="flex items-center gap-2 text-white hover:text-yellow-500 transition-colors"
+              className="flex items-center gap-3 h-14 px-4 font-bold hover:bg-yellow-dark transition-colors break-all"
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-5 h-5 shrink-0" aria-hidden="true" />
               <span>{settings.supportEmail || 'chopnow.app@gmail.com'}</span>
             </a>
-
-            <span className="hidden sm:block text-moringa-muted">|</span>
-
             <a
               href={`tel:${settings.supportPhone || '+250788000000'}`}
-              className="flex items-center gap-2 text-white hover:text-yellow-500 transition-colors"
+              className="flex items-center gap-3 h-14 px-4 font-bold border-t-2 border-moringa hover:bg-yellow-dark transition-colors"
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="w-5 h-5 shrink-0" aria-hidden="true" />
               <span>{settings.supportPhone || '+250 788 000 000'}</span>
             </a>
           </div>
-        </div>
-
-        {/* Tagline */}
-        <p className="text-moringa-muted mt-8 text-sm">
-          {settings.platformTagline || 'Save Food, Save Money, Save the Planet'}
-        </p>
+        </section>
       </div>
     </div>
   );

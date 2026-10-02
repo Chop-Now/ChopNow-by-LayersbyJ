@@ -1,107 +1,76 @@
-import { assets } from '../assets/assets';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Mail } from 'lucide-react';
+import { Home, Mail, ArrowRight } from 'lucide-react';
+import { Logo } from './brand/Kit';
+import { Pin, Fork } from './brand/Illustrations';
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-20 bg-linear-to-br from-slate-900 via-slate-800 to-solid/10">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-solid/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-solidOne/20 rounded-full blur-3xl animate-pulse delay-700"></div>
-      </div>
+    <div className="min-h-screen flex flex-col bg-fufu">
+      {/* Top bar */}
+      <header className="bg-moringa h-[72px] flex items-center px-4 sm:px-8 lg:px-12">
+        <Link to="/" aria-label="ChopNow home">
+          <Logo tone="dark" size="md" />
+        </Link>
+      </header>
 
-      <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto">
-        {/* 404 Badge */}
-        <div className="mb-6 px-4 py-2 bg-solid/20 border-2 border-solid/30 rounded-full">
-          <span className="text-solid font-bold text-xs md:text-sm tracking-wider">ERROR 404</span>
-        </div>
+      <main className="flex-1 grid md:grid-cols-2">
+        {/* Message tile */}
+        <section className="bg-yellow text-moringa px-4 sm:px-8 lg:px-12 py-12 md:py-16 flex flex-col justify-center">
+          <p className="eyebrow">Error 404</p>
+          <h1 className="display text-[120px] sm:text-[160px] lg:text-[220px] mt-2 leading-[0.82]">
+            Lost?
+          </h1>
+          <p className="mt-6 text-lg font-bold">It happens to the best of us</p>
+          <p className="mt-3 max-w-md font-medium">
+            We couldn't find the page you're looking for. Don't worry though, even the best
+            explorers get a little lost sometimes. Let's get you back on track!
+          </p>
 
-        {/* Astronaut Image */}
-        <div className="mb-8">
-          <img
-            src={assets.lost}
-            alt="Lost in space"
-            className="w-50 h-50 object-contain drop-shadow-2xl animate-float"
-          />
-        </div>
-
-        {/* Main Heading */}
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 text-center">
-          Lost?
-        </h1>
-
-        {/* Subheading */}
-        <p className="text-base md:text-lg lg:text-xl text-solid font-semibold mb-6 text-center">
-          It happens to the best of us
-        </p>
-
-        {/* Divider */}
-        <div className="h-px w-64 md:w-80 bg-linear-to-r from-transparent via-slate-600 to-transparent my-6"></div>
-
-        {/* Description */}
-        <p className="text-sm md:text-base text-moringa/40 max-w-lg text-center mb-10 leading-relaxed">
-          We couldn't find the page you're looking for. Don't worry though, even the best explorers
-          get a little lost sometimes. Let's get you back on track!
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <Link
-            to="/"
-            className="group flex items-center justify-center gap-2 bg-solid hover:bg-tertiary px-5 md:px-6 py-2.5 md:py-3 text-white text-sm rounded-full font-medium active:scale-95 transition-all shadow-lg hover:shadow-xl w-full sm:w-auto"
-          >
-            <Home className="w-4 h-4" />
-            <span>Back to Home</span>
-            <svg
-              className="group-hover:translate-x-1 transition-transform"
-              width="18"
-              height="18"
-              viewBox="0 0 22 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+          {/* Action Buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row">
+            <Link
+              to="/"
+              className="group h-14 px-6 bg-moringa text-fufu font-bold flex items-center justify-center gap-2 hover:bg-moringa-dark transition-colors"
             >
-              <path
-                d="M4.583 11h12.833m0 0L11 4.584M17.416 11 11 17.417"
-                stroke="white"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <Home className="w-4 h-4" aria-hidden="true" />
+              Back to home
+              <ArrowRight
+                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                aria-hidden="true"
               />
-            </svg>
-          </Link>
+            </Link>
+            <Link
+              to="/contact-us"
+              className="h-14 px-6 border-2 border-moringa sm:border-l-0 text-moringa font-bold flex items-center justify-center gap-2 hover:bg-yellow-dark transition-colors"
+            >
+              <Mail className="w-4 h-4" aria-hidden="true" />
+              Contact us
+            </Link>
+          </div>
 
-          <Link
-            to="/contact-us"
-            className="group flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border-2 border-solid px-5 md:px-6 py-2.5 md:py-3 text-solid text-sm rounded-full font-medium active:scale-95 transition-all shadow-lg hover:shadow-xl w-full sm:w-auto"
-          >
-            <Mail className="w-4 h-4" />
-            <span>Contact Us</span>
-          </Link>
-        </div>
+          <p className="mt-8 eyebrow text-[11px]">Need help? Our support team is here for you.</p>
+        </section>
 
-        {/* Helper Text */}
-        <p className="mt-10 text-[10px] md:text-xs text-moringa-muted/70 text-center">
-          Need help? Our support team is here for you.
-        </p>
-      </div>
-
-      {/* Floating Animation Keyframes */}
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
+        {/* Illustration tiles */}
+        <section className="grid grid-rows-2 min-h-[360px] md:min-h-0" aria-hidden="true">
+          <div className="relative overflow-hidden bg-moringa">
+            <Pin
+              fill="var(--color-pepper)"
+              hole="var(--color-moringa)"
+              className="absolute w-[30%] left-[34%] top-[12%] -rotate-[14deg]"
+            />
+          </div>
+          <div className="grid grid-cols-2">
+            <div className="relative overflow-hidden bg-lime">
+              <Fork className="absolute w-[40%] left-[30%] top-[8%] rotate-[18deg]" />
+            </div>
+            <div className="relative overflow-hidden bg-peach flex items-center justify-center">
+              <span className="display text-[96px] sm:text-[128px] text-clay">404</span>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };
