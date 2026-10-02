@@ -4,6 +4,7 @@ import PageNavbar from '../Components/PageNavbar';
 import Products from '../Components/Products';
 import ShopSidebar from '../Components/ShopSidebar';
 import SEO from '../Components/SEO';
+import { PageHero } from '../Components/brand/Kit';
 import React, { useState, useRef } from 'react';
 
 const Shop = () => {
@@ -12,17 +13,22 @@ const Shop = () => {
   const productsRef = useRef();
 
   return (
-    <div className="bg-white min-h-screen pt-20">
+    <div className="bg-fufu min-h-screen pt-[72px]">
       <SEO
         title="Shop"
         description="Browse surplus food deals from local businesses near you. Save up to 70% on quality food while reducing waste."
         keywords="surplus food, discount food, food deals, Kigali, food near me"
       />
       <PageNavbar onMobileFilterClick={() => productsRef.current?.openMobileSort()} />
+      <PageHero
+        eyebrow="Live in Kigali / updated all day"
+        title="Rescue today's food"
+        intro="Surplus meals, bread and produce from vendors near you, at a discount. Order now, pick up later today."
+      />
       <Categories />
 
-      <div className="px-6 md:px-8 lg:px-12 xl:px-16 py-6">
-        <div className="flex gap-6 items-start pb-12">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8">
+        <div className="flex gap-6 items-start pb-24">
           {/* Left Sidebar */}
           <aside className="hidden lg:block w-72 shrink-0 self-stretch">
             <ShopSidebar
