@@ -22,7 +22,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { orderService, reviewService } from '../services';
 import MobileMoneyPaymentModal from '../Components/payments/MobileMoneyPaymentModal';
-import { PageHero } from '../Components/brand/Kit';
+import { PageHero, BrandLoader } from '../Components/brand/Kit';
 import { Bag } from '../Components/brand/Illustrations';
 
 // Brand select / input used by the desktop filter row.
@@ -495,12 +495,13 @@ const MyOrders = () => {
         <PageHero
           eyebrow="Your account / Order history"
           title="My orders"
+          art="bag"
           intro="Your past and current rescues. Thank you for helping reduce food waste."
         />
         <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
           {loading ? (
             <div className="flex flex-col items-center justify-center py-20 bg-white border border-char/10">
-              <Loader2 className="w-8 h-8 animate-spin text-moringa mb-4" aria-hidden="true" />
+              <BrandLoader className="w-10 text-moringa mb-4" />
               <p className="eyebrow text-moringa-muted">Loading your orders</p>
             </div>
           ) : (

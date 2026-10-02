@@ -1,5 +1,6 @@
 import React from 'react';
 import { Loader2 } from 'lucide-react';
+import { BrandLoader } from '../brand/Kit';
 
 /**
  * Reusable loading spinner component
@@ -19,7 +20,7 @@ const LoadingSpinner = ({ size = 'md', message = '', fullScreen = false, classNa
 
   const spinner = (
     <div className={`flex flex-col items-center justify-center ${className}`}>
-      <Loader2 className={`${sizeClasses[size]} text-moringa dark:text-yellow animate-spin`} />
+      <BrandLoader className={`${sizeClasses[size]} text-moringa dark:text-yellow`} />
       {message && (
         <p className="mt-3 eyebrow text-[11px] text-moringa-muted dark:text-fufu/70">{message}</p>
       )}

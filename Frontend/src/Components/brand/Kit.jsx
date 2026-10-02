@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CMark } from './Illustrations';
+import { CMark, Fork, Spoon, Leaf, Pin, Bag, Chilli } from './Illustrations';
 
 /**
  * Small building blocks for the LayersbyJ tile revamp. Keep pages composed
@@ -25,8 +25,8 @@ export const Logo = ({ tone = 'dark', size = 'md', className }) => {
     yellow: { mark: 'var(--color-moringa)', text: 'text-moringa' },
   }[tone];
   return (
-    <span className={cx('inline-flex items-center gap-2.5', className)}>
-      <CMark fill={tones.mark} className={sizes.mark} />
+    <span className={cx('group inline-flex items-center gap-2.5', className)}>
+      <CMark fill={tones.mark} className={cx('logo-mark', sizes.mark)} />
       <span className={cx('wordmark leading-none', sizes.text, tones.text)}>ChopNow</span>
     </span>
   );
@@ -98,8 +98,47 @@ export const Tile = ({ as: As = 'div', className, children, ...rest }) => (
   </As>
 );
 
-/* Page-level hero band used across the web app (shop, orders, profile...). */
-export const PageHero = ({ eyebrow, title, intro, tone = 'moringa', aside, children }) => {
+/* Spinning C mark, the brand loading indicator. Colour follows currentColor. */
+export const BrandLoader = ({ className = 'w-8 text-moringa', label = 'Loading' }) => (
+  <span role="status" aria-label={label} className="inline-flex">
+    <CMark fill="currentColor" className={cx('cm-loader', className)} />
+  </span>
+);
+
+/* Tonal cut-paper shapes for the hero band, cropped by its right and bottom edges. */
+const TONAL = { fill: 'var(--color-moringa-2)', detail: 'var(--color-lime)' };
+const HERO_ART = {
+  fork: (c) => <Fork fill={TONAL.fill} detail={TONAL.detail} className={c} />,
+  spoon: (c) => <Spoon fill={TONAL.fill} detail={TONAL.detail} className={c} />,
+  leaf: (c) => <Leaf fill={TONAL.fill} detail={TONAL.detail} className={c} />,
+  pin: (c) => <Pin fill={TONAL.fill} hole="var(--color-moringa)" className={c} />,
+  bag: (c) => (
+    <Bag fill={TONAL.fill} detail={TONAL.detail} mark="var(--color-yellow)" className={c} />
+  ),
+  chilli: (c) => (
+    <Chilli fill={TONAL.fill} detail={TONAL.detail} stem="var(--color-moringa)" className={c} />
+  ),
+};
+const HERO_ART_POS = {
+  fork: 'w-[150px] md:w-[230px] right-[-30px] md:right-[6%] top-[30%] rotate-[24deg]',
+  spoon: 'w-[150px] md:w-[230px] right-[-30px] md:right-[34%] top-[26%] rotate-[-28deg]',
+  leaf: 'w-[260px] md:w-[420px] right-[-90px] md:right-[-40px] top-[38%] rotate-[-12deg]',
+  pin: 'w-[120px] md:w-[190px] right-[-10px] md:right-[8%] top-[34%] rotate-[14deg]',
+  bag: 'w-[240px] md:w-[380px] right-[-80px] md:right-[-20px] top-[40%] rotate-[-10deg]',
+  chilli: 'w-[280px] md:w-[380px] right-[-110px] md:right-[30%] top-[34%] rotate-[8deg]',
+};
+
+/* Page-level hero band used across the web app (shop, orders, profile...).
+   `art` picks a tonal cut-paper shape (moringa tone only); pass false for none. */
+export const PageHero = ({
+  eyebrow,
+  title,
+  intro,
+  tone = 'moringa',
+  aside,
+  art = 'fork',
+  children,
+}) => {
   const tones = {
     moringa: 'bg-moringa text-fufu',
     yellow: 'bg-yellow text-moringa',
@@ -110,11 +149,18 @@ export const PageHero = ({ eyebrow, title, intro, tone = 'moringa', aside, child
   }[tone];
   const accent = tone === 'moringa' ? 'text-yellow' : '';
   return (
-    <section className={cx('relative overflow-hidden', tones)}>
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-10 md:py-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+    <section className={cx('group relative overflow-hidden', tones)}>
+      {tone === 'moringa' && art && HERO_ART[art] && (
+        <span className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <span className="tile-art absolute inset-0 block">
+            {HERO_ART[art](cx('absolute', HERO_ART_POS[art]))}
+          </span>
+        </span>
+      )}
+      <div className="relative mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-10 md:py-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div className="min-w-0">
           {eyebrow && <Eyebrow className={cx('mb-4 opacity-90', accent)}>{eyebrow}</Eyebrow>}
-          <Display as="h1" className="text-[56px] sm:text-[72px] md:text-[96px]">
+          <Display as="h1" className="rise-in text-[56px] sm:text-[72px] md:text-[96px]">
             {title}
           </Display>
           {intro && (

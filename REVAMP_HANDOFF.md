@@ -84,6 +84,7 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] MyImpact, MyProfile, Notification
 - [x] BusinessVerification, PendingReview, RiderRegistration, RiderDashboard (onboarding pages use the AuthArt split layout; emojis removed from toasts/headings)
 - [ ] (next up) FAQ, ContactUs, Terms, Privacy, NotFound (still old dark "Lost?" design), Maintenance, ErrorBoundary, ui/EmptyState, ui/ErrorDisplay, ui/LoadingSpinner
+- [x] Motion + hero art (owner request): spinning C mark loader (`BrandLoader` in Kit, used by ui/LoadingSpinner), header logo mark spins once on load and on hover, hero titles rise in, PageHero takes `art` (fork/spoon/leaf/pin/bag/chilli, tonal Moringa-2 shapes cropped by the band). All motion is off under prefers-reduced-motion. CSS lives in index.css under "Motion".
 - [ ] Admin dashboard shell: admin/components/layout Sidebar + Header, Analytics emojis
 - [ ] Final pass: 390px + 1440px check, `npx prettier --check .` at root, `npx eslint .` in Frontend (0 errors), `npm run build`, push, then open a PR revamp-ui -> main and DO NOT merge (owner merges)
 

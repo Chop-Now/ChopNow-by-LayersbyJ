@@ -259,6 +259,7 @@ const Cart = () => {
       <PageHero
         eyebrow={`Your cart / ${getTotalCartItems()} ${getTotalCartItems() === 1 ? 'item' : 'items'}`}
         title="Your rescue"
+        art="bag"
       />
       <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
         {getTotalCartItems() === 0 ? (

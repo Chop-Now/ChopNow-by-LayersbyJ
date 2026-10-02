@@ -170,11 +170,12 @@ const RiderDashboard = () => {
       <PageHero
         eyebrow="Rider partner portal"
         title={`Hello, ${user?.firstName || 'Rider'}`}
+        art="chilli"
         intro="Welcome back to your dashboard. Deliver surplus meals, earn fees, and reduce food waste!"
         aside={
           <div className="flex flex-col sm:flex-row gap-3">
             {/* Go Online Switcher */}
-            <div className="flex items-center gap-4 bg-moringa-2 px-4 h-14">
+            <div className="flex items-center gap-4 bg-moringa-dark px-4 h-14">
               <div>
                 <p className="eyebrow text-[10px] opacity-80">Status</p>
                 <p className="text-sm font-bold flex items-center gap-1.5">

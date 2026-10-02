@@ -1,18 +1,9 @@
 import Footer from '../Components/Footer';
 import PageNavbar from '../Components/PageNavbar';
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  Award,
-  Leaf,
-  Droplets,
-  Wind,
-  Loader2,
-  Scale,
-  TrendingUp,
-  TrendingDown,
-} from 'lucide-react';
+import { Award, Leaf, Droplets, Wind, Scale, TrendingUp, TrendingDown } from 'lucide-react';
 import { analyticsService } from '../services';
-import { PageHero } from '../Components/brand/Kit';
+import { PageHero, BrandLoader } from '../Components/brand/Kit';
 
 const MyImpact = () => {
   const [loading, setLoading] = useState(true);
@@ -116,7 +107,7 @@ const MyImpact = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-fufu">
-        <Loader2 className="w-8 h-8 animate-spin text-moringa" aria-hidden="true" />
+        <BrandLoader className="w-10 text-moringa" />
         <p className="eyebrow text-moringa-muted">Loading your impact</p>
       </div>
     );
@@ -170,6 +161,7 @@ const MyImpact = () => {
         <PageHero
           eyebrow="Your account / Impact"
           title="My impact"
+          art="leaf"
           intro="Thank you for making a difference. Here is what your rescues have kept out of the bin."
         />
 

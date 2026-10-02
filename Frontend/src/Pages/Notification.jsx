@@ -1,6 +1,6 @@
 import PageNavbar from '../Components/PageNavbar';
 import Footer from '../Components/Footer';
-import { PageHero } from '../Components/brand/Kit';
+import { PageHero, BrandLoader } from '../Components/brand/Kit';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -492,6 +492,7 @@ const Notification = () => {
       <PageHero
         eyebrow={`Your account / ${unreadCount} unread`}
         title="Notifications"
+        art="pin"
         intro="All your recent updates in one place."
       />
 
@@ -621,7 +622,7 @@ const Notification = () => {
             {/* Notifications List */}
             {loading ? (
               <div className="flex flex-col items-center justify-center py-16 bg-white border border-char/10">
-                <Loader2 className="w-8 h-8 animate-spin text-moringa mb-4" aria-hidden="true" />
+                <BrandLoader className="w-10 text-moringa mb-4" />
                 <p className="eyebrow text-moringa-muted">Loading notifications</p>
               </div>
             ) : filteredNotifications.length === 0 ? (

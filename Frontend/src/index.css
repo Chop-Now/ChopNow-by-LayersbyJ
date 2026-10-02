@@ -239,7 +239,61 @@ h3 {
   outline-offset: 2px;
 }
 
+/* ── Motion (kept small; all of it is switched off under reduced motion) ── */
+@keyframes cm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes cm-spin-in {
+  from {
+    transform: rotate(-360deg) scale(0.6);
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+/* C mark as the loading indicator */
+.cm-loader {
+  transform-origin: 50% 50%;
+  animation: cm-spin 0.9s cubic-bezier(0.6, 0.1, 0.4, 0.9) infinite;
+}
+/* Header mark: one spin on page load, one more on hover */
+.logo-mark {
+  transform-origin: 50% 50%;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: cm-spin-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s backwards;
+}
+.group:hover .logo-mark {
+  transform: rotate(360deg);
+}
+/* Hero titles rise in once */
+.rise-in {
+  animation: rise-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+/* Cut-paper shapes nudge when their tile is hovered */
+.tile-art {
+  transition: translate 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.group:hover .tile-art {
+  translate: -6px -8px;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .cm-loader,
+  .logo-mark,
+  .rise-in {
+    animation: none !important;
+  }
+  .group:hover .logo-mark {
+    transform: none;
+  }
+  .group:hover .tile-art {
+    translate: none;
+  }
   *,
   *::before,
   *::after {

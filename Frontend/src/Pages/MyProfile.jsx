@@ -9,7 +9,7 @@ import { useAppContext } from '../context/AppContext';
 import { clearAccessToken } from '../services/api';
 import PageNavbar from '../Components/PageNavbar';
 import Footer from '../Components/Footer';
-import { PageHero } from '../Components/brand/Kit';
+import { PageHero, BrandLoader } from '../Components/brand/Kit';
 
 const LABEL = 'block eyebrow text-[11px] text-moringa-muted mb-2';
 const INPUT =
@@ -200,7 +200,7 @@ const MyProfile = () => {
   if (loading) {
     return (
       <div className="bg-fufu min-h-screen flex flex-col items-center justify-center gap-4">
-        <Loader2 className="w-8 h-8 animate-spin text-moringa" aria-hidden="true" />
+        <BrandLoader className="w-10 text-moringa" />
         <p className="eyebrow text-moringa-muted">Loading your profile</p>
       </div>
     );
@@ -221,9 +221,10 @@ const MyProfile = () => {
       <PageHero
         eyebrow="Your account / Settings"
         title="My profile"
+        art="spoon"
         intro="Update your profile and personal details here."
         aside={
-          <div className="flex items-center gap-4 bg-moringa-2 p-4 max-w-[340px]">
+          <div className="flex items-center gap-4 bg-moringa-dark p-4 max-w-[340px]">
             {avatar('h-14 w-14')}
             <div className="min-w-0">
               <p className="font-bold truncate">
