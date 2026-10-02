@@ -12,6 +12,7 @@ import {
   TrendingDown,
 } from 'lucide-react';
 import { analyticsService } from '../services';
+import { PageHero } from '../Components/brand/Kit';
 
 const MyImpact = () => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,8 @@ const MyImpact = () => {
     });
     resizeObserver.observe(containerRef.current);
     return () => resizeObserver.disconnect();
-  }, []);
+    // Re-attach once loading ends: the chart is not mounted on the first render.
+  }, [loading]);
 
   const [impactData, setImpactData] = useState({
     mealsRescued: 0,
@@ -113,224 +115,185 @@ const MyImpact = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <Loader2 className="w-8 h-8 animate-spin text-green-600" />
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-fufu">
+        <Loader2 className="w-8 h-8 animate-spin text-moringa" aria-hidden="true" />
+        <p className="eyebrow text-moringa-muted">Loading your impact</p>
       </div>
     );
   }
 
+  const trendUp = impactData.comparison?.percentageChange.trend === 'up';
+
+  const stats = [
+    {
+      key: 'meals',
+      label: 'Meals rescued',
+      value: impactData.mealsRescued.toLocaleString(),
+      unit: '',
+      Icon: Leaf,
+      tone: 'bg-moringa text-fufu',
+      eyebrow: 'text-yellow',
+    },
+    {
+      key: 'co2',
+      label: 'CO2e saved',
+      value: impactData.co2Saved.toLocaleString(),
+      unit: 'kg',
+      Icon: Wind,
+      tone: 'bg-lime text-moringa',
+      eyebrow: '',
+    },
+    {
+      key: 'water',
+      label: 'Water saved',
+      value: impactData.waterSaved.toLocaleString(),
+      unit: 'L',
+      Icon: Droplets,
+      tone: 'bg-mint text-moringa',
+      eyebrow: '',
+    },
+    {
+      key: 'waste',
+      label: 'Food waste saved',
+      value: impactData.foodWasteSaved.toLocaleString(),
+      unit: 'kg',
+      Icon: Scale,
+      tone: 'bg-yellow text-moringa',
+      eyebrow: '',
+    },
+  ];
+
   return (
     <div>
-      <div className="bg-white min-h-screen pt-20">
+      <div className="bg-fufu min-h-screen pt-[72px]">
         <PageNavbar />
+        <PageHero
+          eyebrow="Your account / Impact"
+          title="My impact"
+          intro="Thank you for making a difference. Here is what your rescues have kept out of the bin."
+        />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          {/* Header */}
-          <div className="mb-6 text-center">
-            <h2 className="text-xl font-bold text-moringa mb-1">Your Impact Summary</h2>
-            <p className="text-sm text-moringa-muted">
-              Thank you for making a difference! Here's a summary of your positive environmental
-              impact.
-            </p>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mb-8">
-            {/* Meals Rescued Card */}
-            <div className="bg-white rounded-lg shadow-md p-3 md:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer text-center">
-              <div className="flex items-center justify-center mb-1">
-                <Leaf className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'var(--color-solid)' }} />
-              </div>
-              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
-                Meals Rescued
-              </h3>
-              <p className="text-lg md:text-2xl font-bold text-moringa">
-                {impactData.mealsRescued.toLocaleString()}
-              </p>
-              {impactData.comparison && (
-                <div
-                  className={`flex items-center justify-center gap-1 text-xs mt-1 ${impactData.comparison.percentageChange.trend === 'up' ? 'text-green-600' : 'text-red-500'}`}
-                >
-                  {impactData.comparison.percentageChange.trend === 'up' ? (
-                    <TrendingUp className="w-3 h-3" />
-                  ) : (
-                    <TrendingDown className="w-3 h-3" />
-                  )}
-                  <span>
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 py-8 pb-20">
+          {/* Stats Tiles */}
+          <div className="grid grid-cols-2 lg:grid-cols-4">
+            {stats.map(({ key, label, value, unit, Icon, tone, eyebrow }) => (
+              <div
+                key={key}
+                className={`${tone} p-4 sm:p-6 min-h-[168px] sm:min-h-[200px] flex flex-col`}
+              >
+                <p className={`eyebrow text-[11px] flex items-center gap-2 ${eyebrow}`}>
+                  <Icon className="w-4 h-4" aria-hidden="true" />
+                  {label}
+                </p>
+                <p className="display text-[44px] sm:text-[64px] mt-auto pt-4 tabular-nums">
+                  {value}
+                  {unit && <span className="text-[0.45em] ml-1">{unit}</span>}
+                </p>
+                {key === 'meals' && impactData.comparison && (
+                  <p
+                    className={`mt-2 inline-flex items-center gap-1 self-start text-xs font-bold px-2 py-1 ${
+                      trendUp ? 'bg-lime text-moringa' : 'bg-peach text-clay'
+                    }`}
+                  >
+                    {trendUp ? (
+                      <TrendingUp className="w-3 h-3" aria-hidden="true" />
+                    ) : (
+                      <TrendingDown className="w-3 h-3" aria-hidden="true" />
+                    )}
                     {impactData.comparison.percentageChange.meals >= 0 ? '+' : ''}
                     {impactData.comparison.percentageChange.meals}% vs last month
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* CO2e Saved Card */}
-            <div className="bg-white rounded-lg shadow-md p-3 md:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer text-center">
-              <div className="flex items-center justify-center mb-1">
-                <Wind className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'var(--color-solid)' }} />
+                  </p>
+                )}
               </div>
-              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
-                CO2e Saved
-              </h3>
-              <p className="text-lg md:text-2xl font-bold text-moringa">
-                {impactData.co2Saved.toLocaleString()}
-                <span className="text-sm md:text-base">kg</span>
-              </p>
-            </div>
-
-            {/* Water Saved Card */}
-            <div className="bg-white rounded-lg shadow-md p-3 md:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer text-center">
-              <div className="flex items-center justify-center mb-1">
-                <Droplets
-                  className="w-5 h-5 md:w-6 md:h-6"
-                  style={{ color: 'var(--color-solid)' }}
-                />
-              </div>
-              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
-                Water Saved
-              </h3>
-              <p className="text-lg md:text-2xl font-bold text-moringa">
-                {impactData.waterSaved.toLocaleString()}
-                <span className="text-sm md:text-base">L</span>
-              </p>
-            </div>
-
-            {/* Food Waste Saved Card */}
-            <div className="bg-white rounded-lg shadow-md p-3 md:p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer text-center">
-              <div className="flex items-center justify-center mb-1">
-                <Scale className="w-5 h-5 md:w-6 md:h-6" style={{ color: 'var(--color-solid)' }} />
-              </div>
-              <h3 className="text-moringa-muted text-[10px] md:text-xs font-medium mb-1">
-                Food Waste Saved
-              </h3>
-              <p className="text-lg md:text-2xl font-bold text-moringa">
-                {impactData.foodWasteSaved.toLocaleString()}
-                <span className="text-sm md:text-base">kg</span>
-              </p>
-            </div>
+            ))}
           </div>
 
           {/* Milestones Section */}
-          <div className="mb-8">
-            <h2 className="text-lg font-bold text-moringa mb-1 text-center">
-              Your Contribution Milestones
+          <section className="mt-12">
+            <p className="eyebrow text-moringa-muted">Milestones</p>
+            <h2 className="display text-[40px] md:text-[56px] text-moringa mt-2">
+              Your next level
             </h2>
-            <p className="text-sm text-moringa-muted mb-4 text-center">
-              See how you're progressing towards the next level of impact.
+            <p className="mt-2 max-w-xl text-moringa-muted">
+              See how you are progressing towards the next level of impact.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-              {/* Meals Milestone Card */}
-              <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-base font-bold text-moringa mb-1">Food Waste Warrior</h3>
-                    <p className="text-moringa-muted text-xs">
-                      Rescue {mealsRemaining} more meals to reach your next milestone!
-                    </p>
-                  </div>
-                  <div
-                    className="flex items-center gap-1 text-xs font-medium whitespace-nowrap"
-                    style={{ color: 'var(--color-solid)' }}
-                  >
-                    <Award className="w-4 h-4" />
-                    <span>Next: {mealsMilestone} meals</span>
-                  </div>
-                </div>
-
-                <div className="mb-2">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="font-medium text-moringa">
-                      {impactData.mealsRescued} / {mealsMilestone} meals
+            <div className="mt-6 grid md:grid-cols-2 border border-char/10 bg-white">
+              {[
+                {
+                  title: 'Food waste warrior',
+                  copy: `Rescue ${mealsRemaining} more meals to reach your next milestone.`,
+                  next: `Next: ${mealsMilestone} meals`,
+                  count: `${impactData.mealsRescued} / ${mealsMilestone} meals`,
+                  progress: mealsProgress,
+                  bar: 'bg-moringa',
+                },
+                {
+                  title: 'Carbon crusader',
+                  copy: `Save ${co2Remaining.toFixed(1)} more kg of CO2e to reach your next milestone.`,
+                  next: `Next: ${co2Milestone}kg`,
+                  count: `${impactData.co2Saved.toFixed(1)} / ${co2Milestone} kg`,
+                  progress: co2Progress,
+                  bar: 'bg-pepper',
+                },
+              ].map((m) => (
+                <div
+                  key={m.title}
+                  className="p-5 sm:p-6 border-b md:border-b-0 md:border-r border-hairline last:border-0"
+                >
+                  <div className="flex items-start justify-between gap-4 mb-5">
+                    <div>
+                      <h3 className="font-bold text-lg text-moringa">{m.title}</h3>
+                      <p className="text-sm text-moringa-muted mt-1">{m.copy}</p>
+                    </div>
+                    <span className="eyebrow text-[10px] flex items-center gap-1 bg-yellow text-moringa px-2 py-1 whitespace-nowrap">
+                      <Award className="w-3.5 h-3.5" aria-hidden="true" />
+                      {m.next}
                     </span>
-                    <span className="font-bold" style={{ color: 'var(--color-solid)' }}>
-                      {Math.round(mealsProgress)}%
+                  </div>
+                  <div className="flex justify-between items-end mb-2">
+                    <span className="text-sm font-semibold text-moringa tabular-nums">
+                      {m.count}
+                    </span>
+                    <span className="display text-[28px] text-moringa tabular-nums">
+                      {Math.round(m.progress)}%
                     </span>
                   </div>
-                  <div className="w-full bg-hairline rounded-full h-2">
+                  <div className="w-full h-3 bg-fufu-dim">
                     <div
-                      className="h-2 rounded-full transition-all duration-500"
-                      style={{
-                        width: `${mealsProgress}%`,
-                        background: 'linear-gradient(to right, #0F3D2E, #0A2A20)',
-                      }}
+                      className={`h-3 ${m.bar} transition-all duration-500`}
+                      style={{ width: `${m.progress}%` }}
                     ></div>
                   </div>
                 </div>
-              </div>
-
-              {/* CO2 Milestone Card */}
-              <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="text-base font-bold text-moringa mb-1">Carbon Crusader</h3>
-                    <p className="text-moringa-muted text-xs">
-                      Save {co2Remaining.toFixed(1)} more kg of CO2e to reach your next milestone!
-                    </p>
-                  </div>
-                  <div
-                    className="flex items-center gap-1 text-xs font-medium whitespace-nowrap"
-                    style={{ color: 'var(--color-solidOne)' }}
-                  >
-                    <Award className="w-4 h-4" />
-                    <span>Next: {co2Milestone}kg</span>
-                  </div>
-                </div>
-
-                <div className="mb-2">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="font-medium text-moringa">
-                      {impactData.co2Saved.toFixed(1)} / {co2Milestone} kg
-                    </span>
-                    <span className="font-bold" style={{ color: 'var(--color-solidOne)' }}>
-                      {Math.round(co2Progress)}%
-                    </span>
-                  </div>
-                  <div className="w-full bg-hairline rounded-full h-2">
-                    <div
-                      className="h-2 rounded-full transition-all duration-500"
-                      style={{
-                        width: `${co2Progress}%`,
-                        background: 'linear-gradient(to right, #FFC531, #E8552F)',
-                      }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
+          </section>
 
           {/* Impact Over Time Chart */}
-          <div className="mb-8">
-            <div className="text-center mb-4">
-              <h2 className="text-lg font-bold text-moringa mb-1">Your Impact Over Time</h2>
-              <p className="text-sm text-moringa-muted">
-                This chart visualizes your growing contribution to a healthier planet each month.
-              </p>
-            </div>
+          <section className="mt-12">
+            <p className="eyebrow text-moringa-muted">Over time</p>
+            <h2 className="display text-[40px] md:text-[56px] text-moringa mt-2">Month by month</h2>
+            <p className="mt-2 max-w-xl text-moringa-muted">
+              Your growing contribution to a healthier planet, each month.
+            </p>
 
-            <div className="bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition-shadow duration-300">
-              <div className="flex gap-4 mb-3">
+            <div className="mt-6 bg-white border border-char/10 p-5 sm:p-6">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 mb-5">
                 <div className="flex items-center gap-2">
-                  <div
-                    className="w-3 h-3 rounded"
-                    style={{ backgroundColor: 'var(--color-solid)' }}
-                  ></div>
-                  <span className="text-xs text-moringa-muted">Meals Rescued</span>
+                  <span className="w-3 h-3 bg-moringa"></span>
+                  <span className="eyebrow text-[11px] text-moringa">Meals rescued</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div
-                    className="w-3 h-3 rounded"
-                    style={{ backgroundColor: 'var(--color-solidOne)' }}
-                  ></div>
-                  <span className="text-xs text-moringa-muted">CO2e Saved (kg)</span>
+                  <span className="w-3 h-3 bg-pepper"></span>
+                  <span className="eyebrow text-[11px] text-moringa">CO2e saved (kg)</span>
                 </div>
               </div>
 
               {/* Chart */}
               <div className="relative h-64">
                 {/* Y-axis labels */}
-                <div className="absolute left-0 top-0 bottom-8 flex flex-col justify-between text-xs text-moringa-muted w-8">
+                <div className="absolute left-0 top-0 bottom-8 flex flex-col justify-between font-mono text-[11px] text-moringa-muted w-8 tabular-nums">
                   <span>{Math.max(maxMeals, maxCo2)}</span>
                   <span>{Math.floor(Math.max(maxMeals, maxCo2) * 0.75)}</span>
                   <span>{Math.floor(Math.max(maxMeals, maxCo2) * 0.5)}</span>
@@ -348,12 +311,12 @@ const MyImpact = () => {
                   </div>
 
                   {/* SVG for lines */}
-                  <svg className="absolute inset-0 w-full h-full">
-                    {/* Meals line (green) */}
+                  <svg className="absolute inset-0 w-full h-full overflow-visible">
+                    {/* Meals line */}
                     <polyline
                       fill="none"
                       stroke="#0F3D2E"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       points={chartData
                         .map((d, i) => {
                           const x = (i / (chartData.length - 1)) * width;
@@ -362,11 +325,11 @@ const MyImpact = () => {
                         })
                         .join(' ')}
                     />
-                    {/* CO2 line (orange) */}
+                    {/* CO2 line */}
                     <polyline
                       fill="none"
                       stroke="#E8552F"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       points={chartData
                         .map((d, i) => {
                           const x = (i / (chartData.length - 1)) * width;
@@ -379,26 +342,44 @@ const MyImpact = () => {
                     {chartData.map((d, i) => {
                       const x = (i / (chartData.length - 1)) * width;
                       const y = height - (d.meals / maxMeals) * height;
-                      return <circle key={`meal-${i}`} cx={x} cy={y} r="3" fill="#0F3D2E" />;
+                      return (
+                        <rect
+                          key={`meal-${i}`}
+                          x={x - 3.5}
+                          y={y - 3.5}
+                          width="7"
+                          height="7"
+                          fill="#0F3D2E"
+                        />
+                      );
                     })}
                     {/* Data points for CO2 */}
                     {chartData.map((d, i) => {
                       const x = (i / (chartData.length - 1)) * width;
                       const y = height - (d.co2 / maxCo2) * height;
-                      return <circle key={`co2-${i}`} cx={x} cy={y} r="3" fill="#E8552F" />;
+                      return (
+                        <rect
+                          key={`co2-${i}`}
+                          x={x - 3.5}
+                          y={y - 3.5}
+                          width="7"
+                          height="7"
+                          fill="#E8552F"
+                        />
+                      );
                     })}
                   </svg>
                 </div>
 
                 {/* X-axis labels */}
-                <div className="absolute left-10 right-0 bottom-0 flex justify-between text-xs text-moringa-muted">
+                <div className="absolute left-10 right-0 bottom-0 flex justify-between font-mono text-[10px] sm:text-[11px] uppercase text-moringa-muted">
                   {chartData.map((d) => (
                     <span key={d.month}>{d.month}</span>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
       <Footer />
