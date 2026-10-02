@@ -12,7 +12,7 @@ import {
   ClosingCta,
   SectionRail,
 } from '../Components/landing/Sections';
-import { SECTIONS } from '../Components/landing/sections';
+import { SECTIONS } from '../Components/landing/sectionList';
 import { useActiveSection, useReveal } from '../Components/landing/useLandingMotion';
 import Footer from '../Components/Footer';
 import SEO from '../Components/SEO';

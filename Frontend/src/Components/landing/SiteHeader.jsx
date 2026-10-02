@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Logo, Button } from '../brand/Kit';
-import { SECTIONS } from './sections';
+import { SECTIONS } from './sectionList';
 import { useScrollProgress } from './useLandingMotion';
 
 const NAV = [

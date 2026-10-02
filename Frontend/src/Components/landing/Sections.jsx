@@ -15,7 +15,7 @@ import {
   TomatoHalf,
 } from '../brand/Illustrations';
 
-import { SECTIONS } from './sections';
+import { SECTIONS } from './sectionList';
 
 const WRAP = 'mx-auto max-w-[1440px]';
 
