@@ -87,7 +87,7 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] ProductDetails
 - [x] Cart + payment modal
 - [x] Login, SignUp, ForgotPassword, VerifyEmail, AdminLogin (left panel = `Components/brand/AuthArt.jsx`)
-- [~] Brand class sweep done on every page/component/admin file (grey/slate -> brand tokens, no blur). ExpiryCountdown restyled. Pages below still need a real layout pass.
+- [x] Brand class sweep done on every page/component/admin file (grey/slate -> brand tokens, no blur). ExpiryCountdown restyled. Pages below still need a real layout pass.
 - [x] MyOrders: `pt-[72px]` + PageHero "My orders", square Moringa/Yellow segmented toggles, brand selects/inputs (border-2 moringa), status pills (Completed lime, Processing mint, Cancelled fufu-dim, Failed peach/clay), replace the store/home/bike emojis in the details modal with lucide Store/Home/Bike. Keep all handlers.
 - [x] MyImpact, MyProfile, Notification
 - [x] BusinessVerification, PendingReview, RiderRegistration, RiderDashboard (onboarding pages use the AuthArt split layout; emojis removed from toasts/headings)
@@ -96,7 +96,7 @@ Legend: [x] done and pushed, [~] in progress, [ ] not started
 - [x] Soft corners pass (owner request), see Corners above.
 - [x] Admin dashboard shell: admin/components/layout Sidebar (Moringa rail, yellow active) + Header (brand dark mode tones), admin ground fufu/char, Analytics emojis replaced with lucide icons
 - [x] Fun copy (owner request): 404 "Someone ate this page.", crash screen "We burnt the toast", maintenance "Kitchen's closed", playful ErrorDisplay defaults and empty/loading states
-- [ ] (next up) Final pass: 390px + 1440px check, `npx prettier --check .` at root, `npx eslint .` in Frontend (0 errors), `npm run build`, push to revamp-ui.
+- [x] Final pass: 390px + 1440px check, `npx prettier --check .` at root clean, `npx eslint .` in Frontend 0 errors (69 warnings, all pre-existing; was 71), `npm run build` passes, pushed to revamp-ui.
 - [ ] PR revamp-ui -> main: ONLY when the owner says so, after they have tested. Never merge.
 - [ ] Repo transfer to the Chop-Now org: done by the owner in GitHub (Settings > Danger Zone > Transfer ownership), after testing and their okay. Not an agent step.
 
@@ -113,3 +113,5 @@ It reads a small database: collection `tasks` (docs t01..t18, fields
 - Footer now lists only MTN MoMo + Airtel Money (the old Visa/Mastercard/Bank logos did not match pawaPay). Old dead newsletter form removed.
 
 - 2026-10-02: Repo created, codebase imported, baseline build passes.
+- 2026-10-02: Checklist finished on revamp-ui. Waiting on the owner to test. No PR into main until they say so; repo transfer to the Chop-Now org is theirs to do after that.
+- Admin pages beyond the shell (tables, forms inside admin/pages) only got the class sweep plus Analytics; they are the obvious next layout pass if wanted.
