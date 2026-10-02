@@ -1,0 +1,59 @@
+services:
+  # Backend Service
+  backend:
+    build: ./Backend
+    container_name: chopnow-backend
+    ports:
+      - '5000:5000'
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGO_URI=mongodb://${MONGO_INITDB_ROOT_USERNAME:?Set MONGO_INITDB_ROOT_USERNAME in .env}:${MONGO_INITDB_ROOT_PASSWORD:?Set MONGO_INITDB_ROOT_PASSWORD in .env}@mongo:27017/chopnow?authSource=admin
+      - JWT_SECRET=${JWT_SECRET:?Set JWT_SECRET in .env to a random string of at least 32 characters - see .env.example}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost,http://localhost:5173}
+    depends_on:
+      - mongo
+    networks:
+      - chopnow-network
+    restart: unless-stopped
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ./Frontend
+      args:
+        # Bake in the API URL for the build.
+        # For local Docker testing, browser accesses localhost:5000
+        - VITE_API_URL=http://localhost:5000
+    container_name: chopnow-frontend
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
+    networks:
+      - chopnow-network
+    restart: unless-stopped
+
+  # Database Service
+  mongo:
+    image: mongo:6.0
+    container_name: chopnow-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:?Set MONGO_INITDB_ROOT_USERNAME in .env}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:?Set MONGO_INITDB_ROOT_PASSWORD in .env}
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - chopnow-network
+    restart: unless-stopped
+    # No host port publish here on purpose - Mongo is only reachable from
+    # other containers on chopnow-network. For local debugging with Compass
+    # or another host tool, run with docker-compose.override.dev.yml, which
+    # publishes 27017 for local use only.
+
+volumes:
+  mongo-data:
+
+networks:
+  chopnow-network:
+    driver: bridge

@@ -1,0 +1,11 @@
+flutter_native_splash:
+  # Moringa ground so the native launch screen matches the Flutter splash
+  # that replaces it — no white flash, no colour jump on boot.
+  color: '#0F3D2E'
+  image: 'assets/images/splash_logo.png'
+  android_12:
+    # Android 12+ masks this slot to a circle, so it gets the mark alone —
+    # the full wordmark lockup would be cropped.
+    image: 'assets/images/splash_icon_android12.png'
+    color: '#0F3D2E'
+  ios: true

@@ -1,0 +1,177 @@
+@import 'tailwindcss';
+
+@plugin "tailwindcss-animate";
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* ── ChopNow brand palette ──
+     Source of truth: root CLAUDE.md. Now Yellow is LIGHT — it carries
+     Moringa/Char text, never white. Pepper takes white only at large sizes
+     (3.6:1); use Char on Pepper for body copy. */
+  --color-moringa: #0f3d2e; /* primary dark green: structure, text on light */
+  --color-moringa-dark: #0a2a20; /* hover / pressed state on moringa */
+  --color-moringa-muted: #4f625a; /* secondary text on fufu (5.9:1, WCAG AA) */
+  --color-yellow: #ffc531; /* Now Yellow — primary CTA, logo mark */
+  --color-yellow-dark: #efb522; /* hover state on yellow */
+  --color-pepper: #e8552f; /* secondary accent: discounts, prices, badges */
+  --color-pepper-dark: #ce4522; /* hover state on pepper */
+  --color-fufu: #faf3e4; /* warm off-white: default ground / surfaces */
+  --color-fufu-dim: #f2ead6; /* slightly deeper fufu: alternating sections */
+  --color-fufu-border: #e6dcc6; /* hairline borders on fufu */
+  --color-char: #17150f; /* near-black: highest-contrast text, mono wordmark */
+
+  /* ── Backgrounds ──
+     Scaffold is the main page ground; Surface is the standard card/panel fill.
+     Fufu (above) drops to a secondary band colour used to separate sections. */
+  --color-scaffold: #f6fff9; /* main scaffold background (faint off-white green) */
+  --color-surface: #ffffff; /* standard surface background: cards, panels, pills */
+  --color-surface-border: #e3ebe6; /* cool hairline on scaffold/surface (fufu-border reads warm here) */
+
+  /* ── Legacy token names, repointed at the brand palette ──
+     ~500 call sites across the app still use these names. Rather than rewrite
+     every one, each now resolves to its brand equivalent, so legacy pages
+     render on-brand. Prefer the names above in new work.
+
+     NOTE: `--color-gray-50` is deliberately NOT redefined here. Overriding it
+     shadowed Tailwind's built-in near-white `gray-50`, which made every
+     `bg-gray-50` surface paint mid-grey (it read as a dark overlay). Muted
+     text now uses `--color-moringa-muted` instead. */
+  --color-primary: var(--color-scaffold); /* page ground (unchanged hex) */
+  --color-solid: var(--color-moringa); /* was #00A86B green */
+  --color-solidOne: var(--color-pepper); /* was #FF7A00 orange */
+  --color-solidTwo: var(--color-yellow); /* was #FFB366 soft orange */
+  --color-tertiary: var(--color-moringa-dark); /* hover/pressed */
+  --color-textColor: var(--color-char); /* was #2E2E2E neutral */
+}
+
+html,
+body {
+  background-color: var(--color-primary);
+  scroll-behavior: smooth;
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-shadcn: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background-color: var(--color-scaffold) !important;
+    color: var(--color-char) !important;
+  }
+}

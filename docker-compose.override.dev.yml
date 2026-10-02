@@ -1,0 +1,11 @@
+# Local-development-only overrides. Merge in explicitly when you need host
+# tools (MongoDB Compass, mongosh, etc.) to reach the database directly:
+#
+#   docker-compose -f docker-compose.yml -f docker-compose.override.dev.yml up
+#
+# Never use this in production - it publishes Mongo's port straight to the
+# host with no network restriction.
+services:
+  mongo:
+    ports:
+      - '27017:27017'
